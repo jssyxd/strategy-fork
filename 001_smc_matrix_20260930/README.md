@@ -144,3 +144,32 @@
   限价单缺乏生命周期管控（TTL），在震荡和突破交替期极易遭遇“逆向选择（Adverse Selection）”。
 * **根治方案**：
   引入 `max_pending_bars = 3` 机制。限价单发出后，每收到一根 K 线计数累加，超过 3 根 K 线（45 分钟）未成交立即自动发送 `cancel_order` 撤单，彻底注销超时挂单。
+
+---
+
+### 踩坑 5：连续亏损熔断的“永久死锁”逻辑缺陷 (Circuit Breaker Permanent Deadlock)
+* **事故现象**：
+  实盘运行中，SOL、BNB、ETH 标的在经历连续 3 笔小额止损后，进入了无休止的“熔断拦截”状态。日志中连续几十个小时持续打印 `Circuit breaker active (3 losses). Trading halted.`，标的即使出现绝佳顺势动量突破也彻底拒绝发单，交易被永久冻结。
+* **底层根因推演（逻辑死锁闭环）**：
+  1. **熔断判定**：在 `on_bar()` 信号前置检查中，若当前策略实例连续亏损达到上限（`consec_losses >= 3`），直接 `return` 拦截后续全部信号计算与开仓。
+  2. **重置触发依赖**：代码中唯一能将 `consec_losses` 复位重置为 0 的逻辑，写在平仓成交事件 `on_order_filled` 中（要求 `pnl > 0` 盈利单才能重置）。
+  3. **死锁闭环**：
+     $$\text{3 连亏触发熔断} \longrightarrow \text{禁止任何开仓} \longrightarrow \text{绝不可能产生平仓盈利} \longrightarrow \text{连亏计数永远无法重置} \longrightarrow \text{永久停摆}$$
+     导致该标的被无限期判死刑，只能依赖人工物理重启容器重置内存变量才能恢复。
+* **根治方案（时间冷却自动解封机制）**：
+  在熔断判定中引入 **48 根 15m K 线（12 小时）自动解封冷却计数器 (`breaker_bars`)**：
+  ```python
+  if self.consec_losses >= self.cfg.max_loss_streak:
+      self.breaker_bars += 1
+      cooldown_limit = getattr(self.cfg, "cooldown_bars", 48)  # 48 根 K 线 (12小时)
+      if self.breaker_bars < cooldown_limit:
+          if self.breaker_bars % 4 == 0 or self.breaker_bars == 1:
+              self.log.warning(f"[{raw_sym}] 连续亏损熔断冷却中 ({self.breaker_bars}/{cooldown_limit} bars)...")
+          return
+      else:
+          # 12 小时冷却期满，自动解封并重置连亏计数
+          self.log.info(f"[{raw_sym}] 熔断冷却期满 (12 小时)! 自动解封并重置连亏计数，恢复正常交易。")
+          self.consec_losses = 0
+          self.breaker_bars = 0
+  ```
+  在给予市场充分技术调整周期的同时，保障了量化交易系统的无人值守自愈与自动复活能力。
