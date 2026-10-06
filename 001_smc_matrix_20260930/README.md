@@ -173,3 +173,59 @@
           self.breaker_bars = 0
   ```
   在给予市场充分技术调整周期的同时，保障了量化交易系统的无人值守自愈与自动复活能力。
+
+---
+
+## 四、待解决问题与临时应对方案 (Pending Issues & Temporary Solutions)
+
+在多资产高频/多周期并发量化系统中，资产间的资金竞争与保证金调度是核心架构难题。本节详细归档当前暴露的关键保证金管理问题、临时兜底机制及符合 NautilusTrader 规范的长期演进路线。
+
+### 1. 核心问题定位与痛点分析 (Problem Statement)
+
+#### 痛点 A：多品种并发信号冲突与保证金抢占 (Concurrent Signal Margin Race)
+* **现象**：当行情出现全市场系统性脉冲波动（如 BTC 暴涨带动 ETH/SOL/BNB 同时放量突破）时，4 个标的可能在同一根 15m K 线收盘瞬间**同时触发开仓信号**。
+* **冲突点**：
+  - 各标的实例独立并行计算 `risk_budget = equity * 1%` 并根据自身止损距离计算张数。
+  - 先完成事件循环处理的标的会率先向 OKX 提交订单并冻结大额可用保证金。
+  - 后处理的优质信号标的可能因可用保证金骤降而遭遇拒单或极端不足额成交，甚至引发保证金不足异常报错。
+
+#### 痛点 B：先后多个开仓时保证金递减与资金非对称配置 (Sequential Margin Depletion)
+* **现象**：标的 A 先触发开仓并占用了部分保证金；随后标的 B 触发更高胜率、更高置信度（更高 score、更低不确定性 $u$）的绝佳突破信号。
+* **冲突点**：此时剩余自由资金（Free Margin）已因标的 A 的占用而缩水，导致置信度更高的标的 B 反而被动分得较少保证金，呈现“劣质信号占大资金、优质信号占小资金”的资金错配。
+
+---
+
+### 2. 暂时使用的临时方案 (Current Temporary Mitigation)
+
+【状态标记】：⚠️ **待解决问题，暂时使用的临时方案 (Pending Final Architecture / Temporary Workaround in Place)**
+
+针对上述痛点，系统暂时实施以下启发式动态调度与降级机制：
+
+#### ① 基于信号得分与置信度的保证金打折分配 (Score-Weighted Dynamic Haircut)
+* **优先级划分**：
+  - 在并发触发时，比较各标的信号得分（`score`）及狄利克雷证据置信度（`1 - u`）。
+  - **高分/高置信度信号**：享有最高资金调度特权，全额给予原定风险预算与保证金资源（100% 原始算力开仓）。
+  - **次高/较低分信号**：按相对分数比例打折开仓张数（Haircut Sizing）。例如相对得分仅为高分信号的 80%，则开仓张数打折为 80% 或更低。
+  - **得分并列/相同**：若出现相同得分与置信度，则平均分配可用风险预算，按总量共同等比例打折。
+
+#### ② 逐仓模式与资金残值尽力而为执行 (Isolated-Margin Best-Effort Fill)
+* **保证金弹性适配**：
+  - 接入逐仓/隔离保证金逻辑：当账户可用保证金不足以全额满足理论计算张数时，系统**接受不全部吃完原信号计算的金额**。
+  - **剩余多少开多少**：以当前账户剩余可用净额为硬约束，动态向下取整折算为最大可开张数，确保只要满足交易所最小合约下单限制（1 张合约）即予以报单，杜绝因资金不足导致整个交易机会被直接 Reject。
+
+---
+
+### 3. 符合 NautilusTrader 架构的长期终局方案规划 (Target Architecture)
+
+根据 [NautilusTrader 官方架构规范](https://nautilustrader.io/docs/latest/concepts/portfolio/)，生产级量化系统的资金管理不应由各个 Strategy 实例分散独立决策，而应由上层中央协调器统一仲裁。后续将向以下三层架构演进：
+
+1. **解耦信号生成与订单执行 (Signal vs. Order Separation)**：
+   - `Strategy` 实例不再直接调用 `self.submit_order()`。
+   - `Strategy` 仅负责向中心总线发送带有元数据的交易意图 `SignalEvent(symbol, direction, score, epistemic_u, desired_risk)`。
+
+2. **全局组合投资组合协调器 (Global Portfolio Allocator & Optimizer)**：
+   - 在 K 线闭合时刻收集所有待执行的 `SignalEvent`。
+   - 统一查询 `self.portfolio.account(...)` 的总可用资产，利用凸优化或贪心启发式算法，根据评分矩阵完成一揽子资金最优化分配解算。
+
+3. **原生集成 NautilusTrader `RiskEngine`**：
+   - 编写自定义 `PortfolioRiskEngine` 规则扩展 NautilusTrader 的风险检查钩子，在底层自动拦截超限保证金占用，实现原生的毫秒级资金分配仲裁。

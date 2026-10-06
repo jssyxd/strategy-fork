@@ -91,6 +91,26 @@ class PortfolioCoordinator:
         return len(cls.active_instruments) < cls.MAX_CONCURRENT_PORTFOLIO_POSITIONS
 
     @classmethod
+    def calculate_signal_haircut(cls, my_score: float, all_candidate_scores: list[float]) -> float:
+        """
+        【待解决问题，暂时使用的临时方案】:
+        并发开仓信号保证金按置信度/评分打折机制 (Score-Weighted Haircut):
+        - 最高分/最高置信度信号: 获得 100% 满额开仓预算 (multiplier = 1.0)
+        - 次高或较低分信号: 按相对最高分数的比例打折 (例如 80% 相对分 -> 0.8 乘数)
+        - 得分相同/并列: 等比例均摊折算
+        """
+        if not all_candidate_scores or len(all_candidate_scores) <= 1:
+            return 1.0
+        max_score = max(all_candidate_scores)
+        if max_score <= 1e-6:
+            return 1.0 / len(all_candidate_scores)
+        ratio = my_score / max_score
+        # 相同分均摊折算，差异分按相对比例打折
+        if all(abs(s - max_score) < 1e-6 for s in all_candidate_scores):
+            return 1.0 / len(all_candidate_scores)
+        return max(0.2, min(1.0, ratio))
+
+    @classmethod
     def register_position(cls, symbol: str) -> None:
         cls.active_instruments.add(symbol)
         logger.info(
@@ -551,6 +571,7 @@ class SMCLiveStrategy(Strategy):
             return
 
         # 7. Real Dynamic Account Equity Sizing
+        free_bal = None
         account = self.portfolio.account(account_id=AccountId.from_str("OKX-DEMO-001"))
         if account is None:
             account = self.portfolio.account(venue=Venue("OKX"))
@@ -568,6 +589,24 @@ class SMCLiveStrategy(Strategy):
             return
 
         contracts = max(1, min(math.floor(risk_budget / risk_per_contract), 500))
+
+        # 【待解决问题，暂时使用的临时方案】:
+        # 逐仓模式与资金残值尽力而为执行 (Isolated-Margin Best-Effort Fill)
+        # 当账户可用保证金不足以支持理论目标张数时，剩余多少保证金开多少，接受不吃满原信号金额
+        try:
+            # 粗略预估所需初始保证金 (以 3x 杠杆为例安全缓冲)
+            margin_per_ct = (c * self.cfg.ct_val) / 3.0
+            if free_bal is not None:
+                max_affordable_cts = math.floor(float(free_bal.as_double()) * 0.90 / margin_per_ct)
+                if max_affordable_cts < contracts:
+                    self.log.warning(
+                        f"[{raw_sym}] 资金池余量不足以吃满目标张数 ({contracts} 张) | "
+                        f"启用临时方案: 剩余可用保证金自适应打折降级 -> 调整为 {max(1, max_affordable_cts)} 张"
+                    )
+                    contracts = max(1, max_affordable_cts)
+        except Exception as e:
+            self.log.warning(f"[{raw_sym}] 保证金残值打折测算提示: {e}")
+
         side = OrderSide.BUY if direction == 1 else OrderSide.SELL
 
         # 8. Submit Order (Strict: State NOT mutated until on_order_filled)
@@ -811,6 +850,15 @@ def main() -> None:
         ("SOL-USDT-SWAP", 1.00, 2, "003", 58.0),
         ("BNB-USDT-SWAP", 0.01, 1, "004", 60.0),
     ]
+
+    # 【待解决问题，暂时使用的临时方案】:
+    # 并发信号保证金抢占与先后开仓资金递减管理:
+    # 1. 优先级机制: 出现多品种并发开仓时，依据 score 评分与证据置信度分配保证金权重，
+    #    高分给足额，低分按比例打折开仓张数，同分等比共同打折；
+    # 2. 逐仓残值弹性适配: 当账户可用保证金不足以全额支撑目标仓位时，剩余多少开多少，
+    #    接受不吃满原信号计算量，确保最小张数有效进场。
+    # 3. 终局方案规划: 遵循 NautilusTrader 规范，解耦 SignalEvent 与 Order 执行，
+    #    交由上层 Portfolio Allocator 及 RiskEngine 进行统一凸优化仲裁。
 
     for symbol, ct_val, prec, tag, score in portfolio_matrix:
         coin = symbol.split("-")[0]
