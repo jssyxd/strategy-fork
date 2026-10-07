@@ -455,6 +455,13 @@ class SMCLiveStrategy(Strategy):
         self.winning_trades: int = 0
         self.realized_pnl: float = 0.0
 
+        # ── Partial-fill safe accounting (2026-10-07) ──
+        self.last_entry_order_id: Optional[ClientOrderId] = None
+        self.last_exit_order_id: Optional[ClientOrderId] = None
+        self.force_exit: bool = False
+        self.exit_trade_pnl: float = 0.0
+        self.exit_filled_qty: float = 0.0
+
     def on_start(self) -> None:
         iid = InstrumentId.from_str(self.cfg.instrument_id)
         spec = BarSpecification(15, BarAggregation.MINUTE, PriceType.LAST)
@@ -764,7 +771,14 @@ class SMCLiveStrategy(Strategy):
         order_id = event.client_order_id
 
         # 1. Entry Fill Confirmation
-        if order_id == self.pending_entry_order_id:
+        if order_id == self.pending_entry_order_id or order_id == self.last_entry_order_id:
+            self.last_entry_order_id = order_id
+            if order_id != self.pending_entry_order_id:
+                self.log.info(
+                    f"[{raw_sym}] Entry partial fill {fill_qty} cts @ {fill_px:.2f} "
+                    f"(extra fill of a confirmed entry)"
+                )
+                return
             # 依据真实净持仓确认持仓状态
             iid = InstrumentId.from_str(self.cfg.instrument_id)
             net_pos = self.portfolio.net_position(iid)
@@ -778,6 +792,9 @@ class SMCLiveStrategy(Strategy):
                 self.pending_entry_order_id = None
                 self.pending_entry_bars = 0
                 self.tp1_filled = False
+                self.exit_trade_pnl = 0.0
+                self.exit_filled_qty = 0.0
+                self.force_exit = False
 
                 sl_dist = self.pending_entry_risk_dist
                 if self.pos_side == 1:
@@ -806,32 +823,54 @@ class SMCLiveStrategy(Strategy):
                 PortfolioCoordinator.release_position(raw_sym)
             return
 
-        # 2. Exit Fill Confirmation
-        if order_id == self.pending_exit_order_id:
-            self.pending_exit_order_id = None
+        # 2. Exit Fill Confirmation — 逐笔累加，只有真实净持仓归零才算平完
+        if order_id == self.pending_exit_order_id or order_id == self.last_exit_order_id:
+            self.last_exit_order_id = order_id
             pnl = (
                 (fill_px - self.entry_price) * fill_qty * self.cfg.ct_val
                 if self.pos_side == 1
                 else (self.entry_price - fill_px) * fill_qty * self.cfg.ct_val
             )
             self.realized_pnl += pnl
-            self.total_trades += 1
-            if pnl > 0:
+            self.exit_trade_pnl += pnl
+            self.exit_filled_qty += fill_qty
+
+            iid = InstrumentId.from_str(self.cfg.instrument_id)
+            net_pos = self.portfolio.net_position(iid)
+            remaining = float(net_pos.as_double() if hasattr(net_pos, 'as_double') else net_pos)
+
+            if abs(remaining) > 0:
+                # 部分成交：仓位仍在，保持 in_position=True，下一根 K 线强制补平残仓
+                self.force_exit = True
+                self.pending_exit_order_id = None
+                self.log.warning(
+                    f"[{raw_sym}] PARTIAL EXIT {fill_qty} cts @ {fill_px:.2f} | "
+                    f"remaining NetPos={remaining} | running PnL={self.exit_trade_pnl:.2f} USDT — will re-exit next bar"
+                )
+                return
+
+            if self.exit_trade_pnl > 0:
                 self.winning_trades += 1
                 self.consec_losses = 0
                 self.breaker_bars = 0
             else:
                 self.consec_losses += 1
+            self.total_trades += 1
 
             self.in_position = False
             self.pos_side = 0
             self.position_qty = 0.0
+            self.pending_exit_order_id = None
+            self.force_exit = False
+            self.last_exit_order_id = None
             PortfolioCoordinator.release_position(raw_sym)
 
             self.log.info(
                 f"[{raw_sym}] >>> EXIT CONFIRMED ON_ORDER_FILLED: Closed at {fill_px:.2f} | "
-                f"Trade PnL={pnl:.2f} USDT | Total PnL={self.realized_pnl:.2f} USDT <<<"
+                f"Trade PnL={self.exit_trade_pnl:.2f} USDT | Total PnL={self.realized_pnl:.2f} USDT <<<"
             )
+            self.exit_trade_pnl = 0.0
+            self.exit_filled_qty = 0.0
 
     def _manage_position(self, h: float, l: float, c: float) -> None:
         if self.pending_exit_order_id is not None:
@@ -870,7 +909,10 @@ class SMCLiveStrategy(Strategy):
                 should_exit = True
                 exit_reason = "TAKE_PROFIT"
 
-        if should_exit:
+        if should_exit or self.force_exit:
+            if not should_exit:
+                exit_reason = "FORCED_REMAINDER"
+            self.force_exit = False
             exit_side = OrderSide.SELL if self.pos_side == 1 else OrderSide.BUY
             # 严格使用真实持仓数量，且强制指定 reduce_only=True（只减仓）
             order = self.order_factory.market(
