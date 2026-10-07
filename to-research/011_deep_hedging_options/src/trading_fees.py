@@ -1,6 +1,6 @@
 """trading_fees.py - Binance and XT fee rate calculations.
 
-Extracted from video screen recordings (t=3:47, t=3:54).
+Reference implementation.
 Code reference: Binance WNSTICE PXR
 """
 

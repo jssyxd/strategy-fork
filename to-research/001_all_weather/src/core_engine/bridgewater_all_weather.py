@@ -36,7 +36,7 @@
 """
 
 import pandas as pd
-from cjquant.optimizer.traditional import RiskParityOptimizer
+from portfolio_engine.optimizer.traditional import RiskParityOptimizer
 
 # 四象限静态目标权重（数据不足时的回退值）
 STATIC_WEIGHTS = {

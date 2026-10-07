@@ -1,6 +1,6 @@
 """chip_tushare.py - Tushare A-share chip data extraction and caching.
 
-Extracted from video screen recordings (t=3:30-3:56).
+Reference implementation.
 """
 import os
 import json

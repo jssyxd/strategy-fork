@@ -1,6 +1,6 @@
 """avellaneda_stoikov_smr.py - 白银均值回归 SMR 与做市商微观盘口最优控制模型.
 
-结合 B 站视频数学讲解与 capacity_estimator L2 盘口离散器：
+结合 教学素材视频数学讲解与 capacity_tool L2 盘口离散器：
 1. Avellaneda-Stoikov 保留价格 (Reservation Price):
    r(s, q, t) = s - q * gamma * sigma^2 * (T - t)
    - s: 市场当前中间价 (Mid Price)

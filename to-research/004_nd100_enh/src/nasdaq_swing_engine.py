@@ -1,6 +1,6 @@
 """nasdaq_swing_engine.py - 纳斯达克100 ETF 动量波段跟踪引擎与超额收益对冲.
 
-逆向还原自录屏项目 `BTCUSDT-15min/swing.py` 与 `nasdaq.py` (实盘 Calmar 比率 8.68 架构)：
+逆向还原自内部工程 `btc_15m/swing.py` 与 `nasdaq.py` (实盘 Calmar 比率 8.68 架构)：
 1. 15分钟高频 K 线波段动量跟踪 (Swing Momentum)
 2. 动态自适应波动率滤网 (VIX / ATR Adaptive Filter)
 3. 纳斯达克 ETF (QQQ / 513100) 收益对比基准

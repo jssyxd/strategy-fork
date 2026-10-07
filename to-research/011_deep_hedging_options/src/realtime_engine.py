@@ -1,6 +1,6 @@
 """realtime_engine.py - Core live trading event loop.
 
-Extracted from video screen recordings (t=2:40, t=3:30).
+Reference implementation.
 """
 import time
 import logging

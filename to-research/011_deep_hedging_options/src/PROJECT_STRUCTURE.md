@@ -1,6 +1,6 @@
-# 项目文件结构：hwenithe_risk (深度学习期权对冲与实时交易系统)
+# 项目文件结构：options_hedging_system (深度学习期权对冲与实时交易系统)
 
-> **根路径推断**：`~/Downloads/LLM/Boss-bup/hwenithe_risk/`  
+> **根路径**：`options_hedging_system/`  
 > **语言与框架**：Python 3.9.6, PyTorch (`nn.TransformerEncoder`), Pandas, NumPy  
 > **核心模型**：`VolatilityTransformer`、`DeepDatedgingOptimizer`、`ChipEngine`  
 > **运行模式**：`REAL_TRADING`（实盘交易模式，向交易所 API 发送 HTTP POST 订单）
@@ -10,7 +10,7 @@
 ## 1. 目录树形结构
 
 ```
-hwenithe_risk/
+options_hedging_system/
 ├── __init__.py                  # 包入口初始化
 ├── config.py                    # 系统全局配置（超参数、CNN 通道、宏观资产池）
 ├── main.py                      # 系统主入口

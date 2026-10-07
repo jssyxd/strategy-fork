@@ -1,6 +1,6 @@
-"""macro_cycle_engine.py - 春江全天候宏观周期引擎与动态风险预算倾斜.
+"""macro_cycle_engine.py - 全天候宏观周期引擎与动态风险预算倾斜.
 
-融合 B 站视频讲解（桥水全天候中国本土化实现）与 LPR-Oracle 利率周期预警模型：
+融合 教学素材视频讲解（桥水全天候中国本土化实现）与 RateOracle 利率周期预警模型：
 1. 增长 (Growth) 与通胀 (Inflation) 四象限宏观指标打分系统：
    - 增长分 (Growth Score): PMI动量、社融脉冲、M1-M2剪刀差、中长期贷款、工业品表现
    - 通胀分 (Inflation Score): CPI-PPI剪刀差、大宗商品价格指数、PPI环比动量
@@ -147,7 +147,7 @@ class MacroCycleEngine:
             tilts["Commodity"] *= 0.7
             tilts["Bond_Long"] *= 1.3
 
-        # 3. LPR-Oracle 降息预警注入 (若 Shibor-LPR 利差预警降息概率超 0.95)
+        # 3. RateOracle 降息预警注入 (若 Shibor-LPR 利差预警降息概率超 0.95)
         if lpr_cut_prob >= 0.95:
             tilts["Bond_Long"] *= 1.35
             tilts["Convertible"] *= 1.15

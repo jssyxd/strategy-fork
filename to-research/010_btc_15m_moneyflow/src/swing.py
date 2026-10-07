@@ -1,7 +1,7 @@
 """swing.py - Swing trading execution script.
 
 Invoked in terminal at t=0:32:
-yuka@zhiran-MacBook-Air:~/BTCUSDT-15min$ python3 swing.py
+trader@localhost:~/btc_15m$ python3 swing.py
 """
 
 

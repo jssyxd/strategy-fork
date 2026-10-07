@@ -1,6 +1,6 @@
 """strategy.py - Options Strategy State Machine.
 
-Extracted from video screen recordings (t=1:31, t=1:52, t=1:54, t=1:59).
+Reference implementation.
 Contains state-machine handling for IronCondor, Straddle, and variants.
 """
 from typing import Optional

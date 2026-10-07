@@ -1,6 +1,6 @@
 """finetune.py - Fine-tuning script for VolatilityTransformer.
 
-Extracted from video screen recordings (t=2:02).
+Reference implementation.
 """
 import torch
 from config import MODEL_WEIGHTS_PATH

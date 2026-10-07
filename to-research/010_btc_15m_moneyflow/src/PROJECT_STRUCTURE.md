@@ -1,6 +1,6 @@
-# 项目文件结构：BTCUSDT-15min (加密货币 15 分钟高频量化回测与波段系统)
+# 项目文件结构：btc_15m (加密货币 15 分钟高频量化回测与波段系统)
 
-> **根路径推断**：`~/BTCUSDT-15min`（终端提示符 `yuka@zhiran-MacBook-Air:~/BTCUSDT-15min$`）  
+> **根路径**：`~/btc_15m`（终端提示符 `trader@localhost:~/btc_15m$`）  
 > **核心标的**：Binance / XT.com `BTC/USDT` 15 分钟 K 线  
 > **核心指标**：`dt_vix ABIEE (Calmar): 8.68`，累计收益显著跑赢 Nasdaq ETF 基准  
 > **技术栈**：Python 3.9.6, Matplotlib, Pandas
@@ -10,7 +10,7 @@
 ## 1. 目录树形结构
 
 ```
-BTCUSDT-15min/
+btc_15m/
 ├── swing.py                     # 波段策略执行脚本（终端运行：python3 swing.py）
 ├── softbox.py                   # 回测性能统计与指标导出脚本
 ├── YAND.py                      # YAND 策略主实现与累计收益计算（2026-05-01 保存）

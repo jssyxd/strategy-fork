@@ -1,6 +1,6 @@
 """download_xt_history.py - Download historical K-line data from XT.com.
 
-Extracted from video screen recordings (t=3:30, t=3:49).
+Reference implementation.
 """
 import requests
 import pandas as pd

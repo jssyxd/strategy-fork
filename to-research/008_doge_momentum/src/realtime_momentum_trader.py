@@ -1,8 +1,8 @@
 """realtime_momentum_trader.py - DOGE 高频微观动量与实时事件流执行器.
 
-逆向还原自录屏项目 `hwenithe_risk/realtime_engine.py` 与 `AlphaGPT/execution/runner.py`:
+逆向还原自内部工程 `options_hedging_system/realtime_engine.py` 与 `AlphaFactory/execution/runner.py`:
 1. 实时 Tick 流解析与微观买卖盘累积 (CVD / Volume Delta)
-2. 聚合 AlphaGPT 中的 6 大 Meme 币微观因子 (大单巨鲸净流入 Whale Inflow, 活跃地址增量)
+2. 聚合 AlphaFactory 中的 6 大 Meme 币微观因子 (大单巨鲸净流入 Whale Inflow, 活跃地址增量)
 3. 动态移动止损 (Trailing Stop) 与分批止盈 (Moonbag Take Profit)
 4. 剧烈下影线保护与滑点抑制
 """

@@ -1,6 +1,6 @@
 """formula_factor_bank.py - 结合同花顺 10k SFT 指标公式库与 Alpha101 的公式化截面因子库.
 
-基于 Hugging Face 数据集 `Chunjiang-Intelligence/tonghuashun_code_sft_10k` 与 `AlphaGPT`：
+基于 Hugging Face 数据集 `tonghuashun_code_sft_10k` 与 `AlphaFactory`：
 将同花顺经典技术面指标（箱体震荡极值、筹码锁仓突破、多空均线剪刀差）转换为纯矢量化 Pandas/Polars 因子计算函数。
 """
 

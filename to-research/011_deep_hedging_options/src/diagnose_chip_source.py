@@ -1,6 +1,6 @@
 """diagnose_chip_source.py - Diagnostic tools for A-share chip distribution sources.
 
-Extracted from video screen recordings (t=3:30-3:56).
+Reference implementation.
 """
 import numpy as np
 import pandas as pd

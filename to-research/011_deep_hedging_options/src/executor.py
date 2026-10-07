@@ -1,6 +1,6 @@
 """executor.py - Execution layer for options orders and exchange interaction.
 
-Extracted from video screen recordings (t=2:20, t=3:30-4:40).
+Reference implementation.
 """
 import logging
 import requests

@@ -1,6 +1,6 @@
 """model_eze.py - Model inference wrapper and ChipEngine integration.
 
-Extracted from video screen recordings (t=2:12, t=3:16, t=3:47, t=3:54).
+Reference implementation.
 """
 import json
 import numpy as np

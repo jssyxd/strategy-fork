@@ -1,6 +1,6 @@
 """stream_parser.py - Real-time market tick stream parser.
 
-# Ozymandias (Comment seen in video at t=2:00, t=2:12)
+# Internal codename: Ozymandias
 """
 import json
 

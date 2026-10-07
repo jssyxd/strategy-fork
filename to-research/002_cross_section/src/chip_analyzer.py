@@ -1,6 +1,6 @@
 """chip_analyzer.py - A股微观筹码分布 (CYQ Chips) 截面特征提取引擎.
 
-逆向还原自录屏项目 `hwenithe_risk/model_eze.py` 与 `chip_tushare.py` 中的 ChipEngine：
+逆向还原自内部工程 `options_hedging_system/model_eze.py` 与 `chip_tushare.py` 中的 ChipEngine：
 提取五大核心微观筹码特征：
 1. winner_rate: 当前价格对应的获利盘比例 (0.0 ~ 1.0)
 2. weight_avg: 筹码加权平均成本价格

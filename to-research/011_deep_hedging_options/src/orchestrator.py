@@ -1,6 +1,6 @@
 """orchestrator.py - System process scheduler and pipeline coordinator.
 
-Extracted from video screen recordings (t=0:40).
+Reference implementation.
 """
 import logging
 

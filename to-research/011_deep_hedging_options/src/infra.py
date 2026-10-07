@@ -1,6 +1,6 @@
 """infra.py - Infrastructure utilities and validation functions.
 
-Extracted from video screen recordings (t=3:54, t=3:56).
+Reference implementation.
 Code reference: not np.isfinite(winner_rate) or not np.isfinite(weight_avg)
 """
 import numpy as np

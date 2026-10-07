@@ -1,3 +1,3 @@
 # __init__.py
-"""hwenithe_risk package initialization."""
+"""options_hedging_system package initialization."""
 __version__ = "0.1.0"

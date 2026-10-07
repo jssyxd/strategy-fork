@@ -1,6 +1,6 @@
-"""tail_hedge_dotm.py - 春江全天候深度虚值 (DOTM) 期权尾部对冲模块.
+"""tail_hedge_dotm.py - 全天候深度虚值 (DOTM) 期权尾部对冲模块.
 
-整合来自 hwenithe_risk (DeepDatedgingOptimizer) 与 Thales (PDE/SAE Greeks 定价) 的逻辑：
+整合来自 options_hedging_system (DeepDatedgingOptimizer) 与 PinnPricer (PDE/SAE Greeks 定价) 的逻辑：
 1. 监控全组合在极端左尾行情下的最大回撤 (CVaR / Expected Shortfall)
 2. 动态买入 5%-10% 虚值的深度看跌期权 (Deep Out-of-the-Money Put)
 3. 当波动率由低转高、市场发生黑天鹅挤压时，提供非线性凸性收益弥补现货组合回撤

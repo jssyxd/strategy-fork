@@ -1,6 +1,6 @@
 """tracking_error_controller.py - 中证500指数增强跟踪误差 (Tracking Error) 与风格中性化控制器.
 
-结合 AlphaGPT 强化学习架构与 Moses 风险控制层：
+结合 AlphaFactory 强化学习架构与 EnsembleCore 风险控制层：
 1. 行业中性化 (Industry Neutralization): 强制权重偏离在申万一级行业内不超过 +/- 1.0%
 2. 风格中性化 (Style Neutralization): 控制在市值 (Size)、估值 (Value)、波动率 (Vol) 暴露在基准附近
 3. 动态跟踪误差惩罚 (Tracking Error Penalty):

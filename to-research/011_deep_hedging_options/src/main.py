@@ -1,6 +1,6 @@
-"""main.py - Main entry point for the hwenithe_risk system.
+"""main.py - Main entry point for the options_hedging_system system.
 
-Extracted from video screen recordings (t=0:40, t=3:30).
+Reference implementation.
 """
 import sys
 from realtime_engine import RealtimeEngine
@@ -8,7 +8,7 @@ from config import BASE_DIR
 
 
 def main():
-    print("Initializing hwenithe_risk system...")
+    print("Initializing options_hedging_system system...")
     print(f"Base directory: {BASE_DIR}")
     # Run in REAL_TRADING mode
     print("Mode: REAL_TRADING")

@@ -1,13 +1,13 @@
 """commodity_term_structure.py - 商品期货期限结构 (Term Structure) 与时序动量多因子模型.
 
-融合多维量化理论与春江开源组件：
+融合多维量化理论与公开组件：
 1. 展期收益率 (Roll Yield / Carry Factor):
    - 计算主力合约与次主力合约的基差斜率: (P_near - P_far) / (T_far - T_near)
    - Backwardation (现货溢价/贴水形态) -> 正展期收益，强做多信号
    - Contango (远期升水形态) -> 负展期收益，做空或规避信号
 2. 时序动量 (TSMOM / Time Series Momentum):
    - 计算不同周期 (1M, 3M, 12M) 的均线与波动率标准化动量
-3. 组合风险分配 (HRP / Lippershey MILP):
+3. 组合风险分配 (HRP / MILPBackbone MILP):
    - 使用层次风险平价 (HRP) 进行跨商品板块（黑金、有色、能化、农产品）聚类分配
    - 满足商品保证金占用与整数手约束
 """
