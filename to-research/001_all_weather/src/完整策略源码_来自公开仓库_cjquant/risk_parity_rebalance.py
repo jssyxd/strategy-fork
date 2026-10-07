@@ -4,11 +4,11 @@ import numpy as np
 import pandas as pd
 from datetime import datetime
 
-# Add project root to path to ensure portfolio_engine import works if run as a script
+# Add project root to path to ensure cjquant import works if run as a script
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
-from portfolio_engine.optimizer.traditional import RiskParityOptimizer
-from portfolio_engine.execution import OTCExecutor
+from cjquant.optimizer.traditional import RiskParityOptimizer
+from cjquant.execution import OTCExecutor
 
 def run_strategy():
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting Risk Parity Rebalance Strategy...")
