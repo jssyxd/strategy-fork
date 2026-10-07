@@ -229,3 +229,47 @@
 
 3. **原生集成 NautilusTrader `RiskEngine`**：
    - 编写自定义 `PortfolioRiskEngine` 规则扩展 NautilusTrader 的风险检查钩子，在底层自动拦截超限保证金占用，实现原生的毫秒级资金分配仲裁。
+
+---
+
+## 五、最新核心机制优化与代码定位索引 (Code Modifications)
+
+本节详细列明针对用户关心的 3 项核心机制优化在源码 (`smc_live_trader.py`) 中的具体落地位置：
+
+### 1. 同时持仓数扩容至 4 个 (BTC, ETH, SOL, BNB 允许全并发)
+* **修改文件**：`001_smc_matrix_20260930/smc_live_trader.py`
+* **具体位置**：第 97 行
+  ```python
+  class PortfolioCoordinator:
+      active_instruments: Set[str] = set()
+      MAX_CONCURRENT_PORTFOLIO_POSITIONS: int = 4  # 由原先的 2 扩容至 4，允许 BTC/ETH/SOL/BNB 同时持仓
+  ```
+* **作用逻辑**：在各品种判定入场前，通过 `can_open_position()` 检验当前活跃持仓数，允许 4 个品种同时开仓运行。
+
+### 2. 下单并发问题：1秒批处理池 + 分数权重切分保证金 + 逐仓残值自适应
+* **修改文件**：`001_smc_matrix_20260930/smc_live_trader.py`
+* **具体位置**：
+  - 第 127 ~ 147 行：`register_candidate()` 与 `_on_flush_timer()`，启动 1 秒批处理时间窗口，收集同一 K 线闭合时刻各资产的开仓信号；
+  - 第 149 ~ 225 行：`flush_and_execute()` 统一核算 OKX 真实可用保证金余额，按各个标的 `score` 分数权重比例精准切分保证金：
+    $$w_i = \frac{\text{score}_i}{\sum \text{score}}$$
+    若分数相同则等比完全平分；若可用保证金不足以吃满目标张数，则启用逐仓残值弹性机制，“剩余多少开多少”，向下取整适配最大可开张数；
+  - 第 670 ~ 715 行：`on_bar()` 不再单打独斗发单，而是向批处理池注册信号；解耦出 `_execute_entry_order()` 在分配完成后批量并发向 OKX 报单。
+
+### 3. 连续亏损 3 次熔断 + 48 根 K 线 (12小时) 自动解封冷却机制
+* **修改文件**：`001_smc_matrix_20260930/smc_live_trader.py`
+* **具体位置**：
+  - 第 336 行：在策略构造函数中初始化 `self.breaker_bars: int = 0` 冷却计数器；
+  - 第 480 ~ 505 行：在 `on_bar()` 信号前置检查中重构熔断逻辑：
+    ```python
+    if self.consec_losses >= self.cfg.max_loss_streak:
+        self.breaker_bars += 1
+        cooldown_limit = getattr(self.cfg, "cooldown_bars", 48)  # 48 根 15m K 线 (12小时)
+        if self.breaker_bars < cooldown_limit:
+            return  # 冷却期内平稳拦截
+        else:
+            # 满 12 小时后自动自愈解封
+            self.consec_losses = 0
+            self.breaker_bars = 0
+    ```
+  - 第 707 行：在盈利平仓事件回调中增加 `self.breaker_bars = 0` 同步清零；
+  - 第 835 行：在 `main()` 资产装配矩阵中正式注册参数 `strat_cfg.cooldown_bars = 48`。

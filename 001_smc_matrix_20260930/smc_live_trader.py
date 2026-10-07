@@ -80,35 +80,32 @@ logger = logging.getLogger("PROD-MATRIX")
 
 # ─── Global Portfolio Exposure Coordinator ────────────────────────────────────
 class PortfolioCoordinator:
-    """Cross-asset risk throttler to eliminate systemic correlation crashes."""
+    """
+    组合级并发风险与资金协调器：
+    1. 支持最多 4 个品种同时持仓 (BTC, ETH, SOL, BNB)。
+    2. 批处理协调并发开仓信号 (Concurrent Batch Margin Allocator):
+       - 当同一时刻或 1 秒窗口内同时触发 x 个开仓信号时，聚合候选信号。
+       - 检验最新账户可用保证金 (Free Margin)。
+       - 依据各信号的 score 评分权重比例切分可用保证金池：
+         w_i = score_i / sum(scores)
+         若分数相同，则权重完全相等，平分分配。
+       - 逐仓残值弹性适配：若可用保证金不足以全额满足理论风险张数，
+         系统接受不全部吃完原信号金额，“剩余多少开多少”，向下取整适配最大可开张数。
+       - 协调完成后，同时向 OKX 批量提交所有有效标的的开仓委托。
+    """
     active_instruments: Set[str] = set()
-    MAX_CONCURRENT_PORTFOLIO_POSITIONS: int = 2  # Max 2 active positions across BTC, ETH, SOL, BNB
+    MAX_CONCURRENT_PORTFOLIO_POSITIONS: int = 4  # 支持 4 个品种同时持仓 (BTC, ETH, SOL, BNB)
+
+    # 并发信号批处理池
+    pending_candidates: dict = {}  # {symbol: candidate_dict}
+    flush_timer_active: bool = False
+    coordinating_strategy: Optional[Any] = None
 
     @classmethod
     def can_open_position(cls, symbol: str) -> bool:
         if symbol in cls.active_instruments:
             return True
         return len(cls.active_instruments) < cls.MAX_CONCURRENT_PORTFOLIO_POSITIONS
-
-    @classmethod
-    def calculate_signal_haircut(cls, my_score: float, all_candidate_scores: list[float]) -> float:
-        """
-        【待解决问题，暂时使用的临时方案】:
-        并发开仓信号保证金按置信度/评分打折机制 (Score-Weighted Haircut):
-        - 最高分/最高置信度信号: 获得 100% 满额开仓预算 (multiplier = 1.0)
-        - 次高或较低分信号: 按相对最高分数的比例打折 (例如 80% 相对分 -> 0.8 乘数)
-        - 得分相同/并列: 等比例均摊折算
-        """
-        if not all_candidate_scores or len(all_candidate_scores) <= 1:
-            return 1.0
-        max_score = max(all_candidate_scores)
-        if max_score <= 1e-6:
-            return 1.0 / len(all_candidate_scores)
-        ratio = my_score / max_score
-        # 相同分均摊折算，差异分按相对比例打折
-        if all(abs(s - max_score) < 1e-6 for s in all_candidate_scores):
-            return 1.0 / len(all_candidate_scores)
-        return max(0.2, min(1.0, ratio))
 
     @classmethod
     def register_position(cls, symbol: str) -> None:
@@ -125,6 +122,106 @@ class PortfolioCoordinator:
             f"[PORTFOLIO-RISK] Released position. Active positions ({len(cls.active_instruments)}/{cls.MAX_CONCURRENT_PORTFOLIO_POSITIONS}): "
             f"{list(cls.active_instruments)}"
         )
+
+    @classmethod
+    def register_candidate(cls, strategy, candidate: dict) -> None:
+        """注册候选信号并启动 1 秒批处理收集定时器"""
+        raw_sym = candidate["symbol"]
+        cls.pending_candidates[raw_sym] = candidate
+        logger.info(
+            f"[PORTFOLIO-COORDINATOR] 收集到候选开仓信号: {raw_sym} | 方向={'做多' if candidate['direction']==1 else '做空'} | "
+            f"评分={candidate['score']:.1f} | 当前批次候选总数={len(cls.pending_candidates)}"
+        )
+        if not cls.flush_timer_active:
+            cls.flush_timer_active = True
+            cls.coordinating_strategy = strategy
+            try:
+                # 设定 1 秒后执行批处理清算与分发，给同周期的其他 3 个 bar 毫秒级到达与计算留出时间
+                strategy.clock.set_timer("BATCH_FLUSH_TIMER", timedelta(seconds=1), callback=cls._on_flush_timer)
+            except Exception as e:
+                logger.error(f"[PORTFOLIO-COORDINATOR] 启动批处理定时器失败: {e}. 降级为立即执行.")
+                cls.flush_and_execute()
+
+    @classmethod
+    def _on_flush_timer(cls, event) -> None:
+        cls.flush_timer_active = False
+        cls.flush_and_execute()
+
+    @classmethod
+    def flush_and_execute(cls) -> None:
+        if not cls.pending_candidates:
+            return
+
+        candidates = list(cls.pending_candidates.values())
+        cls.pending_candidates.clear()
+        cls.flush_timer_active = False
+
+        x = len(candidates)
+        # 获取可用账户资金
+        sample_strat = candidates[0]["strategy"]
+        account = sample_strat.portfolio.account(account_id=AccountId.from_str("OKX-DEMO-001"))
+        if account is None:
+            account = sample_strat.portfolio.account(venue=Venue("OKX"))
+
+        free_bal = None
+        if account is not None:
+            free_bal = account.balance_free(Currency.from_str("USDT"))
+            equity = float(free_bal.as_double()) if free_bal is not None else 100000.0
+        else:
+            equity = 100000.0
+
+        logger.info(
+            f"[PORTFOLIO-COORDINATOR] >>> 触发并发开仓批处理分配 <<< 共有 {x} 个标的产生信号 | 账户可用余额: {equity:.2f} USDT"
+        )
+
+        # 1. 计算总得分与权重 (分数相同则完全平分)
+        total_score = sum(c["score"] for c in candidates)
+        if total_score <= 1e-6:
+            weights = {c["symbol"]: 1.0 / x for c in candidates}
+        else:
+            weights = {c["symbol"]: c["score"] / total_score for c in candidates}
+
+        # 可分配保证金池 (预留 10% 缓冲区防滑点和手续费)
+        pool_margin = equity * 0.90
+
+        # 2. 为每个标的按权重分配保证金并计算张数，同时批量下单
+        for cand in candidates:
+            strat = cand["strategy"]
+            sym = cand["symbol"]
+            w = weights[sym]
+            c_price = cand["c"]
+            sl_dist = cand["sl_dist"]
+            direction = cand["direction"]
+            score = cand["score"]
+
+            # 该标的分配到的保证金上限
+            alloc_margin = pool_margin * w
+
+            # 估算单张合约所需保证金 (以 3x 杠杆为例)
+            margin_per_ct = (c_price * strat.cfg.ct_val) / 3.0
+            max_cts_by_margin = math.floor(alloc_margin / (margin_per_ct + 1e-9))
+
+            # 理论单笔风险预算 (基于分配权重切分)
+            risk_budget = (equity * strat.cfg.risk_pct) * (w * x)
+            risk_per_ct = sl_dist * strat.cfg.ct_val
+            target_cts_risk = math.floor(risk_budget / (risk_per_ct + 1e-9)) if risk_per_ct > 0 else 1
+
+            # 逐仓模式残值弹性适配：以分配到的可用保证金为上限，剩余多少开多少
+            contracts = max(1, min(target_cts_risk, max_cts_by_margin, 500))
+
+            if max_cts_by_margin < target_cts_risk:
+                logger.warning(
+                    f"[{sym}] 逐仓保证金残值约束: 理论风险需要 {target_cts_risk} 张，但分配保证金上限 ({alloc_margin:.2f} USDT, 权重 {w*100:.1f}%) "
+                    f"仅支持 {max_cts_by_margin} 张 -> 启用临时方案，剩余多少开多少，实际开仓 {contracts} 张"
+                )
+
+            # 检查并发持仓数量上限
+            if not cls.can_open_position(sym):
+                logger.warning(f"[{sym}] 达到组合最大持仓数量限制 ({cls.MAX_CONCURRENT_PORTFOLIO_POSITIONS})，取消开仓.")
+                continue
+
+            # 批量构造订单并发送
+            strat._execute_entry_order(direction, contracts, c_price, cand["atr"], sl_dist, risk_budget)
 
 
 # ─── Evidential Uncertainty Filter ───────────────────────────────────────────
@@ -570,46 +667,25 @@ class SMCLiveStrategy(Strategy):
         if not gate_res["passed"]:
             return
 
-        # 7. Real Dynamic Account Equity Sizing
-        free_bal = None
-        account = self.portfolio.account(account_id=AccountId.from_str("OKX-DEMO-001"))
-        if account is None:
-            account = self.portfolio.account(venue=Venue("OKX"))
-
-        if account is not None:
-            free_bal = account.balance_free(Currency.from_str("USDT"))
-            equity = float(free_bal.as_double()) if free_bal is not None else 100000.0
-        else:
-            equity = 100000.0
-
-        risk_budget = equity * self.cfg.risk_pct
+        # 7. 提交至组合并发协调器 (Concurrent Batch Margin Coordinator)
+        # 检验剩余保证金数额，同时触发x个信号时按分数权重切分保证金，分数相同则平分，逐仓模式剩余多少开多少
         sl_dist = max(atr * 1.5, c * 0.005)
-        risk_per_contract = sl_dist * self.cfg.ct_val
-        if risk_per_contract <= 0:
-            return
+        candidate = {
+            "strategy": self,
+            "symbol": raw_sym,
+            "direction": direction,
+            "score": score,
+            "c": c,
+            "atr": atr,
+            "sl_dist": sl_dist,
+        }
+        PortfolioCoordinator.register_candidate(self, candidate)
 
-        contracts = max(1, min(math.floor(risk_budget / risk_per_contract), 500))
-
-        # 【待解决问题，暂时使用的临时方案】:
-        # 逐仓模式与资金残值尽力而为执行 (Isolated-Margin Best-Effort Fill)
-        # 当账户可用保证金不足以支持理论目标张数时，剩余多少保证金开多少，接受不吃满原信号金额
-        try:
-            # 粗略预估所需初始保证金 (以 3x 杠杆为例安全缓冲)
-            margin_per_ct = (c * self.cfg.ct_val) / 3.0
-            if free_bal is not None:
-                max_affordable_cts = math.floor(float(free_bal.as_double()) * 0.90 / margin_per_ct)
-                if max_affordable_cts < contracts:
-                    self.log.warning(
-                        f"[{raw_sym}] 资金池余量不足以吃满目标张数 ({contracts} 张) | "
-                        f"启用临时方案: 剩余可用保证金自适应打折降级 -> 调整为 {max(1, max_affordable_cts)} 张"
-                    )
-                    contracts = max(1, max_affordable_cts)
-        except Exception as e:
-            self.log.warning(f"[{raw_sym}] 保证金残值打折测算提示: {e}")
-
+    def _execute_entry_order(self, direction: int, contracts: int, c: float, atr: float, sl_dist: float, risk_budget: float) -> None:
+        """执行经并发保证金切分计算后的最终开仓委托"""
+        raw_sym = self.cfg.instrument_id.split(".")[0]
         side = OrderSide.BUY if direction == 1 else OrderSide.SELL
 
-        # 8. Submit Order (Strict: State NOT mutated until on_order_filled)
         if self.cfg.use_market_order:
             order = self.order_factory.market(
                 instrument_id=InstrumentId.from_str(self.cfg.instrument_id),
@@ -634,8 +710,8 @@ class SMCLiveStrategy(Strategy):
 
         self.submit_order(order)
         self.log.info(
-            f"[{raw_sym}] Order SUBMITTED (id={order.client_order_id}): {side.name} {contracts} cts | "
-            f"Risk Budget=${risk_budget:.2f} (from live equity ${equity:.2f}) | Awaiting Fill Event..."
+            f"[{raw_sym}] 并发协调开仓委托已提交 (ID={order.client_order_id}): {side.name} {contracts} 张 | "
+            f"切分风险预算=${risk_budget:.2f} | 等待撮合成交..."
         )
 
     # ─── NautilusTrader Event Handlers (Order Lifecycle) ──────────────────────────
@@ -850,15 +926,6 @@ def main() -> None:
         ("SOL-USDT-SWAP", 1.00, 2, "003", 58.0),
         ("BNB-USDT-SWAP", 0.01, 1, "004", 60.0),
     ]
-
-    # 【待解决问题，暂时使用的临时方案】:
-    # 并发信号保证金抢占与先后开仓资金递减管理:
-    # 1. 优先级机制: 出现多品种并发开仓时，依据 score 评分与证据置信度分配保证金权重，
-    #    高分给足额，低分按比例打折开仓张数，同分等比共同打折；
-    # 2. 逐仓残值弹性适配: 当账户可用保证金不足以全额支撑目标仓位时，剩余多少开多少，
-    #    接受不吃满原信号计算量，确保最小张数有效进场。
-    # 3. 终局方案规划: 遵循 NautilusTrader 规范，解耦 SignalEvent 与 Order 执行，
-    #    交由上层 Portfolio Allocator 及 RiskEngine 进行统一凸优化仲裁。
 
     for symbol, ct_val, prec, tag, score in portfolio_matrix:
         coin = symbol.split("-")[0]
