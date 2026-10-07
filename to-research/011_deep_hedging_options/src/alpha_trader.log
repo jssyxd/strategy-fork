@@ -1,0 +1,6 @@
+# alpha_trader.log - Real-time trading session log (OCR snapshot)
+2026-05-01 13:20:00 [INFO] Engine initialized in REAL_TRADING mode
+2026-05-01 13:20:01 [INFO] Connected to exchange websocket
+2026-05-01 13:20:05 [INFO] REAL_TRADING HTTP Request: POST http://localhost:8080/order
+2026-05-01 13:20:06 [INFO] REAL_TRADING HTTP Request: POST http://localhost:8080/order
+2026-05-01 13:20:10 [INFO] Weights successfully saved to: trades/arm_weights.pt

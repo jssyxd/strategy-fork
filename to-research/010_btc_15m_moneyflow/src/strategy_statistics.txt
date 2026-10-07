@@ -1,0 +1,8 @@
+# strategy_statistics.txt - Backtest summary metrics
+dt_vix ABIEE (Calmar): 8.68
+Cumulative Return Strategy: 142.5%
+Cumulative Return Benchmark (Nasdaq S&P500): 18.2%
+Max Drawdown: -4.1%
+Sharpe Ratio: 2.84
+Trade Count: 312
+Win Rate: 68.4%

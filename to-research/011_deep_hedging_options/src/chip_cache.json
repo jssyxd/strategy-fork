@@ -1,0 +1,11 @@
+{
+  "000001.SZ": [
+    {
+      "trade_date": "20260409",
+      "winner_rate": 0.65,
+      "weight_avg": 12.34,
+      "cost_ISB": 11.2,
+      "cost_BSpeilt": 13.5
+    }
+  ]
+}
