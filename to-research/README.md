@@ -61,6 +61,19 @@ $$\text{\{序号\}\_\{策略英文名\}}$$
 
 ---
 
+## Kaggle 关联资源（每个策略目录内）
+
+除理论论文外，每个策略目录还附 **`KAGGLE_RESOURCES.md`**：在 Kaggle 上逐策略检索得到的可复用资源索引——
+
+- **数据集 (Datasets)**、**Notebooks (Kernels)**、**竞赛 (Competitions)**；
+- 每条给出 `ref`、标题、规模/下载量/票数、官方链接与「为什么相关」；
+- `ref` 可直接喂给 CLI（`kaggle datasets download -d <ref>`、`kaggle kernels pull <ref>`）。
+
+> 检索方式：Kaggle CLI 2.2.4 的 `kaggle datasets|kernels|competitions list -s "<关键词>"`。
+> **版本差异提示**：官方 skill 文档描述的 `kaggle search` 统一检索子命令在 2.2.4 中**不存在**（`invalid choice: 'search'`），故改用各分组自带的 `-s/--search`。
+
+---
+
 ## 研究流程（每个策略统一执行）
 
 1. **锁定目标基准**：在策略 README 第一节确认 CAGR / Sharpe / 第三指标 / 容量作为验收阈值。
