@@ -273,3 +273,147 @@
     ```
   - 第 707 行：在盈利平仓事件回调中增加 `self.breaker_bars = 0` 同步清零；
   - 第 835 行：在 `main()` 资产装配矩阵中正式注册参数 `strat_cfg.cooldown_bars = 48`。
+
+---
+
+## 六、交易服务健康巡检系统 (Health Inspector)
+
+### 1. 建设背景：三类孤儿异常的共同根因
+
+复盘历次实盘事故后，可归纳出一个共同的结构性根因——**策略的内部状态只存在于进程内存中，而交易所侧的状态是持久化的**。两者一旦失去同步，就会产生不同表现形式的"孤儿"：
+
+| 事故形态 | 触发条件 | 后果 |
+| --- | --- | --- |
+| 孤儿仓 | 平仓单部分成交后策略误判为空仓 | 残仓无止损、无管理 |
+| 孤儿单 | 重启导致 `pending_entry_order_id` 丢失 | 挂单永久滞留、持续占用保证金 |
+| 状态漂移 | 手工干预或外部成交 | 策略认知与账户实际不一致 |
+
+单纯依赖策略自身的看门狗（5 分钟心跳）存在两个缺口：一是**进程死亡时看门狗随之消失**，二是**它只能看到自己关心的那部分状态**。因此需要一套独立于交易进程、从外部交叉验证的巡检机制。
+
+### 2. 六层检查矩阵
+
+巡检脚本 `smc_health.py` 独立运行，通过 OKX 只读接口 + systemd + 日志解析三方交叉验证：
+
+| 层 | 检查项 | 阈值 / 判据 | 级别 |
+| --- | --- | --- | --- |
+| 进程 | 服务状态 / MainPID / NRestarts | 须为 `active` | FAIL |
+| 进程 | 进程 RSS 占用 | > 600MB | WARN |
+| 进程 | 交易进程实例数 | ≠ 1 | FAIL |
+| 连接 | OKX 只读接口可用性 | code ≠ 0 | FAIL |
+| 连接 | WebSocket 认证错误（60031 / 60006） | 20 分钟内 > 3 次 | WARN |
+| 仓位 | **孤儿仓**（交易所有持仓但策略 `InPos=False`） | 绝对值 > 0 | FAIL |
+| 仓位 | 持仓漂移（交易所净持仓 vs 策略记录） | 差值 > 0 | WARN |
+| 仓位 | 心跳新鲜度 | 超过 10 分钟未更新 | FAIL |
+| 委托 | **孤儿单**（挂单存活超时） | > 60 分钟（策略自身 45 分钟撤单） | WARN + 自愈 |
+| 委托 | 下单被拒次数（含 51008 保证金不足） | 20 分钟内 > 0 | WARN |
+| 资金 | 可用保证金 | < 20 USDT | WARN |
+| 资源 | 磁盘剩余 / 日志体积 | < 2GB / > 200MB | FAIL / WARN |
+
+### 3. 检测延迟与瓶颈分析
+
+巡检频率本身并不决定所有故障的发现速度，各层的实际延迟存在明确瓶颈：
+
+| 故障类型 | 实际检测延迟 | 瓶颈 |
+| --- | --- | --- |
+| 进程死亡 / 服务异常 | ≤ 1 分钟 | 巡检周期 |
+| OKX 接口不可用 | ≤ 1 分钟 | 巡检周期 |
+| 孤儿仓 / 持仓漂移 | ≤ 5 分钟 | **策略心跳周期**（需等待策略上报 `InPos`） |
+| 孤儿单 | 60 ~ 61 分钟 | 生效判据为"存活超 60 分钟" |
+
+因此把巡检频率从 15 分钟提升到 1 分钟，**对进程层与连接层是 15 倍的提升，但对仓位层无效**——后者受制于策略自身的 5 分钟心跳节奏。若需进一步压缩仓位层延迟，必须调快策略心跳（代价是日志量按比例上升）。
+
+### 4. 部署方式
+
+#### ① 脚本位置
+```
+/root/smc_health.py                      # 巡检脚本本体（本目录同名文件）
+/root/health/latest.json                 # 最近一次结果
+/root/health/history.log                 # 历史记录（JSONL，超 10MB 只保留最近 2000 条）
+/root/health/systemd.log                 # 定时任务 stdout
+```
+
+#### ② systemd 单元
+
+`/etc/systemd/system/smc-health.service`：
+```ini
+[Unit]
+Description=SMC Matrix trading service health inspection
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/root
+ExecStart=/root/nautilus2-venv/bin/python /root/smc_health.py
+Nice=10
+StandardOutput=append:/root/health/systemd.log
+StandardError=append:/root/health/systemd.log
+```
+
+`/etc/systemd/system/smc-health.timer`：
+```ini
+[Unit]
+Description=Run SMC Matrix health inspection every minute
+Requires=smc-health.service
+
+[Timer]
+OnCalendar=minutely
+Persistent=true
+AccuracySec=5s
+Unit=smc-health.service
+
+[Install]
+WantedBy=timers.target
+```
+
+安装：
+```bash
+mkdir -p /root/health
+systemctl daemon-reload
+systemctl enable --now smc-health.timer
+systemctl list-timers smc-health.timer --no-pager     # 确认下次执行时间
+```
+
+### 5. 使用方式
+
+```bash
+systemctl start smc-health.service                       # 手动触发一次
+/root/nautilus2-venv/bin/python /root/smc_health.py      # 直接前台运行，输出可读报告
+/root/nautilus2-venv/bin/python /root/smc_health.py --json       # JSON 输出
+/root/nautilus2-venv/bin/python /root/smc_health.py --no-heal    # 关闭自愈，仅报告
+/root/nautilus2-venv/bin/python /root/smc_health.py --selftest   # 用合成数据验证告警分支
+```
+
+退出码约定：`0` = 全部正常，`1` = 存在 WARN，`2` = 存在 FAIL，便于接入上层告警。
+
+### 6. 自愈边界
+
+**仅自动撤销超龄挂单**（存活 > 60 分钟），其余一律只报告。这个边界的取舍原则是：
+
+* **幂等**——重复撤销同一张单是安全的；
+* **不会误伤**——正常在途挂单最多存活 45 分钟（策略自身的 `max_pending_bars=3` 撤单机制），60 分钟阈值留出充足余量；
+* **与策略意图一致**——撤销遗留挂单本就是策略设计的动作，巡检只是在其失效时补位；
+* **不做状态修改类动作**——不代策略开仓/平仓，避免巡检系统自身成为风险源。
+
+### 7. 自检机制 (Self-Test)
+
+一个未被验证过的看门狗等同于没有看门狗。`--selftest` 模式通过替换 OKX 接口层与心跳解析函数为合成数据，逐条验证每个告警分支能否被触发：
+
+```
+$ python /root/smc_health.py --selftest
+  ✓ OK   okx_api                uid=selftest acctLv=2
+  ✗ FAIL heartbeat_stale        BTC-USDT-SWAP 心跳已 30 分钟未更新
+  ⚠ WARN position_drift         SOL-USDT-SWAP 交易所 -4.0 张 vs 策略 0.0 张
+  ✗ FAIL orphan_position        BNB-USDT-SWAP 交易所有 38.0 张持仓但策略 InPos=False（孤儿仓）
+  ⚠ WARN orphan_order_healed    ETH-USDT-SWAP sell 1张 @2586.95 存活120分钟 → 已撤销 (code=0)
+  ⚠ WARN margin_low             可用保证金 5.00 USDT 低于阈值 20.0
+命中分支: ['heartbeat_stale', 'margin_low', 'okx_api', 'orphan_order_healed', 'orphan_position', 'position_drift']
+SELFTEST: PASS
+```
+
+改动巡检脚本后应先跑一次自检，确认 6 个分支仍全部命中再上线。
+
+### 8. 已知未覆盖
+
+* **无推送通知渠道**：结果只落盘，需人工查看或用 `journalctl -u smc-health`。接入 webhook / Telegram bot 可补齐这一环。
+* **不校验策略内部记账准确性**：如手续费是否计入、部分成交是否漏记等逻辑正确性问题，不属于巡检范围（已在第五节"改动记录"中以代码修复方式处理）。
+* **不做自动重启**：服务崩溃由 systemd `Restart=on-failure` 处理；若进入 `failed` 状态，巡检会报 FAIL 但不会代为拉起，避免带病重启。
