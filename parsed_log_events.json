@@ -1,0 +1,1897 @@
+{
+  "signals": [
+    {
+      "time": "2026-09-30 14:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "direction": "SHORT",
+      "score": 70.0,
+      "u": 0.167,
+      "c": 1.0
+    },
+    {
+      "time": "2026-09-30 14:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "SHORT",
+      "score": 85.0,
+      "u": 0.143,
+      "c": 1.0
+    },
+    {
+      "time": "2026-09-30 14:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "SHORT",
+      "score": 85.0,
+      "u": 0.143,
+      "c": 1.0
+    },
+    {
+      "time": "2026-09-30 15:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "SHORT",
+      "score": 85.0,
+      "u": 0.143,
+      "c": 1.0
+    },
+    {
+      "time": "2026-09-30 15:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "SHORT",
+      "score": 85.0,
+      "u": 0.143,
+      "c": 1.0
+    },
+    {
+      "time": "2026-09-30 15:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "SHORT",
+      "score": 85.0,
+      "u": 0.143,
+      "c": 1.0
+    },
+    {
+      "time": "2026-09-30 15:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "SHORT",
+      "score": 85.0,
+      "u": 0.143,
+      "c": 1.0
+    },
+    {
+      "time": "2026-09-30 16:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "SHORT",
+      "score": 75.0,
+      "u": 0.158,
+      "c": 1.0
+    },
+    {
+      "time": "2026-09-30 16:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "SHORT",
+      "score": 75.0,
+      "u": 0.231,
+      "c": 0.333
+    },
+    {
+      "time": "2026-09-30 16:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "SHORT",
+      "score": 100.0,
+      "u": 0.194,
+      "c": 0.261
+    },
+    {
+      "time": "2026-09-30 16:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "SHORT",
+      "score": 100.0,
+      "u": 0.194,
+      "c": 0.261
+    },
+    {
+      "time": "2026-09-30 16:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "SHORT",
+      "score": 85.0,
+      "u": 0.214,
+      "c": 0.3
+    },
+    {
+      "time": "2026-09-30 16:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "SHORT",
+      "score": 85.0,
+      "u": 0.214,
+      "c": 0.3
+    },
+    {
+      "time": "2026-09-30 17:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "direction": "LONG",
+      "score": 75.0,
+      "u": 0.231,
+      "c": 0.333
+    },
+    {
+      "time": "2026-09-30 18:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "LONG",
+      "score": 85.0,
+      "u": 0.214,
+      "c": 0.3
+    },
+    {
+      "time": "2026-09-30 19:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "LONG",
+      "score": 70.0,
+      "u": 0.24,
+      "c": 0.353
+    },
+    {
+      "time": "2026-09-30 19:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "LONG",
+      "score": 85.0,
+      "u": 0.214,
+      "c": 0.3
+    },
+    {
+      "time": "2026-09-30 19:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "direction": "LONG",
+      "score": 85.0,
+      "u": 0.214,
+      "c": 0.3
+    },
+    {
+      "time": "2026-09-30 19:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "LONG",
+      "score": 85.0,
+      "u": 0.214,
+      "c": 0.3
+    },
+    {
+      "time": "2026-09-30 19:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "direction": "LONG",
+      "score": 70.0,
+      "u": 0.24,
+      "c": 0.353
+    },
+    {
+      "time": "2026-09-30 19:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "LONG",
+      "score": 100.0,
+      "u": 0.194,
+      "c": 0.261
+    },
+    {
+      "time": "2026-09-30 19:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "LONG",
+      "score": 85.0,
+      "u": 0.214,
+      "c": 0.3
+    },
+    {
+      "time": "2026-09-30 19:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "LONG",
+      "score": 100.0,
+      "u": 0.194,
+      "c": 0.261
+    },
+    {
+      "time": "2026-09-30 21:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "LONG",
+      "score": 70.0,
+      "u": 0.24,
+      "c": 0.353
+    },
+    {
+      "time": "2026-09-30 21:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "LONG",
+      "score": 70.0,
+      "u": 0.24,
+      "c": 0.353
+    },
+    {
+      "time": "2026-09-30 21:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "LONG",
+      "score": 70.0,
+      "u": 0.24,
+      "c": 0.353
+    },
+    {
+      "time": "2026-09-30 22:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "direction": "LONG",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-09-30 22:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "LONG",
+      "score": 85.0,
+      "u": 0.214,
+      "c": 0.3
+    },
+    {
+      "time": "2026-09-30 22:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "LONG",
+      "score": 100.0,
+      "u": 0.194,
+      "c": 0.261
+    },
+    {
+      "time": "2026-09-30 23:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "LONG",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-01 00:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "direction": "LONG",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-01 00:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "LONG",
+      "score": 75.0,
+      "u": 0.231,
+      "c": 0.333
+    },
+    {
+      "time": "2026-10-01 03:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "SHORT",
+      "score": 75.0,
+      "u": 0.231,
+      "c": 0.333
+    },
+    {
+      "time": "2026-10-01 03:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "SHORT",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-01 04:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "direction": "LONG",
+      "score": 75.0,
+      "u": 0.231,
+      "c": 0.333
+    },
+    {
+      "time": "2026-10-01 04:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "SHORT",
+      "score": 85.0,
+      "u": 0.214,
+      "c": 0.3
+    },
+    {
+      "time": "2026-10-01 05:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "SHORT",
+      "score": 85.0,
+      "u": 0.214,
+      "c": 0.3
+    },
+    {
+      "time": "2026-10-01 05:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "LONG",
+      "score": 70.0,
+      "u": 0.24,
+      "c": 0.353
+    },
+    {
+      "time": "2026-10-01 13:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "LONG",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-01 13:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "LONG",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-01 13:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "LONG",
+      "score": 75.0,
+      "u": 0.231,
+      "c": 0.333
+    },
+    {
+      "time": "2026-10-01 16:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "SHORT",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-01 16:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "direction": "SHORT",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-01 17:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "LONG",
+      "score": 75.0,
+      "u": 0.231,
+      "c": 0.333
+    },
+    {
+      "time": "2026-10-01 18:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "SHORT",
+      "score": 60.0,
+      "u": 0.231,
+      "c": 0.667
+    },
+    {
+      "time": "2026-10-01 18:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "SHORT",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-01 21:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "SHORT",
+      "score": 70.0,
+      "u": 0.24,
+      "c": 0.353
+    },
+    {
+      "time": "2026-10-01 22:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "direction": "LONG",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-02 01:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "LONG",
+      "score": 70.0,
+      "u": 0.24,
+      "c": 0.353
+    },
+    {
+      "time": "2026-10-02 01:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "LONG",
+      "score": 100.0,
+      "u": 0.194,
+      "c": 0.261
+    },
+    {
+      "time": "2026-10-02 01:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "LONG",
+      "score": 70.0,
+      "u": 0.24,
+      "c": 0.353
+    },
+    {
+      "time": "2026-10-02 01:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "direction": "LONG",
+      "score": 100.0,
+      "u": 0.194,
+      "c": 0.261
+    },
+    {
+      "time": "2026-10-02 12:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "direction": "LONG",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-02 12:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "LONG",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-02 14:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "LONG",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-02 14:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "direction": "LONG",
+      "score": 60.0,
+      "u": 0.231,
+      "c": 0.667
+    },
+    {
+      "time": "2026-10-02 14:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "LONG",
+      "score": 75.0,
+      "u": 0.231,
+      "c": 0.333
+    },
+    {
+      "time": "2026-10-02 14:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "direction": "LONG",
+      "score": 75.0,
+      "u": 0.231,
+      "c": 0.333
+    },
+    {
+      "time": "2026-10-02 21:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "LONG",
+      "score": 85.0,
+      "u": 0.214,
+      "c": 0.3
+    },
+    {
+      "time": "2026-10-02 21:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "LONG",
+      "score": 100.0,
+      "u": 0.194,
+      "c": 0.261
+    },
+    {
+      "time": "2026-10-02 21:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "LONG",
+      "score": 75.0,
+      "u": 0.231,
+      "c": 0.333
+    },
+    {
+      "time": "2026-10-03 00:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "SHORT",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-03 00:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "SHORT",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-03 03:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "SHORT",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-03 03:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "SHORT",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-03 12:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "SHORT",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-03 12:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "SHORT",
+      "score": 75.0,
+      "u": 0.231,
+      "c": 0.333
+    },
+    {
+      "time": "2026-10-03 13:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "SHORT",
+      "score": 60.0,
+      "u": 0.231,
+      "c": 0.667
+    },
+    {
+      "time": "2026-10-03 13:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "SHORT",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-03 21:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "LONG",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-04 00:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "LONG",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-04 20:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "LONG",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-05 05:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "LONG",
+      "score": 75.0,
+      "u": 0.231,
+      "c": 0.333
+    },
+    {
+      "time": "2026-10-05 08:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "LONG",
+      "score": 100.0,
+      "u": 0.194,
+      "c": 0.261
+    },
+    {
+      "time": "2026-10-05 15:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "LONG",
+      "score": 100.0,
+      "u": 0.194,
+      "c": 0.261
+    },
+    {
+      "time": "2026-10-05 19:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "LONG",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-06 18:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "LONG",
+      "score": 100.0,
+      "u": 0.194,
+      "c": 0.261
+    },
+    {
+      "time": "2026-10-06 18:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "LONG",
+      "score": 85.0,
+      "u": 0.214,
+      "c": 0.3
+    },
+    {
+      "time": "2026-10-06 18:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "LONG",
+      "score": 60.0,
+      "u": 0.214,
+      "c": 0.8
+    },
+    {
+      "time": "2026-10-06 18:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "LONG",
+      "score": 100.0,
+      "u": 0.194,
+      "c": 0.261
+    },
+    {
+      "time": "2026-10-07 00:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "LONG",
+      "score": 100.0,
+      "u": 0.194,
+      "c": 0.261
+    },
+    {
+      "time": "2026-10-07 01:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "SHORT",
+      "score": 75.0,
+      "u": 0.231,
+      "c": 0.333
+    },
+    {
+      "time": "2026-10-07 01:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "SHORT",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-07 10:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "SHORT",
+      "score": 85.0,
+      "u": 0.214,
+      "c": 0.3
+    },
+    {
+      "time": "2026-10-07 10:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "direction": "SHORT",
+      "score": 70.0,
+      "u": 0.24,
+      "c": 0.353
+    },
+    {
+      "time": "2026-10-07 10:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "SHORT",
+      "score": 85.0,
+      "u": 0.214,
+      "c": 0.3
+    },
+    {
+      "time": "2026-10-07 10:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "SHORT",
+      "score": 70.0,
+      "u": 0.24,
+      "c": 0.353
+    },
+    {
+      "time": "2026-10-07 12:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "SHORT",
+      "score": 70.0,
+      "u": 0.24,
+      "c": 0.353
+    },
+    {
+      "time": "2026-10-07 13:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "SHORT",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-07 14:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "SHORT",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-07 14:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "direction": "SHORT",
+      "score": 60.0,
+      "u": 0.261,
+      "c": 0.4
+    },
+    {
+      "time": "2026-10-07 16:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "direction": "LONG",
+      "score": 70.0,
+      "u": 0.24,
+      "c": 0.353
+    },
+    {
+      "time": "2026-10-07 16:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "SHORT",
+      "score": 100.0,
+      "u": 0.194,
+      "c": 0.261
+    },
+    {
+      "time": "2026-10-07 17:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "direction": "SHORT",
+      "score": 70.0,
+      "u": 0.24,
+      "c": 0.353
+    },
+    {
+      "time": "2026-10-07 18:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "SHORT",
+      "score": 70.0,
+      "u": 0.214,
+      "c": 0.6
+    },
+    {
+      "time": "2026-10-07 18:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "direction": "SHORT",
+      "score": 70.0,
+      "u": 0.24,
+      "c": 0.353
+    },
+    {
+      "time": "2026-10-07 18:45:02",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "direction": "SHORT",
+      "score": 100.0,
+      "u": 0.194,
+      "c": 0.261
+    }
+  ],
+  "orders": [
+    {
+      "time": "2026-09-30 16:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 1014.61,
+      "equity": 101460.95,
+      "clOrdId": "O-20260930-084500-001-002-1"
+    },
+    {
+      "time": "2026-09-30 16:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 1014.61,
+      "equity": 101460.95,
+      "clOrdId": "O-20260930-084501-001-001-1"
+    },
+    {
+      "time": "2026-09-30 17:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "risk_budget": 1014.61,
+      "equity": 101460.95,
+      "clOrdId": "O-20260930-090001-001-004-1"
+    },
+    {
+      "time": "2026-09-30 18:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "risk_budget": 1014.61,
+      "equity": 101460.95,
+      "clOrdId": "O-20260930-103001-001-003-1"
+    },
+    {
+      "time": "2026-09-30 19:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 1014.61,
+      "equity": 101460.95,
+      "clOrdId": "O202609301100000010011"
+    },
+    {
+      "time": "2026-09-30 19:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 1014.61,
+      "equity": 101460.95,
+      "clOrdId": "O202609301100000010021"
+    },
+    {
+      "time": "2026-09-30 19:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "risk_budget": 1014.61,
+      "equity": 101460.95,
+      "clOrdId": "O202609301100000010041"
+    },
+    {
+      "time": "2026-09-30 19:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "risk_budget": 1014.61,
+      "equity": 101460.95,
+      "clOrdId": "O202609301100000010031"
+    },
+    {
+      "time": "2026-09-30 19:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "risk_budget": 127.19,
+      "equity": 12718.77,
+      "clOrdId": "O202609301145000010041"
+    },
+    {
+      "time": "2026-09-30 19:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "risk_budget": 127.19,
+      "equity": 12718.77,
+      "clOrdId": "O202609301145000010031"
+    },
+    {
+      "time": "2026-09-30 19:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 127.19,
+      "equity": 12718.77,
+      "clOrdId": "O202609301145000010011"
+    },
+    {
+      "time": "2026-09-30 19:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 45.41,
+      "equity": 4540.83,
+      "clOrdId": "O202609301145010010021"
+    },
+    {
+      "time": "2026-09-30 21:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 147.73,
+      "equity": 14772.62,
+      "clOrdId": "O202609301300000010012"
+    },
+    {
+      "time": "2026-09-30 21:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 53.88,
+      "equity": 5388.41,
+      "clOrdId": "O202609301300000010023"
+    },
+    {
+      "time": "2026-09-30 21:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "risk_budget": 53.88,
+      "equity": 5388.41,
+      "clOrdId": "O202609301300000010033"
+    },
+    {
+      "time": "2026-09-30 22:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "risk_budget": 142.62,
+      "equity": 14262.4,
+      "clOrdId": "O202609301400000010043"
+    },
+    {
+      "time": "2026-09-30 22:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 129.76,
+      "equity": 12975.87,
+      "clOrdId": "O202609301400010010014"
+    },
+    {
+      "time": "2026-09-30 22:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 129.76,
+      "equity": 12975.87,
+      "clOrdId": "O202609301400010010025"
+    },
+    {
+      "time": "2026-09-30 23:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 123.3,
+      "equity": 12330.17,
+      "clOrdId": "O202609301545010010016"
+    },
+    {
+      "time": "2026-10-01 00:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "risk_budget": 69.34,
+      "equity": 6933.55,
+      "clOrdId": "O202609301600010010045"
+    },
+    {
+      "time": "2026-10-01 00:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "risk_budget": 64.03,
+      "equity": 6402.92,
+      "clOrdId": "O202609301615010010034"
+    },
+    {
+      "time": "2026-10-01 03:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "risk_budget": 104.96,
+      "equity": 10496.06,
+      "clOrdId": "O202609301915000010036"
+    },
+    {
+      "time": "2026-10-01 03:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 104.86,
+      "equity": 10486.37,
+      "clOrdId": "O202609301915010010027"
+    },
+    {
+      "time": "2026-10-01 04:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "risk_budget": 992.24,
+      "equity": 99223.73,
+      "clOrdId": "O202609302030000010041"
+    },
+    {
+      "time": "2026-10-01 04:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 979.42,
+      "equity": 97941.96,
+      "clOrdId": "O202609302045000010011"
+    },
+    {
+      "time": "2026-10-01 05:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "risk_budget": 325.36,
+      "equity": 32536.32,
+      "clOrdId": "O202609302100000010031"
+    },
+    {
+      "time": "2026-10-01 05:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 187.7,
+      "equity": 18770.09,
+      "clOrdId": "O202609302100010010021"
+    },
+    {
+      "time": "2026-10-01 13:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 726.46,
+      "equity": 72646.16,
+      "clOrdId": "O202610010515010010022"
+    },
+    {
+      "time": "2026-10-01 13:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 726.46,
+      "equity": 72646.16,
+      "clOrdId": "O202610010515010010013"
+    },
+    {
+      "time": "2026-10-01 13:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "risk_budget": 267.99,
+      "equity": 26798.66,
+      "clOrdId": "O202610010530000010033"
+    },
+    {
+      "time": "2026-10-01 16:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "risk_budget": 716.86,
+      "equity": 71686.49,
+      "clOrdId": "O202610010800000010034"
+    },
+    {
+      "time": "2026-10-01 16:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "risk_budget": 520.35,
+      "equity": 52035.49,
+      "clOrdId": "O202610010800010010043"
+    },
+    {
+      "time": "2026-10-01 17:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 512.05,
+      "equity": 51204.89,
+      "clOrdId": "O202610010945010010024"
+    },
+    {
+      "time": "2026-10-01 18:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 366.86,
+      "equity": 36686.01,
+      "clOrdId": "O202610011030010010015"
+    },
+    {
+      "time": "2026-10-01 21:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 360.64,
+      "equity": 36064.05,
+      "clOrdId": "O202610011315010010026"
+    },
+    {
+      "time": "2026-10-01 22:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "risk_budget": 355.97,
+      "equity": 35597.15,
+      "clOrdId": "O202610011430000010045"
+    },
+    {
+      "time": "2026-10-02 01:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "risk_budget": 948.43,
+      "equity": 94843.34,
+      "clOrdId": "O202610011730000010031"
+    },
+    {
+      "time": "2026-10-02 01:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 750.65,
+      "equity": 75065.38,
+      "clOrdId": "O202610011730000010011"
+    },
+    {
+      "time": "2026-10-02 01:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 303.21,
+      "equity": 30320.81,
+      "clOrdId": "O202610011730010010021"
+    },
+    {
+      "time": "2026-10-02 01:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "risk_budget": 303.21,
+      "equity": 30320.81,
+      "clOrdId": "O202610011730010010041"
+    },
+    {
+      "time": "2026-10-02 12:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "risk_budget": 979.46,
+      "equity": 97946.34,
+      "clOrdId": "O202610020445010010043"
+    },
+    {
+      "time": "2026-10-02 12:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "risk_budget": 979.46,
+      "equity": 97946.34,
+      "clOrdId": "O202610020445010010033"
+    },
+    {
+      "time": "2026-10-02 14:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 773.12,
+      "equity": 77311.56,
+      "clOrdId": "O202610020615000010023"
+    },
+    {
+      "time": "2026-10-02 14:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 368.27,
+      "equity": 36827.44,
+      "clOrdId": "O202610020630000010013"
+    },
+    {
+      "time": "2026-10-02 14:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "risk_budget": 141.45,
+      "equity": 14144.52,
+      "clOrdId": "O202610020630000010045"
+    },
+    {
+      "time": "2026-10-02 21:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "risk_budget": 963.94,
+      "equity": 96394.22,
+      "clOrdId": "O202610021300000010035"
+    },
+    {
+      "time": "2026-10-02 21:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 963.94,
+      "equity": 96394.22,
+      "clOrdId": "O202610021300000010015"
+    },
+    {
+      "time": "2026-10-02 21:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 117.08,
+      "equity": 11708.39,
+      "clOrdId": "O202610021300010010024"
+    },
+    {
+      "time": "2026-10-03 00:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 959.71,
+      "equity": 95970.81,
+      "clOrdId": "O202610021615010010026"
+    },
+    {
+      "time": "2026-10-03 00:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 558.53,
+      "equity": 55852.7,
+      "clOrdId": "O202610021630000010017"
+    },
+    {
+      "time": "2026-10-03 03:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 988.41,
+      "equity": 98841.49,
+      "clOrdId": "O202610021915000010028"
+    },
+    {
+      "time": "2026-10-03 03:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 988.41,
+      "equity": 98841.49,
+      "clOrdId": "O202610021915010010019"
+    },
+    {
+      "time": "2026-10-03 12:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 967.76,
+      "equity": 96776.32,
+      "clOrdId": "O2026100304300100100210"
+    },
+    {
+      "time": "2026-10-03 12:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 967.76,
+      "equity": 96776.32,
+      "clOrdId": "O2026100304300100100111"
+    },
+    {
+      "time": "2026-10-03 13:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 522.18,
+      "equity": 52218.41,
+      "clOrdId": "O2026100305150100100112"
+    },
+    {
+      "time": "2026-10-03 21:00:02",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 610.28,
+      "equity": 61028.19,
+      "clOrdId": "O2026100313000200100212"
+    },
+    {
+      "time": "2026-10-04 00:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 956.66,
+      "equity": 95666.3,
+      "clOrdId": "O2026100316450100100114"
+    },
+    {
+      "time": "2026-10-04 20:30:02",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 966.73,
+      "equity": 96672.9,
+      "clOrdId": "O2026100412300200100116"
+    },
+    {
+      "time": "2026-10-05 05:45:02",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 984.58,
+      "equity": 98458.04,
+      "clOrdId": "O2026100421450200100118"
+    },
+    {
+      "time": "2026-10-05 08:45:02",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 1000.37,
+      "equity": 100037.39,
+      "clOrdId": "O2026100500450200100120"
+    },
+    {
+      "time": "2026-10-05 15:00:02",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 988.93,
+      "equity": 98892.54,
+      "clOrdId": "O2026100507000200100122"
+    },
+    {
+      "time": "2026-10-05 19:00:03",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 979.98,
+      "equity": 97998.4,
+      "clOrdId": "O2026100511000300100124"
+    },
+    {
+      "time": "2026-10-06 18:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 971.5,
+      "equity": 97149.94,
+      "clOrdId": "O202610061015010010021"
+    },
+    {
+      "time": "2026-10-06 18:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 971.5,
+      "equity": 97149.94,
+      "clOrdId": "O202610061015010010011"
+    },
+    {
+      "time": "2026-10-06 18:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 521.02,
+      "equity": 52102.49,
+      "clOrdId": "O202610061045000010012"
+    },
+    {
+      "time": "2026-10-07 00:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "risk_budget": 511.1,
+      "equity": 51110.03,
+      "clOrdId": "O202610061615010010031"
+    },
+    {
+      "time": "2026-10-07 01:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 754.47,
+      "equity": 75447.07,
+      "clOrdId": "O202610061700000010023"
+    },
+    {
+      "time": "2026-10-07 01:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 505.97,
+      "equity": 50596.55,
+      "clOrdId": "O202610061745000010014"
+    },
+    {
+      "time": "2026-10-07 10:00:02",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "risk_budget": 657.43,
+      "equity": 65742.55,
+      "clOrdId": "O202610070200020010033"
+    },
+    {
+      "time": "2026-10-07 10:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "risk_budget": 789.91,
+      "equity": 78990.52,
+      "clOrdId": "O202610070215010010041"
+    },
+    {
+      "time": "2026-10-07 10:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 789.91,
+      "equity": 78990.52,
+      "clOrdId": "O202610070215010010025"
+    },
+    {
+      "time": "2026-10-07 10:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 789.91,
+      "equity": 78990.52,
+      "clOrdId": "O202610070215010010016"
+    },
+    {
+      "time": "2026-10-07 12:45:02",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 610.89,
+      "equity": 0.0,
+      "clOrdId": "O202610070445020010011"
+    },
+    {
+      "time": "2026-10-07 13:00:02",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "risk_budget": 204.32,
+      "equity": 0.0,
+      "clOrdId": "O202610070500020010031"
+    },
+    {
+      "time": "2026-10-07 14:15:02",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "risk_budget": 205.18,
+      "equity": 0.0,
+      "clOrdId": "O202610070615020010033"
+    },
+    {
+      "time": "2026-10-07 14:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "risk_budget": 72.75,
+      "equity": 0.0,
+      "clOrdId": "O202610070630010010042"
+    },
+    {
+      "time": "2026-10-07 16:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "risk_budget": 212.75,
+      "equity": 0.0,
+      "clOrdId": "O202610070830010010044"
+    },
+    {
+      "time": "2026-10-07 16:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "risk_budget": 202.36,
+      "equity": 0.0,
+      "clOrdId": "O202610070845010010035"
+    },
+    {
+      "time": "2026-10-07 17:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "risk_budget": 226.87,
+      "equity": 0.0,
+      "clOrdId": "O202610070945010010036"
+    },
+    {
+      "time": "2026-10-07 18:45:02",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "risk_budget": 847.46,
+      "equity": 0.0,
+      "clOrdId": "O202610071045020010022"
+    },
+    {
+      "time": "2026-10-07 18:45:03",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "risk_budget": 442.29,
+      "equity": 0.0,
+      "clOrdId": "O202610071045030010013"
+    }
+  ],
+  "exits": [
+    {
+      "time": "2026-09-30 20:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": 304.48
+    },
+    {
+      "time": "2026-09-30 20:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": 106.46
+    },
+    {
+      "time": "2026-09-30 21:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": 0.14
+    },
+    {
+      "time": "2026-09-30 21:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -0.05
+    },
+    {
+      "time": "2026-09-30 21:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -87.98
+    },
+    {
+      "time": "2026-09-30 22:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -26.5
+    },
+    {
+      "time": "2026-09-30 22:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -161.79
+    },
+    {
+      "time": "2026-09-30 22:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -182.92
+    },
+    {
+      "time": "2026-10-01 03:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -43.86
+    },
+    {
+      "time": "2026-10-01 13:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -17.69
+    },
+    {
+      "time": "2026-10-01 13:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -0.34
+    },
+    {
+      "time": "2026-10-01 15:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -22.78
+    },
+    {
+      "time": "2026-10-01 15:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -19.5
+    },
+    {
+      "time": "2026-10-01 15:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -1437.46
+    },
+    {
+      "time": "2026-10-01 17:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -2.93
+    },
+    {
+      "time": "2026-10-01 18:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -0.05
+    },
+    {
+      "time": "2026-10-01 21:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -0.0
+    },
+    {
+      "time": "2026-10-01 22:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -7.53
+    },
+    {
+      "time": "2026-10-01 23:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -7.85
+    },
+    {
+      "time": "2026-10-02 03:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-02 03:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -2.58
+    },
+    {
+      "time": "2026-10-02 03:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-02 03:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -445.0
+    },
+    {
+      "time": "2026-10-02 12:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "TAKE_PROFIT (\u8fbe\u5230\u76ee\u6807\u6b62\u76c8\u4f4d)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-02 12:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": 4.34
+    },
+    {
+      "time": "2026-10-02 12:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "TAKE_PROFIT (\u8fbe\u5230\u76ee\u6807\u6b62\u76c8\u4f4d)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-02 12:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": 725.38
+    },
+    {
+      "time": "2026-10-02 13:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-02 13:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -21.5
+    },
+    {
+      "time": "2026-10-02 15:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-02 15:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -34.04
+    },
+    {
+      "time": "2026-10-02 20:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "TAKE_PROFIT (\u8fbe\u5230\u76ee\u6807\u6b62\u76c8\u4f4d)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-02 20:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": 18.25
+    },
+    {
+      "time": "2026-10-02 22:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-02 22:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-02 22:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -0.36
+    },
+    {
+      "time": "2026-10-02 22:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -912.86
+    },
+    {
+      "time": "2026-10-02 22:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-02 22:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -161.29
+    },
+    {
+      "time": "2026-10-02 23:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-02 23:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -12.0
+    },
+    {
+      "time": "2026-10-03 02:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "TAKE_PROFIT (\u8fbe\u5230\u76ee\u6807\u6b62\u76c8\u4f4d)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-03 02:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "TAKE_PROFIT (\u8fbe\u5230\u76ee\u6807\u6b62\u76c8\u4f4d)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-03 02:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": 1273.38
+    },
+    {
+      "time": "2026-10-03 02:45:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": 5.86
+    },
+    {
+      "time": "2026-10-03 12:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-03 12:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -844.2
+    },
+    {
+      "time": "2026-10-03 12:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-03 12:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -2.18
+    },
+    {
+      "time": "2026-10-03 20:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-03 20:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -153.46
+    },
+    {
+      "time": "2026-10-03 23:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "TAKE_PROFIT (\u8fbe\u5230\u76ee\u6807\u6b62\u76c8\u4f4d)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-03 23:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -1.11
+    },
+    {
+      "time": "2026-10-04 00:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-04 00:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -3.45
+    },
+    {
+      "time": "2026-10-04 20:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "TAKE_PROFIT (\u8fbe\u5230\u76ee\u6807\u6b62\u76c8\u4f4d)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-04 20:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": 1129.95
+    },
+    {
+      "time": "2026-10-05 05:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "TAKE_PROFIT (\u8fbe\u5230\u76ee\u6807\u6b62\u76c8\u4f4d)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-05 05:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": 1037.74
+    },
+    {
+      "time": "2026-10-05 07:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "TAKE_PROFIT (\u8fbe\u5230\u76ee\u6807\u6b62\u76c8\u4f4d)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-05 07:30:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": 616.46
+    },
+    {
+      "time": "2026-10-05 12:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-05 12:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -292.27
+    },
+    {
+      "time": "2026-10-05 17:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-05 17:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -55.81
+    },
+    {
+      "time": "2026-10-05 22:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-05 22:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -2.68
+    },
+    {
+      "time": "2026-10-07 00:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-07 00:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -26.55
+    },
+    {
+      "time": "2026-10-07 00:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-07 00:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -0.02
+    },
+    {
+      "time": "2026-10-07 01:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-07 01:15:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -6.48
+    },
+    {
+      "time": "2026-10-07 10:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "TAKE_PROFIT (\u8fbe\u5230\u76ee\u6807\u6b62\u76c8\u4f4d)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-07 10:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": 2022.5
+    },
+    {
+      "time": "2026-10-07 10:00:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "TAKE_PROFIT (\u8fbe\u5230\u76ee\u6807\u6b62\u76c8\u4f4d)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-07 10:00:02",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": 1537.19
+    },
+    {
+      "time": "2026-10-07 14:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-07 14:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-07 14:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -15.58
+    },
+    {
+      "time": "2026-10-07 14:00:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -46.51
+    },
+    {
+      "time": "2026-10-07 15:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-07 15:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -22.0
+    },
+    {
+      "time": "2026-10-07 16:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-07 16:30:00",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-SOL-001-003: [SOL",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": 0.58
+    },
+    {
+      "time": "2026-10-07 17:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "reason": "STOP_LOSS (\u89e6\u53d1\u79fb\u52a8ATR\u6b62\u635f)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-07 17:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BNB-001-004: [BNB",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": -19.5
+    },
+    {
+      "time": "2026-10-07 17:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "TAKE_PROFIT (\u8fbe\u5230\u76ee\u6807\u6b62\u76c8\u4f4d)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-07 17:45:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-ETH-001-002: [ETH",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": 0.05
+    },
+    {
+      "time": "2026-10-07 18:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "TAKE_PROFIT (\u8fbe\u5230\u76ee\u6807\u6b62\u76c8\u4f4d)",
+      "pnl": null
+    },
+    {
+      "time": "2026-10-07 18:15:01",
+      "symbol": "INFO] SMC-MATRIX-001.SMC-BTC-001: [BTC",
+      "reason": "WATCHDOG_SYNC / \u4fdd\u62a4\u6027\u79bb\u573a",
+      "pnl": 331.79
+    }
+  ]
+}
