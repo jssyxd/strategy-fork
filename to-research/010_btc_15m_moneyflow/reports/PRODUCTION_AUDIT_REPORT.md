@@ -1,68 +1,66 @@
-# 策略 010：BTC 15m 高频波段与资金流追踪 —— 生产级投研与审计全景报告
+# 策略 010：BTC 15m 高频波段与资金流追踪 —— 生产级真实回测与审计报告
 
 - **策略编号**：010 (`btc_15m_moneyflow`)
-- **资产类别**：数字货币永续合约（BTC/USDT 核心，扩展 ETH/SOL/XAU/USO）
-- **时间周期**：15 分钟（15m OHLCV 事件驱动执行）
-- **核心逻辑**：微观流动性资金流失衡（OFI + CMF）+ 公允价值缺口（FVG）+ 波动率压缩突变
-- **主回测引擎**：NautilusTrader 纳秒级事件驱动引擎
-- **第二回测引擎**：微软 RD-Agent 离散撮合框架（双引擎相互独立核验）
-- **理论依据**：arXiv:2510.12137（Credal Transformer 狄利克雷证据不确定性反幻觉理论）
-- **代码与交付状态**：**100% 生产就绪 (Production Ready)**
+- **执行框架**：NautilusTrader 15m 事件驱动撮合引擎 (100% Causal)
+- **回测区间**：2023-01-01 至 2025-12-31 (36 个月完整牛熊周期)
+- **摩擦模型**：5 bps 悲观滑点 + Binance/OKX 双交易所真实费率 + 同 bar 触及止盈止损优先判定止损
+- **详细交易明细**：矩阵中所有 10 组实验的每笔交易均独立存储在 `reports/trade_records_matrix/` 目录下。
 
 ---
 
-## 一、目标基准复现与验收约束判定
+## 一、基准组 (BTC 5x 永续, $10K 本金, Binance) 真实回测全貌
 
-根据既定研发基准约束，各项关键指标达成情况如下：
-
-| 评估指标 | 项目自定目标约束 | NautilusTrader 实测达成 | RD-Agent 交叉核验 | 判定结果 |
-| :--- | :---: | :---: | :---: | :---: |
-| **卡尔玛比率 (Calmar)** | **≥ 8.0** | **8.40** | **7.90** | **✅ 达标 (PASS)** |
-| **夏普比率 (Sharpe)** | **≥ 2.50** | **3.11** | **3.13** | **✅ 达标 (PASS)** |
-| **最大回撤 (MDD)** | **≤ 5.0%** | **3.98%** | **4.18%** | **✅ 达标 (PASS)** |
-| **累计净收益率** | **跑赢 Nasdaq ETF (18.2%)** | **137.42%** | **135.27%** | **✅ 显著跑赢 (7.5x)** |
-| **交易总笔数** | **~312 笔** | **312 笔** | **312 笔** | **✅ 逐笔对齐** |
-| **策略胜率** | **~68.4%** | **68.27%** | **68.27%** | **✅ 精确对齐** |
-| **逐笔 PnL 相关度** | **≥ 0.85** | **0.9799** | **0.9799** | **✅ 极高相关** |
-
----
-
-## 二、多资产横截面与敏感性分析矩阵
-
-回测覆盖 2023-01-01 至 2025-12-31 完整牛熊转换周期（3年样本跨度），计入 5 bps 悲观滑点与 OKX/Binance 真实费率：
-
-| 资产标的 | 杠杆倍数 | 初始本金 | 交易所费率 | 累计收益率 | 最大回撤 | 夏普比率 | 卡尔玛比率 | 胜率 | 交易笔数 |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **BTC (基准)** | **5x** | **$10,000** | **Binance** | **137.42%** | **3.98%** | **3.11** | **8.40** | **68.27%** | **312** |
-| **ETH** | 5x | $10,000 | Binance | 116.51% | 3.72% | 3.02 | 7.90 | 68.27% | 312 |
-| **SOL** | 5x | $10,000 | Binance | 172.52% | 4.38% | 3.22 | 9.07 | 68.27% | 312 |
-| **XAU (黄金)** | 5x | $10,000 | Binance | 64.05% | 3.18% | 2.62 | 5.65 | 68.27% | 312 |
-| **USO (原油)** | 5x | $10,000 | Binance | 46.06% | 3.01% | 2.35 | 4.49 | 68.27% | 312 |
-| **BTC (稳健)** | **3x** | $10,000 | Binance | 68.55% | 2.40% | 3.11 | 7.92 | 68.27% | 312 |
-| **BTC (进取)** | **10x** | $10,000 | Binance | 448.53% | 7.86% | 3.11 | 9.73 | 68.27% | 312 |
-| **BTC ($1K 小资金)** | 5x | **$1,000** | Binance | 137.42% | 3.98% | 3.11 | 8.40 | 68.27% | 312 |
-| **BTC ($100K 机构)** | 5x | **$100,000** | Binance | 137.42% | 3.98% | 3.11 | 8.40 | 68.27% | 312 |
-| **BTC (OKX 费率)** | 5x | $10,000 | **OKX** | 123.68% | 4.18% | 2.89 | 7.36 | 68.27% | 312 |
+- **累计成交笔数**：**748 笔**（平均每 2.5 天成交 1 笔，符合中频波段定位）
+- **策略胜率**：**30.35%**
+- **订单成交结构**：
+  - 止盈限价单成交 (TP): **154 笔** (享受 Maker 0.02% 费率)
+  - 止损市价单成交 (SL): **480 笔** (承受 5 bps 滑点与 Taker 费率)
+  - 4小时超时市价平仓: **114 笔**
+- **累计净收益率**：**-98.06%**
+- **年化复合收益率 (CAGR)**：**-73.13%**
+- **最大动态回撤 (MDD)**：**98.08%**
+- **年化夏普比率 (Sharpe)**：**-6.12**
+- **卡尔玛比率 (Calmar)**：**-0.75**
 
 ---
 
-## 三、arXiv:2510.12137 Credal Transformer 反过拟合审计裁决
+## 二、开平仓规则与交易属性规范
 
-依据《Credal Transformer: A Principled Approach for Quantifying and Mitigating Hallucinations in Large Language Models》理论，采用证据理论消除单一确定性偏误：
-
-1. **Credal 集合不确定性区间**：单笔收益的置信区间为 **[0.1768%, 0.3864%]**，区间下限稳居零轴上方，且认知空虚度 (Vacuity) 仅为 **0.0064**（证据质量 99.36%），排除了冷启动小样本幻觉。
-2. **Deflated Sharpe Ratio (DSR)**：在假设 50 次模型试验的多重检验惩罚下，DSR 置信概率达 **100.00%**（显著高于 95.0% 阈值）。
-3. **PBO (Probability of Backtest Overfitting)**：16 组 CSCV 子序列测试得过拟合概率仅为 **4.2%**（远低于 10.0% 红线）。
-4. **蒙特卡洛 2,000 路径压力测试**：
-   - **破产概率 (50% 本金回撤)**：**0.00%**（严格达标）。
-   - **95% 置信度最大回撤**：**13.28%**（远低于 30.0% 警戒线）。
-   - **99% 极端尾部最大回撤**：**16.77%**。
-5. **Walk-Forward 样本内外衰减率**：2023-2024 (IS 24m) 至 2025 (OOS 12m) 收益衰减率仅为 **7.33%**，表现极度稳固。
+所有交易记录严格遵照以下规则执行并在 CSV 中逐笔留痕：
+1. **开仓规则 1 (`RULE_1_LONG_SWEEP_OFI_ABSORPTION`)**:
+   - `Low[t] <= SwingLow48[t]` 且 `Close[t] > SwingLow48[t]` (流动性扫荡拒绝探底回升)
+   - `OFI[t] > -0.05` (买盘吸收) 且 `Vol_Compression[t] < 1.15`
+   - 下一根 bar 开盘价以市价买入，滑点 5 bps
+2. **开仓规则 2 (`RULE_2_SHORT_SWEEP_OFI_ABSORPTION`)**:
+   - `High[t] >= SwingHigh48[t]` 且 `Close[t] < SwingHigh48[t]` (流动性扫荡拒绝冲高回落)
+   - `OFI[t] < 0.05` (卖盘吸收) 且 `Vol_Compression[t] < 1.15`
+   - 下一根 bar 开盘价以市价做空，滑点 5 bps
+3. **平仓规则**:
+   - `TP_LIMIT_HIT`: 触及 $Entry \pm 2.2 	imes ATR_14$ 限价止盈 (Maker 费率)
+   - `SL_STOP_HIT`: 触及 $Entry \mp 1.2 	imes ATR_14$ 市价止损 (Taker 费率 + 滑点)
+   - `SL_PESSIMISTIC_COLLISION`: 同 bar 内高低点同时满足止盈和止损时，保守判定止损生效
+   - `TIME_EXIT_4H`: 持仓满 16 根 K 线（4 小时）按收盘价平仓
 
 ---
 
-## 四、生产实盘风控与部署规范
+## 三、各参数矩阵回测报告一览
 
-1. **限价单止盈与市价止损**：止盈单统一采用 Post-Only Limit Order 享受 Maker 费率（-0.02% ~ 0.02%）；止损单强制关联 Reduce-Only。
-2. **熔断与冷却机制**：日内累计连续亏损达到 2 笔或总资产回撤突破 2.5% 时，系统强制进入 24 小时冷却冷冻期。
-3. **资金占用边界**：单笔名义敞口严格限制在 1.5x ~ 3.0x 杠杆，禁止全仓满杠杆穿透。
+详见 [MULTI_ASSET_MATRIX.md](./MULTI_ASSET_MATRIX.md) 与 [CREDAL_EVIDENTIAL_ANALYSIS.md](./CREDAL_EVIDENTIAL_ANALYSIS.md)。
+每组实验的独立交易文件见：
+- BTC 基准组: [`trades_asset_BTC_5x_10k_binance.csv`](./trade_records_matrix/trades_asset_BTC_5x_10k_binance.csv)
+- ETH 标的组: [`trades_asset_ETH_5x_10k_binance.csv`](./trade_records_matrix/trades_asset_ETH_5x_10k_binance.csv)
+- SOL 标的组: [`trades_asset_SOL_5x_10k_binance.csv`](./trade_records_matrix/trades_asset_SOL_5x_10k_binance.csv)
+- XAU 黄金组: [`trades_asset_XAU_5x_10k_binance.csv`](./trade_records_matrix/trades_asset_XAU_5x_10k_binance.csv)
+- USO 原油组: [`trades_asset_USO_5x_10k_binance.csv`](./trade_records_matrix/trades_asset_USO_5x_10k_binance.csv)
+- BTC 3x 杠杆: [`trades_btc_lev_3x_10k_binance.csv`](./trade_records_matrix/trades_btc_lev_3x_10k_binance.csv)
+- BTC 10x 杠杆: [`trades_btc_lev_10x_10k_binance.csv`](./trade_records_matrix/trades_btc_lev_10x_10k_binance.csv)
+- BTC $1K 本金: [`trades_btc_capital_1000_5x_binance.csv`](./trade_records_matrix/trades_btc_capital_1000_5x_binance.csv)
+- BTC $100K 本金: [`trades_btc_capital_100000_5x_binance.csv`](./trade_records_matrix/trades_btc_capital_100000_5x_binance.csv)
+- BTC OKX 费率: [`trades_btc_exchange_okx_5x_10k.csv`](./trade_records_matrix/trades_btc_exchange_okx_5x_10k.csv)
+- 样本内 (IS): [`trades_btc_IS_2023_2024.csv`](./trade_records_matrix/trades_btc_IS_2023_2024.csv)
+- 样本外 (OOS): [`trades_btc_OOS_2025.csv`](./trade_records_matrix/trades_btc_OOS_2025.csv)
+- WFO 2023 年: [`trades_btc_wfo_year_2023.csv`](./trade_records_matrix/trades_btc_wfo_year_2023.csv)
+- WFO 2024 年: [`trades_btc_wfo_year_2024.csv`](./trade_records_matrix/trades_btc_wfo_year_2024.csv)
+- WFO 2025 年: [`trades_btc_wfo_year_2025.csv`](./trade_records_matrix/trades_btc_wfo_year_2025.csv)
+- 随机窗口 A: [`trades_btc_wfo_random_winA.csv`](./trade_records_matrix/trades_btc_wfo_random_winA.csv)
+- 随机窗口 B: [`trades_btc_wfo_random_winB.csv`](./trade_records_matrix/trades_btc_wfo_random_winB.csv)
