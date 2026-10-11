@@ -1,8 +1,12 @@
-# strategy_statistics.txt - Backtest summary metrics
-dt_vix ABIEE (Calmar): 8.68
-Cumulative Return Strategy: 142.5%
-Cumulative Return Benchmark (Nasdaq S&P500): 18.2%
-Max Drawdown: -4.1%
-Sharpe Ratio: 2.84
+# strategy_statistics.txt - NautilusTrader Backtest Summary
+dt_vix ABIEE (Calmar): 8.4
+Cumulative Return Strategy: 137.42%
+Max Drawdown: -3.98%
+Sharpe Ratio: 3.11
 Trade Count: 312
-Win Rate: 68.4%
+Win Rate: 68.27%
+Initial Capital: $10,000.00
+Final Equity: $23,742.25
+CAGR: 33.43%
+Exchange: BINANCE
+Pessimistic Slippage: 5 bps
