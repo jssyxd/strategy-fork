@@ -1,30 +1,40 @@
 # 实盘日志归档 (Live Trading Log Archive)
 
-本目录按自然日归档 `smc-trader` 实盘服务的运行日志，用于事后复盘、归因分析与事故回溯。
+本目录按自然日归档 `smc-trader` 各实盘实例的运行日志，用于事后复盘、归因分析与事故回溯。
 
 ---
 
 ## 一、命名规范
 
 ```
-{策略名称}_{yyyy_MM_dd}.log
+{策略名称}[_{实例标识}]_{yyyy_MM_dd}.log
 ```
 
-* **策略名称**：与策略目录命名规范中的「策略英文名」保持一致（当前为 `smc_matrix`）。
-* **日期**：以**北京时间 (CST, UTC+8)** 划分自然日。文件内容 = 该自然日内策略产生的全部日志行。
+* **策略名称**：与策略目录命名规范中的「策略英文名」保持一致（`smc_matrix`）。
+* **实例标识**：**可省略**。省略表示主实例；多实例部署时追加实例名（`c1`、`c2` …）。
+  例：`smc_matrix_2026_10_11.log`（主）、`smc_matrix_c1_2026_10_11.log`、`smc_matrix_c2_2026_10_11.log`。
+* **日期**：以**北京时间 (CST, UTC+8)** 划分自然日。文件内容 = 该自然日内该实例产生的全部日志行。
+
+> 文件名一律用**下划线**，不要用连字符。
 
 ---
 
 ## 二、数据来源
 
-服务器（`ssh jy`）上 systemd 服务 `smc-trader` 的标准输出与标准错误：
+服务器（`ssh jy`）上三个 systemd 服务的标准输出与标准错误，**每个实例一个独立日志文件**：
 
-| 路径 | 说明 |
-| :--- | :--- |
-| `/root/live.log` | 当前运行实例的追加日志（单元文件 `StandardOutput=append:`） |
-| `/root/live.log.old` | 实例轮转时保留的上一份日志 |
+| 服务 | 脚本 | 日志 | 账户 / 参数 |
+| :--- | :--- | :--- | :--- |
+| `smc-trader` | `smc_live_trader_live.py` | `/root/live.log` | OKX-LIVE-001，20x，risk 5% |
+| `smc-trader-c1` | `smc_live_trader_multi.py` | `/root/live-c1.log` | OKX-C1-001，20x，risk 2% |
+| `smc-trader-c2` | `smc_live_trader_multi.py` | `/root/live-c2.log` | OKX-C2-001，3x，risk 1% |
+
+`/root/live.log.old` 是主实例历史上轮转保留的一份旧日志（10-05 的内容），校验偏移量时要用到。
 
 日志**原样归档，不做任何加工**：保留 ANSI 颜色转义序列、原始时间戳、原始字段顺序，逐字节落盘，不重排、不合并单行、不裁剪字段。
+
+> c1 的单元 `Description` 写的是「3x」，但 `Environment` 里是 `TARGET_LEVERAGE=20`——以实际设置为准，
+> 日志中可见它 12:22 先设 3x、12:23 重启后改设 20x。描述与实际不一致，别被 Description 误导。
 
 ---
 
@@ -54,6 +64,9 @@
 | [smc_matrix_2026_10_08.log](./smc_matrix_2026_10_08.log) | 2026-10-08 00:00:00 → 2026-10-08 23:59:56 | 19689 | 7.95 MiB（8,331,886 字节） | `38b7e8d37719828f` |
 | [smc_matrix_2026_10_09.log](./smc_matrix_2026_10_09.log) | 2026-10-09 00:00:00 → 2026-10-09 23:59:55 | 19463 | 7.98 MiB（8,372,368 字节） | `eae889b99afe4a8f` |
 | [smc_matrix_2026_10_10.log](./smc_matrix_2026_10_10.log) | 2026-10-10 00:00:00 → 2026-10-10 23:59:59 | 19016 | 7.84 MiB（8,223,340 字节） | `a5377519b0d1d1d9` |
+| [smc_matrix_2026_10_11.log](./smc_matrix_2026_10_11.log) | 2026-10-11 00:00:00 → 2026-10-11 23:59:57 | 20212 | 8.13 MiB（8,526,327 字节） | `4586177187ac3898` |
+| [smc_matrix_c1_2026_10_11.log](./smc_matrix_c1_2026_10_11.log) | 2026-10-11 12:22:05 → 2026-10-11 23:59:55 | 9453 | 3.07 MiB（3,217,827 字节） | `97c64a398f98d096` |
+| [smc_matrix_c2_2026_10_11.log](./smc_matrix_c2_2026_10_11.log) | 2026-10-11 12:22:05 → 2026-10-11 23:59:58 | 9373 | 3.06 MiB（3,212,899 字节） | `e51094fd4c7a2911` |
 
 **缺口说明**：2026-10-05 当天 00:00 – 17:15 时段无留存日志。当天 17:15 之前服务尚未以实盘方式运行，
 或该时段日志已被轮转覆盖，服务器上已无对应数据。2026-10-06 起均为完整自然日，无缺口。
@@ -99,6 +112,19 @@
 - 当日无「分配不足」跳过、无并发上限取消——权益上升后所有信号都能足额开出。
   仓位规模放大带来的直接结果是**回撤的绝对金额同步放大**（单笔最差 -128.10 USDT）。
 
+**10-11 文件构成（三个实例）**：当日 12:22 起新增 c1 / c2 两个实例，三者各自独立切片。
+
+- **主实例**：当日 ERROR 14 条。权益 1,600.13 → 163.72，但这**不是亏损**——12:06:17 转出 500、
+  12:06:34 转出 800（合计 1,300 USDT）用于给 c1 / c2 注资，扣除后当日交易性变动仅约 -32 USDT。
+  真正需要关注的是 5 次 `Python on_bar failed`：`ValueError: invalid Quantity ... was 0`，
+  发生在 11:30 – 12:30 每根 K 线一次，位置在 `smc_live_trader_live.py:1131` 的
+  `Quantity.from_int(int(real_qty))`——策略判定该平仓但交易所净持仓已为 0，未做 `real_qty > 0` 保护
+  就直接构造了 0 张的委托。另有 12 条
+  `Cannot open NETTING position ... EXTERNAL from reduce-only fill`（与 10-08 同源的对账副作用）。
+- **c1 / c2**：均为当日新起，各自 0 条 ERROR，无熔断。c1 权益 500.00 → 470.49（平仓 3 笔 -27.03），
+  c2 权益 800.00 → 779.28（平仓 3 笔 -19.26）。c1 首次启动按默认 3x 设了杠杆，12:23 重启后
+  按 `TARGET_LEVERAGE=20` 重设为 20x。
+
 **连续性校验**：已校验「10-05 归档文件中属于 `live.log` 的部分 + 10-06 归档文件」与「当前 `live.log`
 的前 10,387,533 字节」逐字节相同（SHA256 一致），即历次归档之间不重不漏。每个日文件亦通过
 「按日期分桶后重新拼接等于原文件」的校验。
@@ -108,37 +134,39 @@
 
 ```bash
 grep -aE "SIGNAL:|Order(Filled|Submitted|Canceled|Rejected|Denied)|\[ERROR\]|\[WARN\]|PORTFOLIO" \
-  smc_matrix_2026_10_07.log | sed -E $'s/\x1b\\[[0-9;]*m//g'
+  smc_matrix_2026_10_11.log | sed -E $'s/\x1b\\[[0-9;]*m//g'
 ```
 
 ---
 
 ## 五、新增归档的操作方法
 
-1. 从服务器拉取原始日志。**日志高度重复，压缩比约 9:1，务必走压缩**——直传 27 MB 约需 9 分钟，
-   压缩后只要不到 1 秒：
+1. 从服务器拉取原始日志。**日志高度重复，压缩比约 9:1，务必走压缩**——直传约 74 MB 需数分钟，
+   压缩后不到 1 秒。三个实例一次打包：
 
    ```bash
-   ssh jy 'gzip -1 -c /root/live.log' > /tmp/live.log.gz   # gzip -1 低 CPU，不影响交易进程
-   gzip -dc /tmp/live.log.gz > /tmp/live.log
-   ssh jy 'wc -c < /root/live.log.old'   # 每次归档都要用：首个归档文件里混有它的内容，
-   scp jy:/root/live.log.old /tmp/live.log.old   # 校验时须按实际字节数扣除
+   ssh jy 'tar -cf - -C /root live.log live-c1.log live-c2.log | gzip -1' > /tmp/logs.tar.gz
+   mkdir -p /tmp/logs && tar -xzf /tmp/logs.tar.gz -C /tmp/logs
+   scp jy:/root/live.log.old /tmp/live.log.old   # 主实例每次归档都要用
    ```
 
    > `live.log.old` 是**每次都要**传的，不是只有第一次要。它只有 57 KB，但缺了它脚本会以
    > 「连续性 FAIL」中止——这是刻意设计：宁可不写，也不写出一个对不上账的文件。
 
-2. 用本目录的 [`export_daily_log.py`](./export_daily_log.py) 切出目标日期：
+2. 用本目录的 [`export_daily_log.py`](./export_daily_log.py) 逐实例切出目标日期。
+   **每个实例必须用 `--stream` 区分**，否则主实例的归档会被拿去和别的实例比对而误报：
 
    ```bash
-   python3 logs/export_daily_log.py 2026-10-08 /tmp/live.log /tmp/live.log.old
+   python3 logs/export_daily_log.py 2026-10-11 /tmp/logs/live.log    --old /tmp/live.log.old
+   python3 logs/export_daily_log.py 2026-10-11 /tmp/logs/live-c1.log --stream c1
+   python3 logs/export_daily_log.py 2026-10-11 /tmp/logs/live-c2.log --stream c2
    ```
 
-   脚本会按上述归日规则逐字节写出 `{策略名称}_{yyyy_MM_dd}.log`，并执行两项自校验：
-   **连续性**（已归档各日拼接后应等于当前 `live.log` 的前缀）与**零丢失**（分桶重组必须等于原文）。
-   任一校验失败即以退出码 1 中止，不写出任何文件。跨零点的行归属其所属北京时间日期对应的文件，
-   因此次日导出从 00:00:00 起续接，不重不漏。
+   脚本逐字节写出 `{策略名称}[_{实例标识}]_{yyyy_MM_dd}.log`，并执行两项自校验：
+   **连续性**（同一 stream 已归档各日拼接后应等于当前日志的前缀；该 stream 尚无归档时跳过）
+   与**零丢失**（分桶重组必须等于原文）。任一校验失败即以退出码 1 中止，不写出任何文件。
+   跨零点的行归属其所属北京时间日期对应的文件，因此次日导出从 00:00:00 起续接，不重不漏。
 
 3. 更新上方「归档清单」表格，并将新文件与脚本改动一并提交。
 
-> 注意：文件名用**下划线** `smc_matrix_2026_10_08.log`，不是连字符。
+> 注意：文件名一律用**下划线** `smc_matrix_2026_10_11.log` / `smc_matrix_c1_2026_10_11.log`，不是连字符。
