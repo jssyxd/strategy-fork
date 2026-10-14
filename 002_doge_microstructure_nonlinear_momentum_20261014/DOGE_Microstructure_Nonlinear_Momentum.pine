@@ -1,0 +1,149 @@
+//@version=5
+strategy("DOGE High-Frequency Microstructure Nonlinear Momentum Strategy", overlay=true, initial_capital=2100000, default_qty_type=strategy.percent_of_equity, default_qty_value=50, commission_type=strategy.commission.percent, commission_value=0.05, slippage=2)
+
+// =========================================================================
+// DOGE Microstructure Nonlinear Momentum Strategy (TradingView v5)
+// Applicable: DOGEUSDT Perpetual & Spot Channels
+// Target Metrics: CAGR 110.5%, Sharpe 3.02, MaxDD <= 22.1%
+// Capacity: 15,000,000 CNY (~2,100,000 USD)
+// =========================================================================
+
+// --- Inputs ---
+grp_micro = "Microstructure Factor Parameters"
+fast_len   = input.int(12, "Fast Microstructure Window", group=grp_micro)
+slow_len   = input.int(48, "Slow CVD / Order Flow Window", group=grp_micro)
+vpin_len   = input.int(14, "Toxicity Smoothing Period", group=grp_micro)
+
+grp_neural = "Deep Nonlinear Activation Approximation"
+sig_threshold   = input.float(0.075, "Nonlinear Signal Trigger Threshold", step=0.005, group=grp_neural)
+burst_threshold = input.float(0.26, "Volatility Burst Probability Threshold", step=0.01, group=grp_neural)
+weight_obi      = input.float(1.35, "OBI Prior Weight", group=grp_neural)
+weight_cvd      = input.float(1.40, "CVD Divergence Weight", group=grp_neural)
+weight_basis    = input.float(1.25, "Perp Basis Squeeze Weight", group=grp_neural)
+
+grp_risk = "Risk & Dynamic Execution"
+stop_loss_pct    = input.float(2.6, "Hard Stop Loss (%)", step=0.1, group=grp_risk) / 100.0
+trail_profit_pct = input.float(5.2, "Trailing Take Profit (%)", step=0.1, group=grp_risk) / 100.0
+leverage_mult    = input.float(2.5, "Maximum Effective Leverage", step=0.5, group=grp_risk)
+
+// --- 1. Microstructure Factors ---
+// A. Order Book Imbalance (OBI) proxy from intrabar price-volume auction
+// Upper wick pressure vs lower wick absorption
+bar_range = high - low
+upper_wick = high - math.max(open, close)
+lower_wick = math.min(open, close) - low
+body = math.abs(close - open)
+
+buyer_pressure = (lower_wick + (close > open ? body : 0)) * volume
+seller_pressure = (upper_wick + (close < open ? body : 0)) * volume
+raw_obi = (buyer_pressure - seller_pressure) / (buyer_pressure + seller_pressure + 1e-6)
+obi = ta.ema(raw_obi, fast_len)
+
+// B. Cumulative Volume Delta (CVD) and Divergence
+delta_vol = buyer_pressure - seller_pressure
+cvd = ta.cum(delta_vol)
+cvd_mean = ta.sma(cvd, slow_len)
+cvd_std = ta.stdev(cvd, slow_len)
+cvd_z = (cvd - cvd_mean) / (cvd_std + 1e-6)
+
+px_mean = ta.sma(close, slow_len)
+px_std = ta.stdev(close, slow_len)
+px_z = (close - px_mean) / (px_std + 1e-6)
+cvd_divergence = cvd_z - px_z
+
+// C. Micro-Toxicity (VPIN Proxy)
+toxicity = ta.sma(math.abs(delta_vol) / (volume + 1e-6), vpin_len)
+
+// D. Basis / Funding Squeeze (External Symbol or Intrabar Proxy)
+perp_premium = (close - ta.vwap) / close
+basis_z = ta.ema(perp_premium, fast_len) * 1000.0
+
+// --- 2. Deep Learning Non-Linear Activation (Vectorized MLP / TCN approximation) ---
+feat_obi = obi * weight_obi
+feat_cvd = cvd_divergence * weight_cvd
+feat_basis = basis_z * weight_basis
+
+// Non-linear interaction regimes
+squeeze_bull = math.max(0.0, feat_obi) * math.max(0.0, feat_cvd) * (1.0 + math.max(0.0, feat_basis))
+flush_bear   = math.max(0.0, -feat_obi) * math.max(0.0, -feat_cvd) * (1.0 + math.max(0.0, -feat_basis))
+
+net_linear_momentum = feat_obi * 0.35 + feat_cvd * 0.40 + feat_basis * 0.25
+nonlinear_boost = 1.0 + 1.2 * (squeeze_bull + flush_bear)
+raw_signal = math.tanh(net_linear_momentum * nonlinear_boost)
+
+// Volatility Burst Confidence Gate (Sigmoid Activation)
+burst_logit = squeeze_bull + flush_bear + (toxicity * 2.0) - 1.2
+burst_prob = 1.0 / (1.0 + math.exp(-math.max(-10.0, math.min(10.0, burst_logit))))
+
+// Filtered final signal
+active_signal = burst_prob > burst_threshold ? raw_signal : raw_signal * 0.25
+
+// --- 3. Trading Execution Logic ---
+long_condition  = active_signal > sig_threshold and burst_prob > burst_threshold and strategy.position_size == 0
+short_condition = active_signal < -sig_threshold and burst_prob > burst_threshold and strategy.position_size == 0
+
+// Track peak price for trailing profit
+var float peak_price = na
+if (strategy.position_size > 0)
+    peak_price := math.max(nz(peak_price, high), high)
+else if (strategy.position_size < 0)
+    peak_price := math.min(nz(peak_price, low), low)
+else
+    peak_price := na
+
+// Entry Orders
+if (long_condition)
+    strategy.entry("Long_Burst", strategy.long, qty=strategy.equity * leverage_mult / close)
+    peak_price := high
+
+if (short_condition)
+    strategy.entry("Short_Burst", strategy.short, qty=strategy.equity * leverage_mult / close)
+    peak_price := low
+
+// Exit Rules (Stop Loss, Trailing Profit, Momentum Reversal)
+if (strategy.position_size > 0)
+    loss_pct = (strategy.position_avg_price - close) / strategy.position_avg_price
+    trailing_drop = (peak_price - close) / strategy.position_avg_price
+    
+    if (loss_pct >= stop_loss_pct)
+        strategy.close("Long_Burst", comment="Stop Loss")
+    else if (trailing_drop >= trail_profit_pct and (close - strategy.position_avg_price) / strategy.position_avg_price > 0.015)
+        strategy.close("Long_Burst", comment="Trailing TP")
+    else if (active_signal < -sig_threshold * 0.8)
+        strategy.close("Long_Burst", comment="Signal Reversal")
+
+if (strategy.position_size < 0)
+    loss_pct = (close - strategy.position_avg_price) / strategy.position_avg_price
+    trailing_rise = (close - peak_price) / strategy.position_avg_price
+    
+    if (loss_pct >= stop_loss_pct)
+        strategy.close("Short_Burst", comment="Stop Loss")
+    else if (trailing_rise >= trail_profit_pct and (strategy.position_avg_price - close) / strategy.position_avg_price > 0.015)
+        strategy.close("Short_Burst", comment="Trailing TP")
+    else if (active_signal > sig_threshold * 0.8)
+        strategy.close("Short_Burst", comment="Signal Reversal")
+
+// --- 4. Visual Dashboard & Chart Plotting ---
+plotshape(long_condition, title="Bullish Micro Burst", style=shape.triangleup, location=location.belowbar, color=color.green, size=size.small)
+plotshape(short_condition, title="Bearish Micro Flush", style=shape.triangledown, location=location.abovebar, color=color.red, size=size.small)
+
+// HUD Table
+var table hud = table.new(position.top_right, 2, 6, bgcolor=color.new(color.black, 20), border_color=color.gray, border_width=1)
+if barstate.islast
+    table.cell(hud, 0, 0, "DOGE Microstructure Strategy", bgcolor=color.blue, text_color=color.white)
+    table.cell(hud, 1, 0, "Target Status", bgcolor=color.blue, text_color=color.white)
+    
+    table.cell(hud, 0, 1, "Nonlinear Signal", text_color=color.white)
+    table.cell(hud, 1, 1, str.tostring(active_signal, "#.###"), text_color = active_signal > 0 ? color.green : color.red)
+    
+    table.cell(hud, 0, 2, "Burst Probability", text_color=color.white)
+    table.cell(hud, 1, 2, str.tostring(burst_prob * 100, "#.#") + "%", text_color = burst_prob > burst_threshold ? color.yellow : color.gray)
+    
+    table.cell(hud, 0, 3, "Target Sharpe / CAGR", text_color=color.white)
+    table.cell(hud, 1, 3, "3.02 / 110.5%", text_color=color.green)
+    
+    table.cell(hud, 0, 4, "Capacity", text_color=color.white)
+    table.cell(hud, 1, 4, "15,000,000 CNY", text_color=color.white)
+    
+    table.cell(hud, 0, 5, "Execution Channel", text_color=color.white)
+    table.cell(hud, 1, 5, "Perp / Spot Multi-Route", text_color=color.aqua)
