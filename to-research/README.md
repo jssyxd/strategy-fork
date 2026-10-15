@@ -44,6 +44,7 @@ $$\text{\{序号\}\_\{策略英文名\}}$$
 | **010** | [010_btc_15m_moneyflow](./010_btc_15m_moneyflow) | — | ≥ 2.50 | Calmar ≥ 8.0 | `btc_15m_moneyflow` | **100% (已毕业)** | ✅ 毕业迁移至 [`005`](../005_btc_15m_moneyflow_20261016) |
 | **011** | [011_deep_hedging_options](./011_deep_hedging_options) | — | — | 自定基准 | `deep_hedging_options` | 约 90% |
 | **012** | [012_avellaneda_grid](./012_avellaneda_grid) | — | — | 自定基准通过 | `avellaneda_grid` | **100% (已毕业)** | ✅ 毕业迁移至 [`006`](../006_avellaneda_stoikov_grid_20261016) |
+| **013** | [013_fvg_confluence](./013_fvg_confluence) | — | ≥ 0.80 | 每笔净期望 > 0 | `fvg_confluence` | 约 95% | ⚠️ 主判定未通过 (成本结构不成立，待重构) |
 
 > 备注：`目标 CAGR / Sharpe / 第三指标` 为各策略的研发验收目标（详见各自 README 第一节）；标记为「自定基准」者为暂无既有公开业绩基准、以可验证命题或运行记录自定验收项。
 
