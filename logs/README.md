@@ -198,11 +198,12 @@ grep -aE "SIGNAL:|Order(Filled|Submitted|Canceled|Rejected|Denied)|\[ERROR\]|\[W
    ```bash
    ssh jy 'tar -cf - -C /root live.log live-c1.log live-c2.log | gzip -1' > /tmp/logs.tar.gz
    mkdir -p /tmp/logs && tar -xzf /tmp/logs.tar.gz -C /tmp/logs
-   scp jy:/root/live.log.old /tmp/live.log.old   # 主实例每次归档都要用
+   scp jy:/root/live.log.old /tmp/live.log.old   # 可选，见下
    ```
 
-   > `live.log.old` 是**每次都要**传的，不是只有第一次要。它只有 57 KB，但缺了它脚本会以
-   > 「连续性 FAIL」中止——这是刻意设计：宁可不写，也不写出一个对不上账的文件。
+   > `live.log.old`（57 KB）会被用来确定首日归档中属于它的字节偏移。**传了最稳妥，但不传也不会错**
+   > ——脚本会在归档里定位当前源日志的开头位置自校准该偏移。若两者都没有，脚本以「连续性 FAIL」
+   > 中止，宁可不写也不写出对不上账的文件。
 
 2. 用本目录的 [`export_daily_log.py`](./export_daily_log.py) 逐实例切出目标日期。
    **每个实例必须用 `--stream` 区分**，否则主实例的归档会被拿去和别的实例比对而误报：

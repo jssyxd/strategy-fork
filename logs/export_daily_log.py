@@ -100,6 +100,13 @@ def main() -> int:
     if archived:
         k = os.path.getsize(old) if old and os.path.exists(old) else 0
         blob = b"".join(open(p, "rb").read() for _, p in archived)
+        if not k:
+            # 未提供 --old（或该文件已不在）时自校准：首个归档文件的开头来自 live.log.old，
+            # 在归档 blob 中定位当前源日志的开头，其偏移量就是 live.log.old 的字节数。
+            idx = blob.find(raw[:256])
+            if 0 < idx < 500_000:
+                k = idx
+                print(f"         (未提供 --old，自校准旧段偏移 k={k:,} 字节)")
         expected = blob[k:] if k else blob
         ok = raw[: len(expected)] == expected
         print(f"连续性 : {stream} 已归档 {len(archived)} 天，扣除旧段 {k:,} 字节后与当前日志前缀比对 -> "
