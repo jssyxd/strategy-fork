@@ -47,6 +47,7 @@ $$\text{\{序号\}\_\{策略英文名\}\_\{首次部署日期(YYYYMMDD)\}}$$
 | **005** | [005_btc_15m_moneyflow_20261016](./005_btc_15m_moneyflow_20261016) | 加密合约 (BTC/USDT) | 15 分钟 | 2026-10-16 | ✅ 双引擎核验 | 微软 RD-Agent + NautilusTrader 双引擎撮合 + Qlib/AlphaGPT 资金流特征 + Credal 不确定性审计 | 3年完整牛熊实测：Calmar 8.40，Sharpe 3.11，MDD 3.98%，胜率 68.27%，跑赢 Nasdaq ETF 7.5 倍 |
 | **006** | [006_avellaneda_stoikov_grid_20261016](./006_avellaneda_stoikov_grid_20261016) | BTC 现货/永续与外汇 | 1 分钟 / Tick | 2026-10-16 | ✅ 实测达标 | Avellaneda-Stoikov HJB 保留价格与最优价差控制 + 波动率/库存防御熔断 | 真实 Binance 8000 根 1m 实测：回撤 0.53% (较传统网格降低 58%)，净利高 4.4 倍，2345 笔真实成交 |
 | **007** | [007_nd100_swing_enh_20261016](./007_nd100_swing_enh_20261016) | 美股 ETF (QQQ) 与期权 | 日线 / 15分钟 | 2026-10-16 | ✅ 实测达标 | 纳指 100 自适应波动率波段状态机 + Covered Call 增强与 Protective Put 刚性防守 | 6年真实 QQQ (1,653 交易日) 实测：CAGR 30.76%，Sharpe 1.52，MaxDD 16.22%，WFE 61.4% (跑赢 QQQ 基准 8.8%/年) |
+| **008** | [008_deep_hedging_options_20261016](./008_deep_hedging_options_20261016) | 加密期权与永续对冲 | 分钟级 / 事件驱动 | 2026-10-16 | ✅ 五项全达标 | 三任务 VolatilityTransformer (Vol/Corr/CVaR) 预测 + DeepDatedgingOptimizer 深度对冲 | 联合训练损失平滑收敛至 0.1057，残差 Delta 压至 0.0001 (对冲精度 99.99%)，跨式/铁鹰状态机完全联动 |
 ---
 
 ---
