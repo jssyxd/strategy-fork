@@ -1,0 +1,28 @@
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: nautilus-redis
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:6379:6379"
+    networks:
+      - nautilus-net
+
+  nautilus:
+    image: ghcr.io/nautechsystems/nautilus_trader:latest
+    container_name: nautilus-okx-demo
+    restart: unless-stopped
+    depends_on:
+      - redis
+    env_file:
+      - .env
+    volumes:
+      - ./strategies:/strategies:ro
+      - ./logs:/logs
+    working_dir: /strategies
+    command: ["python", "smc_live_trader.py"]
+    networks:
+      - nautilus-net
+
+networks:
+  nautilus-net:
