@@ -19,6 +19,8 @@ from features.qlib_moneyflow_factors import compute_all_factors
 def run_factor_audit(symbol: str = "BTC") -> dict:
     df = load_15m_data(symbol)
     feats = compute_all_factors(df)
+    # Forward returns computed strictly for post-facto IC audit, never as feature
+    feats['fwd_ret_1'] = df['close'].pct_change(1).shift(-1)
     
     factor_cols = [
         'ofi_impulse', 'cmf_16', 'fvg_net', 'sweep_intensity',

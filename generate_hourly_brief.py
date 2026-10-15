@@ -188,7 +188,6 @@ def get_demo_data():
         avg_pnl = sum(pnls_3d) / total_trades
         std_pnl = math.sqrt(sum([(p - avg_pnl)**2 for p in pnls_3d]) / total_trades) if total_trades > 1 else 1.0
         sharpe = (avg_pnl / (std_pnl + 1e-6)) * math.sqrt(total_trades * 4)
-        sharpe = max(0.1, min(4.5, sharpe))
     else:
         win_rate = 0.0
         sharpe = 0.0
@@ -264,7 +263,6 @@ def get_live_data():
         avg_pnl = sum(pnls) / total_trades
         std_pnl = math.sqrt(sum([(p - avg_pnl)**2 for p in pnls]) / total_trades) if total_trades > 1 else 1.0
         sharpe = (avg_pnl / (std_pnl + 1e-6)) * math.sqrt(total_trades * 4)
-        sharpe = max(0.1, min(4.5, sharpe))
     else:
         win_rate = 0.0
         sharpe = 0.0

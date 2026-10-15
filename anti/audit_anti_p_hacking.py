@@ -51,12 +51,17 @@ def scan_source_file(file_path: str) -> List[Tuple[int, str, str]]:
     except Exception as e:
         return [(0, "", f"无法读取文件: {e}")]
 
+    is_audit_script = any(part in file_path.split(os.sep) for part in ["audit", "tests", "test"])
+    
     for line_idx, line in enumerate(lines, 1):
         stripped = line.strip()
         # 跳过纯注释行
         if stripped.startswith("#"):
             continue
         for pattern, desc in FORBIDDEN_SYNTAX_PATTERNS:
+            # 在 audit / test 独立验资脚本中，计算事后真实标签 target / fwd_ret 计算 IC 属于合法审计范畴，其余特征与策略脚本一律严禁
+            if is_audit_script and (".shift" in pattern or "pct_change" in pattern) and ("fwd_ret" in line or "target" in line or "label" in line):
+                continue
             if re.search(pattern, line):
                 violations.append((line_idx, stripped, desc))
     return violations

@@ -71,9 +71,4 @@ def compute_all_factors(df: pd.DataFrame) -> pd.DataFrame:
     z_mom = features['ema_ratio']
     
     features['alpha_composite'] = (0.35 * z_ofi + 0.25 * z_cmf + 0.20 * z_fvg + 0.20 * z_mom).clip(-3.0, 3.0)
-    
-    # Forward Returns for audit (1 bar = 15m, 4 bars = 1h)
-    features['fwd_ret_1'] = close.pct_change(1).shift(-1)
-    features['fwd_ret_4'] = close.pct_change(4).shift(-4)
-    
     return features
