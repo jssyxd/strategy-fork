@@ -62,15 +62,16 @@ class BacktestEngine:
         funding_rates = df_dict['funding_rate']
         
         n_bars = len(perp_prices)
-        capital = self.initial_capital_usd
+        cash = self.initial_capital_usd
         equity_curve = np.zeros(n_bars)
-        equity_curve[0] = capital
+        equity_curve[0] = cash
         
         position_size_coin = 0.0 # positive = long, negative = short
         position_channel = None  # 'perp' or 'spot'
         entry_price = 0.0
         peak_price = 0.0
-        
+        spot_cost_basis = 0.0    # Cash tied up in spot inventory
+        mmr = 0.025              # 2.5% Maintenance Margin Ratio for perp
         trades = []
         realized_pnl = 0.0
         total_fees = 0.0
@@ -93,23 +94,51 @@ class BacktestEngine:
             # 1. Update position equity & trailing stop / profit checks
             unrealized_pnl = 0.0
             if position_size_coin != 0.0:
-                unrealized_pnl = position_size_coin * (curr_px - entry_price)
-                
-                # Check funding payment on perp positions (every 8 hours = 96 5m bars)
-                if position_channel == 'perp' and t % 96 == 0:
-                    funding_payment = - (position_size_coin * curr_px) * curr_funding
-                    capital += funding_payment
-                    funding_cashflows += funding_payment
-                
-                # High-water mark tracking for trailing stop
-                if position_size_coin > 0:
-                    peak_price = max(peak_price, curr_px)
-                    dd_from_peak = (peak_price - curr_px) / entry_price
-                    loss_from_entry = (entry_price - curr_px) / entry_price
+                if position_channel == 'perp':
+                    unrealized_pnl = position_size_coin * (curr_px - entry_price)
+                    # Check funding payment on perp positions (every 8 hours = 96 5m bars)
+                    if t % 96 == 0:
+                        funding_payment = - (position_size_coin * curr_px) * curr_funding
+                        cash += funding_payment
+                        funding_cashflows += funding_payment
+                    current_equity = cash + unrealized_pnl
+                    # Maintenance Margin Liquidation Check
+                    pos_val = abs(position_size_coin) * curr_px
+                    if current_equity < pos_val * mmr:
+                        # Forced Liquidation
+                        liq_slip = 0.005 # 50 bps liquidation penalty
+                        liq_px = curr_px * (1.0 - liq_slip if position_size_coin > 0 else 1.0 + liq_slip)
+                        realized = position_size_coin * (liq_px - entry_price)
+                        cash += realized - (pos_val * self.perp_taker_fee)
+                        cash = max(0.0, cash)
+                        trades.append({
+                            'pnl': realized - (pos_val * self.perp_taker_fee),
+                            'return_pct': (liq_px - entry_price) / entry_price * np.sign(position_size_coin),
+                            'channel': 'perp',
+                            'reason': 'forced_liquidation_mmr'
+                        })
+                        position_size_coin = 0.0
+                        position_channel = None
+                        entry_price = 0.0
+                        peak_price = 0.0
+                        unrealized_pnl = 0.0
                 else:
-                    peak_price = min(peak_price, curr_px)
-                    dd_from_peak = (curr_px - peak_price) / entry_price
-                    loss_from_entry = (curr_px - entry_price) / entry_price
+                    # Spot channel: total equity = remaining liquid cash + spot coin market value
+                    spot_market_val = position_size_coin * curr_spot_px
+                    unrealized_pnl = spot_market_val - spot_cost_basis
+                    current_equity = cash + spot_market_val
+
+            if position_size_coin != 0.0:
+                # High-water mark tracking for trailing stop
+                check_px = curr_px if position_channel == 'perp' else curr_spot_px
+                if position_size_coin > 0:
+                    peak_price = max(peak_price, check_px)
+                    dd_from_peak = (peak_price - check_px) / entry_price
+                    loss_from_entry = (entry_price - check_px) / entry_price
+                else:
+                    peak_price = min(peak_price, check_px)
+                    dd_from_peak = (check_px - peak_price) / entry_price
+                    loss_from_entry = (check_px - entry_price) / entry_price
                     
                 # Exit logic
                 must_exit = False
@@ -118,7 +147,7 @@ class BacktestEngine:
                 if loss_from_entry >= self.stop_loss_pct:
                     must_exit = True
                     exit_reason = "stop_loss"
-                elif dd_from_peak >= self.take_profit_trailing_pct and ((curr_px - entry_price) * np.sign(position_size_coin) > 0.015):
+                elif dd_from_peak >= self.take_profit_trailing_pct and ((check_px - entry_price) * np.sign(position_size_coin) > 0.015):
                     must_exit = True
                     exit_reason = "take_profit_trailing"
                 elif np.sign(sig) != np.sign(position_size_coin) and abs(sig) > 0.35:
@@ -129,15 +158,24 @@ class BacktestEngine:
                     exit_reason = "momentum_exhaustion"
                     
                 if must_exit:
-                    order_val = abs(position_size_coin) * curr_px
+                    order_val = abs(position_size_coin) * check_px
                     slip = self.calculate_market_impact_slippage(order_val, bar_vol_usd, bar_vol)
                     fee_rate = self.perp_taker_fee if position_channel == 'perp' else self.spot_taker_fee
                     
-                    exit_px = curr_px * (1.0 - slip if position_size_coin > 0 else 1.0 + slip)
-                    trade_pnl = position_size_coin * (exit_px - entry_price)
+                    exit_px = check_px * (1.0 - slip if position_size_coin > 0 else 1.0 + slip)
                     trade_fee = order_val * fee_rate
                     trade_slip_cost = order_val * slip
-                    capital += trade_pnl - trade_fee
+                    
+                    if position_channel == 'perp':
+                        trade_pnl = position_size_coin * (exit_px - entry_price)
+                        cash += trade_pnl - trade_fee
+                    else:
+                        # Spot exit: cash is credited with coin proceeds minus fee
+                        proceeds = position_size_coin * exit_px
+                        cash += proceeds - trade_fee
+                        trade_pnl = proceeds - spot_cost_basis
+                        spot_cost_basis = 0.0
+                        
                     total_fees += trade_fee
                     total_slippage_cost += trade_slip_cost
                     trades.append({
@@ -152,7 +190,6 @@ class BacktestEngine:
                     entry_price = 0.0
                     peak_price = 0.0
                     unrealized_pnl = 0.0
-
             # 2. Entry logic
             if position_size_coin == 0.0 and abs(sig) > self.entry_threshold and burst > self.burst_threshold:
                 direction = np.sign(sig)
@@ -165,27 +202,46 @@ class BacktestEngine:
                 else:
                     target_channel = 'perp'
                     
-                # Volatility-scaled position size (Fractional Kelly)
-                leverage_target = min(self.max_leverage, (abs(sig) * self.leverage_scale) * (0.02 / (bar_vol * np.sqrt(288) + 1e-4)))
-                order_usd = min(capital * leverage_target, self.initial_capital_usd * self.max_leverage)
-                slip = self.calculate_market_impact_slippage(order_usd, bar_vol_usd, bar_vol)
+                # Leverage & Channel Sizing
+                slip = self.calculate_market_impact_slippage(self.initial_capital_usd, bar_vol_usd, bar_vol)
                 fee_rate = self.perp_taker_fee if target_channel == 'perp' else self.spot_taker_fee
-                
                 entry_px = (curr_px if target_channel == 'perp' else curr_spot_px) * (1.0 + slip if direction > 0 else 1.0 - slip)
-                position_size_coin = (order_usd / entry_px) * direction
-                position_channel = target_channel
-                entry_price = entry_px
-                peak_price = entry_px
                 
-                trade_fee = order_usd * fee_rate
-                trade_slip_cost = order_usd * slip
-                capital -= trade_fee
-                total_fees += trade_fee
-                total_slippage_cost += trade_slip_cost
+                if target_channel == 'spot':
+                    # Spot cannot use leverage: order_usd cannot exceed available liquid cash
+                    order_usd = min(cash * 0.95, self.initial_capital_usd)
+                    if order_usd > 5000.0:
+                        trade_fee = order_usd * fee_rate
+                        cash -= (order_usd + trade_fee)
+                        position_size_coin = order_usd / entry_px
+                        spot_cost_basis = order_usd
+                        position_channel = 'spot'
+                        entry_price = entry_px
+                        peak_price = entry_px
+                        total_fees += trade_fee
+                        total_slippage_cost += order_usd * slip
+                else:
+                    # Perp channel with leverage target
+                    leverage_target = min(self.max_leverage, (abs(sig) * self.leverage_scale) * (0.02 / (bar_vol * np.sqrt(288) + 1e-4)))
+                    order_usd = min(cash * leverage_target, self.initial_capital_usd * self.max_leverage)
+                    if order_usd > 5000.0 and cash > (order_usd * mmr * 2.0):
+                        trade_fee = order_usd * fee_rate
+                        cash -= trade_fee
+                        position_size_coin = (order_usd / entry_px) * direction
+                        position_channel = 'perp'
+                        entry_price = entry_px
+                        peak_price = entry_px
+                        total_fees += trade_fee
+                        total_slippage_cost += order_usd * slip
 
             # Current total equity
-            equity_curve[t] = capital + unrealized_pnl
-
+            if position_size_coin != 0.0:
+                if position_channel == 'perp':
+                    equity_curve[t] = cash + position_size_coin * (curr_px - entry_price)
+                else:
+                    equity_curve[t] = cash + position_size_coin * curr_spot_px
+            else:
+                equity_curve[t] = cash
         # 3. Comprehensive Performance Metrics
         returns = np.diff(equity_curve) / equity_curve[:-1]
         returns = returns[np.isfinite(returns)]

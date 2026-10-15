@@ -51,15 +51,14 @@ def generate_doge_microstructure_dataset(n_bars=35000, seed=20261014):
     volume_usd = base_vol_usd * vol_multiplier * rng.lognormal(0, 0.35, n_bars)
     volume_coins = volume_usd / perp_close
     
-    # Taker buy / sell split with directional correlation + lead momentum
-    future_ret = np.roll(log_returns, -1)
-    future_ret[-1] = 0.0
-    buy_ratio = 0.50 + 0.30 * np.tanh(log_returns / local_sigma) + 0.15 * np.tanh(future_ret / local_sigma) + rng.randn(n_bars) * 0.06
+    # Taker buy / sell split based strictly on contemporaneous return and lagged momentum (strictly causal)
+    lag_ret = np.roll(log_returns, 1)
+    lag_ret[0] = 0.0
+    buy_ratio = 0.50 + 0.35 * np.tanh(log_returns / local_sigma) + 0.10 * np.tanh(lag_ret / local_sigma) + rng.randn(n_bars) * 0.06
     buy_ratio = np.clip(buy_ratio, 0.15, 0.85)
     
     taker_buy_vol = volume_coins * buy_ratio
     taker_sell_vol = volume_coins * (1.0 - buy_ratio)
-    
     # 3. Order Book Depth (5 levels bid/ask)
     depth_levels = 5
     spread_bps = 0.0003 + 0.0008 * (vol_regime - 1.0) # 3 bps to 15 bps
@@ -75,12 +74,11 @@ def generate_doge_microstructure_dataset(n_bars=35000, seed=20261014):
         bid_prices[:, lvl] = perp_close - spread_half - step_offset
         ask_prices[:, lvl] = perp_close + spread_half + step_offset
         
-        # Order Book Imbalance forward correlation with momentum
+        # Order Book Imbalance driven by past volume delta and contemporaneous momentum (strictly causal)
         base_queue = (volume_coins / 10.0) * (1.2 ** lvl)
-        bid_skew = np.clip(0.5 + 0.25 * np.tanh(future_ret / local_sigma) + rng.randn(n_bars) * 0.10, 0.1, 0.9)
+        bid_skew = np.clip(0.5 + 0.30 * np.tanh(log_returns / local_sigma) + rng.randn(n_bars) * 0.10, 0.1, 0.9)
         bid_sizes[:, lvl] = base_queue * (bid_skew * 2.0)
         ask_sizes[:, lvl] = base_queue * ((1.0 - bid_skew) * 2.0)
-        
     # 4. Spot Price & Basis
     # Perp trades at a premium during bull runs and discount during panic
     basis_spread_ratio = 0.0008 * np.tanh(np.convolve(log_returns, np.ones(12)/12, mode='same') / bar_vol) + rng.randn(n_bars) * 0.0002
