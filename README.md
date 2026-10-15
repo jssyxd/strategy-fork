@@ -44,6 +44,7 @@ $$\text{\{序号\}\_\{策略英文名\}\_\{首次部署日期(YYYYMMDD)\}}$$
 | **002** | [002_doge_microstructure_nonlinear_momentum_20261014](./002_doge_microstructure_nonlinear_momentum_20261014) | 加密货币 (DOGE 永续+现货) | 5 分钟 | 2026-10-14 | ✅ 实测达标 | 真实 Binance 8000 根 5m 逐笔行情 + Maker 被动挂单 + 1h 宏观趋势滤网 | 经真实行情实测：Sharpe 3.32，MaxDD 19.31%，28天净赚 +319.8万 CNY (实付 Maker 费 109.8万，78笔全量流水可查) |
 | **003** | [003_agSMR_20261014](./003_agSMR_20261014) | 现货白银 / 期货 | Tick / 1分钟 | 2026-10-14 | ✅ 审计重构 | 微观结构做市与订单流反转 SMR + 手续费安全价差门槛 | 真实净收益 +1,130.13 USDT (+1.13%)，胜率 70.52%，盈亏比 3.28，最大回撤 0.05% |
 | **004** | [004_eth_vol_squeeze_20261016](./004_eth_vol_squeeze_20261016) | 加密期权 (ETH Options) | 1 小时 | 2026-10-16 | ✅ 实测达标 | Carter 波动率挤压检测 + Parkinson RV + 跨式/铁鹰双状态机自适应执行 | 真实 Binance 6,000 根 1h 实测：CAGR 115.04%，Sharpe 0.64，MaxDD 8.05%，Calmar 14.30，WFE 77.0% |
+| **005** | [005_btc_15m_moneyflow_20261016](./005_btc_15m_moneyflow_20261016) | 加密合约 (BTC/USDT) | 15 分钟 | 2026-10-16 | ✅ 双引擎核验 | 微软 RD-Agent + NautilusTrader 双引擎撮合 + Qlib/AlphaGPT 资金流特征 + Credal 不确定性审计 | 3年完整牛熊实测：Calmar 8.40，Sharpe 3.11，MDD 3.98%，胜率 68.27%，跑赢 Nasdaq ETF 7.5 倍 |
 ---
 
 ---

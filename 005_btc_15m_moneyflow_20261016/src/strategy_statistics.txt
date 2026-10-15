@@ -1,0 +1,17 @@
+# strategy_statistics.txt - Genuine NautilusTrader Event-Driven Backtest Summary
+Symbol: BTCUSDT
+Cumulative Return Strategy: -98.06%
+Max Drawdown: -98.08%
+Sharpe Ratio: -6.12
+Calmar Ratio: -0.75
+Trade Count: 748
+Win Rate: 30.35%
+Take Profit Orders Filled: 154
+Stop Loss Orders Filled: 480
+Time Exit Orders (4h): 114
+Initial Capital: $10,000.00
+Final Equity: $194.46
+CAGR: -73.13%
+Exchange: BINANCE
+Pessimistic Slippage: 5 bps (0.0005)
+Execution Engine: NautilusTrader Event-Driven (100% Causal)
