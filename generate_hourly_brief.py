@@ -112,6 +112,7 @@ def get_account_data_via_api(key, secret, passphrase, baseline_equity, is_demo=F
 
     # 3. 过去 1 小时订单动作 (OKX /api/v5/trade/orders-history)
     actions = []
+    recent_signals = []  # 记录用于信号贴合度比对的结构化动作: (inst_id, side, action_type)
     try:
         ord_res = okx_api_request(key, secret, passphrase, f'/api/v5/trade/orders-history?instType=SWAP&limit=30', is_demo=is_demo)
         orders = ord_res.get('data', [])
@@ -127,8 +128,10 @@ def get_account_data_via_api(key, secret, passphrase, baseline_equity, is_demo=F
                 avg_px = float(o.get('avgPx') or o.get('px') or 0)
                 if state == 'filled':
                     actions.append(f"• [{t_str}] {inst_id}: {side}成交 {sz} 张 @ ${avg_px:,.2f}")
+                    recent_signals.append((inst_id, side, "成交"))
                 elif state == 'canceled':
                     actions.append(f"• [{t_str}] {inst_id}: 限价委托已撤销 (TTL超时)")
+                    recent_signals.append((inst_id, side, "撤单"))
     except Exception as e:
         pass
 
@@ -201,6 +204,7 @@ def get_account_data_via_api(key, secret, passphrase, baseline_equity, is_demo=F
         "trades": total_trades,
         "win_rate": win_rate,
         "sharpe": sharpe,
+        "signals": recent_signals,
     }
 
 def main():
@@ -212,8 +216,28 @@ def main():
         sign = "+" if val >= 0 else "-"
         return f"{sign}${abs(val):,.2f} ({sign}{abs(pct):.2f}%)"
 
+    # 计算 Live 与 Demo 动作与信号贴合度
+    live_sig_set = set(live_data.get('signals', []))
+    demo_sig_set = set(demo_data.get('signals', []))
+    
+    if not live_sig_set and not demo_sig_set:
+        alignment_status = "🎯 信号与动作贴合度: 100% 完全贴合（本周期内两盘均无触发开平仓信号，保持一致监听巡检）"
+    elif live_sig_set == demo_sig_set:
+        matched_str = "、".join([f"{s[0]}({s[1]}{s[2]})" for s in live_sig_set])
+        alignment_status = f"🎯 信号与动作贴合度: 100% 完全贴合（两盘同步触发动作: {matched_str}）"
+    else:
+        diff_live = live_sig_set - demo_sig_set
+        diff_demo = demo_sig_set - live_sig_set
+        diff_desc = []
+        if diff_live:
+            diff_desc.append("实盘触发但模拟盘未出: " + "、".join([f"{s[0]}({s[1]}{s[2]})" for s in diff_live]))
+        if diff_demo:
+            diff_desc.append("模拟盘触发但实盘未出: " + "、".join([f"{s[0]}({s[1]}{s[2]})" for s in diff_demo]))
+        alignment_status = f"⚠️ 信号与动作贴合度: 存在细微差异（{'；'.join(diff_desc)}）"
+
     report = f"""🤖 【Hermes 盘中量化双账户期中汇报】
 ⏰ 报告时间: {time_str}
+{alignment_status}
 
 ==============================
 🟢 【实盘账户 (Live - 120U 微本金运行中)】
