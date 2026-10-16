@@ -7,6 +7,9 @@
 - **交易品种**：OKX / Binance 永续合约 (`XAG-USDT-SWAP` / `XAGUSDT`) 及上期所白银期货 (`SHFE.ag`)
 - **执行时间框架**：纯微观事件驱动 Tick 流 (`QuoteTick` 盘口挂单流 + `TradeTick` 逐笔成交流)，彻底脱离传统 OHLCV 蜡烛线依赖
 
+> ⚠️ **【法医级审计提示与状态说明】 (2026-10-16 独立审计员 pi-auditor 签发)**:
+> 本目录下的 363 笔成交流水及回测指标（`DEMO_ALL_ROUND_TRIP_TRADES.csv`）源自内存微观 Ornstein-Uhlenbeck 随机过程模拟（`rng.normal`），用于 **Avellaneda-Stoikov 做市方程与手续费门槛（Fee Hurdle）双重簿记数理原型校验**，**未接入 Governed Lake 历史 Parquet 实盘数据**。
+> 当使用 Governed Lake 真实 XAGUSDT 15m/1m 历史数据进行单向均值回归回测时，由于白银微观均值回归统计边缘仅为 1~3 bps，无法覆盖 7~10 bps 的双边交易摩擦，实际实盘发生严重资本回撤。真实历史数据回测报告请查阅 `anti/01_白银SMR全流程法医级量化审计报告.md`。
 ---
 
 ## 一、策略核心机制与数学原理
