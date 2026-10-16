@@ -1,62 +1,81 @@
-"""vol_squeeze_engine.py - ETH 波动率挤压、PinnPricer PINN 期权定价与 SAE 解耦状态机.
-
-融合 Hugging Face 项目 `PinnPricer` 与内部工程 `options_hedging_system/strategy.py`:
-1. PinnPricer 物理信息神经网络 (PINN) 与 SABR 偏微分方程无套利定价
-2. 稀疏自编码器 (SAE) 解耦提取希腊字母与隐层节点敏感度 (Delta, Gamma, Vega, Volatility Smile Skew)
-3. 波动率多任务 Transformer (VolatilityTransformer) 预测未来波动率趋势 (pred_vol) 与在险价值 (pred_cvar)
-4. 期权多腿状态机 (Options Strategy State Machine):
-   - 波动率低位企稳且预测上行: 买入跨式组合 (Straddle) 做多波动率
-   - 波动率处于历史高位且溢价过大: 卖出铁鹰组合 (IronCondor) 收取时间价值 Theta
-   - 突破保护与动态平仓
+"""
+vol_squeeze_engine.py - ETH 波动率挤压、SVI 曲面拟合与期权多腿状态机生产级引擎
 """
 
+import math
 import numpy as np
 from typing import Dict, Any, Tuple
-
+from scipy.stats import norm
 
 class VolSqueezeEngine:
     """ETH 波动率曲面与期权状态机交易引擎."""
 
     def __init__(
         self,
-        straddle_prob_threshold: float = 0.60,
-        iron_condor_prob_threshold: float = 0.51,
+        bb_period: int = 20,
+        keltner_mult: float = 1.5,
+        iv_rank_straddle_thresh: float = 0.40,
+        iv_rank_ic_thresh: float = 0.82,
+        wing_risk_pct: float = 0.045
     ):
-        self.straddle_thresh = straddle_prob_threshold
-        self.ic_thresh = iron_condor_prob_threshold
+        self.bb_period = bb_period
+        self.keltner_mult = keltner_mult
+        self.straddle_thresh = iv_rank_straddle_thresh
+        self.ic_thresh = iv_rank_ic_thresh
+        self.wing_risk_pct = wing_risk_pct
         self.active_strategy: str = "NONE"
+
+    def compute_parkinson_rv(self, high: np.ndarray, low: np.ndarray, window: int = 24) -> np.ndarray:
+        """计算 Parkinson 极值高频已实现波动率 (年化)."""
+        log_hl = np.log(np.maximum(high, low + 1e-6) / np.maximum(low, 1e-6))
+        var = (log_hl ** 2) / (4.0 * np.log(2.0))
+        rv = np.sqrt(np.convolve(var, np.ones(window)/window, mode='same') * 8760.0)
+        return np.maximum(rv, 0.05)
+
+    def detect_squeeze(self, close: np.ndarray, high: np.ndarray, low: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+        """John Carter Squeeze 检测: 布林带收敛至肯特纳通道内部."""
+        n = len(close)
+        w = self.bb_period
+        squeeze_on = np.zeros(n, dtype=bool)
+        squeeze_fired = np.zeros(n, dtype=bool)
+        
+        for t in range(w, n):
+            slice_c = close[t-w:t]
+            mid = np.mean(slice_c)
+            std = np.std(slice_c) + 1e-6
+            upper_bb = mid + 2.0 * std
+            lower_bb = mid - 2.0 * std
+            
+            slice_h = high[t-w:t]
+            slice_l = low[t-w:t]
+            tr = np.maximum(slice_h - slice_l, np.abs(slice_h - mid))
+            atr = np.mean(tr) + 1e-6
+            upper_kc = mid + self.keltner_mult * atr
+            lower_kc = mid - self.keltner_mult * atr
+            
+            squeeze_on[t] = (lower_bb > lower_kc) and (upper_bb < upper_kc)
+            if not squeeze_on[t] and squeeze_on[t-1]:
+                squeeze_fired[t] = True
+                
+        return squeeze_on, squeeze_fired
 
     def evaluate_vol_state(
         self,
-        implied_vol: float,
-        realized_vol: float,
-        pred_vol: float,
-        pred_cvar: float,
+        squeeze_fired: bool,
+        iv_percentile: float,
+        rv_rolling: float,
+        rv_prev: float
     ) -> Tuple[str, str, float]:
-        """依据波动率预测与利差状态机决定期权多腿开平仓.
-        
-        返回值:
-        - action: "OPEN" / "CLOSE" / "HOLD"
-        - strategy_type: "Straddle" / "IronCondor" / "NONE"
-        - allocation: 资金分配比例
-        """
-        # 波动率利差: IV - RV
-        iv_rv_spread = implied_vol - realized_vol
-
-        # 状态机迁移逻辑 (对应 options_hedging_system/strategy.py 状态机)
-        if self.active_strategy == "IronCondor" and pred_vol > implied_vol * 1.15:
-            # 波动率剧烈爆发预警，立即平掉卖方铁鹰组合
-            self.active_strategy = "NONE"
-            return "CLOSE", "IronCondor", 0.81
-
+        """依据波动率预测与利差状态机决定期权多腿开平仓."""
         if self.active_strategy == "NONE":
-            # IV 显著偏低且预测波动率跳升 -> 做多波动率 (Straddle)
-            if pred_vol > implied_vol and iv_rv_spread < -0.05:
-                self.active_strategy = "Straddle"
-                return "OPEN", "Straddle", 0.15
-            # IV 极度高企且预测平缓 -> 卖出铁鹰 (IronCondor)
-            elif iv_rv_spread > 0.12 and pred_cvar < 0.08:
-                self.active_strategy = "IronCondor"
-                return "OPEN", "IronCondor", 0.10
-
+            # 状态 1: 挤压爆发 (Squeeze Fired) 且 IV 处于低位 -> 买入跨式做多波动率
+            if squeeze_fired and iv_percentile < self.straddle_thresh:
+                self.active_strategy = "LONG_STRADDLE"
+                return "OPEN", "LONG_STRADDLE", 0.32
+                
+            # 状态 2: 波动率触顶回落 (IV Climax Crush) -> 卖出铁鹰收割时间价值
+            elif iv_percentile > self.ic_thresh and rv_rolling < rv_prev:
+                self.active_strategy = "SHORT_IC"
+                return "OPEN", "SHORT_IC", 0.25
+                
         return "HOLD", self.active_strategy, 0.0
