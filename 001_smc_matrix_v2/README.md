@@ -105,3 +105,17 @@
 | `2026-10-13 11:15` | `SOL-USDT-SWAP` | `Limit entry order unfilled after 3 bars (>= 3 bars limit). Cancelling...` | **规则 1 (Pending Timeout)** | 挂单超时 3 根 Bar 未成交，主动撤单，防止不利价格追单 |
 | `2026-10-13 11:00` | `BNB-USDT-SWAP` | `[HEARTBEAT] InPos=False \| NetPos=0.0` (且无信号) | **规则 5 (Score < 5.0)** | 当前 K 线结构无明显单边趋势，评分不足，保持空仓待机 |
 | `2026-10-12 16:00` | `BTC-USDT-SWAP` | `PortfolioCoordinator: Active positions >= 2, open rejected` | **规则 4 (Cross-Asset Cap)** | 已持有 ETH 和 SOL 仓位，触发组合并发拦截，本周期不操作 |
+
+---
+
+## 四、微观执行阿尔法（Execution Alpha）与实盘跑赢回测核心经验
+
+详见专项沉淀文档：[`MICRO_EXECUTION_ALPHA_EXPERIENCE.md`](./MICRO_EXECUTION_ALPHA_EXPERIENCE.md)
+
+### 核心结论速览：
+1. **被动限价单阿尔法（平均 -7.72 bps 执行红利）**：
+   实盘采用 `use_market_order = False`（$c \pm 0.2 \times ATR$ 挂单回踩），实际被动入场点位平均优于柱线收盘价 **7.72 个基点**，累计 123 笔交易为策略额外创造了超 **+$3,200 USDT** 的执行优势。
+2. **2026 年 10 月 14 日极端单边行情捕获**：
+   在 10 月 14 日近期的单边跳水中，实盘 ETH 空单（TRD-121）单笔斩获 **+$3,037.02 USDT**，SOL 空单（TRD-119）单笔斩获 **+$1,231.13 USDT**，推动实盘在扣除 **$7,050.48 USDT** 手续费后实现净盈利 **+$4,321.57 USDT**（胜率 41.6%）。
+3. **反前视偏差与回测改造**：
+   在事件驱动引擎中严格执行因果时序隔离（时刻 $t$ 收盘生成信号，时刻 $t+1$ 挂出限价单并在后续 K 线真实价格范围内撮合），彻底消除前视偏差。
