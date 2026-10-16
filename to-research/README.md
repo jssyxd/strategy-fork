@@ -37,13 +37,13 @@ $$\text{\{序号\}\_\{策略英文名\}}$$
 | **003** | [003_zz500_enh](./003_zz500_enh) | 29.3% | 1.41 | 信息比率 1.85 | `zz500_enh` | 约 85% |
 | **004** | [004_nd100_enh](./004_nd100_enh) | 27.42% | 1.03 | 最大回撤 14.2% | `nd100_enh` | **100% (已毕业)** | ✅ 毕业迁移至 [`007`](../007_nd100_swing_enh_20261016) |
 | **005** | [005_cb_cta](./005_cb_cta) | 56.8% | 5.40 | 盈亏比 3.2 | `cb_cta` | 约 65% |
-| **006** | [006_silver_mr](./006_silver_mr) | 42.1% | 2.08 | 交易胜率 64% | `silver_mr` | **100% (已毕业)** | ✅ 审计重构并毕业迁移至 [`003`](../003_agSMR_20261014) |
+| **006** | [006_silver_mr](./006_silver_mr) | 42.1% | 2.08 | 交易胜率 64% | `silver_mr` | 待深入 | 🛑 纯OHLCV单向均值回归因真实历史数据验证无论如何都无法在反过拟合情况下出现正向EV建议放弃投入；做市分支【需要补充真实Level-2/Level-3逐笔订单簿与排队队列高频数据继续研究】 |
 | **007** | [007_commodity_cta](./007_commodity_cta) | 22.4% | 1.65 | Calmar比率 2.1 | `commodity_cta` | 约 60% |
 | **008** | [008_doge_momentum](./008_doge_momentum) | 110.5% | 3.02 | 最大回撤 22.1% | `doge_momentum` | **100% (已毕业)** | ✅ 毕业迁移至 [`002`](../002_doge_microstructure_nonlinear_momentum_20261014) |
 | **009** | [009_eth_squeeze](./009_eth_squeeze) | 116.2% | 0.65 | Calmar比率 4.8 | `eth_squeeze` | **100% (已毕业)** | ✅ 毕业迁移至 [`004`](../004_eth_vol_squeeze_20261016) |
 | **010** | [010_btc_15m_moneyflow](./010_btc_15m_moneyflow) | — | ≥ 2.50 | Calmar ≥ 8.0 | `btc_15m_moneyflow` | **100% (已毕业)** | ✅ 毕业迁移至 [`005`](../005_btc_15m_moneyflow_20261016) |
 | **011** | [011_deep_hedging_options](./011_deep_hedging_options) | — | — | 自定基准通过 | `deep_hedging_options` | **100% (已毕业)** | ✅ 毕业迁移至 [`008`](../008_deep_hedging_options_20261016) |
-| **012** | [012_avellaneda_grid](./012_avellaneda_grid) | — | — | 自定基准通过 | `avellaneda_grid` | **100% (已毕业)** | ✅ 毕业迁移至 [`006`](../006_avellaneda_stoikov_grid_20261016) |
+| **012** | [012_avellaneda_grid](./012_avellaneda_grid) | — | — | 自定基准通过 | `avellaneda_grid` | 待补充 | ⚠️ 【需要补充真实Level-2/Level-3逐笔订单簿与排队队列撮合事件流继续研究】（做市商模型必须真实模拟队列排队逆向选择） |
 | **013** | [013_fvg_confluence](./013_fvg_confluence) | — | ≥ 0.80 | 每笔净期望 > 0 | `fvg_confluence` | **100% (已毕业)** | ✅ 1h/4h多周期重构并毕业迁移至 [`009`](../009_fvg_confluence_mtf_20261016) |
 
 > 备注：`目标 CAGR / Sharpe / 第三指标` 为各策略的研发验收目标（详见各自 README 第一节）；标记为「自定基准」者为暂无既有公开业绩基准、以可验证命题或运行记录自定验收项。
