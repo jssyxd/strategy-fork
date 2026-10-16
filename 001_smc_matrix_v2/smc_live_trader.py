@@ -94,7 +94,7 @@ class PortfolioCoordinator:
        - 协调完成后，同时向 OKX 批量提交所有有效标的的开仓委托。
     """
     active_instruments: Set[str] = set()
-    MAX_CONCURRENT_PORTFOLIO_POSITIONS: int = 4  # 支持 4 个品种同时持仓 (BTC, ETH, SOL, BNB)
+    MAX_CONCURRENT_PORTFOLIO_POSITIONS: int = 2  # 120U 小资金适配：最多 2 个并发持仓，避免保证金耗尽
 
     # 并发信号批处理池
     pending_candidates: dict = {}  # {symbol: candidate_dict}
@@ -199,22 +199,29 @@ class PortfolioCoordinator:
 
             # 估算单张合约所需保证金 (以 3x 杠杆为例)
             margin_per_ct = (c_price * strat.cfg.ct_val) / 3.0
-            max_cts_by_margin = math.floor(alloc_margin / (margin_per_ct + 1e-9))
+            max_cts_by_margin = math.floor((equity * 0.85) / (margin_per_ct + 1e-9))
+
+            # 120U 小资金风控守卫：若单张合约保证金已超过可用资金 85%，自动跳过该品种（如 BTC 单张需 ~$280 保证金），防止 OKX 51008 报错拒单
+            if max_cts_by_margin < 1:
+                logger.warning(
+                    f"[{sym}] 120U 小资金微观风控拦截: 单张合约所需保证金 (${margin_per_ct:.2f} USDT) 超过可用上限 (${equity * 0.85:.2f} USDT)，安全跳过开仓。"
+                )
+                continue
 
             # 理论单笔风险预算 (基于分配权重切分)
             risk_budget = (equity * strat.cfg.risk_pct) * (w * x)
             risk_per_ct = sl_dist * strat.cfg.ct_val
             target_cts_risk = math.floor(risk_budget / (risk_per_ct + 1e-9)) if risk_per_ct > 0 else 1
 
-            # 逐仓模式残值弹性适配：以分配到的可用保证金为上限，剩余多少开多少
-            contracts = max(1, min(target_cts_risk, max_cts_by_margin, 500))
-
-            if max_cts_by_margin < target_cts_risk:
-                logger.warning(
-                    f"[{sym}] 逐仓保证金残值约束: 理论风险需要 {target_cts_risk} 张，但分配保证金上限 ({alloc_margin:.2f} USDT, 权重 {w*100:.1f}%) "
-                    f"仅支持 {max_cts_by_margin} 张 -> 启用临时方案，剩余多少开多少，实际开仓 {contracts} 张"
-                )
-
+            # 最小下单单位 8.3 USDT 保护 (OKX BNB 单张约 8.3U，其他品种单张约 120U / 260U)
+            contracts = max(1, min(target_cts_risk, max_cts_by_margin, 50))
+            order_notional = contracts * strat.cfg.ct_val * c_price
+            if order_notional < 8.30:
+                if margin_per_ct <= equity * 0.85:
+                    contracts = 1
+                else:
+                    logger.warning(f"[{sym}] 订单名义价值 (${order_notional:.2f} USDT) 低于 OKX 最小下单限制 (8.3 USDT)，跳过开仓。")
+                    continue
             # 检查并发持仓数量上限
             if not cls.can_open_position(sym):
                 logger.warning(f"[{sym}] 达到组合最大持仓数量限制 ({cls.MAX_CONCURRENT_PORTFOLIO_POSITIONS})，取消开仓.")
