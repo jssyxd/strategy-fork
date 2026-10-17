@@ -1,0 +1,129 @@
+{
+  "optuna_best_plateau_value": 0.3619746971105749,
+  "best_hyperparameters": {
+    "n_estimators": 59,
+    "learning_rate": 0.0697579292704048,
+    "max_depth": 3,
+    "num_leaves": 14,
+    "min_child_samples": 31,
+    "subsample": 0.8321218873811974,
+    "colsample_bytree": 0.7062311839960278,
+    "reg_alpha": 3.8325984717669352,
+    "reg_lambda": 4.561271858752382,
+    "objective": "multiclass",
+    "num_class": 4,
+    "metric": "multi_logloss",
+    "boosting_type": "gbdt",
+    "verbosity": -1,
+    "random_state": 42,
+    "n_jobs": -1
+  },
+  "fold_validation_metrics": [
+    {
+      "fold": 1,
+      "macro_f1": 0.36525545171339563,
+      "accuracy": 0.6411290322580645
+    },
+    {
+      "fold": 2,
+      "macro_f1": 0.4259365634365635,
+      "accuracy": 0.6370967741935484
+    },
+    {
+      "fold": 3,
+      "macro_f1": 0.3851626532547585,
+      "accuracy": 0.5967741935483871
+    },
+    {
+      "fold": 4,
+      "macro_f1": 0.37967291776256257,
+      "accuracy": 0.6491935483870968
+    }
+  ],
+  "mean_oos_macro_f1": 0.3890068965418201,
+  "mean_oos_accuracy": 0.6310483870967742,
+  "top_5_predictive_features": [
+    [
+      "evidential_conflict_c",
+      126
+    ],
+    [
+      "vol_std_32",
+      124
+    ],
+    [
+      "mkt_evidential_u_mean",
+      74
+    ],
+    [
+      "vol_std_16",
+      73
+    ],
+    [
+      "ret_16",
+      63
+    ]
+  ],
+  "latest_recommendations": [
+    {
+      "symbol": "BTC-USDT-SWAP",
+      "timestamp_utc": "2026-10-08 15:45:00+00:00",
+      "recommended_regime": "TrendFollow",
+      "regime_id": 0,
+      "confidence": 0.5310989384497382,
+      "probabilities": {
+        "TrendFollow": 0.5310989384497382,
+        "HighSelectivity": 0.13415597326347478,
+        "Invert": 0.13569842719866146,
+        "NoTrade": 0.1990466610881254
+      },
+      "u_vacuity": 0.24,
+      "c_conflict": 0.353
+    },
+    {
+      "symbol": "BNB-USDT-SWAP",
+      "timestamp_utc": "2026-10-08 15:45:00+00:00",
+      "recommended_regime": "NoTrade",
+      "regime_id": 3,
+      "confidence": 0.9823162657033516,
+      "probabilities": {
+        "TrendFollow": 0.0028900065070798595,
+        "HighSelectivity": 0.006599137140956831,
+        "Invert": 0.008194590648611557,
+        "NoTrade": 0.9823162657033516
+      },
+      "u_vacuity": 0.214,
+      "c_conflict": 0.9
+    },
+    {
+      "symbol": "ETH-USDT-SWAP",
+      "timestamp_utc": "2026-10-08 15:45:00+00:00",
+      "recommended_regime": "TrendFollow",
+      "regime_id": 0,
+      "confidence": 0.5772902042140612,
+      "probabilities": {
+        "TrendFollow": 0.5772902042140612,
+        "HighSelectivity": 0.11643795558011585,
+        "Invert": 0.13372177492963624,
+        "NoTrade": 0.17255006527618683
+      },
+      "u_vacuity": 0.24,
+      "c_conflict": 0.353
+    },
+    {
+      "symbol": "SOL-USDT-SWAP",
+      "timestamp_utc": "2026-10-08 15:45:00+00:00",
+      "recommended_regime": "NoTrade",
+      "regime_id": 3,
+      "confidence": 0.9820760554443502,
+      "probabilities": {
+        "TrendFollow": 0.0026516600496545853,
+        "HighSelectivity": 0.0065975234239726375,
+        "Invert": 0.008674761082022486,
+        "NoTrade": 0.9820760554443502
+      },
+      "u_vacuity": 0.214,
+      "c_conflict": 0.9
+    }
+  ]
+}

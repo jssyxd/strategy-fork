@@ -68,6 +68,19 @@
 
 ---
 
+## 核心实战指南（新增）
+
+- **[训练历史窗口 N1~N2 切分与长期复利资产沉淀](docs/04_training_window_and_accumulated_assets.md)**: 解决如何选定历史训练长度、以及 LightGBM 与 Kaggle 账户应如何系统化积累量化资产。
+
+---
+
+## 管线交付代码与资产（新增落地）
+
+- **特征与严格防前看标签工程**: `src/feature_and_label_builder.py`（支持 SMC + Qlib + Purged/Embargo 时钟元数据）
+- **Credal Transformer 反幻觉审查模块**: `src/credal_auditor.py`（基于 arXiv:2510.12137 与 arXiv:2505.15155，解耦认知不确定性与冲突度）
+- **Kaggle 远程训练微服务**: `kaggle/train_purged_regimes.py` 与 `kaggle/kernel-metadata.json`
+- **云端产物与基线度量**: `artifacts/oos_performance_summary.json`（Macro F1=0.389, Accuracy=63.1%）
+
 ## 推荐 Kaggle 参考方案
 
 1. **主骨架**：[Purged Time Series CV, XGBoost, Optuna](https://www.kaggle.com/code/marketneutral/purged-time-series-cv-xgboost-optuna)

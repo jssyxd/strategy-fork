@@ -1,0 +1,55 @@
+{
+  "dataset_shape": [
+    1288,
+    52
+  ],
+  "feature_count": 25,
+  "feature_columns": [
+    "close_to_ema20",
+    "close_to_ema50",
+    "ema20_to_ema50",
+    "ret_1",
+    "ret_2",
+    "ret_4",
+    "ret_8",
+    "ret_16",
+    "vol_std_8",
+    "vol_std_16",
+    "vol_std_32",
+    "atr_ratio",
+    "vol_ratio_log",
+    "clv",
+    "clv_abs",
+    "score_diff",
+    "score_max",
+    "signal_dir",
+    "evidential_vacuity_u",
+    "evidential_conflict_c",
+    "evidential_composite",
+    "mkt_ret_4_mean",
+    "mkt_ret_4_dispersion",
+    "mkt_evidential_u_mean",
+    "mkt_evidential_c_mean"
+  ],
+  "label_column": "regime_label",
+  "label_mapping": {
+    "0": "TrendFollow",
+    "1": "HighSelectivity",
+    "2": "Invert",
+    "3": "NoTrade"
+  },
+  "purge_embargo_spec": {
+    "forward_horizon_bars": 8,
+    "forward_horizon_minutes": 120,
+    "embargo_bars": 8,
+    "embargo_minutes": 120,
+    "strict_anti_lookahead": true
+  },
+  "label_distribution": {
+    "3.0": 775,
+    "2.0": 221,
+    "1.0": 131,
+    "0.0": 129,
+    "NaN": 32
+  }
+}

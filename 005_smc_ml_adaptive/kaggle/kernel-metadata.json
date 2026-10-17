@@ -1,0 +1,17 @@
+{
+  "id": "opclown1/smc-purged-walk-forward-regime-trainer",
+  "title": "SMC Purged Walk-Forward Regime Trainer",
+  "code_file": "train_purged_regimes.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": "true",
+  "enable_gpu": "false",
+  "enable_tpu": "false",
+  "enable_internet": "true",
+  "dataset_sources": [
+    "opclown1/smc-crypto-governed-features"
+  ],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}
