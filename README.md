@@ -26,6 +26,7 @@
 | **001** | [`001_smc_matrix_v2`](./001_smc_matrix_v2) | OKX 永续合约<br>(BTC/ETH/SOL/BNB) | 15 分钟 | 2026-09-30 | 🟢 **实盘/模拟盘运行中** | 多品种 SMC 顺势回踩动量策略 + Dirichlet 证据不确定性门控 ($u \le 0.35, C < 0.40$) + 组合级动态风险预算 | ⚠️ 并发/连续开仓保证金抢占：采用评分/置信度打折 + 逐仓残值尽力而为开仓机制 |
 | **002** | [`002_intrabar_recalc_matrix`](./002_intrabar_recalc_matrix) | 跨资产大宗/加密/股指<br>(BTC/GLD/SLV/NQ/ES) | 15m/1h/2h/3h/4h<br>(主推 3H) | 2026-10-17 | 🟡 **高频仿真审计通过 / 待实盘排队建模** | 线内挂单即时成交重算 (`on_order_filled` / `calc_on_order_fills`) + 动态 ATR 波动率 Bracket + 悲观碰撞 SL 优先 + 12 根 K 线硬性超时清算 | ⚠️ 真实盘口挂单排队队列与部分成交仿真；跨资产保证金动态并发仲裁；动态追踪止损 (Trailing Stop) |
 | **003** | [`003_doge_micro_momentum_carry`](./003_doge_micro_momentum_carry) | 加密高贝塔/MEME 现货+永续<br>(DOGE/PEPE/WIF) | 5 分钟 / 8h 费率窗口 | 2026-10-17 | 🟡 **高频仿真与费率审计通过 / 待实盘排队建模** | Nautilus 事件驱动双核架构：双 EMA + CVD 微观量差动量 + Garman-Klass 波动率门控 ($25\% \le GK \le 80\%$) + Delta 中性自适应资金费率 Carry 收割；Binance 真实对账净利 +$1.63 万 U (Sharpe 1.68) | ⚠️ 实盘前必须完成五大模块：L2 盘口深度排队与部分成交仿真；跨交易所资金费率时间戳同步器；极速插针清算保护守卫；Meme 动态篮子轮动；WebSocket 实盘 OMS 适配器 |
+| **005** | [`005_smc_ml_adaptive`](./005_smc_ml_adaptive) | OKX 永续 (BTC/ETH/SOL/BNB) | 15 分钟 + 日级 Regime | 2026-10-18 | 🟡 **方案设计完成 / 流水线搭建中** | 基于主账户+Demo真实交易日志的 Regime-Aware 离散模式切换（TrendFollow / HighSelectivity / Invert / NoTrade）+ LightGBM/XGBoost + 严格 Purged Walk-Forward；反过拟合 + 反 lookahead 硬约束 | ⚠️ 需完成特征标签构建、Kaggle Purged CV 训练、安全闸门与 Nautilus 热更新对接 |
 
 ---
 
