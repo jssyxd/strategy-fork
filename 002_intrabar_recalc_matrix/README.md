@@ -114,3 +114,74 @@
    - 引入类似 001 SMC 策略的 Dirichlet 证据不确定性门控，防止多资产同时成交导致保证金穿透；
 3. **浮盈保本与追踪止损（Break-Even & Trailing Stop）**：
    - 浮盈超过 1.5 * ATR 后自动上移止损至成本价，锁住微观利润。
+
+---
+
+## 六、 本次量化投研全流程多 Agent 协作流图 (Multi-Agent Quantitative Workflow)
+
+本项目遵循 Jane Street 工业级量化投研标准，全流程由多 Agent 角色协作完成。每个角色拥有独立的工具集、数据输入源、核心职责与法医级准入准出验收标准（Gate SLA）：
+
+```mermaid
+flowchart TD
+    %% Global Styling
+    classDef orch fill:#1e1e2e,stroke:#cba6f7,stroke-width:2px,color:#cdd6f4;
+    classDef dataAgent fill:#181825,stroke:#89b4fa,stroke-width:2px,color:#cdd6f4;
+    classDef devAgent fill:#181825,stroke:#a6e3a1,stroke-width:2px,color:#cdd6f4;
+    classDef auditAgent fill:#181825,stroke:#f38ba8,stroke-width:2px,color:#cdd6f4;
+    classDef deployAgent fill:#181825,stroke:#fab387,stroke-width:2px,color:#cdd6f4;
+    classDef gate fill:#313244,stroke:#f9e2af,stroke-width:2px,stroke-dasharray: 5 5,color:#f9e2af;
+
+    %% Orchestrator
+    ORCH[<b>Lead Orchestrator</b><br>量化架构总控]:::orch
+
+    %% Stage 1: Data Engineering
+    subgraph S1 [阶段一: 湖仓治理与高精度数据对齐]
+        AG_DATA[<b>Data Lake & ETL Specialist</b><br>数据资产与湖仓特种兵]:::dataAgent
+        TOOL_DATA[工具: python, pyarrow, pandas, bash, glob]
+        INPUT_DATA[(输入源: W:/database 湖仓<br>BTC 1.57M行, GLD 394K行, SLV 416K行, ES/NQ 55K行)]
+        GATE1{<b>Gate 1: 数据保真性验收</b><br>1. 1m 底层纳秒/微秒时序单调递增<br>2. 聚合 15m/1h/2h/3h/4h 严格 closed=left, label=left<br>3. 0 前视偏差，0 鬼影柱}:::gate
+        
+        INPUT_DATA --> AG_DATA
+        TOOL_DATA --> AG_DATA
+        AG_DATA -->|产出: multi_asset_loader.py| GATE1
+    end
+
+    %% Stage 2: Strategy Core Engineering
+    subgraph S2 [阶段二: 核心引擎与线内即时重算研发]
+        AG_DEV[<b>Microstructure & Strategy Developer</b><br>微观结构与事件驱动研发员]:::devAgent
+        TOOL_DEV[工具: NautilusTrader, Python 3.11, Docker, AST Inspector]
+        GATE2{<b>Gate 2: 执行真实性验收</b><br>1. 必须基于微观切片进行线内 Limit 判定<br>2. 触碰瞬间必须立即触发 on_order_filled<br>3. 止盈止损 Bracket 必须以真实成交价 last_px 锚定<br>4. 严防状态追溯污染与重复发单}:::gate
+        
+        GATE1 -->|通过合规数据| AG_DEV
+        TOOL_DEV --> AG_DEV
+        AG_DEV -->|产出: intrabar_engine.py & nautilus_strategy.py| GATE2
+    end
+
+    %% Stage 3: Risk & Matrix Auditing
+    subgraph S3 [阶段三: 悲观碰撞与 25 组参数矩阵量化审计]
+        AG_AUDIT[<b>Forensic Quantitative Auditor</b><br>量化法医与风控审计官]:::auditAgent
+        TOOL_AUDIT[工具: run_matrix_backtest.py, Vectorized Audit, Stress Tester]
+        GATE3{<b>Gate 3: 投研宪法悲观合规验收</b><br>1. 同柱触碰强制执行 COLLISION_STOP_LOSS<br>2. 双边 3 bps 佣金 + 3 bps 滑点硬扣除<br>3. 3H 核心周期 Sharpe > 3.0 且 MaxDD < 15%<br>4. 12 根 K 线超时强制 Time-Stop 清算}:::gate
+        
+        GATE2 -->|通过合规引擎| AG_AUDIT
+        AG_AUDIT --> TOOL_AUDIT
+        AG_AUDIT -->|产出: intrabar_matrix_summary.csv & 16,737笔明细| GATE3
+    end
+
+    %% Stage 4: Production Packaging & CI Dispatch
+    subgraph S4 [阶段四: 工业级容器化封装与投研宪法入库]
+        AG_DEPLOY[<b>Production MLOps & CI Guardian</b><br>工程交付与投研宪法守门人]:::deployAgent
+        TOOL_DEPLOY[工具: Dockerfile, docker-compose, audit_anti_p_hacking.py, Git CLI]
+        GATE4{<b>Gate 4: 投研宪法 CI 终审与入库</b><br>1. anti_p_hacking 扫描 100% CLEAN<br>2. 零未来函数与硬编码指标钳制<br>3. 成功 Push 至 GitHub main 分支}:::gate
+        
+        GATE3 -->|通过全量矩阵| AG_DEPLOY
+        TOOL_DEPLOY --> AG_DEPLOY
+        AG_DEPLOY -->|产出: 002_intrabar_recalc_matrix 全套交付物| GATE4
+    end
+
+    ORCH --> S1
+    ORCH --> S2
+    ORCH --> S3
+    ORCH --> S4
+    GATE4 --> PROD[(<b>GitHub main 分支</b><br>jssyxd/strategy/002_intrabar_recalc_matrix)]
+```
