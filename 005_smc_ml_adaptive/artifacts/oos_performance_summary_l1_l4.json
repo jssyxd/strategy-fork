@@ -1,0 +1,139 @@
+{
+  "optuna_best_plateau_value": 0.351073621620584,
+  "best_hyperparameters": {
+    "n_estimators": 96,
+    "learning_rate": 0.10446127564563051,
+    "max_depth": 5,
+    "num_leaves": 12,
+    "min_child_samples": 29,
+    "subsample": 0.7502820890644749,
+    "colsample_bytree": 0.8167970583692744,
+    "reg_alpha": 0.2776988562664412,
+    "reg_lambda": 0.9193642078325706,
+    "objective": "multiclass",
+    "num_class": 4,
+    "metric": "multi_logloss",
+    "boosting_type": "gbdt",
+    "verbosity": -1,
+    "random_state": 42,
+    "n_jobs": -1
+  },
+  "fold_validation_metrics": [
+    {
+      "fold": 1,
+      "macro_f1": 0.3732327924970015,
+      "accuracy": 0.5954142011834319
+    },
+    {
+      "fold": 2,
+      "macro_f1": 0.391795197127116,
+      "accuracy": 0.6235207100591716
+    },
+    {
+      "fold": 3,
+      "macro_f1": 0.34804245780872034,
+      "accuracy": 0.5687869822485208
+    },
+    {
+      "fold": 4,
+      "macro_f1": 0.36895903765881133,
+      "accuracy": 0.6131656804733728
+    },
+    {
+      "fold": 5,
+      "macro_f1": 0.3603174089682387,
+      "accuracy": 0.5909763313609467
+    }
+  ],
+  "mean_oos_macro_f1": 0.3684693788119776,
+  "mean_oos_accuracy": 0.5983727810650887,
+  "l4_blind_holdout": {
+    "bars": 656,
+    "macro_f1": 0.3317653448823639,
+    "accuracy": 0.5899390243902439
+  },
+  "top_5_predictive_features": [
+    [
+      "mkt_ret_4_mean",
+      276
+    ],
+    [
+      "vol_std_32",
+      275
+    ],
+    [
+      "mkt_ret_4_dispersion",
+      260
+    ],
+    [
+      "atr_ratio",
+      248
+    ],
+    [
+      "mkt_evidential_u_mean",
+      231
+    ]
+  ],
+  "latest_recommendations": [
+    {
+      "symbol": "BNB-USDT-SWAP",
+      "timestamp_utc": "2026-10-17 18:45:00+00:00",
+      "recommended_regime": "NoTrade",
+      "regime_id": 3,
+      "confidence": 0.49569498630728037,
+      "probabilities": {
+        "TrendFollow": 0.09312258746864245,
+        "HighSelectivity": 0.19974393739839635,
+        "Invert": 0.21143848882568075,
+        "NoTrade": 0.49569498630728037
+      },
+      "u_vacuity": 0.23076923076923078,
+      "c_conflict": 0.33333333333333337
+    },
+    {
+      "symbol": "BTC-USDT-SWAP",
+      "timestamp_utc": "2026-10-17 18:45:00+00:00",
+      "recommended_regime": "NoTrade",
+      "regime_id": 3,
+      "confidence": 0.999503707716975,
+      "probabilities": {
+        "TrendFollow": 1.8018021449400344e-05,
+        "HighSelectivity": 0.00021682383797507292,
+        "Invert": 0.0002614504236003432,
+        "NoTrade": 0.999503707716975
+      },
+      "u_vacuity": 0.35294117647058826,
+      "c_conflict": 0.6666666666666667
+    },
+    {
+      "symbol": "ETH-USDT-SWAP",
+      "timestamp_utc": "2026-10-17 18:45:00+00:00",
+      "recommended_regime": "NoTrade",
+      "regime_id": 3,
+      "confidence": 0.5545835768808353,
+      "probabilities": {
+        "TrendFollow": 0.0007476236007292674,
+        "HighSelectivity": 0.16489841310786252,
+        "Invert": 0.27977038641057295,
+        "NoTrade": 0.5545835768808353
+      },
+      "u_vacuity": 0.3,
+      "c_conflict": 0.5
+    },
+    {
+      "symbol": "SOL-USDT-SWAP",
+      "timestamp_utc": "2026-10-17 18:45:00+00:00",
+      "recommended_regime": "NoTrade",
+      "regime_id": 3,
+      "confidence": 0.5665374388098456,
+      "probabilities": {
+        "TrendFollow": 0.0007969434514514476,
+        "HighSelectivity": 0.20701111910703707,
+        "Invert": 0.2256544986316659,
+        "NoTrade": 0.5665374388098456
+      },
+      "u_vacuity": 0.3,
+      "c_conflict": 0.5
+    }
+  ]
+}

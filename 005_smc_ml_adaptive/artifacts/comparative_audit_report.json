@@ -1,0 +1,15 @@
+{
+  "period_A_oct05_09": {
+    "baseline_r": 266.4643078787577,
+    "v4_r": 591.7239352321945,
+    "baseline_trades": 543,
+    "v4_trades": 252
+  },
+  "period_B_oct09_15": {
+    "baseline_r": -1.0209195457202256,
+    "v4_r": 853.5486475408129,
+    "baseline_trades": 1029,
+    "v4_trades": 431,
+    "saved_r": 52.59449839390416
+  }
+}
