@@ -1,5 +1,27 @@
 """
-High-Precision Intra-Bar Event-Driven Backtesting Engine with Order State Machine.
+========================================================================================
+JANE STREET QUANTITATIVE RESEARCH - HIGH-PRECISION INTRA-BAR EVENT-DRIVEN ENGINE
+========================================================================================
+【核心投研公理】：
+没有【K线内即时成交与重算挂单 (Instant Recalculation on Order Filled)】机制，本策略完全不成立！
+
+1. 微观问题 (Microstructure & Friction Drag):
+   - 彻底摒弃传统收盘价市价追单 (Taker Drag 6~10 bps 必死缺陷)；
+   - 采用宏观趋势下盘口下方被动限价单 (Limit Order)，享受微观价格改善 (Price Improvement) 与 Maker 费率红利。
+
+2. 核心命脉 (Intra-Bar Recalculation):
+   - 绝不傻等 3H 收盘！一旦 1m 微观切片触碰挂单，撮合引擎立即派发 OrderFilled 事件；
+   - 策略微秒级捕获真实成交价格 event.last_px 与已扣手续费；
+   - 瞬间以真实成交价为基准重算并挂出保护性 ATR Bracket (TP Limit + SL Stop)；
+   - 彻底消除了传统 3H 策略长达 179 分钟的风控盲区黑洞！
+
+3. 法医级风控 (Anti-Cheat & Anti-P-Hacking):
+   - 悲观碰撞原则 (Pessimistic Collision): 若同柱内 TP 与 SL 同时被触碰，强制判定为 STOP_LOSS；
+   - 防状态追溯污染: 严格的 client_order_id 单调性与状态机排他锁；
+   - 12 根宏观 K 线超时强制清算 (Time-Stop)。
+========================================================================================
+"""
+
 Simulates 'calc_on_order_fills=true' (Nautilus Trader on_order_filled) with:
 1. Macro Timeframe (15m, 1h, 2h, 3h, 4h) signal evaluation.
 2. Micro Timeframe (1-minute slices inside each macro bar) matching:
