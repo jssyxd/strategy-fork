@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  nautilus-backtest:
+    build:
+      context: ..
+      dockerfile: docker_nautilus/Dockerfile
+    container_name: nautilus_moneyflow_backtest
+    volumes:
+      - ..:/app
+      - /mnt/w:/w
+    working_dir: /app/docker_nautilus
+    command: ["python", "run_docker_backtest.py"]
