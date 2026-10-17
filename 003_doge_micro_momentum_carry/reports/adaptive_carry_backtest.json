@@ -1,0 +1,14 @@
+{
+    "base_equity_usdt": 200000.0,
+    "leverage": 8.0,
+    "use_gk_filter": true,
+    "rounds_executed": 53,
+    "funding_collected_usdt": 4952.565738230908,
+    "basis_pnl_usdt": 3932.3488328257245,
+    "fees_paid_usdt": 16716.73040640915,
+    "net_pnl_usdt": -7831.815835352638,
+    "net_return_pct": -3.9159079176763187,
+    "annualized_apr_pct": -51.41389891913152,
+    "max_drawdown_pct": -5.222893048074519,
+    "sharpe_ratio": -2.0744802136179064
+}

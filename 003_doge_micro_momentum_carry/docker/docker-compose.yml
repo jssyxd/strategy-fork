@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  nautilus-doge-backtest:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: nautilus_doge_carry_backtest
+    volumes:
+      - ..:/app
+      - /mnt/w/database:/database:ro
+    working_dir: /app
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: ["python", "src/run_nautilus_backtest.py", "binance_real"]

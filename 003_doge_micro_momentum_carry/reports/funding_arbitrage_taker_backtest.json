@@ -1,0 +1,19 @@
+{
+    "dataset": "/workspace/008_doge_momentum/data/doge_real_binance_aligned_5m.parquet",
+    "notional_leg_usdt": 1000000.0,
+    "total_capital_usdt": 2000000.0,
+    "maker_mode": false,
+    "fee_venue_a_bps": 4.0,
+    "fee_venue_b_bps": 4.0,
+    "slippage_bps": 1.0,
+    "total_funding_collected_usdt": 5609.673427138135,
+    "basis_pnl_usdt": -239.7404028312867,
+    "total_fees_paid_usdt": 1989.9694482862878,
+    "opening_fees_usdt": 1000.0,
+    "closing_fees_usdt": 989.969448286288,
+    "net_pnl_usdt": 3379.96357602056,
+    "net_return_pct": 0.168998178801028,
+    "annualized_apr_pct": 2.218860980660979,
+    "max_drawdown_pct": -0.051319399040788354,
+    "sharpe_ratio": 1.3711196107612984
+}

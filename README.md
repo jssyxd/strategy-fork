@@ -25,6 +25,7 @@
 | :---: | :--- | :---: | :---: | :---: | :---: | :--- | :--- |
 | **001** | [`001_smc_matrix_v2`](./001_smc_matrix_v2) | OKX 永续合约<br>(BTC/ETH/SOL/BNB) | 15 分钟 | 2026-09-30 | 🟢 **实盘/模拟盘运行中** | 多品种 SMC 顺势回踩动量策略 + Dirichlet 证据不确定性门控 ($u \le 0.35, C < 0.40$) + 组合级动态风险预算 | ⚠️ 并发/连续开仓保证金抢占：采用评分/置信度打折 + 逐仓残值尽力而为开仓机制 |
 | **002** | [`002_intrabar_recalc_matrix`](./002_intrabar_recalc_matrix) | 跨资产大宗/加密/股指<br>(BTC/GLD/SLV/NQ/ES) | 15m/1h/2h/3h/4h<br>(主推 3H) | 2026-10-17 | 🟡 **高频仿真审计通过 / 待实盘排队建模** | 线内挂单即时成交重算 (`on_order_filled` / `calc_on_order_fills`) + 动态 ATR 波动率 Bracket + 悲观碰撞 SL 优先 + 12 根 K 线硬性超时清算 | ⚠️ 真实盘口挂单排队队列与部分成交仿真；跨资产保证金动态并发仲裁；动态追踪止损 (Trailing Stop) |
+| **003** | [`003_doge_micro_momentum_carry`](./003_doge_micro_momentum_carry) | 加密高贝塔/MEME 现货+永续<br>(DOGE/PEPE/WIF) | 5 分钟 / 8h 费率窗口 | 2026-10-17 | 🟡 **高频仿真与费率审计通过 / 待实盘排队建模** | Nautilus 事件驱动双核架构：双 EMA + CVD 微观量差动量 + Garman-Klass 波动率门控 ($25\% \le GK \le 80\%$) + Delta 中性自适应资金费率 Carry 收割；Binance 真实对账净利 +$1.63 万 U (Sharpe 1.68) | ⚠️ 实盘前必须完成五大模块：L2 盘口深度排队与部分成交仿真；跨交易所资金费率时间戳同步器；极速插针清算保护守卫；Meme 动态篮子轮动；WebSocket 实盘 OMS 适配器 |
 
 ---
 
@@ -41,7 +42,7 @@
 
 ### 2. 【保留继续研究】阵营（逻辑自洽，但严格限定必须补充指定真实数据与高频仿真器）
 - ⏳ **[`012_avellaneda_grid`](./to-research/012_avellaneda_grid)**（AS 做市网格）：**需要补充交易所真实 L2/L3 逐笔订单簿挂单排队队列 (Queue Position)、逆向选择毒性 (Adverse Selection) 以及实际撮合延迟模拟继续研究**；现有 1 分钟简易价格触及模拟严重脱离实际做市排队机制。
-- ⏳ **[`008_doge_momentum`](./to-research/008_doge_momentum)**（DOGE 微观动量）：**需要补充至少 1~2 年以上跨越牛熊周期的完整 DOGE 逐笔 L2 深度与大单主动成交数据、真实限价单队列排队模型与极端行情清算滑点模型继续研究**；现有 28 天简短样本严重不足以支撑 1500 万容量的生产级部署。
+- ⏳ **[`008_doge_momentum`](./to-research/008_doge_momentum)**（DOGE 微观动量）：**已重构升级为正式策略 [`003_doge_micro_momentum_carry`](./003_doge_micro_momentum_carry)**。原原型因单一动量在 Databank 3 年全周期震荡磨损（亏损 -35%），现已升级为融合 Garman-Klass 波动率门控与自适应资金费率 Carry 的 Nautilus 双核架构，正推进 L2 挂单排队仿真等 5 大必须完成的实盘模块。
 - ⏳ **[`009_eth_squeeze`](./to-research/009_eth_squeeze)**（ETH 期权挤压）：**需要补充 Deribit / Binance Options 真实历史期权链逐笔买卖盘口（Bid-Ask Spreads）、隐式波动率 (IV) 真实曲面数据以及组合保证金动态占用历史继续研究**；现有理论 BS 映射无法反映期权流动性黑洞。
 - ⏳ **[`004_nd100_enh`](./to-research/004_nd100_enh)**（纳斯达克 100 增强）：**需要补充 CBOE 官方真实的 QQQ 历史期权链数据、月度备兑看涨执行记录与保护性看跌期权买入滑点成本继续研究**。
 - ⏳ **[`010_btc_15m_moneyflow`](./to-research/010_btc_15m_moneyflow)**（BTC 聪明钱流）：**需要补充实盘测试环境接入（OKX / Binance 模拟盘或小资金实盘）、真实挂单延迟与排队成交对账继续研究**。

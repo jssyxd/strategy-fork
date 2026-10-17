@@ -1,0 +1,19 @@
+{
+    "dataset": null,
+    "notional_leg_usdt": 1000000.0,
+    "total_capital_usdt": 2000000.0,
+    "maker_mode": true,
+    "fee_venue_a_bps": 4.0,
+    "fee_venue_b_bps": 4.0,
+    "slippage_bps": 1.0,
+    "total_funding_collected_usdt": 5609.673427138135,
+    "basis_pnl_usdt": -239.7404028312867,
+    "total_fees_paid_usdt": 397.99388965725757,
+    "opening_fees_usdt": 200.0,
+    "closing_fees_usdt": 197.99388965725757,
+    "net_pnl_usdt": 4971.93913464959,
+    "net_return_pct": 0.24859695673247953,
+    "annualized_apr_pct": 3.2639528491854324,
+    "max_drawdown_pct": -0.05129888157802266,
+    "sharpe_ratio": 1.3711142919543184
+}

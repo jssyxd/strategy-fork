@@ -24,7 +24,7 @@
 | **003** | [`003_zz500_enh`](./003_zz500_enh) | CAGR 29.3%<br>IR 1.85 | `zz500_enh` | 🚫 **建议放弃投入** (单ETF择时) | **因为在单只 ETF 上做仓位偏离择时无论如何都无法产生正向超额收益 (实测年化 5.71% 跑输基准 8.19%，IR -6.30)**：频繁择时摩擦必然跑输指数自身，建议彻底放弃单标的 ETF 择时假增强。 |
 | **005** | [`005_cb_cta`](./005_cb_cta) | CAGR 56.8%<br>Sharpe 5.40 | `cb_cta` | 🚫 **建议放弃投入** (转债ETF层) | **因为可转债 ETF (511380) 受大盘低贝塔银行转债拖累，在 ETF 级别无论如何调仓均无法实现高夏普正向 EV (实测 CAGR 仅 2.54%, Sharpe 0.36)**：建议放弃在转债 ETF 上的资金投入。 |
 | **012** | [`012_avellaneda_grid`](./012_avellaneda_grid) | 财富过程自适应<br>抗爆仓优化 | `avellaneda_grid` | ⏳ **需要补充继续研究** | **需要补充交易所真实 L2/L3 逐笔订单簿挂单排队队列 (Queue Position)、逆向选择毒性 (Adverse Selection) 以及实际撮合延迟模拟继续研究**：现有 1 分钟价格触及模拟严重脱离做市真实撮合机制，绝不能草率宣布生产就绪。 |
-| **008** | [`008_doge_momentum`](./008_doge_momentum) | CAGR 110.5%<br>Sharpe 3.02 | `doge_momentum` | ⏳ **需要补充继续研究** | **需要补充至少 1~2 年以上跨越牛熊周期的完整 DOGE 逐笔 L2 深度与大单主动成交数据、真实限价单队列排队模型与极端行情清算滑点模型继续研究**：现有 28 天简短样本严重不足以支撑 1500 万容量的生产级部署，且裸 Taker 模式实测年化 -75% 巨亏。 |
+| **008** | [`008_doge_momentum`](./008_doge_momentum) | CAGR 110.5%<br>Sharpe 3.02 | `doge_momentum` | 🟡 **已升级为正式策略 003** | **已重构为正式目录 [`003_doge_micro_momentum_carry`](../003_doge_micro_momentum_carry)**：经过 3 年连续全周期湖仓审计与真实费率结算对账，已升级为 Nautilus 事件驱动动量 + Garman-Klass 波动率门控 + 自适应 Delta 中性 Carry 双核架构，进入实盘排队建模阶段。 |
 | **009** | [`009_eth_squeeze`](./009_eth_squeeze) | CAGR 116.2%<br>Sharpe 0.65 | `eth_squeeze` | ⏳ **需要补充继续研究** | **需要补充 Deribit / Binance Options 真实历史期权链逐笔盘口买卖价差 (Bid-Ask Spreads)、隐式波动率 (IV) 真实曲面数据以及组合保证金动态占用历史继续研究**：现有基于理论 BS 公式的粗略映射无法反映期权流动性黑洞与滑点损耗。 |
 | **004** | [`004_nd100_enh`](./004_nd100_enh) | CAGR 27.42%<br>Sharpe 1.03 | `nd100_enh` | ⏳ **需要补充继续研究** | **需要补充 CBOE 官方真实的 QQQ 历史期权链数据、月度备兑看涨执行记录与保护性看跌期权买入滑点成本继续研究**：现有每日静态收益率与理论期权贴息叠加无法替代真实期权交易执行。 |
 | **010** | [`010_btc_15m_moneyflow`](./010_btc_15m_moneyflow) | Calmar ≥ 8.0<br>Sharpe ≥ 2.50 | `btc_15m_moneyflow` | ⏳ **需要补充继续研究** | **需要补充实盘测试环境接入（OKX / Binance 模拟盘或小资金实盘）、真实挂单延迟与排队成交对账继续研究**：需在实盘环境进一步验证其 68% 胜率与 8.40 Calmar 比率。 |
@@ -71,8 +71,8 @@
    - 现状：在 1m 简单价格触及模拟下回撤仅 0.53%，但脱离实际做市排队逻辑；
    - **解封必须补充**：必须接入 L2/L3 订单簿逐笔委托流与挂单排队模型（Queue Position），测试单边大单穿盘时的逆向选择（Adverse Selection）亏损。
 2. **`008_doge_momentum`**：
-   - 现状：在 28 天 Binance 真实行情实测中，Maker 模式录得正收益，但样本时间极短；
-   - **解封必须补充**：必须接入至少 1~2 年以上跨越牛熊周期的完整 DOGE L2 逐笔深度与极端行情清算滑点模型。
+   - 现状：在 28 天 Binance 真实行情实测中，Maker 模式录得正收益（+$1.63万 U，Sharpe 1.68）；而在 Databank 3 年全周期实测中暴露出低波震荡磨损问题；
+   - **重构与升级成果**：已重构成正式策略 [`003_doge_micro_momentum_carry`](../003_doge_micro_momentum_carry)，引入 Garman-Klass 波动率门控与自适应 Delta 中性 Carry 费率收割机制；目前正推进实盘排队建模与跨交易所同步等 5 大必须完成的实盘模块。
 3. **`009_eth_squeeze`**：
    - 现状：双状态机逻辑自洽，但依赖理论 BS 期权定价；
    - **解封必须补充**：必须接入 Deribit / Binance Options 真实历史期权链逐笔买卖盘口（Bid-Ask Spreads）与实际 IV 偏离数据。
