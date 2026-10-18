@@ -22,6 +22,12 @@ import hashlib
 import base64
 from datetime import datetime, timezone, timedelta
 
+# ── Alpaca Paper Trading 凭证 ──────────────────────────────
+ALPACA_KEY    = "PKP5X2XV6XX3CQJZIH3XNIUJUC"
+ALPACA_SECRET = "FeSjzoYJBizCbfJ9tCnjCcTmGuDVZZGpNZdBZaqSuTxN"
+ALPACA_BASE   = "https://paper-api.alpaca.markets/v2"
+ALPACA_BASELINE_EQUITY = 100000.0   # 账户初始权益 (2026-09-28 开户)
+
 # 强制绑定 IPv4 避免 OKX 白名单 IPv6 报错
 orig_getaddrinfo = socket.getaddrinfo
 def getaddrinfo_v4(host, port, family=0, type=0, proto=0, flags=0):
@@ -206,10 +212,130 @@ def get_account_data_via_api(key, secret, passphrase, baseline_equity, is_demo=F
         "signals": recent_signals,
     }
 
+
+def alpaca_request(path, params=""):
+    """Alpaca REST API 请求（无需签名，仅需 Header 鉴权）"""
+    url = ALPACA_BASE + path + ("?" + params if params else "")
+    req = urllib.request.Request(url, headers={
+        "APCA-API-KEY-ID": ALPACA_KEY,
+        "APCA-API-SECRET-KEY": ALPACA_SECRET,
+        "Content-Type": "application/json",
+    })
+    with urllib.request.urlopen(req, timeout=12) as resp:
+        return json.loads(resp.read().decode())
+
+
+def get_alpaca_data():
+    """获取 Alpaca Paper 账户实时状态"""
+    # 1. 账户权益
+    latest_equity = ALPACA_BASELINE_EQUITY
+    buying_power = 0.0
+    cash = 0.0
+    try:
+        acct = alpaca_request("/account")
+        latest_equity = float(acct.get("equity", ALPACA_BASELINE_EQUITY))
+        buying_power  = float(acct.get("buying_power", 0))
+        cash          = float(acct.get("cash", 0))
+    except Exception:
+        pass
+
+    total_pnl = latest_equity - ALPACA_BASELINE_EQUITY
+    total_pnl_pct = (total_pnl / ALPACA_BASELINE_EQUITY) * 100.0
+
+    # 2. 当前持仓
+    pos_lines = []
+    total_floating = 0.0
+    try:
+        positions = alpaca_request("/positions")
+        for p in positions:
+            sym     = p.get("symbol", "")
+            qty     = float(p.get("qty", 0))
+            side    = "多头" if qty > 0 else "空头"
+            avg_px  = float(p.get("avg_entry_price", 0))
+            cur_px  = float(p.get("current_price", 0))
+            upl     = float(p.get("unrealized_pl", 0))
+            total_floating += upl
+            upl_str = f"+${upl:,.2f}" if upl >= 0 else f"-${abs(upl):,.2f}"
+            pos_lines.append(f"• {sym}: {side} {abs(qty)} 股 (均价 ${avg_px:,.2f}) | 现价: ${cur_px:,.2f} | 浮盈: {upl_str}")
+    except Exception:
+        pass
+
+    pos_text    = "\n".join(pos_lines) if pos_lines else "• 当前无持仓 (空仓待机)"
+    float_str   = f"+${total_floating:,.2f}" if total_floating >= 0 else f"-${abs(total_floating):,.2f}"
+
+    # 3. 过去 1 小时订单动作
+    actions = []
+    try:
+        since_iso = (now_utc - timedelta(hours=1)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        orders = alpaca_request("/orders", f"status=all&limit=20&direction=desc&after={since_iso}")
+        for o in reversed(orders):
+            sym   = o.get("symbol", "")
+            side  = "买入" if o.get("side") == "buy" else "卖出"
+            state = o.get("status", "")
+            qty   = o.get("filled_qty") or o.get("qty", "?")
+            avg_px = float(o.get("filled_avg_price") or 0)
+            t_raw  = o.get("updated_at") or o.get("submitted_at", "")
+            try:
+                t_dt  = datetime.strptime(t_raw[:19], "%Y-%m-%dT%H:%M:%S").replace(tzinfo=timezone.utc)
+                t_str = t_dt.astimezone(tz_utc8).strftime("%H:%M")
+            except Exception:
+                t_str = "--:--"
+            if state == "filled":
+                actions.append(f"• [{t_str}] {sym}: {side}成交 {qty} 股 @ ${avg_px:,.2f}")
+            elif state == "canceled":
+                actions.append(f"• [{t_str}] {sym}: 委托已撤销")
+            elif state in ("new", "accepted", "pending_new"):
+                actions.append(f"• [{t_str}] {sym}: 委托挂单中 {side} {qty} 股")
+    except Exception:
+        pass
+
+    action_text = "\n".join(actions[-5:]) if actions else "• 过去 1 小时内无委托动作，策略持续监听中"
+
+    # 4. 近 3 日成交盈亏统计
+    pnls_3d = []
+    try:
+        since_3d = (now_utc - timedelta(days=3)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        activities = alpaca_request("/account/activities/FILL", f"after={since_3d}&page_size=100")
+        for a in activities:
+            pnl_str = a.get("profit_loss") or a.get("realized_pnl")
+            if pnl_str:
+                try:
+                    pnls_3d.append(float(pnl_str))
+                except Exception:
+                    pass
+    except Exception:
+        pass
+
+    total_trades = len(pnls_3d)
+    if total_trades > 0:
+        wins     = [p for p in pnls_3d if p > 0]
+        win_rate = (len(wins) / total_trades) * 100.0
+        avg_pnl  = sum(pnls_3d) / total_trades
+        std_pnl  = math.sqrt(sum([(p - avg_pnl)**2 for p in pnls_3d]) / total_trades) if total_trades > 1 else 1.0
+        sharpe   = (avg_pnl / (std_pnl + 1e-6)) * math.sqrt(total_trades * 252)
+    else:
+        win_rate = 0.0
+        sharpe   = 0.0
+
+    return {
+        "latest_equity": latest_equity,
+        "buying_power":  buying_power,
+        "cash":          cash,
+        "total_pnl":     total_pnl,
+        "total_pnl_pct": total_pnl_pct,
+        "positions":     pos_text,
+        "floating":      float_str,
+        "actions":       action_text,
+        "trades":        total_trades,
+        "win_rate":      win_rate,
+        "sharpe":        sharpe,
+    }
+
 def main():
     time_str = now_utc8.strftime("%Y-%m-%d %H:%M:%S")
-    live_data = get_account_data_via_api(LIVE_KEY, LIVE_SECRET, LIVE_PASSPHRASE, LIVE_BASELINE_EQUITY, is_demo=False, account_name="Live")
-    demo_data = get_account_data_via_api(DEMO_KEY, DEMO_SECRET, DEMO_PASSPHRASE, DEMO_BASELINE_EQUITY, is_demo=True, account_name="Demo")
+    live_data    = get_account_data_via_api(LIVE_KEY, LIVE_SECRET, LIVE_PASSPHRASE, LIVE_BASELINE_EQUITY, is_demo=False, account_name="Live")
+    demo_data    = get_account_data_via_api(DEMO_KEY, DEMO_SECRET, DEMO_PASSPHRASE, DEMO_BASELINE_EQUITY, is_demo=True, account_name="Demo")
+    alpaca_data  = get_alpaca_data()
 
     def fmt_pnl(val, pct):
         sign = "+" if val >= 0 else "-"
@@ -291,7 +417,28 @@ def main():
 📈 近 3 日量化统计 (3-Day Metrics):
 • 交易笔数 (Trades): {demo_data['trades']} 笔
 • 策略胜率 (Win Rate): {demo_data['win_rate']:.2f}%
-• 夏普比率 (Sharpe Ratio): {demo_data['sharpe']:.2f}"""
+• 夏普比率 (Sharpe Ratio): {demo_data['sharpe']:.2f}
+
+==============================
+🟠 【Alpaca Paper 账户 (美股模拟盘)】
+==============================
+💰 总体资金与收益状况:
+• 当前权益: ${alpaca_data['latest_equity']:,.2f} USD (Alpaca 官方实时权益)
+• 期初权益: ${ALPACA_BASELINE_EQUITY:,.2f} USD (2026-09-28 开户基准)
+• 总体盈亏: {fmt_pnl(alpaca_data['total_pnl'], alpaca_data['total_pnl_pct'])}
+• 可用购买力: ${alpaca_data['buying_power']:,.2f} USD | 现金: ${alpaca_data['cash']:,.2f} USD
+
+🔄 报告期内动作 (Past Hour Actions):
+{alpaca_data['actions']}
+
+💼 当前持仓与浮动盈亏 (Positions - Alpaca API 实时):
+{alpaca_data['positions']}
+💰 总体持仓浮动盈亏: {alpaca_data['floating']}
+
+📈 近 3 日量化统计 (3-Day Metrics):
+• 交易笔数 (Trades): {alpaca_data['trades']} 笔
+• 策略胜率 (Win Rate): {alpaca_data['win_rate']:.2f}%
+• 夏普比率 (Sharpe Ratio): {alpaca_data['sharpe']:.2f}"""
 
     print(report)
 
