@@ -110,6 +110,25 @@ class PortfolioCoordinator:
     active_instruments: Set[str] = set()
     MAX_CONCURRENT_PORTFOLIO_POSITIONS: int = 2  # Max 2 active positions across BTC, ETH, SOL, BNB
 
+    # ─── OKX Contract Lot Size & Precision Governance ─────────────────────────
+    # OKX SWAP specifications:
+    # BTC-USDT-SWAP: ctVal=0.01 BTC, minSz=0.01 cts, lotSz=0.01 cts -> size_precision=2
+    # ETH-USDT-SWAP: ctVal=0.10 ETH, minSz=0.01 cts, lotSz=0.01 cts -> size_precision=2
+    # SOL-USDT-SWAP: ctVal=1.00 SOL, minSz=0.01 cts, lotSz=0.01 cts -> size_precision=2
+    # BNB-USDT-SWAP: ctVal=0.01 BNB, minSz=1.00 cts, lotSz=1.00 cts -> size_precision=0
+    MIN_LOT_SIZES: dict[str, float] = {
+        "BTC-USDT-SWAP": 0.01,
+        "ETH-USDT-SWAP": 0.01,
+        "SOL-USDT-SWAP": 0.01,
+        "BNB-USDT-SWAP": 1.0,
+    }
+    SIZE_PRECISIONS: dict[str, int] = {
+        "BTC-USDT-SWAP": 2,
+        "ETH-USDT-SWAP": 2,
+        "SOL-USDT-SWAP": 2,
+        "BNB-USDT-SWAP": 0,
+    }
+
     @classmethod
     def can_open_position(cls, symbol: str) -> bool:
         if symbol in cls.active_instruments:
@@ -265,35 +284,40 @@ class PortfolioCoordinator:
             )
             return
 
-        # 1) 风险约束
+        # 1) 风险约束 (支持小数张数与小资金精准适配)
         risk_budget = portfolio_risk * w
         risk_per_ct = sl_dist * strat.cfg.ct_val
         if risk_per_ct <= 0:
             logger.warning(f"[{sym}] 止损距离/合约面值异常 (risk_per_ct={risk_per_ct})，取消开仓.")
             return
-        target_cts_risk = math.floor(risk_budget / risk_per_ct)
+        raw_cts_risk = risk_budget / risk_per_ct
 
-        # 2) 保证金约束（使用真实杠杆，而非硬编码 3x）
+        # 2) 保证金约束（使用真实杠杆）
         alloc_margin = margin_pool * w
         margin_per_ct = (c_price * strat.cfg.ct_val) / float(TARGET_LEVERAGE)
-        max_cts_by_margin = (
-            math.floor(alloc_margin / (margin_per_ct + 1e-9)) if margin_per_ct > 0 else 0
-        )
+        raw_cts_margin = (alloc_margin / (margin_per_ct + 1e-9)) if margin_per_ct > 0 else 0.0
 
-        contracts = min(target_cts_risk, max_cts_by_margin, 500)
+        # 3) 按品种最小交易精度 (lot_size) 向下取整
+        min_sz = cls.MIN_LOT_SIZES.get(sym, 0.01)
+        sz_prec = cls.SIZE_PRECISIONS.get(sym, 2)
+        raw_contracts = min(raw_cts_risk, raw_cts_margin, 500.0)
 
-        if contracts < 1:
+        # 向下取整到 min_sz 整数倍，避免浮点数精度截断误差
+        contracts = round(math.floor(raw_contracts / min_sz + 1e-9) * min_sz, sz_prec)
+
+        if contracts < min_sz:
             logger.warning(
-                f"[{sym}] 分配不足，取消开仓: 风险预算 {risk_budget:.2f} USDT -> {target_cts_risk} 张 | "
-                f"分配保证金 {alloc_margin:.2f} USDT / 每张 {margin_per_ct:.2f} USDT -> {max_cts_by_margin} 张 "
-                f"(不强行开出最小 1 张，避免 OKX 51008 拒单)"
+                f"[{sym}] 分配不足最小交易单位 (minSz={min_sz})，取消开仓: "
+                f"风险预算 {risk_budget:.2f} USDT -> 理论 {raw_cts_risk:.4f} 张 | "
+                f"分配保证金 {alloc_margin:.2f} USDT / 每张 {margin_per_ct:.2f} USDT -> 最大 {raw_cts_margin:.4f} 张 | "
+                f"实际整定={contracts} 张"
             )
             return
 
-        if max_cts_by_margin < target_cts_risk:
+        if raw_cts_margin < raw_cts_risk:
             logger.warning(
-                f"[{sym}] 保证金约束生效: 按风险预算需 {target_cts_risk} 张，"
-                f"分配保证金仅支持 {max_cts_by_margin} 张 -> 实际开仓 {contracts} 张"
+                f"[{sym}] 保证金约束生效: 按风险预算需 {raw_cts_risk:.4f} 张，"
+                f"分配保证金仅支持 {raw_cts_margin:.4f} 张 -> 实际开仓 {contracts} 张"
             )
 
         # 占用一个本批名额（本策略只在空仓时开仓，不叠加）
@@ -709,6 +733,23 @@ class SMCLiveStrategy(Strategy):
     Never assumes fills; state transitions ONLY on on_order_filled.
     """
 
+    def _build_order_quantity(self, qty: float) -> Quantity:
+        """
+        Constructs a Nautilus Quantity object robustly supporting float contracts.
+        OKX accepts fractional lots (e.g. 0.01 contracts for BTC/ETH/SOL).
+        Uses Quantity.from_str to guarantee exact decimal serialization across Nautilus versions.
+        """
+        raw_sym = self.cfg.instrument_id.split(".")[0]
+        sz_prec = PortfolioCoordinator.SIZE_PRECISIONS.get(raw_sym, getattr(self.cfg, "size_precision", 2))
+        qty_str = f"{qty:.{sz_prec}f}"
+        try:
+            return Quantity.from_str(qty_str)
+        except Exception:
+            try:
+                return Quantity.from_scalar(float(qty_str))
+            except Exception:
+                return Quantity.from_int(int(round(float(qty_str))))
+
     def __init__(self, config: SMCLiveConfig) -> None:
         super().__init__(config)
         self.cfg = config
@@ -1071,21 +1112,22 @@ class SMCLiveStrategy(Strategy):
     def _execute_entry_order(
         self,
         direction: int,
-        contracts: int,
+        contracts: float,
         c: float,
         atr: float,
         sl_dist: float,
         risk_budget: float,
     ) -> None:
-        """执行经组合清算后的最终开仓委托 (严格: 成交前不改动持仓状态)"""
+        """执行经组合清算后的最终开仓委托 (支持浮点张数，严格: 成交前不改动持仓状态)"""
         raw_sym = self.cfg.instrument_id.split(".")[0]
         side = OrderSide.BUY if direction == 1 else OrderSide.SELL
+        order_qty = self._build_order_quantity(contracts)
 
         if self.cfg.use_market_order:
             order = self.order_factory.market(
                 instrument_id=InstrumentId.from_str(self.cfg.instrument_id),
                 order_side=side,
-                quantity=Quantity.from_int(contracts),
+                quantity=order_qty,
             )
         else:
             limit_px = round(c - 0.2 * atr if direction == 1 else c + 0.2 * atr, self.cfg.price_precision)
@@ -1093,7 +1135,7 @@ class SMCLiveStrategy(Strategy):
             order = self.order_factory.limit(
                 instrument_id=InstrumentId.from_str(self.cfg.instrument_id),
                 order_side=side,
-                quantity=Quantity.from_int(contracts),
+                quantity=order_qty,
                 price=Price.from_str(px_str),
                 time_in_force=TimeInForce.GTC,
             )
@@ -1329,18 +1371,19 @@ class SMCLiveStrategy(Strategy):
                 exit_reason = "FORCED_REMAINDER"
             self.force_exit = False
             exit_side = OrderSide.SELL if self.pos_side == 1 else OrderSide.BUY
-            # 严格使用真实持仓数量，且强制指定 reduce_only=True（只减仓）
+            # 严格使用真实持仓数量（支持小数张数平仓），且强制指定 reduce_only=True（只减仓）
+            exit_qty = self._build_order_quantity(real_qty)
             order = self.order_factory.market(
                 instrument_id=iid,
                 order_side=exit_side,
-                quantity=Quantity.from_int(int(real_qty)),
+                quantity=exit_qty,
                 reduce_only=True,
             )
             self.pending_exit_order_id = order.client_order_id
             self.submit_order(order)
             self.log.info(
                 f"[{raw_sym}] Submitting REDUCE_ONLY EXIT order ({exit_reason}): "
-                f"{exit_side.name} {int(real_qty)} cts (NetPos={real_qty})..."
+                f"{exit_side.name} {real_qty} cts (NetPos={real_qty})..."
             )
 
 
@@ -1383,15 +1426,16 @@ def main() -> None:
         .build()
     )
 
+    # (symbol, ct_val, price_prec, size_prec, tag, score)
     portfolio_matrix = [
-        ("BTC-USDT-SWAP", 0.01, 1, "001", 60.0),
-        ("ETH-USDT-SWAP", 0.10, 2, "002", 60.0),
-        ("SOL-USDT-SWAP", 1.00, 2, "003", 58.0),
-        ("BNB-USDT-SWAP", 0.01, 1, "004", 60.0),
+        ("BTC-USDT-SWAP", 0.01, 1, 2, "001", 60.0),
+        ("ETH-USDT-SWAP", 0.10, 2, 2, "002", 60.0),
+        ("SOL-USDT-SWAP", 1.00, 2, 2, "003", 58.0),
+        ("BNB-USDT-SWAP", 0.01, 1, 0, "004", 60.0),
     ]
 
     leverage_ok = 0
-    for symbol, ct_val, prec, tag, score in portfolio_matrix:
+    for symbol, ct_val, prec, sz_prec, tag, score in portfolio_matrix:
         coin = symbol.split("-")[0]
         if set_okx_leverage(symbol):
             leverage_ok += 1
@@ -1403,6 +1447,7 @@ def main() -> None:
         strat_cfg.instrument_id = f"{symbol}.{OKX}"
         strat_cfg.ct_val = ct_val
         strat_cfg.price_precision = prec
+        strat_cfg.size_precision = sz_prec
         strat_cfg.risk_pct = 0.05  # 5% of live OKX USDT equity risked per trade
         strat_cfg.min_score = score
         strat_cfg.u_max = 0.35
