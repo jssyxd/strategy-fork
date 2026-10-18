@@ -22,17 +22,6 @@ JANE STREET QUANTITATIVE RESEARCH - HIGH-PRECISION INTRA-BAR EVENT-DRIVEN ENGINE
 ========================================================================================
 """
 
-Simulates 'calc_on_order_fills=true' (Nautilus Trader on_order_filled) with:
-1. Macro Timeframe (15m, 1h, 2h, 3h, 4h) signal evaluation.
-2. Micro Timeframe (1-minute slices inside each macro bar) matching:
-   - When limit entry touches inside bar, immediately recalculates stop loss & take profit.
-   - Evaluates intra-bar bracket exits on subsequent 1m slices.
-3. Jane Street Risk Controls:
-   - Anti-state-invalidation (strict order mapping).
-   - Collision check: Pessimistic SL priority if both TP/SL barriers touched simultaneously.
-   - Real transaction costs (Maker 2 bps / Taker 4 bps) & Slippage (3-5 bps).
-   - Time stop (holding period timeout).
-"""
 
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple
@@ -117,19 +106,23 @@ class IntraBarMatrixEngine:
         for i in range(14, num_macro):
             m_time = macro_indices[i]
             m_next_time = m_time + macro_timedelta
-            m_atr = atr.iloc[i]
-            m_close = close.iloc[i]
-            is_bull = regime.iloc[i]
+            # CRITICAL FIX FOR LOOK-AHEAD BIAS:
+            # At bar i's start (m_time), bar i is NOT yet finished.
+            # Any decision made at or during bar i must ONLY use indicators from bar i-1!
+            m_atr = atr.iloc[i - 1]
+            m_prior_close = close.iloc[i - 1]
+            is_bull = regime.iloc[i - 1]
             
             # Slice the 1-minute micro bars occurring inside this macro bar
             sub_1m = df_1m.loc[m_time:m_next_time - pd.Timedelta(nanoseconds=1)]
             if sub_1m.empty:
                 continue
                 
-            # If Flat and Bullish regime, prepare a limit buy order for this macro interval
+            # If Flat and Bullish regime (strictly causal using bar i-1),
+            # prepare a limit buy order for this macro interval based on prior close
             pending_limit_buy = None
             if active_position is None and is_bull:
-                limit_px = m_close * (1.0 - self.cfg.limit_pullback_pct)
+                limit_px = m_prior_close * (1.0 - self.cfg.limit_pullback_pct)
                 pending_limit_buy = limit_px
 
             # Step through each 1-minute slice inside the macro bar (Intra-Bar Execution!)

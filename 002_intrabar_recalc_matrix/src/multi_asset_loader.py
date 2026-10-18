@@ -17,8 +17,15 @@ from typing import Dict, Tuple, Optional
 import pandas as pd
 import numpy as np
 
-DATABANK_BAR_ROOT = Path("W:/database/03_governed_lake/nautilus_databank/catalog/data/bar")
-RAW_LAKE_ROOT = Path("W:/database/01_raw_lake")
+def _get_base_dir(subpath: str) -> Path:
+    for prefix in ["W:/database", "/database", "/mnt/w/database"]:
+        p = Path(prefix) / subpath
+        if p.exists():
+            return p
+    return Path("W:/database") / subpath
+
+DATABANK_BAR_ROOT = _get_base_dir("03_governed_lake/nautilus_databank/catalog/data/bar")
+RAW_LAKE_ROOT = _get_base_dir("01_raw_lake")
 LOCAL_DATA_DIR = Path("010_btc_15m_moneyflow/data")
 
 def load_governed_1m_parquet(folder_name: str, start_year: int = 2023, end_year: int = 2025) -> pd.DataFrame:
