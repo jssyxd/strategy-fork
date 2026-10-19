@@ -1,0 +1,212 @@
+{
+  "generations": 20000,
+  "population_size": 40,
+  "best_genome": [
+    0.9382586200158126,
+    1.585374916019847,
+    1.3460635014471372,
+    0.3028573889413457,
+    0.8419787184852308,
+    1.6513020984847542,
+    1.831361790002407,
+    2.7744541077303206,
+    1.7701091637649757
+  ],
+  "best_stats": {
+    "return": 0.024702810930887064,
+    "max_dd": 0.009336841547074691,
+    "win_rate": 0.56,
+    "trades": 25
+  },
+  "logs": [
+    {
+      "gen": 1,
+      "elapsed_sec": 0.1,
+      "best_fitness": -128.1289,
+      "best_ret": -0.0558,
+      "best_dd": 0.0658,
+      "best_win": 0.4685,
+      "best_trades": 111
+    },
+    {
+      "gen": 1000,
+      "elapsed_sec": 236.55,
+      "best_fitness": 28.977,
+      "best_ret": 0.0247,
+      "best_dd": 0.0093,
+      "best_win": 0.56,
+      "best_trades": 25
+    },
+    {
+      "gen": 2000,
+      "elapsed_sec": 419.61,
+      "best_fitness": 28.977,
+      "best_ret": 0.0247,
+      "best_dd": 0.0093,
+      "best_win": 0.56,
+      "best_trades": 25
+    },
+    {
+      "gen": 3000,
+      "elapsed_sec": 670.34,
+      "best_fitness": 28.977,
+      "best_ret": 0.0247,
+      "best_dd": 0.0093,
+      "best_win": 0.56,
+      "best_trades": 25
+    },
+    {
+      "gen": 4000,
+      "elapsed_sec": 888.29,
+      "best_fitness": 28.977,
+      "best_ret": 0.0247,
+      "best_dd": 0.0093,
+      "best_win": 0.56,
+      "best_trades": 25
+    },
+    {
+      "gen": 5000,
+      "elapsed_sec": 1011.35,
+      "best_fitness": 28.977,
+      "best_ret": 0.0247,
+      "best_dd": 0.0093,
+      "best_win": 0.56,
+      "best_trades": 25
+    },
+    {
+      "gen": 6000,
+      "elapsed_sec": 1092.02,
+      "best_fitness": 28.977,
+      "best_ret": 0.0247,
+      "best_dd": 0.0093,
+      "best_win": 0.56,
+      "best_trades": 25
+    },
+    {
+      "gen": 7000,
+      "elapsed_sec": 1261.75,
+      "best_fitness": 28.977,
+      "best_ret": 0.0247,
+      "best_dd": 0.0093,
+      "best_win": 0.56,
+      "best_trades": 25
+    },
+    {
+      "gen": 8000,
+      "elapsed_sec": 1474.77,
+      "best_fitness": 28.977,
+      "best_ret": 0.0247,
+      "best_dd": 0.0093,
+      "best_win": 0.56,
+      "best_trades": 25
+    },
+    {
+      "gen": 9000,
+      "elapsed_sec": 1697.43,
+      "best_fitness": 28.977,
+      "best_ret": 0.0247,
+      "best_dd": 0.0093,
+      "best_win": 0.56,
+      "best_trades": 25
+    },
+    {
+      "gen": 10000,
+      "elapsed_sec": 1916.06,
+      "best_fitness": 28.977,
+      "best_ret": 0.0247,
+      "best_dd": 0.0093,
+      "best_win": 0.56,
+      "best_trades": 25
+    },
+    {
+      "gen": 11000,
+      "elapsed_sec": 2136.04,
+      "best_fitness": 28.977,
+      "best_ret": 0.0247,
+      "best_dd": 0.0093,
+      "best_win": 0.56,
+      "best_trades": 25
+    },
+    {
+      "gen": 12000,
+      "elapsed_sec": 2356.4,
+      "best_fitness": 28.977,
+      "best_ret": 0.0247,
+      "best_dd": 0.0093,
+      "best_win": 0.56,
+      "best_trades": 25
+    },
+    {
+      "gen": 13000,
+      "elapsed_sec": 2601.07,
+      "best_fitness": 28.977,
+      "best_ret": 0.0247,
+      "best_dd": 0.0093,
+      "best_win": 0.56,
+      "best_trades": 25
+    },
+    {
+      "gen": 14000,
+      "elapsed_sec": 2857.75,
+      "best_fitness": 28.977,
+      "best_ret": 0.0247,
+      "best_dd": 0.0093,
+      "best_win": 0.56,
+      "best_trades": 25
+    },
+    {
+      "gen": 15000,
+      "elapsed_sec": 3089.36,
+      "best_fitness": 28.977,
+      "best_ret": 0.0247,
+      "best_dd": 0.0093,
+      "best_win": 0.56,
+      "best_trades": 25
+    },
+    {
+      "gen": 16000,
+      "elapsed_sec": 3326.03,
+      "best_fitness": 28.977,
+      "best_ret": 0.0247,
+      "best_dd": 0.0093,
+      "best_win": 0.56,
+      "best_trades": 25
+    },
+    {
+      "gen": 17000,
+      "elapsed_sec": 3551.01,
+      "best_fitness": 28.977,
+      "best_ret": 0.0247,
+      "best_dd": 0.0093,
+      "best_win": 0.56,
+      "best_trades": 25
+    },
+    {
+      "gen": 18000,
+      "elapsed_sec": 3852.35,
+      "best_fitness": 28.977,
+      "best_ret": 0.0247,
+      "best_dd": 0.0093,
+      "best_win": 0.56,
+      "best_trades": 25
+    },
+    {
+      "gen": 19000,
+      "elapsed_sec": 4156.23,
+      "best_fitness": 28.977,
+      "best_ret": 0.0247,
+      "best_dd": 0.0093,
+      "best_win": 0.56,
+      "best_trades": 25
+    },
+    {
+      "gen": 20000,
+      "elapsed_sec": 4270.43,
+      "best_fitness": 28.977,
+      "best_ret": 0.0247,
+      "best_dd": 0.0093,
+      "best_win": 0.56,
+      "best_trades": 25
+    }
+  ]
+}
