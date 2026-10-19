@@ -1,0 +1,100 @@
+//@version=6
+strategy("月读量化 - ETH AI 择时策略 (Pine Script V6 官方合规版)", 
+         overlay=true, 
+         initial_capital=10000, 
+         default_qty_type=strategy.percent_of_equity, 
+         default_qty_value=50, 
+         commission_type=strategy.commission.percent, 
+         commission_value=0.05,
+         pyramiding=2)
+
+// ==========================================
+// 1. 超参数配置 (源自 AlphaEvolve 演化收敛)
+// ==========================================
+var string GRP_EVO  = "AlphaEvolve 遗传状态机"
+var string GRP_RISK = "风控与动态离场机制"
+
+gamma          = input.float(0.88, "Q-Learning 状态衰减折现 (Decay)", minval=0.5, maxval=0.99, group=GRP_EVO)
+w_imb          = input.float(2.20, "订单流失衡权重 (Imbalance Weight)", group=GRP_EVO)
+w_break        = input.float(1.10, "波动率突破权重 (Breakout Weight)", group=GRP_EVO)
+th_50          = input.float(0.60, "50% 保证金试探建仓阈值", group=GRP_EVO)
+th_75          = input.float(1.00, "75% 保证金重仓进场阈值", group=GRP_EVO)
+
+atr_len        = input.int(14, "ATR 波动率周期", group=GRP_RISK)
+sl_atr_mult    = input.float(2.5, "硬性止损 ATR 倍数", group=GRP_RISK)
+trail_atr_mult = input.float(2.0, "动态追踪止盈 ATR 偏离", group=GRP_RISK)
+
+// ==========================================
+// 2. 特征工程与伪 Q-Learning 状态机计算
+// ==========================================
+atr_val = ta.atr(atr_len)
+
+// 特征 1：K线实体与总振幅动量比 (微观买卖盘失衡代理)
+hl_span = high - low
+body_delta = close - open
+imbalance = hl_span > 0 ? (body_delta / hl_span) : 0.0
+
+// 特征 2：短周期区间突破度量
+highest_high = ta.highest(high, 12)
+lowest_low   = ta.lowest(low, 12)
+breakout_rng = highest_high - lowest_low
+breakout_score = breakout_rng > 0 ? ((close - lowest_low) / breakout_rng - 0.5) : 0.0
+
+// 伪 Q-Learning 状态递归更新：S_t = gamma * S_{t-1} + (1 - gamma) * Reward_t
+var float state_value = 0.0
+reward_signal = (w_imb * imbalance) + (w_break * breakout_score)
+state_value := (gamma * nz(state_value[1])) + ((1.0 - gamma) * reward_signal)
+
+// ==========================================
+// 3. 信号触发判定 (支持多空双向)
+// ==========================================
+long_condition_50  = ta.crossover(state_value, th_50) and state_value <= th_75
+long_condition_75  = ta.crossover(state_value, th_75)
+
+short_condition_50 = ta.crossunder(state_value, -th_50) and state_value >= -th_75
+short_condition_75 = ta.crossunder(state_value, -th_75)
+
+// 跟踪进场点位与极值
+var float entry_price = na
+var float peak_price = na
+
+// ==========================================
+// 4. 仓位管理与进离场执行
+// ==========================================
+// 多头进场
+if strategy.position_size == 0
+    if long_condition_75
+        strategy.entry("Long_75", strategy.long, qty=strategy.equity * 0.75 / close)
+        entry_price := close
+        peak_price := high
+    else if long_condition_50
+        strategy.entry("Long_50", strategy.long, qty=strategy.equity * 0.50 / close)
+        entry_price := close
+        peak_price := high
+    // 空头进场
+    else if short_condition_75
+        strategy.entry("Short_75", strategy.short, qty=strategy.equity * 0.75 / close)
+        entry_price := close
+        peak_price := low
+    else if short_condition_50
+        strategy.entry("Short_50", strategy.short, qty=strategy.equity * 0.50 / close)
+        entry_price := close
+        peak_price := low
+
+// 多头持仓动态追踪与硬止损
+if strategy.position_size > 0
+    peak_price := math.max(nz(peak_price), high)
+    stop_trail = peak_price - (trail_atr_mult * atr_val)
+    stop_hard  = entry_price - (sl_atr_mult * atr_val)
+    exit_target = math.max(stop_trail, stop_hard)
+    strategy.exit("Exit_Long", from_entry="Long_75", stop=exit_target)
+    strategy.exit("Exit_Long_50", from_entry="Long_50", stop=exit_target)
+
+// 空头持仓动态追踪与硬止损
+if strategy.position_size < 0
+    peak_price := math.min(nz(peak_price), low)
+    stop_trail = peak_price + (trail_atr_mult * atr_val)
+    stop_hard  = entry_price + (sl_atr_mult * atr_val)
+    exit_target = math.min(stop_trail, stop_hard)
+    strategy.exit("Exit_Short", from_entry="Short_75", stop=exit_target)
+    strategy.exit("Exit_Short_50", from_entry="Short_50", stop=exit_target)
