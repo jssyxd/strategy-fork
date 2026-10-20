@@ -209,9 +209,37 @@ def build(data: dict, out_path: str) -> None:
     is_short = m["days"] <= 45
     period_word = "本期" if is_short else "一年"
     span_word = "回测期内" if is_short else "一年下来"
+    realized = m.get("realized_pnl", 0.0)
+    unreal = m.get("unrealized", 0.0)
+    diff_pp = (m["win_rate"] - be_win) * 100
+    if diff_pp >= 0:
+        tail_sentence = (
+            f"实测 {m['win_rate']*100:.2f}%，<b>高出保本线 {diff_pp:.1f} 个百分点</b>，"
+            f"{m['trades']} 笔已平仓交易合计 {realized:+,.2f} USDT。"
+            + (f"但期末仍有 1 笔未平仓头寸浮亏 {unreal:,.2f} USDT，净值因此为 {pct(m['total_return'])}。"
+               if (m.get("open_at_end") and abs(unreal) > 1e-9) else
+               f"净值 {num(m['initial_capital'])} → {num(m['final_equity'])}（{pct(m['total_return'])}）。")
+        )
+    else:
+        tail_sentence = (
+            f"实测只有 {m['win_rate']*100:.2f}%，<b>差 {abs(diff_pp):.1f} 个百分点</b>，不足以覆盖手续费；"
+            f"{m['trades']} 笔已平仓交易合计 {realized:+,.2f} USDT，"
+            f"净值 {num(m['initial_capital'])} → {num(m['final_equity'])}（{pct(m['total_return'])}）。"
+        )
     period_label = f"近 {m['days']:.0f} 天" if is_short else "近一年"
     pf_now = m["profit_factor"]
-    verdict = "负期望" if pf_now < 1 and m["total_return"] < 0 else ("正期望" if pf_now > 1 and m["total_return"] > 0 else "盈亏比与收益背离")
+    if pf_now < 1 and m["total_return"] < 0:
+        verdict = "是<b>负期望</b>的"
+        verdict_short = "负期望"
+        verdict_cls = "red"
+    elif pf_now >= 1 and m["total_return"] >= 0:
+        verdict = "是<b>正期望</b>的"
+        verdict_short = "正期望"
+        verdict_cls = "green"
+    else:
+        verdict = "呈现<b>「已平仓盈利、净值被未平仓头寸拖累」的背离</b>"
+        verdict_short = "已平仓盈利但被持仓拖累"
+        verdict_cls = "amber"
     sample_note = (
         f"本报告仅 {m['days']:.0f} 天、{m['trades']} 笔，样本量小，统计噪声大，只能说明这一段行情的表现，不能外推成长期结论；"
         f"长期口径请对照近一年报告（1141 笔 / -66.51% / PF 0.83）。"
@@ -274,6 +302,17 @@ def build(data: dict, out_path: str) -> None:
         )
 
     win_rows = []
+    # 本期窗口若不在下面的参照窗口里（如 20 天报告），先补一行本报告主口径
+    if all(abs(m["days"] - d) > 2 for d in (30, 131, 365, 417)):
+        cls = "neg" if m["total_return"] < 0 else "pos"
+        win_rows.append(
+            f"<tr><td><b>本期（本报告）</b><div class='muted' style='font-size:12px'>{m['start_date']} ~ {m['end_date']}</div></td>"
+            f"<td class='r'>{m['days']:.0f}</td><td class='r'>{m['trades']}</td>"
+            f"<td class='r {cls}'><b>{pct(m['total_return'])}</b></td><td class='r'>{pct(m['cagr'])}</td>"
+            f"<td class='r'>{pct(m['mdd'])}</td><td class='r'>{m['sharpe']:.2f}</td>"
+            f"<td class='r'>{m['sortino']:.2f}</td><td class='r'>{m['calmar']:.2f}</td>"
+            f"<td class='r'>{pct(m['win_rate'],1)}</td><td class='r'>{m['profit_factor']:.2f}</td></tr>"
+        )
     for key, label in [("30d", "近 30 天"), ("131d", "近 131 天"), ("365d", "近 365 天"), ("full", "全样本 417 天")]:
         v = windows.get(key)
         if not v:
@@ -321,19 +360,18 @@ AlphaEvolve GP + Q-State · ETH-USDT-SWAP 永续 · 15m 信号 / 1m 止盈止损
 </div>
 
 <div style="margin:14px 0 0">
-<span class="tag red">净值 -{abs(m['total_return'])*100:.1f}%</span>
-<span class="tag red">盈亏比 {m['profit_factor']:.2f}（&lt; 1，负期望）</span>
+<span class="tag {'red' if m['total_return']<0 else 'green'}">净值 {m['total_return']*100:+.2f}%</span>
+<span class="tag {'red' if m['profit_factor']<1 else 'blue'}">盈亏比 PF {m['profit_factor']:.3f}（{'&lt; 1，负期望' if m['profit_factor']<1 else '≥ 1，已平仓口径为正'})</span>
 <span class="tag amber">保本需胜率 {be_win*100:.1f}%，实测 {m['win_rate']*100:.1f}%</span>
 <span class="tag blue">手续费吃掉 {m['fees_total']/m['initial_capital']*100:.0f}% 初始资金</span>
 </div>
 
 <div class="callout red">
-<b>结论先说：这套 Pine 口径的 007 策略在{period_label}的真实数据上是{verdict}的。</b>
+<b>结论先说：这套 Pine 口径的 007 策略在{period_label}的真实数据上{verdict}。</b>
 胜率看着很高（{pct(m['win_rate'],1)}，{wins_n} 胜 / {loss_n} 负），但单笔结构是「小赚大亏」：
 平均盈利 {num(m['avg_win'])} USDT、平均亏损 {num(m['avg_loss'])} USDT，赚一笔只有亏一笔的
-<b>{m['win_loss_ratio']:.2f} 倍</b>，因此需要 <b>{be_win*100:.1f}%</b> 的胜率才能保本。实测只有 {m['win_rate']*100:.1f}%，差值 {abs(be_win-m['win_rate'])*100:.1f} 个百分点，
-再叠加 {num(m['fees_total'],0)} USDT 手续费（累计名义成交额 {m['turnover_notional']/1e6:.2f} 百万 USDT，约等于初始资金的 {m['turnover_notional']/m['initial_capital']:.0f} 倍），
-{span_word}净值从 {num(m['initial_capital'])} 跌到 {num(m['final_equity'])}。
+<b>{m['win_loss_ratio']:.2f} 倍</b>，因此需要 <b>{be_win*100:.1f}%</b> 的胜率才能保本。{tail_sentence}
+（累计手续费 {num(m['fees_total'],0)} USDT，累计名义成交 {m['turnover_notional']/1e6:.2f} 百万 USDT ≈ 初始资金的 {m['turnover_notional']/m['initial_capital']:.0f} 倍）
 </div>
 
 <h2>零、手续费与成本口径</h2>
@@ -371,8 +409,9 @@ AlphaEvolve GP + Q-State · ETH-USDT-SWAP 永续 · 15m 信号 / 1m 止盈止损
 <b>盈亏比解读：</b>平均盈利单 <b class="pos">{num(m['avg_win'])} USDT</b> 只有平均亏损单
 <b class="neg">{num(m['avg_loss'])} USDT</b> 的 <b>{m['win_loss_ratio']:.2f} 倍</b>，
 Profit Factor = 总盈利 {num(m['avg_win']*wins_n,0)} / 总亏损 {num(gross_loss,0)} = <b class="neg">{m['profit_factor']:.3f}</b>。
-呈现出典型的 <b>「高频小赚 + 低频大亏」右偏收益、负期望</b> 特征：止盈只要 +0.90%，止损却是 -2.50%，
-赔率固定为 1 : 2.78，靠 {m['win_rate']*100:.1f}% 的胜率无法覆盖。
+呈现出典型的 <b>「高频小赚 + 低频大亏」</b> 结构：止盈只要 +0.90%，止损却是 -2.50%，赔率固定为 1 : 2.78。
+{'本窗口 PF ≥ 1，已平仓交易合计 <b class="pos">' + f"{realized:+,.2f}" + ' USDT</b>，胜率刚好越过保本线；' if m['profit_factor'] >= 1 else '靠 ' + f"{m['win_rate']*100:.1f}%" + ' 的胜率无法覆盖这一赔率；'}
+其中未平仓头寸浮盈亏 <b class="{'pos' if m.get('unrealized',0)>=0 else 'neg'}">{unreal:+,.2f} USDT</b> 计入期末权益。
 </div>
 
 <h3>权益曲线（{m['start_date']} ~ {m['end_date']}，逐 8 小时采样）</h3>

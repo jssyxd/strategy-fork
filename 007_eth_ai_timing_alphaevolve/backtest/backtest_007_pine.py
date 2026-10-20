@@ -350,6 +350,8 @@ def compute_metrics(res: dict, bars: list[dict]) -> dict:
         short_win=sum(1 for t in shorts if t["net_pnl"] > 0) / len(shorts) if shorts else 0.0,
         tp_count=sum(1 for t in trades if t["reason"] == "TP"),
         sl_count=sum(1 for t in trades if t["reason"] == "SL"),
+        realized_pnl=sum(t["net_pnl"] for t in trades),
+        unrealized=(res["open_at_end"] or {}).get("unrealized", 0.0),
         open_at_end=res["open_at_end"],
         daily=len(rets),
         daily_vol=(sd * math.sqrt(365)) if len(rets) >= 2 else float("nan"),
