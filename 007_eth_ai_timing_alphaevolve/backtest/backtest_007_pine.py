@@ -14,6 +14,7 @@
 from __future__ import annotations
 
 import argparse
+import bisect
 import csv
 import json
 import math
@@ -381,6 +382,8 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--csv", default="/tmp/eth15m_1y.csv")
     ap.add_argument("--days", type=int, default=365)
+    ap.add_argument("--start", default=None, help="起始日期 YYYY-MM-DD（UTC，含当天 00:00）")
+    ap.add_argument("--end", default=None, help="结束日期 YYYY-MM-DD（UTC，含当天 23:59）")
     ap.add_argument("--initial", type=float, default=10_000.0)
     ap.add_argument("--entry-fee", type=float, default=0.0005)
     ap.add_argument("--exit-fee", type=float, default=0.0005)
@@ -391,8 +394,21 @@ def main() -> None:
 
     bars = load_bars(args.csv)
     signals = compute_signals(bars)
-    end_idx = len(bars)
-    start_idx = max(0, end_idx - args.days * 96)
+    tss = [b["ts"] for b in bars]
+    if args.end:
+        end_ms = int((datetime.strptime(args.end, "%Y-%m-%d") + timedelta(days=1))
+                     .replace(tzinfo=timezone.utc).timestamp() * 1000)
+        end_idx = bisect.bisect_left(tss, end_ms)
+    else:
+        end_idx = len(bars)
+    if args.start:
+        start_ms = int(datetime.strptime(args.start, "%Y-%m-%d")
+                       .replace(tzinfo=timezone.utc).timestamp() * 1000)
+        start_idx = bisect.bisect_left(tss, start_ms)
+    else:
+        start_idx = max(0, end_idx - args.days * 96)
+    if start_idx >= end_idx:
+        raise SystemExit(f"窗口为空: start_idx={start_idx} end_idx={end_idx}")
 
     main_run = run_window(
         bars, signals, start_idx, end_idx,

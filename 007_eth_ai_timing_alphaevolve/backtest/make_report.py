@@ -355,7 +355,7 @@ def build(data: dict, out_path: str) -> None:
 <h1>007 ETH AI 择时策略 · 回测报告<span style="font-size:15px;color:var(--dim);font-weight:400"> · {m["start_date"]} ~ {m["end_date"]}（{m["days"]:.0f} 天）</span></h1>
 <div class="sub">
 AlphaEvolve GP + Q-State · ETH-USDT-SWAP 永续 · 15m 信号 / 1m 止盈止损巡检 ·
-回测区间 <b>{m['start_date']} ~ {m['end_date']}</b>（{m['days']:.0f} 天，{m['bars']:,} 根 15m K 线）<br>
+回测区间 <b>{m['start_date']} 00:00 ~ {m['end_date']} 23:59 UTC</b>（{m['days']:.0f} 天，{m['bars']:,} 根 15m K 线）<br>
 信号实现与线上 <code>smc_eth_007_live.py</code> 为同一份代码 · 报告生成于 {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}
 </div>
 
