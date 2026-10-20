@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>007 ETH AlphaEvolve 15m 回测报告（近一年）</title>
+<title>007 ETH AlphaEvolve 15m 回测报告（2025-10-20 ~ 2026-10-20）</title>
 <style>
 :root{--bg:#0d1117;--panel:#161b22;--border:#21262d;--text:#c9d1d9;--dim:#8b949e;--blue:#58a6ff;
 --green:#3fb950;--red:#f85149;--amber:#d29922;--purple:#bc8cff}
@@ -38,11 +38,11 @@ code{background:#12171f;padding:1px 5px;border-radius:4px;font-size:12.5px;color
 ul{margin:6px 0 6px 18px;padding:0} li{margin:3px 0}
 </style></head><body><div class="wrap">
 
-<h1>007 ETH AI 择时策略 · 回测报告</h1>
+<h1>007 ETH AI 择时策略 · 回测报告<span style="font-size:15px;color:var(--dim);font-weight:400"> · 2025-10-20 ~ 2026-10-20（365 天）</span></h1>
 <div class="sub">
 AlphaEvolve GP + Q-State · ETH-USDT-SWAP 永续 · 15m 信号 / 1m 止盈止损巡检 ·
 回测区间 <b>2025-10-20 ~ 2026-10-20</b>（365 天，35,040 根 15m K 线）<br>
-信号实现与线上 <code>smc_eth_007_live.py</code> 为同一份代码 · 报告生成于 2026-10-20 09:42 UTC
+信号实现与线上 <code>smc_eth_007_live.py</code> 为同一份代码 · 报告生成于 2026-10-20 09:45 UTC
 </div>
 
 <div style="margin:14px 0 0">
@@ -53,11 +53,11 @@ AlphaEvolve GP + Q-State · ETH-USDT-SWAP 永续 · 15m 信号 / 1m 止盈止损
 </div>
 
 <div class="callout red">
-<b>结论先说：这套 Pine 口径的 007 策略在近一年真实数据上是负期望的。</b>
+<b>结论先说：这套 Pine 口径的 007 策略在近一年的真实数据上是负期望的。</b>
 胜率看着很高（73.8%，842 胜 / 299 负），但单笔结构是「小赚大亏」：
 平均盈利 38.55 USDT、平均亏损 130.62 USDT，赚一笔只有亏一笔的
 <b>0.30 倍</b>，因此需要 <b>77.2%</b> 的胜率才能保本。实测只有 73.8%，差值 3.4 个百分点，
-再叠加 5,559 USDT 手续费（累计名义成交额 11.1 百万 USDT，约等于初始资金的 1112 倍），
+再叠加 5,559 USDT 手续费（累计名义成交额 11.12 百万 USDT，约等于初始资金的 1112 倍），
 一年下来净值从 10,000.00 跌到 3,348.91。
 </div>
 
@@ -73,7 +73,7 @@ AlphaEvolve GP + Q-State · ETH-USDT-SWAP 永续 · 15m 信号 / 1m 止盈止损
 <tr><td>仓位口径</td><td>首仓 50% / 加仓 75%</td><td class="r">均按「可用现金 × 比例」的名义价值，峰值 87.5% 权益（占 10x 保证金 8.75%）</td></tr>
 <tr><td>累计手续费</td><td class="neg">5,558.93 USDT</td><td class="r">= 初始资金的 55.6% · 累计名义成交 11.12M USDT</td></tr>
 <tr><td>滑点</td><td>主口径 0 bp</td><td class="r">另列 2bp / 5bp 敏感性（见下）</td></tr>
-<tr><td>资金费率</td><td class="muted">未计入</td><td class="r">平均持仓 7.1h，估算影响约 493 USDT/年（约初始资金 4.9%），符号随多空与费率方向变化</td></tr>
+<tr><td>资金费率</td><td class="muted">未计入</td><td class="r">平均持仓 7.1h，估算影响约 493 USDT（每年，约初始资金 4.9%），符号随多空与费率方向变化</td></tr>
 </table>
 </div>
 
@@ -117,7 +117,7 @@ Profit Factor = 总盈利 32,461 / 总亏损 39,056 = <b class="neg">0.831</b>�
 <th class="r">胜率</th><th class="r">PF</th></tr>
 <tr><td>近 30 天<div class='muted' style='font-size:12px'>2026-09-20 ~ 2026-10-20</div></td><td class='r'>30</td><td class='r'>60</td><td class='r neg'>-4.61%</td><td class='r'>-43.67%</td><td class='r'>12.50%</td><td class='r'>-1.34</td><td class='r'>-1.82</td><td class='r'>-3.49</td><td class='r'>75.0%</td><td class='r'>0.91</td></tr><tr><td>近 131 天<div class='muted' style='font-size:12px'>2026-06-11 ~ 2026-10-20</div></td><td class='r'>131</td><td class='r'>280</td><td class='r neg'>-19.19%</td><td class='r'>-44.78%</td><td class='r'>27.38%</td><td class='r'>-1.64</td><td class='r'>-2.22</td><td class='r'>-1.64</td><td class='r'>74.3%</td><td class='r'>0.87</td></tr><tr><td>近 365 天<div class='muted' style='font-size:12px'>2025-10-20 ~ 2026-10-20</div></td><td class='r'>365</td><td class='r'>1141</td><td class='r neg'>-66.51%</td><td class='r'>-66.51%</td><td class='r'>70.78%</td><td class='r'>-2.67</td><td class='r'>-3.39</td><td class='r'>-0.94</td><td class='r'>73.8%</td><td class='r'>0.83</td></tr><tr><td>全样本 417 天<div class='muted' style='font-size:12px'>2025-08-29 ~ 2026-10-20</div></td><td class='r'>417</td><td class='r'>1295</td><td class='r neg'>-68.26%</td><td class='r'>-63.41%</td><td class='r'>70.91%</td><td class='r'>-2.43</td><td class='r'>-3.11</td><td class='r'>-0.89</td><td class='r'>73.9%</td><td class='r'>0.85</td></tr>
 </table>
-<div class="muted" style="margin-top:8px">注：近 30 天与近 131 天同样为负，说明亏损不是单一行情窗口造成的，而是交易结构（赔率 1:2.78 + 高换手手续费）在全样本上稳定输钱。</div>
+<div class="muted" style="margin-top:8px">注：近 30 天与近 131 天、近 365 天同样为负，说明亏损不是单一行情窗口造成的，而是交易结构（赔率 1:2.78 + 高换手手续费）在全样本上稳定输钱。</div>
 </div>
 
 <h2>三、成本敏感性</h2>
@@ -128,7 +128,7 @@ Profit Factor = 总盈利 32,461 / 总亏损 39,056 = <b class="neg">0.831</b>�
 </table>
 <div class="muted" style="margin-top:8px">
 零手续费时 PF 0.975、收益 -15.67% —— 说明
-<b>信号本身接近零期望（略负）</b>，而 5,559 USDT 手续费把接近打平的策略放大成 -67%。
+<b>信号本身接近零期望（略负）</b>，而 5,559 USDT 手续费把接近打平的策略拖成 -66.51%。
 换手率是核心问题：一年 1141 笔、平均每笔名义 4,873 USDT，累计名义成交 11.12M USDT。
 </div>
 </div>

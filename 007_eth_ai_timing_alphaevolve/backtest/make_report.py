@@ -102,7 +102,7 @@ def line_chart(points, w, h, pad_l=70, pad_r=24, pad_t=20, pad_b=34, baseline=No
     return "".join(out)
 
 
-def bar_chart(items, w, h, pad_l=60, pad_r=16, pad_t=16, pad_b=46) -> str:
+def bar_chart(items, w, h, pad_l=60, pad_r=16, pad_t=16, pad_b=46, label_every=1, value_labels=None) -> str:
     """items: [(label, value)]，正绿负红。"""
     if not items:
         return ""
@@ -134,8 +134,10 @@ def bar_chart(items, w, h, pad_l=60, pad_r=16, pad_t=16, pad_b=46) -> str:
         top, bot = (y, y0) if v >= 0 else (y0, y)
         color = "#3fb950" if v >= 0 else "#f85149"
         out.append(f'<rect x="{cx-bw/2:.1f}" y="{top:.1f}" width="{bw:.1f}" height="{max(1,bot-top):.1f}" fill="{color}" rx="2"/>')
-        if len(items) <= 16:
+        if i % max(1, label_every) == 0 or i == len(items) - 1:
             out.append(f'<text x="{cx:.1f}" y="{h-26}" class="ax" text-anchor="middle">{label}</text>')
+        show_val = value_labels if value_labels is not None else (len(items) <= 16)
+        if show_val:
             out.append(f'<text x="{cx:.1f}" y="{(top-4) if v>=0 else (bot+12):.1f}" class="ax" text-anchor="middle" fill="{color}">{v*100:.1f}</text>')
     out.append(f'<line x1="{pad_l}" y1="{y0:.1f}" x2="{w-pad_r}" y2="{y0:.1f}" stroke="#484f58"/>')
     out.append("</svg>")
@@ -204,13 +206,52 @@ def build(data: dict, out_path: str) -> None:
     be_win = m["avg_loss"] / (m["avg_loss"] + m["avg_win"]) if (m["avg_loss"] + m["avg_win"]) else 0
     funding_est = m["avg_hold_hours"] / 8.0 * 0.0001 * m["avg_notional"] * m["trades"]
     open_pos = m.get("open_at_end") or {}
+    is_short = m["days"] <= 45
+    period_word = "本期" if is_short else "一年"
+    span_word = "回测期内" if is_short else "一年下来"
+    period_label = f"近 {m['days']:.0f} 天" if is_short else "近一年"
+    pf_now = m["profit_factor"]
+    verdict = "负期望" if pf_now < 1 and m["total_return"] < 0 else ("正期望" if pf_now > 1 and m["total_return"] > 0 else "盈亏比与收益背离")
+    sample_note = (
+        f"本报告仅 {m['days']:.0f} 天、{m['trades']} 笔，样本量小，统计噪声大，只能说明这一段行情的表现，不能外推成长期结论；"
+        f"长期口径请对照近一年报告（1141 笔 / -66.51% / PF 0.83）。"
+        if is_short else
+        "一年期样本只覆盖一轮牛熊切换，不代表未来；策略本身按 README 建议应每季度重训。"
+    )
 
     svg_eq = line_chart(eq_sparse, 1100, 330, baseline=m["initial_capital"],
                         color="#f85149" if m["total_return"] < 0 else "#3fb950",
                         fill="rgba(248,81,73,0.08)" if m["total_return"] < 0 else "rgba(63,185,80,0.10)")
     svg_dd = line_chart(drawdown_series(daily), 1100, 220, color="#d29922",
                         fill="rgba(210,153,34,0.12)", y_fmt=lambda v: f"{v*100:.0f}%")
-    svg_month = bar_chart(monthly, 1100, 240)
+    daily_rets = []
+    for i in range(1, len(daily)):
+        prev = daily[i - 1][1]
+        if prev > 0:
+            daily_rets.append((daily[i][0], daily[i][1] / prev - 1))
+    if m["days"] <= 45 and daily_rets:
+        svg_month = bar_chart(
+            [(ts_date(ts)[5:], r) for ts, r in daily_rets], 1100, 260,
+            label_every=max(1, len(daily_rets) // 8), value_labels=len(daily_rets) <= 16,
+        )
+        period_title = f"每日收益（{len(daily_rets)} 个自然日，UTC 收盘结算）"
+        period_note = ""
+    else:
+        svg_month = bar_chart(monthly, 1100, 240)
+        period_title = "月度收益"
+        period_note = ""
+
+    # 短窗口的统计显著性提示
+    if m["days"] <= 45 and len(daily_rets) > 2:
+        mean_r = sum(r for _, r in daily_rets) / len(daily_rets)
+        var = sum((r - mean_r) ** 2 for _, r in daily_rets) / (len(daily_rets) - 1)
+        sd_r = math.sqrt(var)
+        se_sharpe = 1.0 / math.sqrt(max(1, len(daily_rets))) * math.sqrt(365)
+        sig_note = (f"本报告只有 {len(daily_rets)} 个日收益样本：年化 Sharpe 的抽样标准误约 ±{se_sharpe:.2f}，"
+                    f"因此 Sharpe {m['sharpe']:.2f} 在统计上<b>不显著</b>；Calmar 与 CAGR 同样受样本长度制约，"
+                    f"只能作为方向参考，不能当作年化业绩。")
+    else:
+        sig_note = ""
 
     var_rows = []
     for key, label, note in [
@@ -269,10 +310,10 @@ def build(data: dict, out_path: str) -> None:
     html = f"""<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>007 ETH AlphaEvolve 15m 回测报告（近一年）</title>
+<title>007 ETH AlphaEvolve 15m 回测报告（{m["start_date"]} ~ {m["end_date"]}）</title>
 <style>{CSS}</style></head><body><div class="wrap">
 
-<h1>007 ETH AI 择时策略 · 回测报告</h1>
+<h1>007 ETH AI 择时策略 · 回测报告<span style="font-size:15px;color:var(--dim);font-weight:400"> · {m["start_date"]} ~ {m["end_date"]}（{m["days"]:.0f} 天）</span></h1>
 <div class="sub">
 AlphaEvolve GP + Q-State · ETH-USDT-SWAP 永续 · 15m 信号 / 1m 止盈止损巡检 ·
 回测区间 <b>{m['start_date']} ~ {m['end_date']}</b>（{m['days']:.0f} 天，{m['bars']:,} 根 15m K 线）<br>
@@ -287,12 +328,12 @@ AlphaEvolve GP + Q-State · ETH-USDT-SWAP 永续 · 15m 信号 / 1m 止盈止损
 </div>
 
 <div class="callout red">
-<b>结论先说：这套 Pine 口径的 007 策略在近一年真实数据上是负期望的。</b>
+<b>结论先说：这套 Pine 口径的 007 策略在{period_label}的真实数据上是{verdict}的。</b>
 胜率看着很高（{pct(m['win_rate'],1)}，{wins_n} 胜 / {loss_n} 负），但单笔结构是「小赚大亏」：
 平均盈利 {num(m['avg_win'])} USDT、平均亏损 {num(m['avg_loss'])} USDT，赚一笔只有亏一笔的
-<b>{m['win_loss_ratio']:.2f} 倍</b>，因此需要 <b>{be_win*100:.1f}%</b> 的胜率才能保本。实测只有 {m['win_rate']*100:.1f}%，差值 3.4 个百分点，
-再叠加 {num(m['fees_total'],0)} USDT 手续费（累计名义成交额 {m['turnover_notional']/1e6:.1f} 百万 USDT，约等于初始资金的 {m['turnover_notional']/m['initial_capital']:.0f} 倍），
-一年下来净值从 {num(m['initial_capital'])} 跌到 {num(m['final_equity'])}。
+<b>{m['win_loss_ratio']:.2f} 倍</b>，因此需要 <b>{be_win*100:.1f}%</b> 的胜率才能保本。实测只有 {m['win_rate']*100:.1f}%，差值 {abs(be_win-m['win_rate'])*100:.1f} 个百分点，
+再叠加 {num(m['fees_total'],0)} USDT 手续费（累计名义成交额 {m['turnover_notional']/1e6:.2f} 百万 USDT，约等于初始资金的 {m['turnover_notional']/m['initial_capital']:.0f} 倍），
+{span_word}净值从 {num(m['initial_capital'])} 跌到 {num(m['final_equity'])}。
 </div>
 
 <h2>零、手续费与成本口径</h2>
@@ -307,7 +348,7 @@ AlphaEvolve GP + Q-State · ETH-USDT-SWAP 永续 · 15m 信号 / 1m 止盈止损
 <tr><td>仓位口径</td><td>首仓 50% / 加仓 75%</td><td class="r">均按「可用现金 × 比例」的名义价值，峰值 87.5% 权益（占 10x 保证金 8.75%）</td></tr>
 <tr><td>累计手续费</td><td class="neg">{num(m['fees_total'])} USDT</td><td class="r">= 初始资金的 {m['fees_total']/m['initial_capital']*100:.1f}% · 累计名义成交 {m['turnover_notional']/1e6:.2f}M USDT</td></tr>
 <tr><td>滑点</td><td>主口径 0 bp</td><td class="r">另列 2bp / 5bp 敏感性（见下）</td></tr>
-<tr><td>资金费率</td><td class="muted">未计入</td><td class="r">平均持仓 {m['avg_hold_hours']:.1f}h，估算影响约 {funding_est:,.0f} USDT/年（约初始资金 {funding_est/m['initial_capital']*100:.1f}%），符号随多空与费率方向变化</td></tr>
+<tr><td>资金费率</td><td class="muted">未计入</td><td class="r">平均持仓 {m['avg_hold_hours']:.1f}h，估算影响约 {funding_est:,.0f} USDT（{"本期" if is_short else "每年"}，约初始资金 {funding_est/m['initial_capital']*100:.1f}%），符号随多空与费率方向变化</td></tr>
 </table>
 </div>
 
@@ -340,7 +381,7 @@ Profit Factor = 总盈利 {num(m['avg_win']*wins_n,0)} / 总亏损 {num(gross_lo
 <h3>回撤曲线（日频，峰值回撤 {pct(m['mdd'])}，{m['mdd_start']} → {m['mdd_end']}）</h3>
 {svg_dd}
 
-<h3>月度收益</h3>
+<h3>{period_title}</h3>
 {svg_month}
 
 <h2>二、分窗口表现</h2>
@@ -351,7 +392,7 @@ Profit Factor = 总盈利 {num(m['avg_win']*wins_n,0)} / 总亏损 {num(gross_lo
 <th class="r">胜率</th><th class="r">PF</th></tr>
 {''.join(win_rows)}
 </table>
-<div class="muted" style="margin-top:8px">注：近 30 天与近 131 天同样为负，说明亏损不是单一行情窗口造成的，而是交易结构（赔率 1:2.78 + 高换手手续费）在全样本上稳定输钱。</div>
+<div class="muted" style="margin-top:8px">注：近 30 天与近 131 天、近 365 天同样为负，说明亏损不是单一行情窗口造成的，而是交易结构（赔率 1:2.78 + 高换手手续费）在全样本上稳定输钱。{sig_note}</div>
 </div>
 
 <h2>三、成本敏感性</h2>
@@ -362,8 +403,8 @@ Profit Factor = 总盈利 {num(m['avg_win']*wins_n,0)} / 总亏损 {num(gross_lo
 </table>
 <div class="muted" style="margin-top:8px">
 零手续费时 PF {variants['zero_fee']['profit_factor']:.3f}、收益 {pct(variants['zero_fee']['total_return'])} —— 说明
-<b>信号本身接近零期望（略负）</b>，而 {num(m['fees_total'],0)} USDT 手续费把接近打平的策略放大成 -{abs(m['total_return'])*100:.0f}%。
-换手率是核心问题：一年 {m['trades']} 笔、平均每笔名义 {num(m['avg_notional'],0)} USDT，累计名义成交 {m['turnover_notional']/1e6:.2f}M USDT。
+<b>信号本身接近零期望（{"本窗口略正" if variants['zero_fee']['total_return']>0 else "略负"}）</b>，而 {num(m['fees_total'],0)} USDT 手续费把接近打平的策略拖成 {pct(m['total_return'])}。
+换手率是核心问题：{period_word} {m['trades']} 笔、平均每笔名义 {num(m['avg_notional'],0)} USDT，累计名义成交 {m['turnover_notional']/1e6:.2f}M USDT。
 </div>
 </div>
 
@@ -429,7 +470,7 @@ OKX 的 15m K 线接口只给 open/high/low/close/vol/volCcy/volCcyQuote，<b>�
 <b>未纳入</b>
 <ul>
 <li>资金费率（估算量级见上表）、交易所强平/保证金不足、极端行情下的滑点跳变、下单拒单与网络延迟。</li>
-<li>一年期样本只覆盖一轮牛熊切换，不代表未来；策略本身按 README 建议应每季度重训。</li>
+<li>{sample_note}</li>
 </ul>
 </div>
 
