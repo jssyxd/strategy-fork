@@ -80,7 +80,9 @@
 007_eth_ai_timing_alphaevolve/
 ├── README.md                              # 本策略完整架构哲学、更新治理与部署说明
 ├── ETH_AI_Timing_AlphaEvolve_15m.pine     # TradingView 15m 策略源码 (直接挂接 OKX Webhook)
-├── nautilus_eth_strategy_15m.py           # Nautilus Trader 事件驱动引擎生产级实现
+├── nautilus_eth_strategy_15m.py           # ⚠️ 桩代码(55行)：BINANCE 交易对、只打日志从不下单、无出场逻辑
+├── smc_eth_007_live.py                    # ✅ OKX 永续执行器(可跑模拟盘/实盘)：15m信号 + 1m巡检止盈止损
+├── okx_007_probe.py                       # 上线前凭证/账户只读探针（不下单）
 ├── engine/
 │   ├── run_full_alphaevolve_pipeline.py   # AlphaEvolve JIT 向量化遗传规划全流程演化脚本
 │   └── alpha_evolve_15m_refactor.py       # 3个不同维度的演化对比与验证引擎
