@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>007 ETH AlphaEvolve 15m 回测报告（2026-10-04 ~ 2026-10-18）</title>
+<style>
+:root{--bg:#0d1117;--panel:#161b22;--border:#21262d;--text:#c9d1d9;--dim:#8b949e;--blue:#58a6ff;
+--green:#3fb950;--red:#f85149;--amber:#d29922;--purple:#bc8cff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.65 -apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 22px 80px}
+h1{font-size:26px;margin:0 0 6px;color:#f0f6fc;font-weight:650}
+h2{font-size:18px;margin:38px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:#f0f6fc;font-weight:600}
+h3{font-size:15px;margin:22px 0 8px;color:var(--blue);font-weight:600}
+.sub{color:var(--dim);font-size:13px}
+.tag{display:inline-block;padding:2px 9px;border-radius:11px;font-size:12px;margin-right:6px;border:1px solid}
+.tag.red{color:var(--red);border-color:rgba(248,81,73,.4);background:rgba(248,81,73,.1)}
+.tag.amber{color:var(--amber);border-color:rgba(210,153,34,.4);background:rgba(210,153,34,.1)}
+.tag.blue{color:var(--blue);border-color:rgba(88,166,255,.4);background:rgba(88,166,255,.1)}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:14px 0}
+.callout{border-left:3px solid;border-radius:6px;padding:12px 16px;margin:14px 0;background:var(--panel)}
+.callout.red{border-color:var(--red)} .callout.amber{border-color:var(--amber)} .callout.blue{border-color:var(--blue)}
+.callout b{color:#f0f6fc}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0 2px}
+th,td{padding:7px 10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+th{color:var(--dim);font-weight:600;background:#12171f;position:sticky;top:0}
+tr:hover td{background:#1b212b}
+td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
+.pos{color:var(--green)} .neg{color:var(--red)} .muted{color:var(--dim)}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:10px;margin:8px 0}
+.kv .box{background:#12171f;border:1px solid var(--border);border-radius:8px;padding:11px 13px}
+.kv .k{color:var(--dim);font-size:12px;margin-bottom:3px}
+.kv .v{font-size:19px;font-weight:600;font-variant-numeric:tabular-nums}
+.chart{width:100%;height:auto;display:block;margin:4px 0 2px}
+.ax{fill:var(--dim);font-size:11px;font-variant-numeric:tabular-nums}
+.scroll{max-height:520px;overflow:auto;border:1px solid var(--border);border-radius:8px}
+table.feetbl td:first-child,table.feetbl th:first-child{white-space:nowrap;width:1%}
+table.feetbl td:nth-child(2),table.feetbl th:nth-child(2){white-space:nowrap;width:1%}
+code{background:#12171f;padding:1px 5px;border-radius:4px;font-size:12.5px;color:var(--purple)}
+.foot{margin-top:46px;padding-top:16px;border-top:1px solid var(--border);color:var(--dim);font-size:12px}
+ul{margin:6px 0 6px 18px;padding:0} li{margin:3px 0}
+</style></head><body><div class="wrap">
+
+<h1>007 ETH AI 择时策略 · 回测报告<span style="font-size:15px;color:var(--dim);font-weight:400"> · 2026-10-04 ~ 2026-10-18（15 天）</span></h1>
+<div class="sub">
+AlphaEvolve GP + Q-State · ETH-USDT-SWAP 永续 · 15m 信号 / 1m 止盈止损巡检 ·
+回测区间 <b>2026-10-04 00:00 ~ 2026-10-18 23:59 UTC</b>（15 天，1,440 根 15m K 线）<br>
+信号实现与线上 <code>smc_eth_007_live.py</code> 为同一份代码 · 报告生成于 2026-10-20 10:05 UTC
+</div>
+
+<div style="margin:14px 0 0">
+<span class="tag green">净值 +5.53%</span>
+<span class="tag blue">盈亏比 PF 1.340（≥ 1，已平仓口径为正)</span>
+<span class="tag amber">保本需胜率 75.6%，实测 80.6%</span>
+<span class="tag blue">手续费吃掉 1% 初始资金</span>
+</div>
+
+<div class="callout red">
+<b>结论先说：这套 Pine 口径的 007 策略在近 15 天的真实数据上是<b>正期望</b>的。</b>
+胜率看着很高（80.6%，29 胜 / 7 负），但单笔结构是「小赚大亏」：
+平均盈利 75.02 USDT、平均亏损 232.01 USDT，赚一笔只有亏一笔的
+<b>0.32 倍</b>，因此需要 <b>75.6%</b> 的胜率才能保本。实测 80.56%，<b>高出保本线 5.0 个百分点</b>，36 笔已平仓交易合计 +551.40 USDT。但期末仍有 1 笔未平仓头寸浮亏 3.18 USDT，净值因此为 5.53%。
+（累计手续费 128 USDT，累计名义成交 0.63 百万 USDT ≈ 初始资金的 63 倍）
+</div>
+
+<h2>零、手续费与成本口径</h2>
+<div class="card">
+<table class="feetbl">
+<tr><th>项目</th><th>取值</th><th class="r">说明</th></tr>
+<tr><td>Maker 费率</td><td>0.02%（2 bp）</td><td class="r">限价单挂单成交；本策略<b>未</b>使用（全为市价单）</td></tr>
+<tr><td>Taker 费率</td><td><b>0.02%（2 bp）</b></td><td class="r">市价单吃单；<b>本次主口径按指定费率</b>（OKX 该账户 <code>/account/trade-fee</code> 实查为标准 maker 0.02% / taker 0.05%，本报告按指定 2bp 计，并在成本敏感性表里给出 5bp 对照）</td></tr>
+<tr><td>计费基数</td><td>开仓 / 平仓<b>名义价值</b></td><td class="r">名义价值 = 张数 × ctVal（0.1 ETH）× 成交价</td></tr>
+<tr><td>杠杆关系</td><td>10x 全仓（cross）</td><td class="r">保证金 = 名义价值 / 10；<b>手续费按名义价值算，不按保证金算</b></td></tr>
+<tr><td>单笔示例</td><td>名义 5,000 USDT</td><td class="r">开仓 taker = 5,000 × 0.02% = <b>1.00 USDT</b>；开平一轮 = 2.00 USDT（保证金仅 500 USDT，占保证金 0.2%）</td></tr>
+<tr><td>仓位口径</td><td>首仓 50% / 加仓 75%</td><td class="r">均按「可用现金 × 比例」的名义价值，峰值 87.5% 权益（占 10x 保证金 8.75%）</td></tr>
+<tr><td>累计手续费</td><td class="neg">128.50 USDT</td><td class="r">= 初始资金的 1.3% · 累计名义成交 0.63M USDT</td></tr>
+<tr><td>滑点</td><td>主口径 0 bp</td><td class="r">另列 2bp / 5bp 敏感性（见下）</td></tr>
+<tr><td>资金费率</td><td class="muted">未计入</td><td class="r">平均持仓 9.5h，估算影响约 38 USDT（本期，约初始资金 0.4%），符号随多空与费率方向变化</td></tr>
+</table>
+</div>
+
+<h2>一、综合业绩基准指标</h2>
+<div class="kv">
+  <div class="box"><div class="k">交易起止日期</div><div class="v" style="font-size:15px">2026-10-04 ~ 2026-10-18</div></div>
+  <div class="box"><div class="k">初始资金</div><div class="v">10,000.00 <span style="font-size:12px" class="muted">USDT</span></div></div>
+  <div class="box"><div class="k">期末资金</div><div class="v neg">10,552.73 <span style="font-size:12px" class="muted">USDT</span></div></div>
+  <div class="box"><div class="k">累计总收益率</div><div class="v neg">5.53%</div></div>
+  <div class="box"><div class="k">年化复合收益率 (CAGR)</div><div class="v neg">270.63%</div></div>
+  <div class="box"><div class="k">最大历史回撤 (Max DD)</div><div class="v neg">3.44%</div></div>
+  <div class="box"><div class="k">夏普比率 (Sharpe, 年化)</div><div class="v neg">5.00</div></div>
+  <div class="box"><div class="k">索提诺比率 (Sortino)</div><div class="v neg">10.21</div></div>
+  <div class="box"><div class="k">卡尔玛比率 (Calmar)</div><div class="v neg">78.65</div></div>
+  <div class="box"><div class="k">交易总笔数</div><div class="v">36 <span style="font-size:12px" class="muted">笔（期末仍有 1 笔持仓）</span></div></div>
+  <div class="box"><div class="k">平均胜率 (Win Rate)</div><div class="v">80.56%</div></div>
+  <div class="box"><div class="k">盈亏比 (Profit Factor)</div><div class="v neg">1.340</div></div>
+</div>
+<div class="card">
+<b>盈亏比解读：</b>平均盈利单 <b class="pos">75.02 USDT</b> 只有平均亏损单
+<b class="neg">232.01 USDT</b> 的 <b>0.32 倍</b>，
+Profit Factor = 总盈利 2,175 / 总亏损 1,624 = <b class="neg">1.340</b>。
+呈现出典型的 <b>「高频小赚 + 低频大亏」</b> 结构：止盈只要 +0.90%，止损却是 -2.50%，赔率固定为 1 : 2.78。
+本窗口 PF ≥ 1，已平仓交易合计 <b class="pos">+551.40 USDT</b>，胜率刚好越过保本线；
+其中未平仓头寸浮盈亏 <b class="pos">+3.18 USDT</b> 计入期末权益。
+</div>
+
+<h3>权益曲线（2026-10-04 ~ 2026-10-18，逐 8 小时采样）</h3>
+<svg viewBox="0 0 1100 330" class="chart" xmlns="http://www.w3.org/2000/svg"><line x1="70" y1="231.0" x2="1076" y2="231.0" stroke="#21262d"/><text x="62" y="235.0" class="ax" text-anchor="end">10,000</text><line x1="70" y1="158.9" x2="1076" y2="158.9" stroke="#21262d"/><text x="62" y="162.9" class="ax" text-anchor="end">10,250</text><line x1="70" y1="86.7" x2="1076" y2="86.7" stroke="#21262d"/><text x="62" y="90.7" class="ax" text-anchor="end">10,500</text><text x="70.0" y="320" class="ax" text-anchor="start">2026-10-04</text><text x="271.2" y="320" class="ax" text-anchor="middle">2026-10-06</text><text x="472.4" y="320" class="ax" text-anchor="middle">2026-10-09</text><text x="673.6" y="320" class="ax" text-anchor="middle">2026-10-12</text><text x="874.8" y="320" class="ax" text-anchor="middle">2026-10-15</text><text x="1076.0" y="320" class="ax" text-anchor="end">2026-10-18</text><line x1="70" y1="231.0" x2="1076" y2="231.0" stroke="#8b949e" stroke-dasharray="4 4" stroke-width="1"/><text x="1072" y="225.0" class="ax" text-anchor="end" fill="#8b949e">初始 10,000</text><path d="M70.0,231.0 L92.9,220.5 L115.7,222.7 L138.6,212.4 L161.5,205.6 L184.3,238.2 L207.2,223.1 L230.0,225.1 L252.9,230.0 L275.8,236.2 L298.6,277.0 L321.5,243.4 L344.4,220.7 L367.2,218.3 L390.1,130.6 L413.0,187.9 L435.8,179.6 L458.7,180.7 L481.5,184.0 L504.4,176.6 L527.3,162.8 L550.1,164.4 L573.0,171.2 L595.9,153.4 L618.7,150.1 L641.6,125.6 L664.5,153.5 L687.3,107.7 L710.2,121.1 L733.0,140.1 L755.9,153.0 L778.8,137.5 L801.6,177.2 L824.5,164.0 L847.4,117.8 L870.2,62.5 L893.1,50.2 L916.0,39.0 L938.8,64.0 L961.7,103.9 L984.5,117.8 L1007.4,92.4 L1030.3,81.2 L1053.1,89.3 L1076.0,50.4 L1076.0,296.0 L70.0,296.0 Z" fill="rgba(63,185,80,0.10)" stroke="none"/><path d="M70.0,231.0 L92.9,220.5 L115.7,222.7 L138.6,212.4 L161.5,205.6 L184.3,238.2 L207.2,223.1 L230.0,225.1 L252.9,230.0 L275.8,236.2 L298.6,277.0 L321.5,243.4 L344.4,220.7 L367.2,218.3 L390.1,130.6 L413.0,187.9 L435.8,179.6 L458.7,180.7 L481.5,184.0 L504.4,176.6 L527.3,162.8 L550.1,164.4 L573.0,171.2 L595.9,153.4 L618.7,150.1 L641.6,125.6 L664.5,153.5 L687.3,107.7 L710.2,121.1 L733.0,140.1 L755.9,153.0 L778.8,137.5 L801.6,177.2 L824.5,164.0 L847.4,117.8 L870.2,62.5 L893.1,50.2 L916.0,39.0 L938.8,64.0 L961.7,103.9 L984.5,117.8 L1007.4,92.4 L1030.3,81.2 L1053.1,89.3 L1076.0,50.4" fill="none" stroke="#3fb950" stroke-width="1.8"/></svg>
+
+<h3>回撤曲线（日频，峰值回撤 3.44%，2026-10-16 → 2026-10-17）</h3>
+<svg viewBox="0 0 1100 220" class="chart" xmlns="http://www.w3.org/2000/svg"><line x1="70" y1="158.7" x2="1076" y2="158.7" stroke="#21262d"/><text x="62" y="162.7" class="ax" text-anchor="end">-2%</text><line x1="70" y1="116.3" x2="1076" y2="116.3" stroke="#21262d"/><text x="62" y="120.3" class="ax" text-anchor="end">-1%</text><line x1="70" y1="73.9" x2="1076" y2="73.9" stroke="#21262d"/><text x="62" y="77.9" class="ax" text-anchor="end">-0%</text><line x1="70" y1="31.4" x2="1076" y2="31.4" stroke="#21262d"/><text x="62" y="35.4" class="ax" text-anchor="end">0%</text><text x="70.0" y="210" class="ax" text-anchor="start">2026-10-04</text><text x="271.2" y="210" class="ax" text-anchor="middle">2026-10-06</text><text x="472.4" y="210" class="ax" text-anchor="middle">2026-10-09</text><text x="673.6" y="210" class="ax" text-anchor="middle">2026-10-12</text><text x="874.8" y="210" class="ax" text-anchor="middle">2026-10-15</text><text x="1076.0" y="210" class="ax" text-anchor="end">2026-10-18</text><path d="M70.0,31.4 L141.9,77.8 L213.7,111.2 L285.6,67.1 L357.4,31.4 L429.3,40.0 L501.1,31.4 L573.0,31.4 L644.9,31.4 L716.7,162.5 L788.6,157.4 L860.4,31.4 L932.3,174.6 L1004.1,110.8 L1076.0,81.1 L1076.0,186.0 L70.0,186.0 Z" fill="rgba(210,153,34,0.12)" stroke="none"/><path d="M70.0,31.4 L141.9,77.8 L213.7,111.2 L285.6,67.1 L357.4,31.4 L429.3,40.0 L501.1,31.4 L573.0,31.4 L644.9,31.4 L716.7,162.5 L788.6,157.4 L860.4,31.4 L932.3,174.6 L1004.1,110.8 L1076.0,81.1" fill="none" stroke="#d29922" stroke-width="1.8"/></svg>
+
+<h3>每日收益（14 个自然日，UTC 收盘结算）</h3>
+<svg viewBox="0 0 1100 260" class="chart" xmlns="http://www.w3.org/2000/svg"><line x1="60" y1="143.9" x2="1084" y2="143.9" stroke="#21262d"/><text x="52" y="147.9" class="ax" text-anchor="end">0%</text><line x1="60" y1="68.3" x2="1084" y2="68.3" stroke="#21262d"/><text x="52" y="72.3" class="ax" text-anchor="end">2%</text><rect x="73.9" y="143.9" width="45.3" height="16.5" fill="#f85149" rx="2"/><text x="96.6" y="234" class="ax" text-anchor="middle">10-05</text><text x="96.6" y="172.4" class="ax" text-anchor="middle" fill="#f85149">-0.5</text><rect x="147.0" y="143.9" width="45.3" height="12.0" fill="#f85149" rx="2"/><text x="169.7" y="234" class="ax" text-anchor="middle">10-06</text><text x="169.7" y="167.8" class="ax" text-anchor="middle" fill="#f85149">-0.4</text><rect x="220.2" y="128.0" width="45.3" height="15.9" fill="#3fb950" rx="2"/><text x="242.9" y="234" class="ax" text-anchor="middle">10-07</text><text x="242.9" y="124.0" class="ax" text-anchor="middle" fill="#3fb950">0.5</text><rect x="293.3" y="102.3" width="45.3" height="41.6" fill="#3fb950" rx="2"/><text x="316.0" y="234" class="ax" text-anchor="middle">10-08</text><text x="316.0" y="98.3" class="ax" text-anchor="middle" fill="#3fb950">1.4</text><rect x="366.5" y="143.9" width="45.3" height="3.1" fill="#f85149" rx="2"/><text x="389.1" y="234" class="ax" text-anchor="middle">10-09</text><text x="389.1" y="158.9" class="ax" text-anchor="middle" fill="#f85149">-0.1</text><rect x="439.6" y="124.3" width="45.3" height="19.6" fill="#3fb950" rx="2"/><text x="462.3" y="234" class="ax" text-anchor="middle">10-10</text><text x="462.3" y="120.3" class="ax" text-anchor="middle" fill="#3fb950">0.6</text><rect x="512.8" y="128.6" width="45.3" height="15.2" fill="#3fb950" rx="2"/><text x="535.4" y="234" class="ax" text-anchor="middle">10-11</text><text x="535.4" y="124.6" class="ax" text-anchor="middle" fill="#3fb950">0.5</text><rect x="585.9" y="106.9" width="45.3" height="36.9" fill="#3fb950" rx="2"/><text x="608.6" y="234" class="ax" text-anchor="middle">10-12</text><text x="608.6" y="102.9" class="ax" text-anchor="middle" fill="#3fb950">1.2</text><rect x="659.0" y="143.9" width="45.3" height="46.7" fill="#f85149" rx="2"/><text x="681.7" y="234" class="ax" text-anchor="middle">10-13</text><text x="681.7" y="202.5" class="ax" text-anchor="middle" fill="#f85149">-1.5</text><rect x="732.2" y="142.0" width="45.3" height="1.9" fill="#3fb950" rx="2"/><text x="754.9" y="234" class="ax" text-anchor="middle">10-14</text><text x="754.9" y="138.0" class="ax" text-anchor="middle" fill="#3fb950">0.1</text><rect x="805.3" y="35.2" width="45.3" height="108.7" fill="#3fb950" rx="2"/><text x="828.0" y="234" class="ax" text-anchor="middle">10-15</text><text x="828.0" y="31.2" class="ax" text-anchor="middle" fill="#3fb950">3.6</text><rect x="878.5" y="143.9" width="45.3" height="51.0" fill="#f85149" rx="2"/><text x="901.1" y="234" class="ax" text-anchor="middle">10-16</text><text x="901.1" y="206.8" class="ax" text-anchor="middle" fill="#f85149">-1.7</text><rect x="951.6" y="120.8" width="45.3" height="23.1" fill="#3fb950" rx="2"/><text x="974.3" y="234" class="ax" text-anchor="middle">10-17</text><text x="974.3" y="116.8" class="ax" text-anchor="middle" fill="#3fb950">0.8</text><rect x="1024.8" y="133.2" width="45.3" height="10.7" fill="#3fb950" rx="2"/><text x="1047.4" y="234" class="ax" text-anchor="middle">10-18</text><text x="1047.4" y="129.2" class="ax" text-anchor="middle" fill="#3fb950">0.4</text><line x1="60" y1="143.9" x2="1084" y2="143.9" stroke="#484f58"/></svg>
+
+<h2>二、分窗口表现</h2>
+<div class="card">
+<table>
+<tr><th>窗口</th><th class="r">天数</th><th class="r">交易笔数</th><th class="r">累计收益</th><th class="r">CAGR</th>
+<th class="r">最大回撤</th><th class="r">Sharpe</th><th class="r">Sortino</th><th class="r">Calmar</th>
+<th class="r">胜率</th><th class="r">PF</th></tr>
+<tr><td><b>本期（本报告）</b><div class='muted' style='font-size:12px'>2026-10-04 ~ 2026-10-18</div></td><td class='r'>15</td><td class='r'>36</td><td class='r pos'><b>5.53%</b></td><td class='r'>270.63%</td><td class='r'>3.44%</td><td class='r'>5.00</td><td class='r'>10.21</td><td class='r'>78.65</td><td class='r'>80.6%</td><td class='r'>1.34</td></tr><tr><td>近 30 天<div class='muted' style='font-size:12px'>2026-09-19 ~ 2026-10-18</div></td><td class='r'>30</td><td class='r'>60</td><td class='r neg'>-0.92%</td><td class='r'>-10.67%</td><td class='r'>11.94%</td><td class='r'>-0.08</td><td class='r'>-0.12</td><td class='r'>-0.89</td><td class='r'>75.0%</td><td class='r'>0.97</td></tr><tr><td>近 131 天<div class='muted' style='font-size:12px'>2026-06-10 ~ 2026-10-18</div></td><td class='r'>131</td><td class='r'>286</td><td class='r neg'>-4.24%</td><td class='r'>-11.36%</td><td class='r'>21.41%</td><td class='r'>-0.39</td><td class='r'>-0.57</td><td class='r'>-0.53</td><td class='r'>74.5%</td><td class='r'>0.97</td></tr><tr><td>近 365 天<div class='muted' style='font-size:12px'>2025-10-19 ~ 2026-10-18</div></td><td class='r'>365</td><td class='r'>1146</td><td class='r neg'>-42.23%</td><td class='r'>-42.23%</td><td class='r'>52.68%</td><td class='r'>-1.21</td><td class='r'>-1.65</td><td class='r'>-0.80</td><td class='r'>73.7%</td><td class='r'>0.91</td></tr><tr><td>全样本 417 天<div class='muted' style='font-size:12px'>2025-08-29 ~ 2026-10-18</div></td><td class='r'>415</td><td class='r'>1294</td><td class='r neg'>-39.89%</td><td class='r'>-36.07%</td><td class='r'>52.68%</td><td class='r'>-0.96</td><td class='r'>-1.32</td><td class='r'>-0.68</td><td class='r'>73.9%</td><td class='r'>0.93</td></tr>
+</table>
+<div class="muted" style="margin-top:8px">注：近 30 天与近 131 天、近 365 天同样为负，说明亏损不是单一行情窗口造成的，而是交易结构（赔率 1:2.78 + 高换手手续费）在全样本上稳定输钱。本报告只有 14 个日收益样本：年化 Sharpe 的抽样标准误约 ±5.11，因此 Sharpe 5.00 在统计上<b>不显著</b>；Calmar 与 CAGR 同样受样本长度制约，只能作为方向参考，不能当作年化业绩。</div>
+</div>
+
+<h2>三、成本敏感性</h2>
+<div class="card">
+<table>
+<tr><th>场景</th><th class="r">累计收益</th><th class="r">最大回撤</th><th class="r">PF</th><th class="r">胜率</th><th class="r">Sharpe</th><th class="r">手续费合计</th></tr>
+<tr><td><b>本次主口径：Taker 0.02%（2 bp）双边</b><div class='muted' style='font-size:12px'>本报告标题行口径，市价单开平各一次</div></td><td class='r pos'><b>5.53%</b></td><td class='r'>3.44%</td><td class='r'>1.340</td><td class='r'>80.6%</td><td class='r'>5.00</td><td class='r'>128</td></tr><tr><td>0 手续费（理论净信号）<div class='muted' style='font-size:12px'>验证信号本身是否有正期望</div></td><td class='r pos'>6.85%</td><td class='r'>3.39%</td><td class='r'>1.424</td><td class='r'>80.6%</td><td class='r'>6.13</td><td class='r'>0</td></tr><tr><td>Taker 1 bp 双边<div class='muted' style='font-size:12px'>费率阶梯对照</div></td><td class='r pos'>6.19%</td><td class='r'>3.42%</td><td class='r'>1.381</td><td class='r'>80.6%</td><td class='r'>5.57</td><td class='r'>64</td></tr><tr><td>Taker 3 bp 双边<div class='muted' style='font-size:12px'>费率阶梯对照</div></td><td class='r pos'>4.87%</td><td class='r'>3.47%</td><td class='r'>1.298</td><td class='r'>80.6%</td><td class='r'>4.42</td><td class='r'>192</td></tr><tr><td>Taker 0.05%（5 bp）双边<div class='muted' style='font-size:12px'>OKX 该账户实查费率（/account/trade-fee），现实对照</div></td><td class='r pos'>3.57%</td><td class='r'>3.57%</td><td class='r'>1.218</td><td class='r'>80.6%</td><td class='r'>3.21</td><td class='r'>318</td></tr><tr><td>本次主口径 + 滑点 2bp/边<div class='muted' style='font-size:12px'>ETH 永续按名义的额外成交偏差</div></td><td class='r pos'>4.86%</td><td class='r'>3.48%</td><td class='r'>1.298</td><td class='r'>80.6%</td><td class='r'>4.65</td><td class='r'>128</td></tr><tr><td>本次主口径 + 滑点 5bp/边<div class='muted' style='font-size:12px'>ETH 永续按名义的额外成交偏差</div></td><td class='r pos'>3.50%</td><td class='r'>3.53%</td><td class='r'>1.175</td><td class='r'>80.0%</td><td class='r'>3.40</td><td class='r'>122</td></tr>
+</table>
+<div class="muted" style="margin-top:8px">
+零手续费时 PF 1.424、收益 6.85% —— 说明
+<b>信号本身接近零期望（本窗口略正）</b>，而 128 USDT 手续费把接近打平的策略拖成 5.53%。
+换手率是核心问题：本期 36 笔、平均每笔名义 8,803 USDT，累计名义成交 0.63M USDT。
+</div>
+</div>
+
+<h2>四、交易结构拆解</h2>
+<div class="card">
+<table>
+<tr><th>维度</th><th class="r">数值</th><th>说明</th></tr>
+<tr><td>止盈 / 止损笔数</td><td class="r">29 / 7</td><td>止盈率 80.6%（每 5.14 笔出现 1 次止损）</td></tr>
+<tr><td>平均持仓时长</td><td class="r">9.5 小时</td><td>约 0.4 天，跨约 1.2 个资金费周期</td></tr>
+<tr><td>平均名义价值</td><td class="r">8,803 USDT</td><td>峰值 9,401 USDT（= 初始资金 87.5%）</td></tr>
+<tr><td>多单</td><td class="r">16 笔</td><td class="pos">盈亏 9.04 USDT · 胜率 75.0%</td></tr>
+<tr><td>空单</td><td class="r">20 笔</td><td class="pos">盈亏 542.36 USDT · 胜率 85.0%</td></tr>
+<tr><td>最大连胜 / 连亏</td><td class="r">8 / 1</td><td>连亏上限低，因此「连亏3笔熔断」在回测中几乎不会触发</td></tr>
+<tr><td>最佳 / 最差单笔</td><td class="r">+80.23 / -238.74</td><td>单笔波动远大于平均水平</td></tr>
+<tr><td>日波动率（年化）</td><td class="r">24.88%</td><td>净值曲线剧烈波动，Sharpe 5.00</td></tr>
+<tr><td>期末未平仓</td><td class="r">LONG</td><td>按最后收盘价 2,409.39 盯市，浮盈亏 3.18 USDT</td></tr>
+</table>
+</div>
+
+<h2>五、与仓库既有说法的对照（重要）</h2>
+<div class="card">
+<table>
+<tr><th>指标</th><th class="r">README 说法（近一年 / 469 笔）</th><th class="r">本次实测（Pine 口径 / 36 笔）</th><th>差异原因</th></tr>
+<tr><td>平仓胜率</td><td class="r">86.35%</td><td class="r">80.56%</td><td rowspan="4">README 的回测用的是 <code>logs/alphaevolve_15m_final_trades.json</code> 里那棵 GP 演化的 AST 信号树，
+不是 <code>ETH_AI_Timing_AlphaEvolve_15m.pine</code>。两者是<b>两套不同的策略</b>。</td></tr>
+<tr><td>盈亏比 PF</td><td class="r">0.87</td><td class="r">1.34</td></tr>
+<tr><td>平均盈利 / 平均亏损</td><td class="r">+83.44 / -605.23</td><td class="r">+75.02 / 232.01</td></tr>
+<tr><td>净值结果</td><td class="r">年化大回撤</td><td class="r">5.53%</td></tr>
+</table>
+<div class="callout amber" style="margin-top:12px">
+<b>那棵 AST 信号树为什么不能直接实盘？</b>
+<ol style="margin:6px 0 0 18px">
+<li>它依赖 <code>taker_imb = (2×taker_buy_volume − volume) / volume</code>，即<b>主动买入量</b>。
+OKX 的 15m K 线接口只给 open/high/low/close/vol/volCcy/volCcyQuote，<b>不提供 taker 主动买量</b>，实盘算不出来。</li>
+<li>它的信号在回测里做了 <b>全样本 z-score 归一化</b>（<code>(sig−mean)/std</code>，mean/std 取自整段回测数据），
+用到了未来信息；实盘只能滚动归一化，阈值 ±1.3 的意义完全不同。</li>
+</ol>
+因此线上只能实现 Pine 里这套只用 OHLCV 的公式。本报告测的就是线上真正会执行的那一套。
+</div>
+</div>
+
+<h2>六、方法与局限</h2>
+<div class="card">
+<b>数据</b>
+<ul>
+<li>OKX <code>ETH-USDT-SWAP</code> 永续 15m，共 40,000 根（2025-08-29 17:45 UTC ~ 2026-10-20 09:30 UTC），直接取自 OKX <code>/api/v5/market/history-candles</code>。</li>
+<li>数据审计：间隔全部为 15 分钟（0 处缺口）、无零价/负价、无重复时间戳。</li>
+</ul>
+<b>信号</b>
+<ul>
+<li><code>q_val = 0.88·q_val[-1] + 0.12·(k_pos·15 + hl_spread·0.8)</code>；<code>signal = Zscore20(close) + (±0.3, 当 q_val &gt; +0.05 / &lt; −0.05)</code>；开多 <code>&gt; +1.20</code>，开空 <code>&lt; −1.20</code>。</li>
+<li>代码与实盘模块 <code>AlphaEvolveSignal</code> 为同一份实现（<code>backtest_007_pine.py</code> 直接 import）。</li>
+<li>注意：<code>q_val</code> 的奖励项 <code>k_pos·15 + hl_spread·0.8</code> 恒为非负，所以 <code>q_val</code> 永远 &gt; 0，
+「−0.3 惩罚」分支实际退化为不可达，多空门槛不对称（多：Z&gt;0.9；空：Z&lt;−1.5），策略结构性偏多。</li>
+</ul>
+<b>成交假设</b>
+<ul>
+<li>信号在 15m 收盘确认后按收盘价市价成交；加仓在同一根 K 线不重复触发。</li>
+<li>止盈/止损按盘中最高/最低价触及即成交，成交价用触发价（TP = 均价×1.009，SL = 均价×0.975）。</li>
+<li>同一根 15m K 线同时触及 TP 与 SL 时按 <b>TP 优先</b> → 对结果略偏乐观；线上用 1m K 线巡检，会更接近实际先到者。</li>
+<li>不加仓后重复入场、不反手；期末未平仓按最后收盘价盯市，不强制平仓。</li>
+</ul>
+<b>未纳入</b>
+<ul>
+<li>资金费率（估算量级见上表）、交易所强平/保证金不足、极端行情下的滑点跳变、下单拒单与网络延迟。</li>
+<li>本报告仅 15 天、36 笔，样本量小，统计噪声大，只能说明这一段行情的表现，不能外推成长期结论；长期口径请对照近一年报告（1141 笔 / -66.51% / PF 0.83）。</li>
+</ul>
+</div>
+
+<h2>七、逐笔交易明细（36 笔，全部）</h2>
+<div class="scroll">
+<table>
+<thead><tr><th class="r">#</th><th>方向</th><th>开仓 (UTC)</th><th>平仓 (UTC)</th><th class="r">持仓h</th>
+<th class="r">开仓均价</th><th class="r">平仓价</th><th class="r">名义 USDT</th><th class="r">毛利</th>
+<th class="r">手续费</th><th class="r">净利</th><th>出场</th></tr></thead>
+<tbody><tr><td class='r muted'>1</td><td>多</td><td>2026-10-04 00:15</td><td>2026-10-04 22:00</td><td class='r'>21.8</td><td class='r'>2,689.53</td><td class='r'>2,713.73</td><td class='r'>8,749</td><td class='r'>+78.74</td><td class='r muted'>3.52</td><td class='r pos'>+75.23</td><td>TP</td></tr><tr><td class='r muted'>2</td><td>多</td><td>2026-10-04 22:15</td><td>2026-10-07 01:45</td><td class='r'>51.5</td><td class='r'>2,726.22</td><td class='r'>2,658.06</td><td class='r'>8,815</td><td class='r'>-220.38</td><td class='r muted'>3.48</td><td class='r neg'>-223.86</td><td>SL</td></tr><tr><td class='r muted'>3</td><td>空</td><td>2026-10-07 02:00</td><td>2026-10-07 10:00</td><td class='r'>8.0</td><td class='r'>2,610.68</td><td class='r'>2,587.19</td><td class='r'>8,619</td><td class='r'>+77.57</td><td class='r muted'>3.43</td><td class='r pos'>+74.14</td><td>TP</td></tr><tr><td class='r muted'>4</td><td>空</td><td>2026-10-07 10:15</td><td>2026-10-07 13:00</td><td class='r'>2.8</td><td class='r'>2,580.59</td><td class='r'>2,557.36</td><td class='r'>8,684</td><td class='r'>+78.16</td><td class='r muted'>3.46</td><td class='r pos'>+74.70</td><td>TP</td></tr><tr><td class='r muted'>5</td><td>空</td><td>2026-10-07 13:15</td><td>2026-10-07 17:30</td><td class='r'>4.2</td><td class='r'>2,558.71</td><td class='r'>2,535.69</td><td class='r'>8,749</td><td class='r'>+78.74</td><td class='r muted'>3.48</td><td class='r pos'>+75.26</td><td>TP</td></tr><tr><td class='r muted'>6</td><td>空</td><td>2026-10-07 17:45</td><td>2026-10-08 11:00</td><td class='r'>17.2</td><td class='r'>2,557.47</td><td class='r'>2,534.45</td><td class='r'>8,815</td><td class='r'>+79.34</td><td class='r muted'>3.51</td><td class='r pos'>+75.83</td><td>TP</td></tr><tr><td class='r muted'>7</td><td>空</td><td>2026-10-08 11:15</td><td>2026-10-08 12:45</td><td class='r'>1.5</td><td class='r'>2,539.24</td><td class='r'>2,516.39</td><td class='r'>8,882</td><td class='r'>+79.93</td><td class='r muted'>3.54</td><td class='r pos'>+76.40</td><td>TP</td></tr><tr><td class='r muted'>8</td><td>空</td><td>2026-10-08 13:30</td><td>2026-10-08 15:15</td><td class='r'>1.8</td><td class='r'>2,511.45</td><td class='r'>2,488.85</td><td class='r'>8,948</td><td class='r'>+80.54</td><td class='r muted'>3.56</td><td class='r pos'>+76.97</td><td>TP</td></tr><tr><td class='r muted'>9</td><td>空</td><td>2026-10-08 15:30</td><td>2026-10-08 15:45</td><td class='r'>0.2</td><td class='r'>2,452.19</td><td class='r'>2,430.12</td><td class='r'>5,152</td><td class='r'>+46.37</td><td class='r muted'>2.05</td><td class='r pos'>+44.32</td><td>TP</td></tr><tr><td class='r muted'>10</td><td>空</td><td>2026-10-08 16:00</td><td>2026-10-09 02:00</td><td class='r'>10.0</td><td class='r'>2,425.75</td><td class='r'>2,486.39</td><td class='r'>9,055</td><td class='r'>-226.36</td><td class='r muted'>3.67</td><td class='r neg'>-230.03</td><td>SL</td></tr><tr><td class='r muted'>11</td><td>多</td><td>2026-10-09 02:30</td><td>2026-10-09 11:45</td><td class='r'>9.2</td><td class='r'>2,486.12</td><td class='r'>2,508.49</td><td class='r'>8,853</td><td class='r'>+79.68</td><td class='r muted'>3.56</td><td class='r pos'>+76.12</td><td>TP</td></tr><tr><td class='r muted'>12</td><td>多</td><td>2026-10-09 12:00</td><td>2026-10-11 15:30</td><td class='r'>51.5</td><td class='r'>2,496.25</td><td class='r'>2,518.71</td><td class='r'>8,920</td><td class='r'>+80.28</td><td class='r muted'>3.58</td><td class='r pos'>+76.70</td><td>TP</td></tr><tr><td class='r muted'>13</td><td>多</td><td>2026-10-11 15:45</td><td>2026-10-12 02:15</td><td class='r'>10.5</td><td class='r'>2,534.17</td><td class='r'>2,556.97</td><td class='r'>8,987</td><td class='r'>+80.88</td><td class='r muted'>3.61</td><td class='r pos'>+77.27</td><td>TP</td></tr><tr><td class='r muted'>14</td><td>多</td><td>2026-10-12 02:30</td><td>2026-10-12 06:45</td><td class='r'>4.2</td><td class='r'>2,549.32</td><td class='r'>2,572.26</td><td class='r'>9,055</td><td class='r'>+81.49</td><td class='r muted'>3.64</td><td class='r pos'>+77.85</td><td>TP</td></tr><tr><td class='r muted'>15</td><td>多</td><td>2026-10-12 07:00</td><td>2026-10-12 16:45</td><td class='r'>9.8</td><td class='r'>2,573.87</td><td class='r'>2,509.52</td><td class='r'>9,123</td><td class='r'>-228.07</td><td class='r muted'>3.60</td><td class='r neg'>-231.67</td><td>SL</td></tr><tr><td class='r muted'>16</td><td>空</td><td>2026-10-12 17:00</td><td>2026-10-12 21:30</td><td class='r'>4.5</td><td class='r'>2,513.43</td><td class='r'>2,490.81</td><td class='r'>8,920</td><td class='r'>+80.28</td><td class='r muted'>3.55</td><td class='r pos'>+76.73</td><td>TP</td></tr><tr><td class='r muted'>17</td><td>空</td><td>2026-10-12 21:45</td><td>2026-10-12 22:45</td><td class='r'>1.0</td><td class='r'>2,491.88</td><td class='r'>2,469.46</td><td class='r'>8,987</td><td class='r'>+80.88</td><td class='r muted'>3.58</td><td class='r pos'>+77.31</td><td>TP</td></tr><tr><td class='r muted'>18</td><td>空</td><td>2026-10-12 23:00</td><td>2026-10-13 00:00</td><td class='r'>1.0</td><td class='r'>2,460.50</td><td class='r'>2,438.35</td><td class='r'>9,055</td><td class='r'>+81.49</td><td class='r muted'>3.61</td><td class='r pos'>+77.89</td><td>TP</td></tr><tr><td class='r muted'>19</td><td>空</td><td>2026-10-13 00:15</td><td>2026-10-13 02:15</td><td class='r'>2.0</td><td class='r'>2,424.33</td><td class='r'>2,484.94</td><td class='r'>9,123</td><td class='r'>-228.07</td><td class='r muted'>3.69</td><td class='r neg'>-231.77</td><td>SL</td></tr><tr><td class='r muted'>20</td><td>多</td><td>2026-10-13 02:30</td><td>2026-10-13 03:30</td><td class='r'>1.0</td><td class='r'>2,486.36</td><td class='r'>2,508.74</td><td class='r'>8,920</td><td class='r'>+80.28</td><td class='r muted'>3.58</td><td class='r pos'>+76.70</td><td>TP</td></tr><tr><td class='r muted'>21</td><td>多</td><td>2026-10-13 03:45</td><td>2026-10-13 05:15</td><td class='r'>1.5</td><td class='r'>2,508.12</td><td class='r'>2,530.69</td><td class='r'>8,987</td><td class='r'>+80.89</td><td class='r muted'>3.61</td><td class='r pos'>+77.27</td><td>TP</td></tr><tr><td class='r muted'>22</td><td>多</td><td>2026-10-13 05:30</td><td>2026-10-14 13:00</td><td class='r'>31.5</td><td class='r'>2,527.02</td><td class='r'>2,463.84</td><td class='r'>9,055</td><td class='r'>-226.37</td><td class='r muted'>3.58</td><td class='r neg'>-229.95</td><td>SL</td></tr><tr><td class='r muted'>23</td><td>空</td><td>2026-10-14 13:15</td><td>2026-10-14 14:00</td><td class='r'>0.8</td><td class='r'>2,462.25</td><td class='r'>2,440.08</td><td class='r'>8,854</td><td class='r'>+79.68</td><td class='r muted'>3.53</td><td class='r pos'>+76.16</td><td>TP</td></tr><tr><td class='r muted'>24</td><td>空</td><td>2026-10-14 14:15</td><td>2026-10-14 20:45</td><td class='r'>6.5</td><td class='r'>2,426.05</td><td class='r'>2,404.22</td><td class='r'>8,920</td><td class='r'>+80.28</td><td class='r muted'>3.55</td><td class='r pos'>+76.73</td><td>TP</td></tr><tr><td class='r muted'>25</td><td>空</td><td>2026-10-14 21:00</td><td>2026-10-15 02:15</td><td class='r'>5.2</td><td class='r'>2,414.19</td><td class='r'>2,392.46</td><td class='r'>8,987</td><td class='r'>+80.89</td><td class='r muted'>3.58</td><td class='r pos'>+77.31</td><td>TP</td></tr><tr><td class='r muted'>26</td><td>空</td><td>2026-10-15 02:30</td><td>2026-10-15 03:30</td><td class='r'>1.0</td><td class='r'>2,377.60</td><td class='r'>2,356.21</td><td class='r'>9,055</td><td class='r'>+81.50</td><td class='r muted'>3.61</td><td class='r pos'>+77.89</td><td>TP</td></tr><tr><td class='r muted'>27</td><td>多</td><td>2026-10-15 07:30</td><td>2026-10-15 14:45</td><td class='r'>7.2</td><td class='r'>2,377.24</td><td class='r'>2,398.64</td><td class='r'>9,123</td><td class='r'>+82.11</td><td class='r muted'>3.67</td><td class='r pos'>+78.44</td><td>TP</td></tr><tr><td class='r muted'>28</td><td>多</td><td>2026-10-15 15:00</td><td>2026-10-15 15:30</td><td class='r'>0.5</td><td class='r'>2,423.65</td><td class='r'>2,445.46</td><td class='r'>9,192</td><td class='r'>+82.73</td><td class='r muted'>3.69</td><td class='r pos'>+79.03</td><td>TP</td></tr><tr><td class='r muted'>29</td><td>多</td><td>2026-10-15 15:45</td><td>2026-10-15 19:15</td><td class='r'>3.5</td><td class='r'>2,439.86</td><td class='r'>2,461.81</td><td class='r'>9,261</td><td class='r'>+83.35</td><td class='r muted'>3.72</td><td class='r pos'>+79.63</td><td>TP</td></tr><tr><td class='r muted'>30</td><td>多</td><td>2026-10-15 19:30</td><td>2026-10-16 11:00</td><td class='r'>15.5</td><td class='r'>2,453.27</td><td class='r'>2,475.35</td><td class='r'>9,331</td><td class='r'>+83.98</td><td class='r muted'>3.75</td><td class='r pos'>+80.23</td><td>TP</td></tr><tr><td class='r muted'>31</td><td>多</td><td>2026-10-16 11:15</td><td>2026-10-16 17:00</td><td class='r'>5.8</td><td class='r'>2,482.72</td><td class='r'>2,420.65</td><td class='r'>9,401</td><td class='r'>-235.02</td><td class='r muted'>3.71</td><td class='r neg'>-238.74</td><td>SL</td></tr><tr><td class='r muted'>32</td><td>空</td><td>2026-10-16 17:15</td><td>2026-10-17 21:30</td><td class='r'>28.2</td><td class='r'>2,404.72</td><td class='r'>2,383.08</td><td class='r'>9,192</td><td class='r'>+82.73</td><td class='r muted'>3.66</td><td class='r pos'>+79.07</td><td>TP</td></tr><tr><td class='r muted'>33</td><td>空</td><td>2026-10-17 21:45</td><td>2026-10-18 16:15</td><td class='r'>18.5</td><td class='r'>2,384.24</td><td class='r'>2,362.78</td><td class='r'>9,261</td><td class='r'>+83.35</td><td class='r muted'>3.69</td><td class='r pos'>+79.66</td><td>TP</td></tr><tr><td class='r muted'>34</td><td>空</td><td>2026-10-18 19:15</td><td>2026-10-18 19:30</td><td class='r'>0.2</td><td class='r'>2,359.71</td><td class='r'>2,338.47</td><td class='r'>5,332</td><td class='r'>+47.99</td><td class='r muted'>2.12</td><td class='r pos'>+45.87</td><td>TP</td></tr><tr><td class='r muted'>35</td><td>空</td><td>2026-10-18 19:45</td><td>2026-10-18 22:00</td><td class='r'>2.2</td><td class='r'>2,337.41</td><td class='r'>2,395.85</td><td class='r'>9,371</td><td class='r'>-234.28</td><td class='r muted'>3.80</td><td class='r neg'>-238.07</td><td>SL</td></tr><tr><td class='r muted'>36</td><td>多</td><td>2026-10-18 22:15</td><td>2026-10-18 23:15</td><td class='r'>1.0</td><td class='r'>2,391.00</td><td class='r'>2,412.52</td><td class='r'>9,163</td><td class='r'>+82.46</td><td class='r muted'>3.68</td><td class='r pos'>+78.78</td><td>TP</td></tr></tbody>
+</table>
+</div>
+<div class="muted" style="margin-top:8px">同目录另存 <code>alphaevolve_15m_backtest_report_1004_1018_taker2bp_trades.csv</code> 便于程序化处理。</div>
+
+<div class="foot">
+数据源 OKX 永续行情 · 引擎 <code>backtest/backtest_007_pine.py</code> · 线上执行器 <code>smc_eth_007_live.py</code> ·
+初始资金 10,000.00 USDT（线上实例为 5,000 USDT，结果按比例缩放）<br>
+本报告为历史数据回测，非投资建议；手续费/滑点/资金费率的实际取值会显著改变结论。
+</div>
+</div></body></html>

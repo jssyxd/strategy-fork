@@ -422,13 +422,17 @@ def main() -> None:
 
     # 敏感性：maker 双侧 / 加滑点
     variants = {}
-    for name, ef, xf, sl in [
-        ("zero_fee", 0.0, 0.0, 0.0),
-        ("taker_5bp", 0.0005, 0.0005, 0.0),
-        ("maker_2bp", 0.0002, 0.0002, 0.0),
-        ("taker_5bp_slip2bp", 0.0005, 0.0005, 0.0002),
-        ("taker_5bp_slip5bp", 0.0005, 0.0005, 0.0005),
-    ]:
+    # 费率阶梯（双边同费率）+ 主口径下的滑点敏感度
+    variant_specs = [
+        ("fee_0bp", 0.0, 0.0, 0.0),
+        ("fee_1bp", 0.0001, 0.0001, 0.0),
+        ("fee_2bp", 0.0002, 0.0002, 0.0),
+        ("fee_3bp", 0.0003, 0.0003, 0.0),
+        ("fee_5bp", 0.0005, 0.0005, 0.0),
+        ("main_slip2bp", args.entry_fee, args.exit_fee, 0.0002),
+        ("main_slip5bp", args.entry_fee, args.exit_fee, 0.0005),
+    ]
+    for name, ef, xf, sl in variant_specs:
         v = run_window(bars, signals, start_idx, end_idx,
                        initial_capital=args.initial, entry_fee=ef, exit_fee=xf, slippage=sl)
         variants[name] = v["metrics"]

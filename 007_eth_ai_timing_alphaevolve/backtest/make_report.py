@@ -184,6 +184,8 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
 .chart{width:100%;height:auto;display:block;margin:4px 0 2px}
 .ax{fill:var(--dim);font-size:11px;font-variant-numeric:tabular-nums}
 .scroll{max-height:520px;overflow:auto;border:1px solid var(--border);border-radius:8px}
+table.feetbl td:first-child,table.feetbl th:first-child{white-space:nowrap;width:1%}
+table.feetbl td:nth-child(2),table.feetbl th:nth-child(2){white-space:nowrap;width:1%}
 code{background:#12171f;padding:1px 5px;border-radius:4px;font-size:12.5px;color:var(--purple)}
 .foot{margin-top:46px;padding-top:16px;border-top:1px solid var(--border);color:var(--dim);font-size:12px}
 ul{margin:6px 0 6px 18px;padding:0} li{margin:3px 0}
@@ -206,6 +208,17 @@ def build(data: dict, out_path: str) -> None:
     be_win = m["avg_loss"] / (m["avg_loss"] + m["avg_win"]) if (m["avg_loss"] + m["avg_win"]) else 0
     funding_est = m["avg_hold_hours"] / 8.0 * 0.0001 * m["avg_notional"] * m["trades"]
     open_pos = m.get("open_at_end") or {}
+    fee_meta = meta.get("fee_model", {})
+    main_fee = float(fee_meta.get("entry_fee", 0.0005))
+    main_bp = round(main_fee * 1e4)
+    main_fee_pct = main_fee * 100
+    main_slip = float(fee_meta.get("slippage", 0.0))
+    _std = abs(main_bp - 5)
+    pricing_note = (
+        "" if _std == 0 else
+        f"（OKX 该账户 <code>/account/trade-fee</code> 实查为标准 maker 0.02% / taker 0.05%，"
+        f"本报告按指定 {main_bp}bp 计，并在成本敏感性表里给出 5bp 对照）"
+    )
     is_short = m["days"] <= 45
     period_word = "本期" if is_short else "一年"
     span_word = "回测期内" if is_short else "一年下来"
@@ -282,24 +295,39 @@ def build(data: dict, out_path: str) -> None:
         sig_note = ""
 
     var_rows = []
-    for key, label, note in [
-        ("zero_fee", "0 手续费（理论净信号）", "验证信号本身是否有正期望"),
-        ("maker_2bp", "Maker 0.02% 双边（全部限价单）", "限价单未必成交，实盘最乐观场景"),
-        ("taker_5bp", "Taker 0.05% 双边（本次主口径）", "与服务器上 007 实例一致：市价单"),
-        ("taker_5bp_slip2bp", "Taker 0.05% + 滑点 2bp/边", "ETH 永续小仓位现实滑点"),
-        ("taker_5bp_slip5bp", "Taker 0.05% + 滑点 5bp/边", "流动性较差时段"),
-    ]:
-        v = variants.get(key)
-        if not v:
-            continue
+
+    def _var_row(label, note, v, bold=False):
         cls = "neg" if v["total_return"] < 0 else "pos"
-        var_rows.append(
-            f"<tr><td>{label}<div class='muted' style='font-size:12px'>{note}</div></td>"
-            f"<td class='r {cls}'>{pct(v['total_return'])}</td>"
+        name = f"<b>{label}</b>" if bold else label
+        return (
+            f"<tr><td>{name}<div class='muted' style='font-size:12px'>{note}</div></td>"
+            f"<td class='r {cls}'>{'<b>' if bold else ''}{pct(v['total_return'])}{'</b>' if bold else ''}</td>"
             f"<td class='r'>{pct(v['mdd'])}</td><td class='r'>{v['profit_factor']:.3f}</td>"
             f"<td class='r'>{pct(v['win_rate'],1)}</td><td class='r'>{v['sharpe']:.2f}</td>"
             f"<td class='r'>{num(v['fees_total'],0)}</td></tr>"
         )
+
+    # 主口径行（用户指定费率）
+    var_rows.append(_var_row(f"本次主口径：Taker {main_fee_pct:.2f}%（{main_bp} bp）双边",
+                             "本报告标题行口径，市价单开平各一次", m, bold=True))
+    for bp in (0, 1, 2, 3, 5):
+        key = f"fee_{bp}bp"
+        v = variants.get(key)
+        if not v or bp == main_bp:
+            continue
+        if bp == 0:
+            label, note = "0 手续费（理论净信号）", "验证信号本身是否有正期望"
+        elif bp == 5:
+            label, note = "Taker 0.05%（5 bp）双边", "OKX 该账户实查费率（/account/trade-fee），现实对照"
+        else:
+            label, note = f"Taker {bp} bp 双边", "费率阶梯对照"
+        var_rows.append(_var_row(label, note, v))
+    for slip_bp in (2, 5):
+        key = f"main_slip{slip_bp}bp"
+        v = variants.get(key)
+        if v:
+            var_rows.append(_var_row(f"本次主口径 + 滑点 {slip_bp}bp/边",
+                                     "ETH 永续按名义的额外成交偏差", v))
 
     win_rows = []
     # 本期窗口若不在下面的参照窗口里（如 20 天报告），先补一行本报告主口径
@@ -376,13 +404,13 @@ AlphaEvolve GP + Q-State · ETH-USDT-SWAP 永续 · 15m 信号 / 1m 止盈止损
 
 <h2>零、手续费与成本口径</h2>
 <div class="card">
-<table>
+<table class="feetbl">
 <tr><th>项目</th><th>取值</th><th class="r">说明</th></tr>
 <tr><td>Maker 费率</td><td>0.02%（2 bp）</td><td class="r">限价单挂单成交；本策略<b>未</b>使用（全为市价单）</td></tr>
-<tr><td>Taker 费率</td><td><b>0.05%（5 bp）</b></td><td class="r">市价单吃单；本报告主口径，与线上实例一致</td></tr>
+<tr><td>Taker 费率</td><td><b>{main_fee_pct:.2f}%（{main_bp} bp）</b></td><td class="r">市价单吃单；<b>本次主口径按指定费率</b>{pricing_note}</td></tr>
 <tr><td>计费基数</td><td>开仓 / 平仓<b>名义价值</b></td><td class="r">名义价值 = 张数 × ctVal（0.1 ETH）× 成交价</td></tr>
 <tr><td>杠杆关系</td><td>10x 全仓（cross）</td><td class="r">保证金 = 名义价值 / 10；<b>手续费按名义价值算，不按保证金算</b></td></tr>
-<tr><td>单笔示例</td><td>名义 5,000 USDT</td><td class="r">开仓 taker = 5,000 × 0.05% = <b>2.50 USDT</b>；开平一轮 = 5.00 USDT（保证金仅 500 USDT，占保证金 1.0%）</td></tr>
+<tr><td>单笔示例</td><td>名义 5,000 USDT</td><td class="r">开仓 taker = 5,000 × {main_fee_pct:.2f}% = <b>{5000*main_fee:.2f} USDT</b>；开平一轮 = {10000*main_fee:.2f} USDT（保证金仅 500 USDT，占保证金 {1000*main_fee:.1f}%）</td></tr>
 <tr><td>仓位口径</td><td>首仓 50% / 加仓 75%</td><td class="r">均按「可用现金 × 比例」的名义价值，峰值 87.5% 权益（占 10x 保证金 8.75%）</td></tr>
 <tr><td>累计手续费</td><td class="neg">{num(m['fees_total'])} USDT</td><td class="r">= 初始资金的 {m['fees_total']/m['initial_capital']*100:.1f}% · 累计名义成交 {m['turnover_notional']/1e6:.2f}M USDT</td></tr>
 <tr><td>滑点</td><td>主口径 0 bp</td><td class="r">另列 2bp / 5bp 敏感性（见下）</td></tr>
@@ -441,8 +469,8 @@ Profit Factor = 总盈利 {num(m['avg_win']*wins_n,0)} / 总亏损 {num(gross_lo
 {''.join(var_rows)}
 </table>
 <div class="muted" style="margin-top:8px">
-零手续费时 PF {variants['zero_fee']['profit_factor']:.3f}、收益 {pct(variants['zero_fee']['total_return'])} —— 说明
-<b>信号本身接近零期望（{"本窗口略正" if variants['zero_fee']['total_return']>0 else "略负"}）</b>，而 {num(m['fees_total'],0)} USDT 手续费把接近打平的策略拖成 {pct(m['total_return'])}。
+零手续费时 PF {variants.get('fee_0bp', variants.get('zero_fee', {}))['profit_factor']:.3f}、收益 {pct(variants.get('fee_0bp', variants.get('zero_fee', {}))['total_return'])} —— 说明
+<b>信号本身接近零期望（{"本窗口略正" if variants.get('fee_0bp', variants.get('zero_fee', {}))['total_return']>0 else "略负"}）</b>，而 {num(m['fees_total'],0)} USDT 手续费把接近打平的策略拖成 {pct(m['total_return'])}。
 换手率是核心问题：{period_word} {m['trades']} 笔、平均每笔名义 {num(m['avg_notional'],0)} USDT，累计名义成交 {m['turnover_notional']/1e6:.2f}M USDT。
 </div>
 </div>
