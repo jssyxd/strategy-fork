@@ -693,14 +693,14 @@ def test_no_future_leakage_in_zscore():
 
 并且在prd+spec中推荐使用 kaggle cli\huggingface cli\ github cli，kaggle的算力用于机器学习。
 以下是我的对应的几个key、auth token：
-github  https://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@github.com/jssyxd/**(项目仓库名） 
+github  https://ghp_************************************@github.com/jssyxd/**(项目仓库名） 
 
 github用户名:jssyxd
 github token=
-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
+ghp_************************************
 
 huggingface User Access Tokens(FULL ACCESS最高权限):
-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
+hf_**********************************
 
 kaggle token:
-KGAT_ac40707589c873af896d44997f6c0d40
+KGAT_********************************
