@@ -376,13 +376,10 @@ class SMCFeatures:
                 score_long += 25.0
             elif (not is_bull_candle) and body > 0.30 * rng:
                 score_short += 25.0
-        # 3. Close Location Pressure & Wick Liquidity Sweep (15 pts)
-        o_prev = self.opens[-1]
-        upper_wick = h - max(o_prev, c)
-        lower_wick = min(o_prev, c) - l
-        if clv > 0.35 or (lower_wick / rng > 0.50 and is_bull_candle):
+        # 3. Close Location Pressure (15 pts - Occam pure CLV test)
+        if clv > 0.35:
             score_long += 15.0
-        elif clv < -0.35 or (upper_wick / rng > 0.50 and not is_bull_candle):
+        elif clv < -0.35:
             score_short += 15.0
 
         # 4. Volatility Regime Filter (15 pts)
