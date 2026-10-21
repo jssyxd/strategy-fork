@@ -274,7 +274,7 @@ class SMCFeatures:
         vol_sma: int = 20,
         ema_trend: int = 96,
         swing_len: int = 3,
-        atr_ratio_min: float = 0.55,
+        atr_ratio_min: float = 0.45,
         atr_ratio_max: float = 2.00,
     ):
         self.atr_fast = atr_fast
@@ -368,18 +368,17 @@ class SMCFeatures:
         score_long = 0.0
         score_short = 0.0
 
-        # 1. Trend Filter with Slope Momentum (30 pts)
-        prev_c = closes[-2] if n >= 2 else c
-        if c > ema_f > ema_s and c > ema_t and c >= prev_c:
+        # 1. Pure Trend Filter (30 pts - Occam test without slope constraint)
+        if c > ema_f > ema_s and c > ema_t:
             score_long += 30.0
-        elif c < ema_f < ema_s and c < ema_t and c <= prev_c:
+        elif c < ema_f < ema_s and c < ema_t:
             score_short += 30.0
 
         # 2. Volume Spike & Expansion (25 pts)
         if vol_spike:
-            if is_bull_candle and c > (h + l) / 2.0 and body > 0.30 * rng:
+            if is_bull_candle and body > 0.30 * rng:
                 score_long += 25.0
-            elif (not is_bull_candle) and c < (h + l) / 2.0 and body > 0.30 * rng:
+            elif (not is_bull_candle) and body > 0.30 * rng:
                 score_short += 25.0
         # 3. Close Location Pressure & Wick Liquidity Sweep (15 pts)
         o_prev = self.opens[-1]
