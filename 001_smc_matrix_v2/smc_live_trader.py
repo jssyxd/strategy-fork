@@ -273,7 +273,6 @@ class SMCFeatures:
         ema_slow: int = 50,
         vol_sma: int = 20,
         ema_trend: int = 96,
-        swing_len: int = 3,
         atr_ratio_min: float = 0.45,
         atr_ratio_max: float = 2.00,
     ):
@@ -283,7 +282,6 @@ class SMCFeatures:
         self.ema_slow = ema_slow
         self.vol_sma = vol_sma
         self.ema_trend = ema_trend
-        self.swing_len = swing_len
         self.atr_ratio_min = atr_ratio_min
         self.atr_ratio_max = atr_ratio_max
 
@@ -356,8 +354,6 @@ class SMCFeatures:
         vol_ratio = v / (vol_avg + 1e-9)
         vol_spike = vol_ratio > 1.30
 
-        swing_high = max(highs[-self.swing_len:]) if n >= self.swing_len else h
-        swing_low = min(lows[-self.swing_len:]) if n >= self.swing_len else l
 
         body = abs(c - self.opens[-1])
         rng = max(h - l, 1e-9)
@@ -409,8 +405,6 @@ class SMCFeatures:
             "ema_slow": ema_s,
             "vol_ratio": vol_ratio,
             "clv": clv,
-            "swing_high": swing_high,
-            "swing_low": swing_low,
             "score_long": score_long,
             "score_short": score_short,
         }
