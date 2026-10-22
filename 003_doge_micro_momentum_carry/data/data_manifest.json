@@ -1,0 +1,21 @@
+{
+  "generated_at_utc": "2026-10-21T14:05:26.176615+00:00",
+  "sources": [
+    "nautilus_1m_2021-2025",
+    "governed_1h_taker_buy",
+    "governed_5m_taker_buy_2026",
+    "project_28d_funding_rate"
+  ],
+  "shape": [
+    530423,
+    10
+  ],
+  "ts_range": {
+    "start": "2021-01-01 07:10:00+00:00",
+    "end": "2026-10-15 17:15:00+00:00"
+  },
+  "defects_count": 0,
+  "defects_detail": [],
+  "five_invariants_passed": true,
+  "sha256": "b8c278305e47a2baa6b36220122cdda7f6f18c1b55dad7838a1a68ded7957a61"
+}

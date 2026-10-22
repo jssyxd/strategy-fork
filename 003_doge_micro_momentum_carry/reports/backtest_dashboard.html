@@ -1,0 +1,4657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOGE 动量策略回测报告</title>
+<style>
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    background: #0f0f14;
+    color: #e0e0e0;
+}
+h1 {
+    color: #ffffff;
+    font-size: 1.8em;
+    margin-bottom: 8px;
+}
+.subtitle {
+    color: #888888;
+    font-size: 0.95em;
+    margin-bottom: 24px;
+}
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+}
+.metric-card {
+    background: #1a1a2e;
+    border: 1px solid #2a2a44;
+    border-radius: 8px;
+    padding: 18px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.metric-val {
+    font-size: 2.1em;
+    font-weight: 700;
+    color: #00d4aa;
+    margin-bottom: 6px;
+}
+.metric-label {
+    font-size: 0.85em;
+    color: #9999aa;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.section-title {
+    font-size: 1.3em;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+.chart-container {
+    background: #151522;
+    border: 1px solid #2a2a44;
+    border-radius: 8px;
+    padding: 16px;
+}
+svg {
+    width: 100%;
+    height: 220px;
+    background: #11111a;
+    border-radius: 6px;
+}
+.table-container {
+    max-height: 480px;
+    overflow-y: auto;
+    background: #151522;
+    border: 1px solid #2a2a44;
+    border-radius: 8px;
+    margin-top: 16px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85em;
+}
+th, td {
+    border: 1px solid #252538;
+    padding: 10px 14px;
+    text-align: right;
+}
+th {
+    background: #1e1e34;
+    color: #aaaaee;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    text-align: center;
+}
+td:nth-child(1), td:nth-child(2), td:nth-child(6) {
+    text-align: center;
+}
+footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid #252538;
+    color: #666677;
+    font-size: 0.8em;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+<h1>🐕 DOGE 非线性动量策略 · 多年回测报告</h1>
+<div class="subtitle">回测区间: 2021-01-01T07:10:00+00:00 → 2026-10-15T17:15:00+00:00（1841.7 天）| 初始资金: 15,000,000 CNY (2,083,333.33 USD)</div>
+
+<div class="metrics-grid">
+  <div class="metric-card">
+    <div id="metric-cagr" class="metric-val">0.06%</div>
+    <div class="metric-label">年化收益率 CAGR</div>
+  </div>
+  <div class="metric-card">
+    <div id="metric-sharpe" class="metric-val">0.19</div>
+    <div class="metric-label">年化夏普比率 Sharpe</div>
+  </div>
+  <div class="metric-card">
+    <div id="metric-maxdd" class="metric-val">0.69%</div>
+    <div class="metric-label">最大历史回撤 MaxDD</div>
+  </div>
+  <div class="metric-card">
+    <div id="metric-trades" class="metric-val">562</div>
+    <div class="metric-label">总交易笔数 Trades</div>
+  </div>
+</div>
+
+<div class="section-title">📈 策略权益曲线 (USD)</div>
+<div class="chart-container">
+  <svg id="equity-curve-svg" viewBox="0 0 800 200">
+    <path d="M0,159 L0,159 L1,159 L2,159 L3,159 L4,159 L5,159 L6,159 L7,159 L8,159 L9,159 L10,159 L11,159 L12,159 L13,159 L14,159 L15,159 L16,159 L17,159 L18,159 L19,159 L20,159 L21,159 L22,159 L23,159 L24,159 L25,159 L26,159 L27,159 L28,159 L29,159 L30,159 L31,159 L32,159 L33,159 L34,159 L35,159 L36,159 L37,159 L38,159 L39,159 L40,159 L41,159 L42,159 L43,159 L44,159 L45,159 L46,159 L47,159 L48,159 L49,159 L50,159 L51,159 L52,159 L53,159 L54,159 L55,159 L56,159 L57,159 L58,159 L59,159 L60,159 L61,159 L62,159 L63,159 L64,159 L65,159 L66,159 L67,159 L68,159 L69,159 L70,159 L71,159 L72,159 L73,159 L74,159 L75,159 L76,159 L77,159 L78,159 L79,159 L80,159 L81,159 L82,159 L83,159 L84,159 L85,159 L86,159 L87,159 L88,159 L89,159 L90,159 L91,159 L92,159 L93,159 L94,159 L95,159 L96,159 L97,159 L98,159 L99,159 L100,159 L101,159 L102,159 L103,159 L104,159 L105,159 L106,159 L107,159 L108,159 L109,159 L110,159 L111,159 L112,159 L113,159 L114,159 L115,159 L116,159 L117,159 L118,159 L119,159 L120,159 L121,159 L122,159 L123,159 L124,159 L125,159 L126,159 L127,159 L128,159 L129,159 L130,159 L131,159 L132,159 L133,159 L134,159 L135,159 L136,159 L137,159 L138,159 L139,159 L140,159 L141,159 L142,159 L143,159 L144,159 L145,159 L146,159 L147,159 L148,159 L149,159 L150,159 L151,159 L152,159 L153,159 L154,159 L155,159 L156,159 L157,159 L158,159 L159,159 L160,159 L161,159 L162,159 L163,159 L164,159 L165,159 L166,159 L167,159 L168,159 L169,159 L170,159 L171,159 L172,159 L173,159 L174,159 L175,159 L176,159 L177,159 L178,159 L179,159 L180,159 L181,159 L182,159 L183,159 L184,159 L185,159 L186,159 L187,159 L188,159 L189,159 L190,159 L191,159 L192,159 L193,159 L194,159 L195,159 L196,159 L197,159 L198,159 L199,159 L200,159 L201,159 L202,159 L203,159 L204,159 L205,159 L206,159 L207,159 L208,159 L209,159 L210,159 L211,159 L212,159 L213,159 L214,159 L215,159 L216,159 L217,159 L218,159 L219,159 L220,159 L221,159 L222,159 L223,159 L224,159 L225,159 L226,159 L227,159 L228,159 L229,159 L230,159 L231,159 L232,159 L233,159 L234,159 L235,159 L236,159 L237,159 L238,159 L239,159 L240,159 L241,159 L242,159 L243,159 L244,159 L245,159 L246,159 L247,159 L248,159 L249,159 L250,159 L251,159 L252,159 L253,159 L254,159 L255,159 L256,159 L257,159 L258,159 L259,159 L260,159 L261,159 L262,159 L263,159 L264,159 L265,159 L266,159 L267,159 L268,159 L269,159 L270,159 L271,159 L272,159 L273,159 L274,159 L275,159 L276,159 L277,159 L278,159 L279,159 L280,159 L281,159 L282,159 L283,159 L284,159 L285,159 L286,159 L287,159 L288,159 L289,159 L290,159 L291,159 L292,159 L293,159 L294,159 L295,159 L296,159 L297,159 L298,159 L299,159 L300,159 L301,159 L302,159 L303,159 L304,159 L305,159 L306,159 L307,159 L308,159 L309,159 L310,159 L311,159 L312,159 L313,159 L314,159 L315,159 L316,159 L317,159 L318,159 L319,159 L320,159 L321,159 L322,159 L323,159 L324,159 L325,159 L326,159 L327,159 L328,159 L329,159 L330,159 L331,159 L332,159 L333,159 L334,159 L335,159 L336,159 L337,159 L338,159 L339,159 L340,159 L341,159 L342,159 L343,159 L344,159 L345,159 L346,159 L347,159 L348,159 L349,159 L350,159 L351,159 L352,159 L353,159 L354,159 L355,159 L356,159 L357,159 L358,159 L359,159 L360,159 L361,159 L362,159 L363,159 L364,159 L365,159 L366,159 L367,159 L368,159 L369,159 L370,159 L371,159 L372,159 L373,159 L374,159 L375,159 L376,159 L377,159 L378,159 L379,159 L380,159 L381,159 L382,159 L383,159 L384,159 L385,159 L386,159 L387,159 L388,159 L389,159 L390,159 L391,159 L392,159 L393,159 L394,159 L395,159 L396,159 L397,159 L398,159 L399,159 L400,159 L401,159 L402,159 L403,159 L404,159 L405,159 L406,159 L407,159 L408,159 L409,159 L410,159 L411,159 L412,159 L413,159 L414,159 L415,159 L416,159 L417,159 L418,159 L419,159 L420,159 L421,159 L422,159 L423,159 L424,159 L425,159 L426,159 L427,159 L428,159 L429,159 L430,159 L431,159 L432,159 L433,159 L434,159 L435,159 L436,159 L437,159 L438,159 L439,159 L440,159 L441,159 L442,159 L443,159 L444,159 L445,159 L446,159 L447,159 L448,159 L449,159 L450,159 L451,159 L452,159 L453,159 L454,159 L455,159 L456,159 L457,159 L458,159 L459,159 L460,159 L461,159 L462,159 L463,159 L464,159 L465,159 L466,159 L467,159 L468,159 L469,159 L470,159 L471,159 L472,159 L473,159 L474,159 L475,159 L476,159 L477,159 L478,159 L479,159 L480,159 L481,159 L482,159 L483,159 L484,159 L485,159 L486,159 L487,159 L488,159 L489,159 L490,159 L491,159 L492,159 L493,159 L494,159 L495,159 L496,159 L497,159 L498,159 L499,159 L500,159 L501,159 L502,159 L503,159 L504,159 L505,159 L506,159 L507,159 L508,159 L509,159 L510,159 L511,159 L512,159 L513,159 L514,159 L515,159 L516,159 L517,159 L518,159 L519,159 L520,159 L521,159 L522,159 L523,159 L524,159 L525,159 L526,159 L527,159 L528,159 L529,159 L530,159 L531,159 L532,159 L533,159 L534,159 L535,159 L536,159 L537,159 L538,159 L539,159 L540,159 L541,159 L542,159 L543,159 L544,159 L545,159 L546,159 L547,159 L548,159 L549,159 L550,159 L551,159 L552,159 L553,159 L554,159 L555,159 L556,159 L557,159 L558,159 L559,159 L560,159 L561,159 L562,159 L563,159 L564,159 L565,159 L566,159 L567,159 L568,159 L569,159 L570,159 L571,159 L572,159 L573,159 L574,159 L575,159 L576,159 L577,159 L578,159 L579,159 L580,159 L581,159 L582,159 L583,159 L584,159 L585,159 L586,159 L587,159 L588,159 L589,159 L590,159 L591,159 L592,159 L593,159 L594,159 L595,159 L596,159 L597,159 L598,159 L599,159 L600,159 L601,159 L602,159 L603,159 L604,159 L605,159 L606,159 L607,159 L608,159 L609,159 L610,159 L611,159 L612,159 L613,159 L614,159 L615,159 L616,159 L617,159 L618,159 L619,159 L620,159 L621,159 L622,159 L623,159 L624,159 L625,159 L626,159 L627,159 L628,159 L629,159 L630,159 L631,159 L632,159 L633,159 L634,159 L635,159 L636,159 L637,159 L638,159 L639,159 L640,159 L641,159 L642,159 L643,159 L644,159 L645,159 L646,159 L647,159 L648,159 L649,159 L650,159 L651,159 L652,159 L653,159 L654,159 L655,159 L656,159 L657,159 L658,159 L659,159 L660,159 L661,159 L662,159 L663,159 L664,159 L665,159 L666,159 L667,159 L668,159 L669,159 L670,159 L671,159 L672,159 L673,159 L674,159 L675,159 L676,159 L677,159 L678,159 L679,159 L680,159 L681,159 L682,159 L683,159 L684,159 L685,159 L686,159 L687,159 L688,159 L689,159 L690,159 L691,159 L692,159 L693,159 L694,159 L695,159 L696,159 L697,159 L698,159 L699,159 L700,159 L701,159 L702,159 L703,159 L704,159 L705,159 L706,159 L707,159 L708,159 L709,159 L710,159 L711,159 L712,159 L713,159 L714,159 L715,159 L716,159 L717,159 L718,159 L719,159 L720,159 L721,159 L722,159 L723,159 L724,159 L725,161 L726,163 L727,163 L728,169 L729,169 L730,155 L731,157 L732,159 L733,169 L734,169 L735,137 L736,138 L737,138 L738,138 L739,142 L740,147 L741,146 L742,131 L743,156 L744,156 L745,157 L746,157 L747,164 L748,162 L749,157 L750,156 L751,147 L752,162 L753,172 L754,85 L755,85 L756,86 L757,86 L758,86 L759,89 L760,90 L761,88 L762,88 L763,90 L764,93 L765,99 L766,107 L767,114 L768,114 L769,115 L770,115 L771,117 L772,116 L773,113 L774,118 L775,118 L776,118 L777,123 L778,117 L779,117 L780,111 L781,116 L782,114 L783,113 L784,122 L785,115 L786,115 L787,117 L788,117 L789,109 L790,112 L791,75 L792,83 L793,94 L794,90 L795,83 L796,82 L797,101 L798,103 L799,97 L800,97" fill="none" stroke="#00d4aa" stroke-width="1.8"/>
+  </svg>
+</div>
+
+<div class="section-title">📋 交易明细记录 (共 562 笔)</div>
+<div class="table-container">
+  <table id="trades-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>方向</th>
+        <th>开仓均价 (USD)</th>
+        <th>平仓均价 (USD)</th>
+        <th>净盈亏 (USD)</th>
+        <th>平仓原因</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+            <td>1</td>
+            <td>SHORT</td>
+            <td>0.070350</td>
+            <td>0.069870</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>2</td>
+            <td>SHORT</td>
+            <td>0.069660</td>
+            <td>0.068830</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>3</td>
+            <td>LONG</td>
+            <td>0.069360</td>
+            <td>0.069490</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>4</td>
+            <td>SHORT</td>
+            <td>0.069910</td>
+            <td>0.071180</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>5</td>
+            <td>SHORT</td>
+            <td>0.078500</td>
+            <td>0.078910</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>6</td>
+            <td>SHORT</td>
+            <td>0.077040</td>
+            <td>0.078740</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>7</td>
+            <td>SHORT</td>
+            <td>0.078780</td>
+            <td>0.079030</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>8</td>
+            <td>SHORT</td>
+            <td>0.077980</td>
+            <td>0.077360</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>9</td>
+            <td>SHORT</td>
+            <td>0.079100</td>
+            <td>0.078420</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>10</td>
+            <td>SHORT</td>
+            <td>0.078210</td>
+            <td>0.077550</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>11</td>
+            <td>SHORT</td>
+            <td>0.073970</td>
+            <td>0.074060</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>12</td>
+            <td>SHORT</td>
+            <td>0.073160</td>
+            <td>0.073340</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>13</td>
+            <td>SHORT</td>
+            <td>0.073500</td>
+            <td>0.073100</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>14</td>
+            <td>SHORT</td>
+            <td>0.074680</td>
+            <td>0.074660</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>15</td>
+            <td>SHORT</td>
+            <td>0.073880</td>
+            <td>0.074280</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>16</td>
+            <td>SHORT</td>
+            <td>0.071230</td>
+            <td>0.070880</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>17</td>
+            <td>SHORT</td>
+            <td>0.065210</td>
+            <td>0.059020</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>18</td>
+            <td>SHORT</td>
+            <td>0.060250</td>
+            <td>0.061560</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>19</td>
+            <td>SHORT</td>
+            <td>0.061550</td>
+            <td>0.060690</td>
+            <td style="color:#00d4aa">0.02</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>20</td>
+            <td>SHORT</td>
+            <td>0.063350</td>
+            <td>0.063670</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>21</td>
+            <td>SHORT</td>
+            <td>0.063620</td>
+            <td>0.061790</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>22</td>
+            <td>SHORT</td>
+            <td>0.062030</td>
+            <td>0.061660</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>23</td>
+            <td>SHORT</td>
+            <td>0.061650</td>
+            <td>0.061800</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>24</td>
+            <td>SHORT</td>
+            <td>0.061940</td>
+            <td>0.062410</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>25</td>
+            <td>SHORT</td>
+            <td>0.063400</td>
+            <td>0.063460</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>26</td>
+            <td>SHORT</td>
+            <td>0.062840</td>
+            <td>0.062860</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>27</td>
+            <td>LONG</td>
+            <td>0.062540</td>
+            <td>0.062520</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>28</td>
+            <td>SHORT</td>
+            <td>0.065090</td>
+            <td>0.063630</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>29</td>
+            <td>SHORT</td>
+            <td>0.063170</td>
+            <td>0.063220</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>30</td>
+            <td>SHORT</td>
+            <td>0.062920</td>
+            <td>0.062870</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>31</td>
+            <td>LONG</td>
+            <td>0.063110</td>
+            <td>0.063610</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>32</td>
+            <td>LONG</td>
+            <td>0.063360</td>
+            <td>0.063340</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>33</td>
+            <td>SHORT</td>
+            <td>0.060000</td>
+            <td>0.060050</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>34</td>
+            <td>SHORT</td>
+            <td>0.060900</td>
+            <td>0.060930</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>35</td>
+            <td>LONG</td>
+            <td>0.061060</td>
+            <td>0.060690</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>36</td>
+            <td>LONG</td>
+            <td>0.060790</td>
+            <td>0.060860</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>37</td>
+            <td>SHORT</td>
+            <td>0.062020</td>
+            <td>0.062040</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>38</td>
+            <td>SHORT</td>
+            <td>0.061450</td>
+            <td>0.061730</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>39</td>
+            <td>SHORT</td>
+            <td>0.062200</td>
+            <td>0.062190</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>40</td>
+            <td>LONG</td>
+            <td>0.061530</td>
+            <td>0.061810</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>41</td>
+            <td>LONG</td>
+            <td>0.062280</td>
+            <td>0.062210</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>42</td>
+            <td>SHORT</td>
+            <td>0.060330</td>
+            <td>0.060150</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>43</td>
+            <td>SHORT</td>
+            <td>0.060100</td>
+            <td>0.060190</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>44</td>
+            <td>SHORT</td>
+            <td>0.061420</td>
+            <td>0.061230</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>45</td>
+            <td>SHORT</td>
+            <td>0.060890</td>
+            <td>0.060870</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>46</td>
+            <td>SHORT</td>
+            <td>0.060910</td>
+            <td>0.060950</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>47</td>
+            <td>SHORT</td>
+            <td>0.060610</td>
+            <td>0.060690</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>48</td>
+            <td>SHORT</td>
+            <td>0.058740</td>
+            <td>0.058790</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>49</td>
+            <td>LONG</td>
+            <td>0.058530</td>
+            <td>0.057810</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>50</td>
+            <td>LONG</td>
+            <td>0.058020</td>
+            <td>0.058030</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>51</td>
+            <td>LONG</td>
+            <td>0.058270</td>
+            <td>0.059570</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>52</td>
+            <td>LONG</td>
+            <td>0.061980</td>
+            <td>0.062240</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>53</td>
+            <td>SHORT</td>
+            <td>0.070110</td>
+            <td>0.071090</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>54</td>
+            <td>SHORT</td>
+            <td>0.068470</td>
+            <td>0.068610</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>55</td>
+            <td>SHORT</td>
+            <td>0.068920</td>
+            <td>0.068890</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>56</td>
+            <td>SHORT</td>
+            <td>0.068600</td>
+            <td>0.067680</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>57</td>
+            <td>SHORT</td>
+            <td>0.068080</td>
+            <td>0.067890</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>58</td>
+            <td>SHORT</td>
+            <td>0.072840</td>
+            <td>0.074230</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>59</td>
+            <td>SHORT</td>
+            <td>0.076980</td>
+            <td>0.076720</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>60</td>
+            <td>SHORT</td>
+            <td>0.078010</td>
+            <td>0.078310</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>61</td>
+            <td>SHORT</td>
+            <td>0.076980</td>
+            <td>0.077470</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>62</td>
+            <td>SHORT</td>
+            <td>0.073780</td>
+            <td>0.071090</td>
+            <td style="color:#00d4aa">0.02</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>63</td>
+            <td>SHORT</td>
+            <td>0.080720</td>
+            <td>0.082730</td>
+            <td style="color:#ff4d4d">-0.03</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>64</td>
+            <td>SHORT</td>
+            <td>0.079580</td>
+            <td>0.080750</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>65</td>
+            <td>SHORT</td>
+            <td>0.079960</td>
+            <td>0.078310</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>66</td>
+            <td>SHORT</td>
+            <td>0.075860</td>
+            <td>0.075770</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>67</td>
+            <td>SHORT</td>
+            <td>0.077850</td>
+            <td>0.078230</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>68</td>
+            <td>SHORT</td>
+            <td>0.080620</td>
+            <td>0.080920</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>69</td>
+            <td>LONG</td>
+            <td>0.081900</td>
+            <td>0.082780</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>70</td>
+            <td>SHORT</td>
+            <td>0.096870</td>
+            <td>0.095740</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>71</td>
+            <td>SHORT</td>
+            <td>0.099610</td>
+            <td>0.101720</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>72</td>
+            <td>SHORT</td>
+            <td>0.101760</td>
+            <td>0.099990</td>
+            <td style="color:#00d4aa">0.02</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>73</td>
+            <td>SHORT</td>
+            <td>0.096430</td>
+            <td>0.098500</td>
+            <td style="color:#ff4d4d">-0.05</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>74</td>
+            <td>SHORT</td>
+            <td>0.098490</td>
+            <td>0.100570</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>75</td>
+            <td>SHORT</td>
+            <td>0.100560</td>
+            <td>0.097760</td>
+            <td style="color:#00d4aa">0.06</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>76</td>
+            <td>SHORT</td>
+            <td>0.094670</td>
+            <td>0.092490</td>
+            <td style="color:#00d4aa">0.02</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>77</td>
+            <td>SHORT</td>
+            <td>0.089610</td>
+            <td>0.090370</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>78</td>
+            <td>SHORT</td>
+            <td>0.092650</td>
+            <td>0.092890</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>79</td>
+            <td>SHORT</td>
+            <td>0.091320</td>
+            <td>0.091040</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>80</td>
+            <td>SHORT</td>
+            <td>0.083500</td>
+            <td>0.082130</td>
+            <td style="color:#00d4aa">0.02</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>81</td>
+            <td>LONG</td>
+            <td>0.083500</td>
+            <td>0.083330</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>82</td>
+            <td>SHORT</td>
+            <td>0.081580</td>
+            <td>0.081460</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>83</td>
+            <td>SHORT</td>
+            <td>0.078380</td>
+            <td>0.075660</td>
+            <td style="color:#00d4aa">0.02</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>84</td>
+            <td>SHORT</td>
+            <td>0.079100</td>
+            <td>0.079100</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>85</td>
+            <td>SHORT</td>
+            <td>0.078580</td>
+            <td>0.078620</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>86</td>
+            <td>SHORT</td>
+            <td>0.078040</td>
+            <td>0.077900</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>87</td>
+            <td>SHORT</td>
+            <td>0.082570</td>
+            <td>0.081200</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>88</td>
+            <td>SHORT</td>
+            <td>0.080840</td>
+            <td>0.080960</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>89</td>
+            <td>SHORT</td>
+            <td>0.077680</td>
+            <td>0.077490</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>90</td>
+            <td>SHORT</td>
+            <td>0.079370</td>
+            <td>0.079590</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>91</td>
+            <td>SHORT</td>
+            <td>0.078240</td>
+            <td>0.077900</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>92</td>
+            <td>SHORT</td>
+            <td>0.078060</td>
+            <td>0.078090</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>93</td>
+            <td>SHORT</td>
+            <td>0.077990</td>
+            <td>0.078320</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>94</td>
+            <td>SHORT</td>
+            <td>0.081420</td>
+            <td>0.081770</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>95</td>
+            <td>SHORT</td>
+            <td>0.081340</td>
+            <td>0.081750</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>96</td>
+            <td>SHORT</td>
+            <td>0.081370</td>
+            <td>0.081150</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>97</td>
+            <td>LONG</td>
+            <td>0.085050</td>
+            <td>0.085410</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>98</td>
+            <td>SHORT</td>
+            <td>0.084340</td>
+            <td>0.085100</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>99</td>
+            <td>LONG</td>
+            <td>0.082880</td>
+            <td>0.083270</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>100</td>
+            <td>SHORT</td>
+            <td>0.083100</td>
+            <td>0.083680</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>101</td>
+            <td>LONG</td>
+            <td>0.089720</td>
+            <td>0.088630</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>102</td>
+            <td>SHORT</td>
+            <td>0.087160</td>
+            <td>0.086870</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>103</td>
+            <td>SHORT</td>
+            <td>0.086620</td>
+            <td>0.084340</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>104</td>
+            <td>SHORT</td>
+            <td>0.083870</td>
+            <td>0.083820</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>105</td>
+            <td>LONG</td>
+            <td>0.083480</td>
+            <td>0.082610</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>106</td>
+            <td>LONG</td>
+            <td>0.096760</td>
+            <td>0.095370</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>107</td>
+            <td>LONG</td>
+            <td>0.097290</td>
+            <td>0.098190</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>108</td>
+            <td>LONG</td>
+            <td>0.095950</td>
+            <td>0.096800</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>109</td>
+            <td>SHORT</td>
+            <td>0.172890</td>
+            <td>0.172650</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>110</td>
+            <td>SHORT</td>
+            <td>0.172660</td>
+            <td>0.176220</td>
+            <td style="color:#ff4d4d">-0.08</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>111</td>
+            <td>SHORT</td>
+            <td>0.176240</td>
+            <td>0.172680</td>
+            <td style="color:#00d4aa">0.06</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>112</td>
+            <td>SHORT</td>
+            <td>0.172710</td>
+            <td>0.169240</td>
+            <td style="color:#00d4aa">0.06</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>113</td>
+            <td>SHORT</td>
+            <td>0.171630</td>
+            <td>0.175400</td>
+            <td style="color:#ff4d4d">-0.04</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>114</td>
+            <td>SHORT</td>
+            <td>0.127980</td>
+            <td>0.130780</td>
+            <td style="color:#ff4d4d">-0.05</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>115</td>
+            <td>SHORT</td>
+            <td>0.125860</td>
+            <td>0.128740</td>
+            <td style="color:#ff4d4d">-0.04</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>116</td>
+            <td>SHORT</td>
+            <td>0.151430</td>
+            <td>0.147910</td>
+            <td style="color:#00d4aa">0.04</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>117</td>
+            <td>SHORT</td>
+            <td>0.175810</td>
+            <td>0.178800</td>
+            <td style="color:#ff4d4d">-0.05</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>118</td>
+            <td>SHORT</td>
+            <td>0.208060</td>
+            <td>0.209260</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>119</td>
+            <td>SHORT</td>
+            <td>0.182800</td>
+            <td>0.183470</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>120</td>
+            <td>SHORT</td>
+            <td>0.179300</td>
+            <td>0.173060</td>
+            <td style="color:#00d4aa">0.08</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>121</td>
+            <td>SHORT</td>
+            <td>0.177350</td>
+            <td>0.173830</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>122</td>
+            <td>SHORT</td>
+            <td>0.199510</td>
+            <td>0.200890</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>123</td>
+            <td>SHORT</td>
+            <td>0.188640</td>
+            <td>0.188670</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>124</td>
+            <td>SHORT</td>
+            <td>0.195660</td>
+            <td>0.195070</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>125</td>
+            <td>SHORT</td>
+            <td>0.195050</td>
+            <td>0.193110</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>126</td>
+            <td>SHORT</td>
+            <td>0.191740</td>
+            <td>0.184930</td>
+            <td style="color:#00d4aa">0.11</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>127</td>
+            <td>SHORT</td>
+            <td>0.150940</td>
+            <td>0.153410</td>
+            <td style="color:#ff4d4d">-0.07</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>128</td>
+            <td>SHORT</td>
+            <td>0.153520</td>
+            <td>0.157040</td>
+            <td style="color:#ff4d4d">-0.11</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>129</td>
+            <td>SHORT</td>
+            <td>0.154500</td>
+            <td>0.155000</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>130</td>
+            <td>SHORT</td>
+            <td>0.153080</td>
+            <td>0.152400</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>131</td>
+            <td>SHORT</td>
+            <td>0.152290</td>
+            <td>0.148140</td>
+            <td style="color:#00d4aa">0.07</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>132</td>
+            <td>SHORT</td>
+            <td>0.149520</td>
+            <td>0.149330</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>133</td>
+            <td>SHORT</td>
+            <td>0.150140</td>
+            <td>0.149880</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>134</td>
+            <td>SHORT</td>
+            <td>0.140950</td>
+            <td>0.134780</td>
+            <td style="color:#00d4aa">0.06</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>135</td>
+            <td>SHORT</td>
+            <td>0.122690</td>
+            <td>0.123580</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>136</td>
+            <td>LONG</td>
+            <td>0.148660</td>
+            <td>0.158170</td>
+            <td style="color:#00d4aa">0.08</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>137</td>
+            <td>SHORT</td>
+            <td>0.156660</td>
+            <td>0.157070</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>138</td>
+            <td>SHORT</td>
+            <td>0.156910</td>
+            <td>0.150960</td>
+            <td style="color:#00d4aa">0.09</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>139</td>
+            <td>LONG</td>
+            <td>0.148540</td>
+            <td>0.150570</td>
+            <td style="color:#00d4aa">0.02</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>140</td>
+            <td>LONG</td>
+            <td>0.141440</td>
+            <td>0.149320</td>
+            <td style="color:#00d4aa">0.08</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>141</td>
+            <td>LONG</td>
+            <td>0.155880</td>
+            <td>0.163470</td>
+            <td style="color:#00d4aa">0.09</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>142</td>
+            <td>SHORT</td>
+            <td>0.165410</td>
+            <td>0.165460</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>143</td>
+            <td>SHORT</td>
+            <td>0.157930</td>
+            <td>0.159550</td>
+            <td style="color:#ff4d4d">-0.05</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>144</td>
+            <td>SHORT</td>
+            <td>0.164710</td>
+            <td>0.166720</td>
+            <td style="color:#ff4d4d">-0.07</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>145</td>
+            <td>SHORT</td>
+            <td>0.162870</td>
+            <td>0.163300</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>146</td>
+            <td>SHORT</td>
+            <td>0.165680</td>
+            <td>0.165430</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>147</td>
+            <td>SHORT</td>
+            <td>0.164520</td>
+            <td>0.164920</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>148</td>
+            <td>SHORT</td>
+            <td>0.158150</td>
+            <td>0.156170</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>149</td>
+            <td>SHORT</td>
+            <td>0.159410</td>
+            <td>0.160810</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>150</td>
+            <td>SHORT</td>
+            <td>0.159540</td>
+            <td>0.146520</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>151</td>
+            <td>LONG</td>
+            <td>0.147930</td>
+            <td>0.147160</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>152</td>
+            <td>SHORT</td>
+            <td>0.140960</td>
+            <td>0.133720</td>
+            <td style="color:#00d4aa">0.04</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>153</td>
+            <td>SHORT</td>
+            <td>0.135930</td>
+            <td>0.136190</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>154</td>
+            <td>SHORT</td>
+            <td>0.135400</td>
+            <td>0.135980</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>155</td>
+            <td>SHORT</td>
+            <td>0.132970</td>
+            <td>0.128740</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>156</td>
+            <td>SHORT</td>
+            <td>0.129670</td>
+            <td>0.132070</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>157</td>
+            <td>LONG</td>
+            <td>0.123790</td>
+            <td>0.125900</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>158</td>
+            <td>SHORT</td>
+            <td>0.123290</td>
+            <td>0.124300</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>159</td>
+            <td>SHORT</td>
+            <td>0.123580</td>
+            <td>0.124000</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>160</td>
+            <td>SHORT</td>
+            <td>0.123210</td>
+            <td>0.123040</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>161</td>
+            <td>SHORT</td>
+            <td>0.123160</td>
+            <td>0.123400</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>162</td>
+            <td>SHORT</td>
+            <td>0.123080</td>
+            <td>0.122960</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>163</td>
+            <td>SHORT</td>
+            <td>0.123110</td>
+            <td>0.123120</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>164</td>
+            <td>SHORT</td>
+            <td>0.122170</td>
+            <td>0.117350</td>
+            <td style="color:#00d4aa">0.02</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>165</td>
+            <td>SHORT</td>
+            <td>0.124740</td>
+            <td>0.124670</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>166</td>
+            <td>LONG</td>
+            <td>0.123830</td>
+            <td>0.125790</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>167</td>
+            <td>SHORT</td>
+            <td>0.124950</td>
+            <td>0.123470</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>168</td>
+            <td>SHORT</td>
+            <td>0.124290</td>
+            <td>0.124390</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>169</td>
+            <td>SHORT</td>
+            <td>0.113740</td>
+            <td>0.107020</td>
+            <td style="color:#00d4aa">0.05</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>170</td>
+            <td>SHORT</td>
+            <td>0.109230</td>
+            <td>0.110010</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>171</td>
+            <td>SHORT</td>
+            <td>0.110950</td>
+            <td>0.112140</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>172</td>
+            <td>SHORT</td>
+            <td>0.119160</td>
+            <td>0.121410</td>
+            <td style="color:#ff4d4d">-0.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>173</td>
+            <td>SHORT</td>
+            <td>0.124050</td>
+            <td>0.124780</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>174</td>
+            <td>SHORT</td>
+            <td>0.124190</td>
+            <td>0.121880</td>
+            <td style="color:#00d4aa">0.02</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>175</td>
+            <td>SHORT</td>
+            <td>0.129920</td>
+            <td>0.130900</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>176</td>
+            <td>SHORT</td>
+            <td>0.131390</td>
+            <td>0.131360</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>177</td>
+            <td>SHORT</td>
+            <td>0.133110</td>
+            <td>0.129650</td>
+            <td style="color:#00d4aa">0.05</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>178</td>
+            <td>SHORT</td>
+            <td>0.131170</td>
+            <td>0.123600</td>
+            <td style="color:#00d4aa">0.04</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>179</td>
+            <td>SHORT</td>
+            <td>0.123610</td>
+            <td>0.124540</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>180</td>
+            <td>SHORT</td>
+            <td>0.122870</td>
+            <td>0.124420</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>181</td>
+            <td>SHORT</td>
+            <td>0.134500</td>
+            <td>0.133890</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>182</td>
+            <td>SHORT</td>
+            <td>0.132050</td>
+            <td>0.135330</td>
+            <td style="color:#ff4d4d">-0.07</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>183</td>
+            <td>SHORT</td>
+            <td>0.131900</td>
+            <td>0.133490</td>
+            <td style="color:#ff4d4d">-0.04</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>184</td>
+            <td>SHORT</td>
+            <td>0.130210</td>
+            <td>0.128830</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>185</td>
+            <td>SHORT</td>
+            <td>0.125010</td>
+            <td>0.122340</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>186</td>
+            <td>SHORT</td>
+            <td>0.100700</td>
+            <td>0.103140</td>
+            <td style="color:#ff4d4d">-0.05</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>187</td>
+            <td>SHORT</td>
+            <td>0.103130</td>
+            <td>0.103820</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>188</td>
+            <td>SHORT</td>
+            <td>0.103580</td>
+            <td>0.093970</td>
+            <td style="color:#00d4aa">0.14</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>189</td>
+            <td>SHORT</td>
+            <td>0.095050</td>
+            <td>0.096960</td>
+            <td style="color:#ff4d4d">-0.05</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>190</td>
+            <td>SHORT</td>
+            <td>0.096940</td>
+            <td>0.097250</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>191</td>
+            <td>SHORT</td>
+            <td>0.097180</td>
+            <td>0.096840</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>192</td>
+            <td>SHORT</td>
+            <td>0.096850</td>
+            <td>0.096320</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>193</td>
+            <td>SHORT</td>
+            <td>0.096380</td>
+            <td>0.096110</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>194</td>
+            <td>SHORT</td>
+            <td>0.104220</td>
+            <td>0.100970</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>195</td>
+            <td>SHORT</td>
+            <td>0.104750</td>
+            <td>0.103040</td>
+            <td style="color:#00d4aa">0.02</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>196</td>
+            <td>SHORT</td>
+            <td>0.100070</td>
+            <td>0.099530</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>197</td>
+            <td>SHORT</td>
+            <td>0.100680</td>
+            <td>0.099210</td>
+            <td style="color:#00d4aa">0.02</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>198</td>
+            <td>SHORT</td>
+            <td>0.103620</td>
+            <td>0.103840</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>199</td>
+            <td>SHORT</td>
+            <td>0.103470</td>
+            <td>0.103470</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>200</td>
+            <td>SHORT</td>
+            <td>0.104940</td>
+            <td>0.105410</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>201</td>
+            <td>LONG</td>
+            <td>0.108960</td>
+            <td>0.106730</td>
+            <td style="color:#ff4d4d">-0.03</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>202</td>
+            <td>LONG</td>
+            <td>0.106720</td>
+            <td>0.113090</td>
+            <td style="color:#00d4aa">0.06</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>203</td>
+            <td>SHORT</td>
+            <td>0.111890</td>
+            <td>0.108690</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>204</td>
+            <td>SHORT</td>
+            <td>0.108470</td>
+            <td>0.108820</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>205</td>
+            <td>SHORT</td>
+            <td>0.108380</td>
+            <td>0.108910</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>206</td>
+            <td>SHORT</td>
+            <td>0.098130</td>
+            <td>0.098940</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>207</td>
+            <td>SHORT</td>
+            <td>0.099430</td>
+            <td>0.099280</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>208</td>
+            <td>SHORT</td>
+            <td>0.099160</td>
+            <td>0.099640</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>209</td>
+            <td>SHORT</td>
+            <td>0.098600</td>
+            <td>0.099390</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>210</td>
+            <td>SHORT</td>
+            <td>0.099010</td>
+            <td>0.099920</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>211</td>
+            <td>SHORT</td>
+            <td>0.094210</td>
+            <td>0.095390</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>212</td>
+            <td>SHORT</td>
+            <td>0.095300</td>
+            <td>0.095110</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>213</td>
+            <td>SHORT</td>
+            <td>0.096370</td>
+            <td>0.096960</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>214</td>
+            <td>SHORT</td>
+            <td>0.096440</td>
+            <td>0.097900</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>215</td>
+            <td>SHORT</td>
+            <td>0.097090</td>
+            <td>0.096960</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>216</td>
+            <td>SHORT</td>
+            <td>0.101350</td>
+            <td>0.102300</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>217</td>
+            <td>LONG</td>
+            <td>0.107640</td>
+            <td>0.106400</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>218</td>
+            <td>SHORT</td>
+            <td>0.099100</td>
+            <td>0.099090</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>219</td>
+            <td>SHORT</td>
+            <td>0.100130</td>
+            <td>0.100360</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>220</td>
+            <td>SHORT</td>
+            <td>0.100150</td>
+            <td>0.100550</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>221</td>
+            <td>LONG</td>
+            <td>0.104090</td>
+            <td>0.105410</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>222</td>
+            <td>SHORT</td>
+            <td>0.106110</td>
+            <td>0.106970</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>223</td>
+            <td>LONG</td>
+            <td>0.108440</td>
+            <td>0.108560</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>224</td>
+            <td>SHORT</td>
+            <td>0.108540</td>
+            <td>0.109110</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>225</td>
+            <td>SHORT</td>
+            <td>0.122950</td>
+            <td>0.123190</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>226</td>
+            <td>SHORT</td>
+            <td>0.105990</td>
+            <td>0.105940</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>227</td>
+            <td>SHORT</td>
+            <td>0.105040</td>
+            <td>0.105060</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>228</td>
+            <td>SHORT</td>
+            <td>0.103740</td>
+            <td>0.104280</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>229</td>
+            <td>SHORT</td>
+            <td>0.111480</td>
+            <td>0.111700</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>230</td>
+            <td>SHORT</td>
+            <td>0.111660</td>
+            <td>0.112230</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>231</td>
+            <td>SHORT</td>
+            <td>0.106210</td>
+            <td>0.106890</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>232</td>
+            <td>SHORT</td>
+            <td>0.110710</td>
+            <td>0.111190</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>233</td>
+            <td>SHORT</td>
+            <td>0.115640</td>
+            <td>0.116160</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>234</td>
+            <td>LONG</td>
+            <td>0.133410</td>
+            <td>0.137940</td>
+            <td style="color:#00d4aa">0.07</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>235</td>
+            <td>SHORT</td>
+            <td>0.142860</td>
+            <td>0.140670</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>236</td>
+            <td>SHORT</td>
+            <td>0.141920</td>
+            <td>0.140560</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>237</td>
+            <td>SHORT</td>
+            <td>0.140550</td>
+            <td>0.139000</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>238</td>
+            <td>SHORT</td>
+            <td>0.134480</td>
+            <td>0.137860</td>
+            <td style="color:#ff4d4d">-0.03</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>239</td>
+            <td>SHORT</td>
+            <td>0.137870</td>
+            <td>0.138490</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>240</td>
+            <td>LONG</td>
+            <td>0.149590</td>
+            <td>0.157740</td>
+            <td style="color:#00d4aa">0.16</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>241</td>
+            <td>SHORT</td>
+            <td>0.170700</td>
+            <td>0.167490</td>
+            <td style="color:#00d4aa">0.04</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>242</td>
+            <td>SHORT</td>
+            <td>0.166980</td>
+            <td>0.163870</td>
+            <td style="color:#00d4aa">0.05</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>243</td>
+            <td>SHORT</td>
+            <td>0.157760</td>
+            <td>0.157760</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>244</td>
+            <td>SHORT</td>
+            <td>0.196720</td>
+            <td>0.195520</td>
+            <td style="color:#00d4aa">0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>245</td>
+            <td>SHORT</td>
+            <td>0.390320</td>
+            <td>0.398360</td>
+            <td style="color:#ff4d4d">-0.25</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>246</td>
+            <td>SHORT</td>
+            <td>0.370240</td>
+            <td>0.368040</td>
+            <td style="color:#00d4aa">0.04</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>247</td>
+            <td>SHORT</td>
+            <td>0.360180</td>
+            <td>0.363490</td>
+            <td style="color:#ff4d4d">-0.04</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>248</td>
+            <td>SHORT</td>
+            <td>0.361630</td>
+            <td>0.372760</td>
+            <td style="color:#ff4d4d">-0.23</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>249</td>
+            <td>SHORT</td>
+            <td>0.389770</td>
+            <td>0.388140</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>250</td>
+            <td>SHORT</td>
+            <td>0.431000</td>
+            <td>0.423410</td>
+            <td style="color:#00d4aa">0.16</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>251</td>
+            <td>SHORT</td>
+            <td>0.415790</td>
+            <td>0.408060</td>
+            <td style="color:#00d4aa">0.11</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>252</td>
+            <td>SHORT</td>
+            <td>0.408080</td>
+            <td>0.416360</td>
+            <td style="color:#ff4d4d">-0.16</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>253</td>
+            <td>SHORT</td>
+            <td>0.416320</td>
+            <td>0.405470</td>
+            <td style="color:#00d4aa">0.31</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>254</td>
+            <td>SHORT</td>
+            <td>0.399540</td>
+            <td>0.402800</td>
+            <td style="color:#ff4d4d">-0.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>255</td>
+            <td>SHORT</td>
+            <td>0.427420</td>
+            <td>0.428230</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>256</td>
+            <td>SHORT</td>
+            <td>0.427840</td>
+            <td>0.412480</td>
+            <td style="color:#00d4aa">0.27</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>257</td>
+            <td>SHORT</td>
+            <td>0.412780</td>
+            <td>0.401900</td>
+            <td style="color:#00d4aa">0.13</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>258</td>
+            <td>SHORT</td>
+            <td>0.409920</td>
+            <td>0.408200</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>259</td>
+            <td>SHORT</td>
+            <td>0.411250</td>
+            <td>0.411590</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>260</td>
+            <td>SHORT</td>
+            <td>0.410370</td>
+            <td>0.413560</td>
+            <td style="color:#ff4d4d">-0.04</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>261</td>
+            <td>SHORT</td>
+            <td>0.411700</td>
+            <td>0.413580</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>262</td>
+            <td>SHORT</td>
+            <td>0.410260</td>
+            <td>0.406510</td>
+            <td style="color:#00d4aa">0.04</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>263</td>
+            <td>SHORT</td>
+            <td>0.431700</td>
+            <td>0.423290</td>
+            <td style="color:#00d4aa">0.16</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>264</td>
+            <td>SHORT</td>
+            <td>0.410420</td>
+            <td>0.413820</td>
+            <td style="color:#ff4d4d">-0.05</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>265</td>
+            <td>SHORT</td>
+            <td>0.396510</td>
+            <td>0.401640</td>
+            <td style="color:#ff4d4d">-0.08</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>266</td>
+            <td>SHORT</td>
+            <td>0.359690</td>
+            <td>0.351070</td>
+            <td style="color:#00d4aa">0.09</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>267</td>
+            <td>SHORT</td>
+            <td>0.358430</td>
+            <td>0.360430</td>
+            <td style="color:#ff4d4d">-0.06</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>268</td>
+            <td>SHORT</td>
+            <td>0.319720</td>
+            <td>0.319010</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>269</td>
+            <td>SHORT</td>
+            <td>0.319100</td>
+            <td>0.322670</td>
+            <td style="color:#ff4d4d">-0.08</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>270</td>
+            <td>SHORT</td>
+            <td>0.315450</td>
+            <td>0.315210</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>271</td>
+            <td>SHORT</td>
+            <td>0.314010</td>
+            <td>0.311970</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>272</td>
+            <td>SHORT</td>
+            <td>0.312110</td>
+            <td>0.308750</td>
+            <td style="color:#00d4aa">0.06</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>273</td>
+            <td>SHORT</td>
+            <td>0.310600</td>
+            <td>0.314490</td>
+            <td style="color:#ff4d4d">-0.06</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>274</td>
+            <td>SHORT</td>
+            <td>0.310600</td>
+            <td>0.311340</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>275</td>
+            <td>SHORT</td>
+            <td>0.309510</td>
+            <td>0.313140</td>
+            <td style="color:#ff4d4d">-0.05</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>276</td>
+            <td>SHORT</td>
+            <td>0.318490</td>
+            <td>0.319870</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>277</td>
+            <td>SHORT</td>
+            <td>0.310330</td>
+            <td>0.310360</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>278</td>
+            <td>LONG</td>
+            <td>0.328820</td>
+            <td>0.328790</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>279</td>
+            <td>SHORT</td>
+            <td>0.342800</td>
+            <td>0.331580</td>
+            <td style="color:#00d4aa">0.14</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>280</td>
+            <td>SHORT</td>
+            <td>0.329080</td>
+            <td>0.330520</td>
+            <td style="color:#ff4d4d">-0.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>281</td>
+            <td>SHORT</td>
+            <td>0.327300</td>
+            <td>0.330230</td>
+            <td style="color:#ff4d4d">-0.06</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>282</td>
+            <td>SHORT</td>
+            <td>0.333190</td>
+            <td>0.318360</td>
+            <td style="color:#00d4aa">0.10</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>283</td>
+            <td>SHORT</td>
+            <td>0.323450</td>
+            <td>0.320320</td>
+            <td style="color:#00d4aa">0.08</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>284</td>
+            <td>SHORT</td>
+            <td>0.370040</td>
+            <td>0.365760</td>
+            <td style="color:#00d4aa">0.11</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>285</td>
+            <td>SHORT</td>
+            <td>0.368280</td>
+            <td>0.359460</td>
+            <td style="color:#00d4aa">0.31</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>286</td>
+            <td>SHORT</td>
+            <td>0.360910</td>
+            <td>0.360660</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>287</td>
+            <td>SHORT</td>
+            <td>0.353970</td>
+            <td>0.353450</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>288</td>
+            <td>SHORT</td>
+            <td>0.330300</td>
+            <td>0.334590</td>
+            <td style="color:#ff4d4d">-0.07</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>289</td>
+            <td>SHORT</td>
+            <td>0.328370</td>
+            <td>0.319140</td>
+            <td style="color:#00d4aa">0.09</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>290</td>
+            <td>SHORT</td>
+            <td>0.323500</td>
+            <td>0.324460</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>291</td>
+            <td>SHORT</td>
+            <td>0.328410</td>
+            <td>0.328760</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>292</td>
+            <td>LONG</td>
+            <td>0.332850</td>
+            <td>0.331070</td>
+            <td style="color:#ff4d4d">-0.04</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>293</td>
+            <td>SHORT</td>
+            <td>0.329800</td>
+            <td>0.327040</td>
+            <td style="color:#00d4aa">0.07</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>294</td>
+            <td>SHORT</td>
+            <td>0.260080</td>
+            <td>0.249550</td>
+            <td style="color:#00d4aa">0.34</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>295</td>
+            <td>SHORT</td>
+            <td>0.245800</td>
+            <td>0.248910</td>
+            <td style="color:#ff4d4d">-0.08</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>296</td>
+            <td>SHORT</td>
+            <td>0.249200</td>
+            <td>0.248690</td>
+            <td style="color:#00d4aa">0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>297</td>
+            <td>SHORT</td>
+            <td>0.253360</td>
+            <td>0.253350</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>298</td>
+            <td>SHORT</td>
+            <td>0.253580</td>
+            <td>0.256100</td>
+            <td style="color:#ff4d4d">-0.07</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>299</td>
+            <td>SHORT</td>
+            <td>0.201500</td>
+            <td>0.204220</td>
+            <td style="color:#ff4d4d">-0.09</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>300</td>
+            <td>SHORT</td>
+            <td>0.198960</td>
+            <td>0.202820</td>
+            <td style="color:#ff4d4d">-0.14</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>301</td>
+            <td>SHORT</td>
+            <td>0.206590</td>
+            <td>0.214620</td>
+            <td style="color:#ff4d4d">-0.35</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>302</td>
+            <td>SHORT</td>
+            <td>0.219260</td>
+            <td>0.219250</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>303</td>
+            <td>SHORT</td>
+            <td>0.198170</td>
+            <td>0.195120</td>
+            <td style="color:#00d4aa">0.13</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>304</td>
+            <td>SHORT</td>
+            <td>0.191260</td>
+            <td>0.192150</td>
+            <td style="color:#ff4d4d">-0.04</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>305</td>
+            <td>LONG</td>
+            <td>0.200860</td>
+            <td>0.202360</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>306</td>
+            <td>SHORT</td>
+            <td>0.203460</td>
+            <td>0.202440</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>307</td>
+            <td>SHORT</td>
+            <td>0.193460</td>
+            <td>0.193940</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>308</td>
+            <td>SHORT</td>
+            <td>0.168370</td>
+            <td>0.153750</td>
+            <td style="color:#00d4aa">0.47</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>309</td>
+            <td>SHORT</td>
+            <td>0.155320</td>
+            <td>0.158760</td>
+            <td style="color:#ff4d4d">-0.12</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>310</td>
+            <td>SHORT</td>
+            <td>0.165830</td>
+            <td>0.164690</td>
+            <td style="color:#00d4aa">0.04</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>311</td>
+            <td>SHORT</td>
+            <td>0.172030</td>
+            <td>0.173360</td>
+            <td style="color:#ff4d4d">-0.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>312</td>
+            <td>LONG</td>
+            <td>0.170220</td>
+            <td>0.171160</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>313</td>
+            <td>LONG</td>
+            <td>0.171190</td>
+            <td>0.170450</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>314</td>
+            <td>LONG</td>
+            <td>0.171470</td>
+            <td>0.175010</td>
+            <td style="color:#00d4aa">0.05</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>315</td>
+            <td>SHORT</td>
+            <td>0.193220</td>
+            <td>0.195890</td>
+            <td style="color:#ff4d4d">-0.05</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>316</td>
+            <td>SHORT</td>
+            <td>0.193600</td>
+            <td>0.193610</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>317</td>
+            <td>SHORT</td>
+            <td>0.189250</td>
+            <td>0.179880</td>
+            <td style="color:#00d4aa">0.16</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>318</td>
+            <td>SHORT</td>
+            <td>0.167420</td>
+            <td>0.165560</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>319</td>
+            <td>SHORT</td>
+            <td>0.166730</td>
+            <td>0.166850</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>320</td>
+            <td>SHORT</td>
+            <td>0.152280</td>
+            <td>0.152720</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>321</td>
+            <td>SHORT</td>
+            <td>0.163870</td>
+            <td>0.164840</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>322</td>
+            <td>SHORT</td>
+            <td>0.163810</td>
+            <td>0.164850</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>323</td>
+            <td>SHORT</td>
+            <td>0.164790</td>
+            <td>0.159130</td>
+            <td style="color:#00d4aa">0.10</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>324</td>
+            <td>LONG</td>
+            <td>0.153300</td>
+            <td>0.151530</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>325</td>
+            <td>SHORT</td>
+            <td>0.178560</td>
+            <td>0.179620</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>326</td>
+            <td>SHORT</td>
+            <td>0.178330</td>
+            <td>0.177410</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>327</td>
+            <td>SHORT</td>
+            <td>0.177710</td>
+            <td>0.178640</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>328</td>
+            <td>SHORT</td>
+            <td>0.170560</td>
+            <td>0.170190</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>329</td>
+            <td>LONG</td>
+            <td>0.181880</td>
+            <td>0.188830</td>
+            <td style="color:#00d4aa">0.10</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>330</td>
+            <td>SHORT</td>
+            <td>0.231230</td>
+            <td>0.226620</td>
+            <td style="color:#00d4aa">0.08</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>331</td>
+            <td>SHORT</td>
+            <td>0.232330</td>
+            <td>0.226090</td>
+            <td style="color:#00d4aa">0.19</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>332</td>
+            <td>SHORT</td>
+            <td>0.236610</td>
+            <td>0.231580</td>
+            <td style="color:#00d4aa">0.14</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>333</td>
+            <td>SHORT</td>
+            <td>0.225000</td>
+            <td>0.226840</td>
+            <td style="color:#ff4d4d">-0.05</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>334</td>
+            <td>SHORT</td>
+            <td>0.218950</td>
+            <td>0.218780</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>335</td>
+            <td>SHORT</td>
+            <td>0.225480</td>
+            <td>0.226910</td>
+            <td style="color:#ff4d4d">-0.04</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>336</td>
+            <td>SHORT</td>
+            <td>0.234220</td>
+            <td>0.226590</td>
+            <td style="color:#00d4aa">0.23</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>337</td>
+            <td>SHORT</td>
+            <td>0.223740</td>
+            <td>0.226690</td>
+            <td style="color:#ff4d4d">-0.05</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>338</td>
+            <td>SHORT</td>
+            <td>0.220780</td>
+            <td>0.220590</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>339</td>
+            <td>SHORT</td>
+            <td>0.220210</td>
+            <td>0.217930</td>
+            <td style="color:#00d4aa">0.04</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>340</td>
+            <td>SHORT</td>
+            <td>0.203700</td>
+            <td>0.197390</td>
+            <td style="color:#00d4aa">0.11</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>341</td>
+            <td>LONG</td>
+            <td>0.190230</td>
+            <td>0.189180</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>342</td>
+            <td>SHORT</td>
+            <td>0.187940</td>
+            <td>0.174200</td>
+            <td style="color:#00d4aa">0.30</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>343</td>
+            <td>LONG</td>
+            <td>0.176240</td>
+            <td>0.176260</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>344</td>
+            <td>SHORT</td>
+            <td>0.167570</td>
+            <td>0.167660</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>345</td>
+            <td>SHORT</td>
+            <td>0.166160</td>
+            <td>0.167050</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>346</td>
+            <td>SHORT</td>
+            <td>0.166630</td>
+            <td>0.166690</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>347</td>
+            <td>SHORT</td>
+            <td>0.148190</td>
+            <td>0.147050</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>348</td>
+            <td>LONG</td>
+            <td>0.155900</td>
+            <td>0.161400</td>
+            <td style="color:#00d4aa">0.09</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>349</td>
+            <td>SHORT</td>
+            <td>0.163280</td>
+            <td>0.165100</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>350</td>
+            <td>SHORT</td>
+            <td>0.159860</td>
+            <td>0.160240</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>351</td>
+            <td>SHORT</td>
+            <td>0.164590</td>
+            <td>0.163810</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>352</td>
+            <td>LONG</td>
+            <td>0.169320</td>
+            <td>0.172820</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>353</td>
+            <td>SHORT</td>
+            <td>0.161880</td>
+            <td>0.161980</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>354</td>
+            <td>SHORT</td>
+            <td>0.162630</td>
+            <td>0.162880</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>355</td>
+            <td>LONG</td>
+            <td>0.171140</td>
+            <td>0.170260</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>356</td>
+            <td>SHORT</td>
+            <td>0.170090</td>
+            <td>0.167740</td>
+            <td style="color:#00d4aa">0.05</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>357</td>
+            <td>SHORT</td>
+            <td>0.201080</td>
+            <td>0.200790</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>358</td>
+            <td>SHORT</td>
+            <td>0.192180</td>
+            <td>0.193350</td>
+            <td style="color:#ff4d4d">-0.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>359</td>
+            <td>SHORT</td>
+            <td>0.269010</td>
+            <td>0.271580</td>
+            <td style="color:#ff4d4d">-0.10</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>360</td>
+            <td>SHORT</td>
+            <td>0.240330</td>
+            <td>0.241380</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>361</td>
+            <td>SHORT</td>
+            <td>0.238820</td>
+            <td>0.225970</td>
+            <td style="color:#00d4aa">0.30</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>362</td>
+            <td>SHORT</td>
+            <td>0.213210</td>
+            <td>0.207830</td>
+            <td style="color:#00d4aa">0.12</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>363</td>
+            <td>SHORT</td>
+            <td>0.205510</td>
+            <td>0.206780</td>
+            <td style="color:#ff4d4d">-0.04</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>364</td>
+            <td>SHORT</td>
+            <td>0.203350</td>
+            <td>0.199170</td>
+            <td style="color:#00d4aa">0.13</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>365</td>
+            <td>SHORT</td>
+            <td>0.195360</td>
+            <td>0.192440</td>
+            <td style="color:#00d4aa">0.08</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>366</td>
+            <td>SHORT</td>
+            <td>0.232490</td>
+            <td>0.228320</td>
+            <td style="color:#00d4aa">0.06</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>367</td>
+            <td>SHORT</td>
+            <td>0.225930</td>
+            <td>0.222950</td>
+            <td style="color:#00d4aa">0.07</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>368</td>
+            <td>SHORT</td>
+            <td>0.221340</td>
+            <td>0.223170</td>
+            <td style="color:#ff4d4d">-0.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>369</td>
+            <td>SHORT</td>
+            <td>0.221200</td>
+            <td>0.217660</td>
+            <td style="color:#00d4aa">0.07</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>370</td>
+            <td>SHORT</td>
+            <td>0.211020</td>
+            <td>0.213180</td>
+            <td style="color:#ff4d4d">-0.04</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>371</td>
+            <td>SHORT</td>
+            <td>0.217340</td>
+            <td>0.218560</td>
+            <td style="color:#ff4d4d">-0.04</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>372</td>
+            <td>SHORT</td>
+            <td>0.216750</td>
+            <td>0.215580</td>
+            <td style="color:#00d4aa">0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>373</td>
+            <td>SHORT</td>
+            <td>0.218640</td>
+            <td>0.222480</td>
+            <td style="color:#ff4d4d">-0.16</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>374</td>
+            <td>SHORT</td>
+            <td>0.231480</td>
+            <td>0.229420</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>375</td>
+            <td>SHORT</td>
+            <td>0.229410</td>
+            <td>0.232300</td>
+            <td style="color:#ff4d4d">-0.07</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>376</td>
+            <td>SHORT</td>
+            <td>0.228070</td>
+            <td>0.219770</td>
+            <td style="color:#00d4aa">0.15</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>377</td>
+            <td>SHORT</td>
+            <td>0.218920</td>
+            <td>0.220320</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>378</td>
+            <td>SHORT</td>
+            <td>0.214340</td>
+            <td>0.212040</td>
+            <td style="color:#00d4aa">0.04</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>379</td>
+            <td>SHORT</td>
+            <td>0.212770</td>
+            <td>0.214550</td>
+            <td style="color:#ff4d4d">-0.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>380</td>
+            <td>SHORT</td>
+            <td>0.209210</td>
+            <td>0.211230</td>
+            <td style="color:#ff4d4d">-0.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>381</td>
+            <td>SHORT</td>
+            <td>0.209490</td>
+            <td>0.211130</td>
+            <td style="color:#ff4d4d">-0.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>382</td>
+            <td>SHORT</td>
+            <td>0.209900</td>
+            <td>0.211120</td>
+            <td style="color:#ff4d4d">-0.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>383</td>
+            <td>SHORT</td>
+            <td>0.209960</td>
+            <td>0.211810</td>
+            <td style="color:#ff4d4d">-0.04</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>384</td>
+            <td>SHORT</td>
+            <td>0.214300</td>
+            <td>0.211480</td>
+            <td style="color:#00d4aa">0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>385</td>
+            <td>LONG</td>
+            <td>0.227540</td>
+            <td>0.230040</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>386</td>
+            <td>SHORT</td>
+            <td>0.238020</td>
+            <td>0.239940</td>
+            <td style="color:#ff4d4d">-0.04</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>387</td>
+            <td>SHORT</td>
+            <td>0.283700</td>
+            <td>0.289520</td>
+            <td style="color:#ff4d4d">-0.15</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>388</td>
+            <td>SHORT</td>
+            <td>0.264060</td>
+            <td>0.265330</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>389</td>
+            <td>SHORT</td>
+            <td>0.262640</td>
+            <td>0.261940</td>
+            <td style="color:#00d4aa">0.02</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>390</td>
+            <td>SHORT</td>
+            <td>0.264060</td>
+            <td>0.264030</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>391</td>
+            <td>SHORT</td>
+            <td>0.265400</td>
+            <td>0.267270</td>
+            <td style="color:#ff4d4d">-0.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>392</td>
+            <td>SHORT</td>
+            <td>0.266030</td>
+            <td>0.265900</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>393</td>
+            <td>SHORT</td>
+            <td>0.267330</td>
+            <td>0.266840</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>394</td>
+            <td>SHORT</td>
+            <td>0.238740</td>
+            <td>0.239000</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>395</td>
+            <td>SHORT</td>
+            <td>0.240180</td>
+            <td>0.239950</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>396</td>
+            <td>SHORT</td>
+            <td>0.239100</td>
+            <td>0.240320</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>397</td>
+            <td>SHORT</td>
+            <td>0.238290</td>
+            <td>0.239210</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>398</td>
+            <td>SHORT</td>
+            <td>0.239120</td>
+            <td>0.230160</td>
+            <td style="color:#00d4aa">0.10</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>399</td>
+            <td>SHORT</td>
+            <td>0.232270</td>
+            <td>0.232690</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>400</td>
+            <td>SHORT</td>
+            <td>0.232420</td>
+            <td>0.232150</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>401</td>
+            <td>SHORT</td>
+            <td>0.254490</td>
+            <td>0.252190</td>
+            <td style="color:#00d4aa">0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>402</td>
+            <td>SHORT</td>
+            <td>0.253300</td>
+            <td>0.252450</td>
+            <td style="color:#00d4aa">0.02</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>403</td>
+            <td>SHORT</td>
+            <td>0.195910</td>
+            <td>0.199580</td>
+            <td style="color:#ff4d4d">-0.09</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>404</td>
+            <td>SHORT</td>
+            <td>0.201540</td>
+            <td>0.197090</td>
+            <td style="color:#00d4aa">0.11</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>405</td>
+            <td>SHORT</td>
+            <td>0.198000</td>
+            <td>0.197340</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>406</td>
+            <td>SHORT</td>
+            <td>0.196940</td>
+            <td>0.190520</td>
+            <td style="color:#00d4aa">0.16</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>407</td>
+            <td>SHORT</td>
+            <td>0.193800</td>
+            <td>0.186850</td>
+            <td style="color:#00d4aa">0.21</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>408</td>
+            <td>SHORT</td>
+            <td>0.194500</td>
+            <td>0.194220</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>409</td>
+            <td>SHORT</td>
+            <td>0.192640</td>
+            <td>0.193920</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>410</td>
+            <td>SHORT</td>
+            <td>0.190060</td>
+            <td>0.190650</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>411</td>
+            <td>SHORT</td>
+            <td>0.189980</td>
+            <td>0.188600</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>412</td>
+            <td>LONG</td>
+            <td>0.192190</td>
+            <td>0.191960</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>413</td>
+            <td>LONG</td>
+            <td>0.193780</td>
+            <td>0.194230</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>414</td>
+            <td>SHORT</td>
+            <td>0.201940</td>
+            <td>0.202320</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>415</td>
+            <td>SHORT</td>
+            <td>0.200120</td>
+            <td>0.200090</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>416</td>
+            <td>SHORT</td>
+            <td>0.198690</td>
+            <td>0.200780</td>
+            <td style="color:#ff4d4d">-0.04</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>417</td>
+            <td>SHORT</td>
+            <td>0.192150</td>
+            <td>0.194300</td>
+            <td style="color:#ff4d4d">-0.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>418</td>
+            <td>LONG</td>
+            <td>0.185320</td>
+            <td>0.184870</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>419</td>
+            <td>SHORT</td>
+            <td>0.183500</td>
+            <td>0.173990</td>
+            <td style="color:#00d4aa">0.15</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>420</td>
+            <td>SHORT</td>
+            <td>0.166280</td>
+            <td>0.166110</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>421</td>
+            <td>SHORT</td>
+            <td>0.174330</td>
+            <td>0.174150</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>422</td>
+            <td>SHORT</td>
+            <td>0.171860</td>
+            <td>0.171540</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>423</td>
+            <td>LONG</td>
+            <td>0.173610</td>
+            <td>0.174120</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>424</td>
+            <td>SHORT</td>
+            <td>0.170720</td>
+            <td>0.162700</td>
+            <td style="color:#00d4aa">0.21</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>425</td>
+            <td>SHORT</td>
+            <td>0.160400</td>
+            <td>0.160220</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>426</td>
+            <td>SHORT</td>
+            <td>0.160240</td>
+            <td>0.162080</td>
+            <td style="color:#ff4d4d">-0.05</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>427</td>
+            <td>SHORT</td>
+            <td>0.161750</td>
+            <td>0.162420</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>428</td>
+            <td>SHORT</td>
+            <td>0.152000</td>
+            <td>0.148110</td>
+            <td style="color:#00d4aa">0.12</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>429</td>
+            <td>SHORT</td>
+            <td>0.149230</td>
+            <td>0.147250</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>430</td>
+            <td>SHORT</td>
+            <td>0.147270</td>
+            <td>0.146990</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>431</td>
+            <td>SHORT</td>
+            <td>0.146870</td>
+            <td>0.139810</td>
+            <td style="color:#00d4aa">0.18</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>432</td>
+            <td>SHORT</td>
+            <td>0.145550</td>
+            <td>0.145710</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>433</td>
+            <td>SHORT</td>
+            <td>0.145930</td>
+            <td>0.145100</td>
+            <td style="color:#00d4aa">0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>434</td>
+            <td>SHORT</td>
+            <td>0.149670</td>
+            <td>0.150330</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>435</td>
+            <td>SHORT</td>
+            <td>0.148380</td>
+            <td>0.137210</td>
+            <td style="color:#00d4aa">0.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>436</td>
+            <td>LONG</td>
+            <td>0.149720</td>
+            <td>0.149120</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>437</td>
+            <td>SHORT</td>
+            <td>0.147410</td>
+            <td>0.147500</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>438</td>
+            <td>LONG</td>
+            <td>0.138890</td>
+            <td>0.138880</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>439</td>
+            <td>SHORT</td>
+            <td>0.139390</td>
+            <td>0.139860</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>440</td>
+            <td>LONG</td>
+            <td>0.140360</td>
+            <td>0.150130</td>
+            <td style="color:#00d4aa">0.17</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>441</td>
+            <td>SHORT</td>
+            <td>0.143910</td>
+            <td>0.137600</td>
+            <td style="color:#00d4aa">0.07</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>442</td>
+            <td>SHORT</td>
+            <td>0.132410</td>
+            <td>0.128650</td>
+            <td style="color:#00d4aa">0.08</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>443</td>
+            <td>LONG</td>
+            <td>0.130980</td>
+            <td>0.130490</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>444</td>
+            <td>SHORT</td>
+            <td>0.125660</td>
+            <td>0.125890</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>445</td>
+            <td>SHORT</td>
+            <td>0.123620</td>
+            <td>0.122090</td>
+            <td style="color:#00d4aa">0.02</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>446</td>
+            <td>LONG</td>
+            <td>0.131140</td>
+            <td>0.129650</td>
+            <td style="color:#ff4d4d">-0.02</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>447</td>
+            <td>LONG</td>
+            <td>0.132120</td>
+            <td>0.131110</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>448</td>
+            <td>SHORT</td>
+            <td>0.128960</td>
+            <td>0.129670</td>
+            <td style="color:#ff4d4d">-0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>449</td>
+            <td>LONG</td>
+            <td>0.128210</td>
+            <td>0.127380</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>450</td>
+            <td>SHORT</td>
+            <td>0.124000</td>
+            <td>0.123860</td>
+            <td style="color:#00d4aa">0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>451</td>
+            <td>SHORT</td>
+            <td>0.123350</td>
+            <td>0.122590</td>
+            <td style="color:#00d4aa">0.01</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>452</td>
+            <td>SHORT</td>
+            <td>0.122780</td>
+            <td>0.122770</td>
+            <td style="color:#ff4d4d">-0.00</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>453</td>
+            <td>SHORT</td>
+            <td>0.122510</td>
+            <td>0.098430</td>
+            <td style="color:#00d4aa">0.08</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>454</td>
+            <td>LONG</td>
+            <td>0.098840</td>
+            <td>0.098300</td>
+            <td style="color:#ff4d4d">-160.22</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>455</td>
+            <td>LONG</td>
+            <td>0.098890</td>
+            <td>0.098560</td>
+            <td style="color:#ff4d4d">-48.46</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>456</td>
+            <td>LONG</td>
+            <td>0.099360</td>
+            <td>0.098750</td>
+            <td style="color:#ff4d4d">-376.76</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>457</td>
+            <td>LONG</td>
+            <td>0.098980</td>
+            <td>0.098980</td>
+            <td style="color:#ff4d4d">-16.61</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>458</td>
+            <td>LONG</td>
+            <td>0.099100</td>
+            <td>0.099450</td>
+            <td style="color:#00d4aa">83.28</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>459</td>
+            <td>LONG</td>
+            <td>0.109130</td>
+            <td>0.108650</td>
+            <td style="color:#ff4d4d">-631.51</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>460</td>
+            <td>LONG</td>
+            <td>0.115160</td>
+            <td>0.116110</td>
+            <td style="color:#00d4aa">419.72</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>461</td>
+            <td>SHORT</td>
+            <td>0.112530</td>
+            <td>0.111060</td>
+            <td style="color:#00d4aa">1085.81</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>462</td>
+            <td>SHORT</td>
+            <td>0.108890</td>
+            <td>0.109240</td>
+            <td style="color:#ff4d4d">-205.86</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>463</td>
+            <td>SHORT</td>
+            <td>0.109790</td>
+            <td>0.109880</td>
+            <td style="color:#ff4d4d">-182.83</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>464</td>
+            <td>SHORT</td>
+            <td>0.110520</td>
+            <td>0.111920</td>
+            <td style="color:#ff4d4d">-1117.24</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>465</td>
+            <td>SHORT</td>
+            <td>0.107430</td>
+            <td>0.105560</td>
+            <td style="color:#00d4aa">4065.03</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>466</td>
+            <td>SHORT</td>
+            <td>0.104600</td>
+            <td>0.104890</td>
+            <td style="color:#ff4d4d">-231.68</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>467</td>
+            <td>SHORT</td>
+            <td>0.103900</td>
+            <td>0.104500</td>
+            <td style="color:#ff4d4d">-170.70</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>468</td>
+            <td>SHORT</td>
+            <td>0.103720</td>
+            <td>0.104020</td>
+            <td style="color:#ff4d4d">-127.24</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>469</td>
+            <td>SHORT</td>
+            <td>0.104640</td>
+            <td>0.104750</td>
+            <td style="color:#ff4d4d">-74.15</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>470</td>
+            <td>SHORT</td>
+            <td>0.101370</td>
+            <td>0.102060</td>
+            <td style="color:#ff4d4d">-319.64</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>471</td>
+            <td>SHORT</td>
+            <td>0.101190</td>
+            <td>0.101960</td>
+            <td style="color:#ff4d4d">-133.43</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>472</td>
+            <td>SHORT</td>
+            <td>0.098720</td>
+            <td>0.099370</td>
+            <td style="color:#ff4d4d">-275.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>473</td>
+            <td>LONG</td>
+            <td>0.100360</td>
+            <td>0.099640</td>
+            <td style="color:#ff4d4d">-285.98</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>474</td>
+            <td>SHORT</td>
+            <td>0.099970</td>
+            <td>0.099520</td>
+            <td style="color:#00d4aa">117.75</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>475</td>
+            <td>SHORT</td>
+            <td>0.090720</td>
+            <td>0.087840</td>
+            <td style="color:#00d4aa">3636.40</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>476</td>
+            <td>SHORT</td>
+            <td>0.088980</td>
+            <td>0.090940</td>
+            <td style="color:#ff4d4d">-2167.94</td>
+            <td>HARD_STOP</td>
+        </tr>
+<tr>
+            <td>477</td>
+            <td>SHORT</td>
+            <td>0.090930</td>
+            <td>0.090680</td>
+            <td style="color:#00d4aa">183.62</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>478</td>
+            <td>LONG</td>
+            <td>0.082220</td>
+            <td>0.081020</td>
+            <td style="color:#ff4d4d">-2771.66</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>479</td>
+            <td>SHORT</td>
+            <td>0.084130</td>
+            <td>0.084040</td>
+            <td style="color:#00d4aa">52.30</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>480</td>
+            <td>SHORT</td>
+            <td>0.082820</td>
+            <td>0.082910</td>
+            <td style="color:#ff4d4d">-128.62</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>481</td>
+            <td>LONG</td>
+            <td>0.090040</td>
+            <td>0.089490</td>
+            <td style="color:#ff4d4d">-827.41</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>482</td>
+            <td>SHORT</td>
+            <td>0.087090</td>
+            <td>0.086160</td>
+            <td style="color:#00d4aa">210.52</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>483</td>
+            <td>SHORT</td>
+            <td>0.082820</td>
+            <td>0.082450</td>
+            <td style="color:#00d4aa">629.81</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>484</td>
+            <td>SHORT</td>
+            <td>0.082510</td>
+            <td>0.082600</td>
+            <td style="color:#ff4d4d">-88.38</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>485</td>
+            <td>SHORT</td>
+            <td>0.081720</td>
+            <td>0.079520</td>
+            <td style="color:#00d4aa">1273.83</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>486</td>
+            <td>SHORT</td>
+            <td>0.078590</td>
+            <td>0.079020</td>
+            <td style="color:#ff4d4d">-179.04</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>487</td>
+            <td>SHORT</td>
+            <td>0.073460</td>
+            <td>0.074630</td>
+            <td style="color:#ff4d4d">-486.99</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>488</td>
+            <td>SHORT</td>
+            <td>0.073670</td>
+            <td>0.074690</td>
+            <td style="color:#ff4d4d">-1003.05</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>489</td>
+            <td>SHORT</td>
+            <td>0.075040</td>
+            <td>0.075490</td>
+            <td style="color:#ff4d4d">-88.72</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>490</td>
+            <td>SHORT</td>
+            <td>0.073180</td>
+            <td>0.073360</td>
+            <td style="color:#ff4d4d">-495.08</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>491</td>
+            <td>SHORT</td>
+            <td>0.072400</td>
+            <td>0.072800</td>
+            <td style="color:#ff4d4d">-544.31</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>492</td>
+            <td>SHORT</td>
+            <td>0.072780</td>
+            <td>0.073130</td>
+            <td style="color:#ff4d4d">-80.78</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>493</td>
+            <td>SHORT</td>
+            <td>0.071900</td>
+            <td>0.070720</td>
+            <td style="color:#00d4aa">9595.17</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>494</td>
+            <td>SHORT</td>
+            <td>0.071020</td>
+            <td>0.071080</td>
+            <td style="color:#ff4d4d">-56.79</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>495</td>
+            <td>SHORT</td>
+            <td>0.077040</td>
+            <td>0.076070</td>
+            <td style="color:#00d4aa">221.52</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>496</td>
+            <td>SHORT</td>
+            <td>0.076510</td>
+            <td>0.077040</td>
+            <td style="color:#ff4d4d">-295.86</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>497</td>
+            <td>SHORT</td>
+            <td>0.076800</td>
+            <td>0.077120</td>
+            <td style="color:#ff4d4d">-40.84</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>498</td>
+            <td>SHORT</td>
+            <td>0.072070</td>
+            <td>0.072440</td>
+            <td style="color:#ff4d4d">-331.67</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>499</td>
+            <td>SHORT</td>
+            <td>0.071900</td>
+            <td>0.072020</td>
+            <td style="color:#ff4d4d">-32.50</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>500</td>
+            <td>SHORT</td>
+            <td>0.073600</td>
+            <td>0.072480</td>
+            <td style="color:#00d4aa">184.72</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>501</td>
+            <td>SHORT</td>
+            <td>0.072130</td>
+            <td>0.072120</td>
+            <td style="color:#ff4d4d">-8.80</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>502</td>
+            <td>SHORT</td>
+            <td>0.072470</td>
+            <td>0.072380</td>
+            <td style="color:#00d4aa">23.78</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>503</td>
+            <td>SHORT</td>
+            <td>0.071660</td>
+            <td>0.071960</td>
+            <td style="color:#ff4d4d">-82.34</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>504</td>
+            <td>SHORT</td>
+            <td>0.072440</td>
+            <td>0.072980</td>
+            <td style="color:#ff4d4d">-143.32</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>505</td>
+            <td>SHORT</td>
+            <td>0.072570</td>
+            <td>0.072450</td>
+            <td style="color:#00d4aa">32.65</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>506</td>
+            <td>SHORT</td>
+            <td>0.068900</td>
+            <td>0.069190</td>
+            <td style="color:#ff4d4d">-354.54</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>507</td>
+            <td>SHORT</td>
+            <td>0.069370</td>
+            <td>0.069510</td>
+            <td style="color:#ff4d4d">-43.80</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>508</td>
+            <td>LONG</td>
+            <td>0.073150</td>
+            <td>0.072760</td>
+            <td style="color:#ff4d4d">-382.74</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>509</td>
+            <td>SHORT</td>
+            <td>0.072820</td>
+            <td>0.073100</td>
+            <td style="color:#ff4d4d">-373.11</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>510</td>
+            <td>SHORT</td>
+            <td>0.072100</td>
+            <td>0.072030</td>
+            <td style="color:#00d4aa">68.66</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>511</td>
+            <td>SHORT</td>
+            <td>0.070660</td>
+            <td>0.070500</td>
+            <td style="color:#00d4aa">37.47</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>512</td>
+            <td>SHORT</td>
+            <td>0.069180</td>
+            <td>0.070110</td>
+            <td style="color:#ff4d4d">-904.96</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>513</td>
+            <td>SHORT</td>
+            <td>0.069370</td>
+            <td>0.069620</td>
+            <td style="color:#ff4d4d">-745.89</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>514</td>
+            <td>SHORT</td>
+            <td>0.070060</td>
+            <td>0.069990</td>
+            <td style="color:#00d4aa">10.36</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>515</td>
+            <td>SHORT</td>
+            <td>0.069680</td>
+            <td>0.069930</td>
+            <td style="color:#ff4d4d">-161.99</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>516</td>
+            <td>SHORT</td>
+            <td>0.069670</td>
+            <td>0.069880</td>
+            <td style="color:#ff4d4d">-95.86</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>517</td>
+            <td>SHORT</td>
+            <td>0.069840</td>
+            <td>0.069960</td>
+            <td style="color:#ff4d4d">-117.21</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>518</td>
+            <td>SHORT</td>
+            <td>0.070820</td>
+            <td>0.069930</td>
+            <td style="color:#00d4aa">693.16</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>519</td>
+            <td>SHORT</td>
+            <td>0.069780</td>
+            <td>0.070030</td>
+            <td style="color:#ff4d4d">-179.03</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>520</td>
+            <td>SHORT</td>
+            <td>0.069400</td>
+            <td>0.070020</td>
+            <td style="color:#ff4d4d">-601.07</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>521</td>
+            <td>SHORT</td>
+            <td>0.091720</td>
+            <td>0.092350</td>
+            <td style="color:#ff4d4d">-516.90</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>522</td>
+            <td>SHORT</td>
+            <td>0.092500</td>
+            <td>0.092310</td>
+            <td style="color:#00d4aa">58.91</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>523</td>
+            <td>SHORT</td>
+            <td>0.092090</td>
+            <td>0.091860</td>
+            <td style="color:#00d4aa">182.43</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>524</td>
+            <td>SHORT</td>
+            <td>0.091230</td>
+            <td>0.092020</td>
+            <td style="color:#ff4d4d">-891.76</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>525</td>
+            <td>SHORT</td>
+            <td>0.089730</td>
+            <td>0.089240</td>
+            <td style="color:#00d4aa">268.43</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>526</td>
+            <td>SHORT</td>
+            <td>0.089240</td>
+            <td>0.086560</td>
+            <td style="color:#00d4aa">1068.56</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>527</td>
+            <td>SHORT</td>
+            <td>0.084730</td>
+            <td>0.082720</td>
+            <td style="color:#00d4aa">477.72</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>528</td>
+            <td>SHORT</td>
+            <td>0.082840</td>
+            <td>0.083220</td>
+            <td style="color:#ff4d4d">-289.57</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>529</td>
+            <td>SHORT</td>
+            <td>0.082670</td>
+            <td>0.083230</td>
+            <td style="color:#ff4d4d">-127.71</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>530</td>
+            <td>SHORT</td>
+            <td>0.082880</td>
+            <td>0.082850</td>
+            <td style="color:#ff4d4d">-0.57</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>531</td>
+            <td>SHORT</td>
+            <td>0.082530</td>
+            <td>0.082800</td>
+            <td style="color:#ff4d4d">-164.79</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>532</td>
+            <td>SHORT</td>
+            <td>0.081990</td>
+            <td>0.081640</td>
+            <td style="color:#00d4aa">124.08</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>533</td>
+            <td>SHORT</td>
+            <td>0.081600</td>
+            <td>0.081550</td>
+            <td style="color:#00d4aa">15.98</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>534</td>
+            <td>SHORT</td>
+            <td>0.084980</td>
+            <td>0.084860</td>
+            <td style="color:#00d4aa">83.46</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>535</td>
+            <td>SHORT</td>
+            <td>0.089680</td>
+            <td>0.089180</td>
+            <td style="color:#00d4aa">246.46</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>536</td>
+            <td>SHORT</td>
+            <td>0.089820</td>
+            <td>0.089710</td>
+            <td style="color:#00d4aa">48.10</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>537</td>
+            <td>SHORT</td>
+            <td>0.089230</td>
+            <td>0.090200</td>
+            <td style="color:#ff4d4d">-650.77</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>538</td>
+            <td>SHORT</td>
+            <td>0.089410</td>
+            <td>0.089700</td>
+            <td style="color:#ff4d4d">-147.12</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>539</td>
+            <td>SHORT</td>
+            <td>0.090200</td>
+            <td>0.090370</td>
+            <td style="color:#ff4d4d">-195.07</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>540</td>
+            <td>SHORT</td>
+            <td>0.086790</td>
+            <td>0.086030</td>
+            <td style="color:#00d4aa">708.80</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>541</td>
+            <td>SHORT</td>
+            <td>0.082480</td>
+            <td>0.082800</td>
+            <td style="color:#ff4d4d">-76.07</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>542</td>
+            <td>SHORT</td>
+            <td>0.081680</td>
+            <td>0.082060</td>
+            <td style="color:#ff4d4d">-143.35</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>543</td>
+            <td>SHORT</td>
+            <td>0.086720</td>
+            <td>0.087580</td>
+            <td style="color:#ff4d4d">-441.81</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>544</td>
+            <td>SHORT</td>
+            <td>0.086900</td>
+            <td>0.085050</td>
+            <td style="color:#00d4aa">1343.60</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>545</td>
+            <td>SHORT</td>
+            <td>0.098650</td>
+            <td>0.099070</td>
+            <td style="color:#ff4d4d">-354.36</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>546</td>
+            <td>SHORT</td>
+            <td>0.100050</td>
+            <td>0.093050</td>
+            <td style="color:#00d4aa">4056.07</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>547</td>
+            <td>SHORT</td>
+            <td>0.096980</td>
+            <td>0.097660</td>
+            <td style="color:#ff4d4d">-794.78</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>548</td>
+            <td>SHORT</td>
+            <td>0.096580</td>
+            <td>0.097380</td>
+            <td style="color:#ff4d4d">-941.75</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>549</td>
+            <td>SHORT</td>
+            <td>0.096330</td>
+            <td>0.093110</td>
+            <td style="color:#00d4aa">1999.89</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>550</td>
+            <td>SHORT</td>
+            <td>0.093200</td>
+            <td>0.094220</td>
+            <td style="color:#ff4d4d">-892.34</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>551</td>
+            <td>SHORT</td>
+            <td>0.093200</td>
+            <td>0.094290</td>
+            <td style="color:#ff4d4d">-1437.18</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>552</td>
+            <td>SHORT</td>
+            <td>0.093610</td>
+            <td>0.094100</td>
+            <td style="color:#ff4d4d">-103.30</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>553</td>
+            <td>SHORT</td>
+            <td>0.094280</td>
+            <td>0.094080</td>
+            <td style="color:#00d4aa">79.05</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>554</td>
+            <td>LONG</td>
+            <td>0.095160</td>
+            <td>0.096040</td>
+            <td style="color:#00d4aa">852.84</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>555</td>
+            <td>SHORT</td>
+            <td>0.094500</td>
+            <td>0.094910</td>
+            <td style="color:#ff4d4d">-336.31</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>556</td>
+            <td>SHORT</td>
+            <td>0.094240</td>
+            <td>0.094480</td>
+            <td style="color:#ff4d4d">-69.19</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>557</td>
+            <td>SHORT</td>
+            <td>0.094890</td>
+            <td>0.092080</td>
+            <td style="color:#00d4aa">831.83</td>
+            <td>TRAILING_TP</td>
+        </tr>
+<tr>
+            <td>558</td>
+            <td>SHORT</td>
+            <td>0.094820</td>
+            <td>0.095170</td>
+            <td style="color:#ff4d4d">-225.22</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>559</td>
+            <td>SHORT</td>
+            <td>0.094780</td>
+            <td>0.093820</td>
+            <td style="color:#00d4aa">224.94</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>560</td>
+            <td>SHORT</td>
+            <td>0.090280</td>
+            <td>0.090920</td>
+            <td style="color:#ff4d4d">-2078.31</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>561</td>
+            <td>SHORT</td>
+            <td>0.084730</td>
+            <td>0.084880</td>
+            <td style="color:#ff4d4d">-126.48</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+<tr>
+            <td>562</td>
+            <td>SHORT</td>
+            <td>0.085990</td>
+            <td>0.085190</td>
+            <td style="color:#00d4aa">595.04</td>
+            <td>TREND_REVERSAL</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>
+生成时间: 2026-10-21T18:43:49.758799+00:00 | 回测引擎: Production v1.0.0 | 状态: Double-Entry Conservation Verified
+</footer>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "generated_at_utc": "2026-10-21T18:55:25.762712+00:00",
+  "test_suite_version": "v1.0.0",
+  "unit_tests": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0
+  },
+  "smoke_tests": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0
+  },
+  "e2e_tests": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0
+  },
+  "dom_assertions": {
+    "sharpe_card_present": true,
+    "cagr_card_present": true,
+    "maxdd_card_present": true,
+    "equity_svg_present": true,
+    "equity_svg_has_path": true,
+    "trades_table_present": true,
+    "trades_table_row_count": 562
+  },
+  "overall_status": "PASS",
+  "critical_failures": []
+}

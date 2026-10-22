@@ -1,0 +1,75 @@
+{
+  "generated_at_utc": "2026-10-21T14:07:59.009106+00:00",
+  "input_sha256": "b8c278305e47a2baa6b36220122cdda7f6f18c1b55dad7838a1a68ded7957a61",
+  "output_sha256": "48d9790e797625e889bee52ac3df84e5f9121ffebf9ee9691f2d2efebc12911e",
+  "factor_count": 15,
+  "factors": {
+    "cvd_z_288": {
+      "ic_mean": 0.020488,
+      "null_pct": 0.03
+    },
+    "cvd_z_1440": {
+      "ic_mean": 0.007744,
+      "null_pct": 0.14
+    },
+    "cvd_div_288": {
+      "ic_mean": 0.033937,
+      "null_pct": 0.03
+    },
+    "whale_inflow_norm": {
+      "ic_mean": 0.005542,
+      "null_pct": 0.01
+    },
+    "vol_surge": {
+      "ic_mean": 0.003802,
+      "null_pct": 0.01
+    },
+    "parkinson_vol_288": {
+      "ic_mean": 0.002448,
+      "null_pct": 0.01
+    },
+    "atr_pct_288": {
+      "ic_mean": 0.002941,
+      "null_pct": 0.01
+    },
+    "trend_1h": {
+      "ic_mean": -0.023779,
+      "null_pct": 0.0
+    },
+    "trend_4h": {
+      "ic_mean": -0.006362,
+      "null_pct": 0.0
+    },
+    "regime": {
+      "ic_mean": 0.005114,
+      "null_pct": 0.0
+    },
+    "funding_rate_sign": {
+      "ic_mean": -0.00045,
+      "null_pct": 0.0
+    },
+    "funding_rate_abs": {
+      "ic_mean": -0.000117,
+      "null_pct": 0.0
+    },
+    "whale_inflow_net": {
+      "ic_mean": 0.004985,
+      "null_pct": 0.01
+    },
+    "atr_pct_rank": {
+      "ic_mean": 0.005593,
+      "null_pct": 0.05
+    },
+    "signal_long": {
+      "ic_mean": 0.002742,
+      "null_pct": 0.0
+    }
+  },
+  "regime_distribution": {
+    "0": 0.2161,
+    "1": 0.4934,
+    "2": 0.2905
+  },
+  "signal_long_frequency": 0.000686,
+  "signal_short_frequency": 0.004199
+}

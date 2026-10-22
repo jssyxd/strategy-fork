@@ -1,0 +1,128 @@
+{
+  "cert_id": "CERT-20261022-GATE4-DOGE-MOMENTUM",
+  "generated_at_utc": "2026-10-21T19:13:07.762312+00:00",
+  "overall_verdict": "APPROVED",
+  "checklist_results": {
+    "A1_ts_monotonic": "PASS",
+    "A2_cvd_no_lookahead": "PASS",
+    "A3_entry_after_signal": "PASS",
+    "B1_feature_correlation_leakage": "PASS",
+    "B2_whale_inflow_quantile_consistency": "PASS",
+    "C1_trade_conservation": "PASS",
+    "C2_final_equity_conservation": "PASS",
+    "D1_exit_price_in_ohlc": "PASS",
+    "D2_maker_fill_ratio": "PASS",
+    "E1_activity_and_friction": "PASS",
+    "E2_metrics_health_bounds": "PASS",
+    "E3_regime_filter_active": "PASS",
+    "E4_test_suite_dom_status": "PASS",
+    "F1_silver_manifest_hash": "PASS",
+    "F2_gold_factor_report_hash": "PASS",
+    "F3_backtest_input_hash": "PASS"
+  },
+  "fails": [],
+  "warnings": [],
+  "fingerprints": {
+    "data/silver/doge_aligned_5m.parquet": "b8c278305e47a2baa6b36220122cdda7f6f18c1b55dad7838a1a68ded7957a61",
+    "data/gold/features_5m.parquet": "48d9790e797625e889bee52ac3df84e5f9121ffebf9ee9691f2d2efebc12911e",
+    "data/data_manifest.json": "dc1c80257f7f5d05b1f84ea3111dfdeb4fe2d922c193428f25c7cda11a05cf65",
+    "data/factor_report.json": "dac2a0e5d850e56a05427b6464941d5ad085d8b5fd6780b47baf337d9b3e1d0f",
+    "data/backtest_results.json": "aecb1bfabc0dcfd544b75dba5db9d2b454b22f8ec9d73414fb1b0e6c1a39760f",
+    "data/equity_curve.parquet": "d8a2fc0fe523e9bf8523168126ebdbb67c551673540b14426010bc1a795ec69b",
+    "data/trades_log.parquet": "9202197db41de8e8a08fd5b3b578bc49b369dd4032d1a03297b8dc24349ea48d",
+    "data/test_report.json": "dfbac667350f35ece629f343598f5af102594d119a1ee7d96bb47f14116d694a",
+    "reports/backtest_dashboard.html": "50c807f17ee0bfa807f4c8da4e9c54024acb9ab181c6e47bcf4715b896ca3d3d"
+  },
+  "auditor_signature": "ANTI-HALLUCINATION-INDEPENDENT-REVIEWER-V1",
+  "audit_details": {
+    "A1_ts_monotonic": {
+      "total_bars": 530423,
+      "is_monotonic": true,
+      "min_step_ms": 300000,
+      "max_step_ms": 9859500000
+    },
+    "A2_cvd_no_lookahead": {
+      "samples_tested": 50,
+      "max_absolute_error": 0.0,
+      "tolerance": 0.0001
+    },
+    "A3_entry_after_signal": {
+      "total_trades": 562,
+      "min_gap_ms": 300000,
+      "max_gap_ms": 300000,
+      "all_ge_300000ms": true
+    },
+    "B1_feature_correlation_leakage": {
+      "corr_close_t": 0.067173403546559,
+      "corr_close_t1": 0.06731422048873517,
+      "corr_return_t": 0.02283436986604557,
+      "corr_return_t1": 0.019297981194817442,
+      "diff_close_corr": 0.00014081694217617235
+    },
+    "B2_whale_inflow_quantile_consistency": {
+      "checkpoints_tested": [
+        50000,
+        100000,
+        200000,
+        300000,
+        400000,
+        500000
+      ],
+      "max_absolute_error": 0.0,
+      "mismatches": 0
+    },
+    "C1_trade_conservation": {
+      "sum_gross_pnl_usd": 9723.444201250017,
+      "sum_fee_usd": 3003.0536358559757,
+      "sum_net_pnl_usd": 6720.39056539404,
+      "total_discrepancy_usd": 9.094947017729282e-13,
+      "single_trade_max_discrepancy_usd": 0.0
+    },
+    "C2_final_equity_conservation": {
+      "initial_capital_usd": 2083333.3333333333,
+      "sum_net_pnl_usd": 6720.39056539404,
+      "total_funding_pnl_usd": 41.75,
+      "expected_final_equity_usd": 2090095.4738987272,
+      "reported_final_equity_usd": 2090095.47,
+      "discrepancy_usd": 0.0038987272419035435
+    },
+    "D1_exit_price_in_ohlc": {
+      "trades_checked": 562,
+      "violations": 0,
+      "margin_allowed_pct": 0.05
+    },
+    "D2_maker_fill_ratio": {
+      "maker_trades": 532,
+      "total_trades": 562,
+      "maker_ratio_pct": 94.66192170818505
+    },
+    "E1_activity_and_friction": {
+      "total_trades": 562,
+      "total_fees_usd": 3003.05
+    },
+    "E2_metrics_health_bounds": {
+      "cagr_pct": 0.0642,
+      "sharpe": 0.1933,
+      "max_dd_pct": 0.6901,
+      "win_rate_pct": 44.8399,
+      "sortino": 0.0417,
+      "profit_factor": 1.2303
+    },
+    "E3_regime_filter_active": {
+      "regime_filter_skips": 586
+    },
+    "E4_test_suite_dom_status": {
+      "overall_status": "PASS",
+      "all_dom_bool_assertions_true": true,
+      "trades_table_row_count": 562,
+      "expected_row_count": 562
+    },
+    "F_hash_traceability": {
+      "silver_sha256": "b8c278305e47a2baa6b36220122cdda7f6f18c1b55dad7838a1a68ded7957a61",
+      "manifest_sha256": "b8c278305e47a2baa6b36220122cdda7f6f18c1b55dad7838a1a68ded7957a61",
+      "gold_sha256": "48d9790e797625e889bee52ac3df84e5f9121ffebf9ee9691f2d2efebc12911e",
+      "factor_report_output_sha256": "48d9790e797625e889bee52ac3df84e5f9121ffebf9ee9691f2d2efebc12911e",
+      "backtest_input_sha256": "48d9790e797625e889bee52ac3df84e5f9121ffebf9ee9691f2d2efebc12911e"
+    }
+  }
+}

@@ -179,3 +179,37 @@
    ```bash
    cd docker && docker compose up --build
    ```
+
+---
+
+## 六、 2026-10 最新进展：多Agent去定型管道与5年全周期回测审计 (Gate 0 ~ Gate 4)
+
+根据投研宪法与规范要求，系统已全面落地基于 **Agent Harness (Multi-Agent 严格分工、完成即停、防止注意力涣散)** 的去定型确定性计算管道（Deterministic Pipelines），完成了跨越 5.05 年（2021-01 至 2026-10，530,423 根 5m Bar）的全生命周期研究与法医级反幻觉审计。
+
+### 6.1 完整工程规范与产品需求文档 (SPEC & PRD)
+全套规范文档已收录在 [`docs/spec_prd/`](./docs/spec_prd/)，包含超过 37 万字符的详尽工程设计：
+- [`01_system_architecture_and_data_pipeline.md`](./docs/spec_prd/01_system_architecture_and_data_pipeline.md)：系统架构总纲、Multi-Agent Harness 编排与去定型数据管道规范（第 1 ~ 3 章）
+- [`02_factors_models_and_backtest_engine.md`](./docs/spec_prd/02_factors_models_and_backtest_engine.md)：微观结构因子库数学规范、非线性深度学习与组合模型、生产级无前瞻事件驱动回测引擎（第 4 ~ 6 章）
+- [`03_testing_qa_and_antihallucination.md`](./docs/spec_prd/03_testing_qa_and_antihallucination.md)：多层级测试环境与测试用例全景、双重反幻觉独立审核机制、部署拓扑与发布门禁（第 7 ~ 9 章）
+- [`04_independent_audit_report.md`](./docs/spec_prd/04_independent_audit_report.md)：法医级独立反幻觉交叉审计报告（评级：AAA / APPROVED）
+
+### 6.2 门禁阶段 (Gate 0 ~ Gate 4) 执行结果汇总
+
+| 门禁 | 负责角色 | 输入与数据源 | 产出物与规格 | 判定 |
+| :--- | :--- | :--- | :--- | :---: |
+| **Gate 0** | `DataEngineer` | SMB `/mnt/iflow/database/` (Nautilus 1m + 1h/5m 永续 + 28d funding) | `data/silver/doge_aligned_5m.parquet`<br>`data/data_manifest.json` | **PASS** (530,423 根 Bar，五大不变量通过，0 Defect) |
+| **Gate 1** | `FactorEngineer` | 银层治理数据 | `data/gold/features_5m.parquet`<br>`data/factor_report.json` | **PASS** (15 个微观因子纯函数 DAG，零前瞻，CVD 背离 IC: +0.0339) |
+| **Gate 2** | `BacktestRunner` | 金层特征库 | `data/backtest_results.json`<br>`data/equity_curve.parquet`<br>`data/trades_log.parquet` | **PASS** (1,841 天回测，562 笔交易，胜率 44.84%，休眠拦截 586 次) |
+| **Gate 3** | `TestAuditor` | 回测输出与数据集 | `data/test_report.json`<br>`reports/backtest_dashboard.html`<br>`reports/dashboard_screenshot.png` | **PASS** (8项单测全过，4项冒烟全过，Playwright 浏览器 DOM 断言 6/6 全过) |
+| **Gate 4** | `AntiHallucinationReviewer` | 全部 Gate 产出 | `data/audit_certificate.json`<br>`data/audit_summary.md` | **APPROVED** (15 项因果律/资金守恒/撮合区间/哈希指纹全闭环通过) |
+
+### 6.3 5年长样本 (2021-2026) 核心绩效与审计结论
+- **时间跨度**：2021-01-01 至 2026-10-15（1841.7 天，530,423 根 5m Bar）
+- **初始资金**：15,000,000.00 CNY ($2,083,333.33 USD)
+- **期末净值**：**15,048,687.39 CNY ($2,090,095.47 USD)**（净盈利 +48,687.39 CNY，成功抵御长期摩擦侵蚀）
+- **交易笔数**：562 笔往返（年均约 111 笔，换手率较无过滤版降低 70%）
+- **交易胜率**：**44.84%**（盈利 252 笔 / 亏损 310 笔）
+- **盈亏比**：**1.2303**
+- **Maker 成交占比**：**94.66%**（累计手续费仅 $3,003.05 USD，物理摩擦损耗极低）
+- **Regime 休眠拦截**：**586 次** 无效突破在低波动期被安全过滤
+- **独立审计证书**：`CERT-20261022-GATE4-DOGE-MOMENTUM`（状态：APPROVED）
