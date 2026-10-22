@@ -1,0 +1,45 @@
+{
+  "file_path": "/mnt/iflow/database/03_governed_lake/v2_parquet_lake/crypto/futures_swap/ETH-USDT-SWAP/15m/ETH-USDT-SWAP_15m_governed.parquet",
+  "total_rows": 3170,
+  "columns": [
+    "ts_event",
+    "ts_init",
+    "datetime_open",
+    "datetime_close",
+    "open",
+    "high",
+    "low",
+    "close",
+    "volume",
+    "quote_volume"
+  ],
+  "null_counts": {
+    "ts_event": 0,
+    "ts_init": 0,
+    "datetime_open": 0,
+    "datetime_close": 0,
+    "open": 0,
+    "high": 0,
+    "low": 0,
+    "close": 0,
+    "volume": 0,
+    "quote_volume": 0
+  },
+  "num_gaps_15m": 0,
+  "duplicate_timestamps": 0,
+  "is_monotonic_increasing": true,
+  "invalid_prices": 0,
+  "invalid_hl_invariants": 0,
+  "invalid_volume": 0,
+  "target_window": {
+    "start_date": "2026-10-04 00:00:00+00:00",
+    "end_date": "2026-10-20 23:45:00+00:00",
+    "expected_bars": 1632,
+    "actual_bars": 1632,
+    "first_bar_ts": "2026-10-04 00:00:00+00:00",
+    "last_bar_ts": "2026-10-20 23:45:00+00:00",
+    "min_close": 2333.39,
+    "max_close": 2734.32
+  },
+  "audit_passed": true
+}

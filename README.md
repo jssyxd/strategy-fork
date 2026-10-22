@@ -27,6 +27,8 @@
 | **002** | [`002_intrabar_recalc_matrix`](./002_intrabar_recalc_matrix) | 跨资产大宗/加密/股指<br>(BTC/GLD/SLV/NQ/ES) | 15m/1h/2h/3h/4h<br>(主推 3H) | 2026-10-17 | 🟡 **高频仿真审计通过 / 待实盘排队建模** | 线内挂单即时成交重算 (`on_order_filled` / `calc_on_order_fills`) + 动态 ATR 波动率 Bracket + 悲观碰撞 SL 优先 + 12 根 K 线硬性超时清算 | ⚠️ 真实盘口挂单排队队列与部分成交仿真；跨资产保证金动态并发仲裁；动态追踪止损 (Trailing Stop) |
 | **003** | [`003_doge_micro_momentum_carry`](./003_doge_micro_momentum_carry) | 加密高贝塔/MEME 现货+永续<br>(DOGE/PEPE/WIF) | 5 分钟 / 8h 费率窗口 | 2026-10-17 | 🟡 **高频仿真与费率审计通过 / 待实盘排队建模** | Nautilus 事件驱动双核架构：双 EMA + CVD 微观量差动量 + Garman-Klass 波动率门控 ($25\% \le GK \le 80\%$) + Delta 中性自适应资金费率 Carry 收割；Binance 真实对账净利 +$1.63 万 U (Sharpe 1.68) | ⚠️ 实盘前必须完成五大模块：L2 盘口深度排队与部分成交仿真；跨交易所资金费率时间戳同步器；极速插针清算保护守卫；Meme 动态篮子轮动；WebSocket 实盘 OMS 适配器 |
 | **005** | [`005_smc_ml_adaptive`](./005_smc_ml_adaptive) | OKX 永续 (BTC/ETH/SOL/BNB) | 15 分钟 + 日级 Regime | 2026-10-18 | 🟡 **方案设计完成 / 流水线搭建中** | 基于主账户+Demo真实交易日志的 Regime-Aware 离散模式切换（TrendFollow / HighSelectivity / Invert / NoTrade）+ LightGBM/XGBoost + 严格 Purged Walk-Forward；反过拟合 + 反 lookahead 硬约束 | ⚠️ 需完成特征标签构建、Kaggle Purged CV 训练、安全闸门与 Nautilus 热更新对接 |
+| **007** | [`007_eth_ai_timing_alphaevolve`](./007_eth_ai_timing_alphaevolve) | OKX 永续 (ETH-USDT-SWAP) | 15 分钟 | 2026-10-18 | 🟢 **实盘/模拟盘运行中** | Google AutoML-Zero / AlphaEvolve 演化符号公式与 Q-State 强化学习 15m 择时；止盈 +0.90%，止损 -2.50%，三级哨兵熔断矩阵 | ⚠️ 实盘持续监控中，已完成前置 10-04~10-18 历史复现 |
+| **008** | [`008_eth_aitiming_alphaevolve_2`](./008_eth_aitiming_alphaevolve_2) | OKX 永续 (ETH-USDT-SWAP) | 15 分钟 | 2026-10-22 | 🟢 **NautilusTrader/VectorBT 双引擎零偏差闭环通过** | 007 策略 2026-10-04 至 2026-10-20 (1,632 根 K 线，750u 初始本金) 双引擎交叉对账；同一时间/方向/持仓 100.0% 毫秒级零偏差；净收益 +4.59%，胜率 81.58%，夏普 3.95，回撤 3.57% | ⚠️ 14 份完备交互式与 Markdown 回测报告、逐笔交易流水 (UTF-8 BOM)、不变量断言套件均已就绪并归档 |
 
 ---
 

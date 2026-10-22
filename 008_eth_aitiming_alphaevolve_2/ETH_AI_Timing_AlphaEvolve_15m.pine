@@ -1,0 +1,95 @@
+//@version=5
+strategy("[月读量化] ETH AI 择时策略 (AlphaEvolve GP + Q-State 15m)", 
+         overlay=true, 
+         initial_capital=10000, 
+         default_qty_type=strategy.percent_of_equity, 
+         default_qty_value=50, 
+         commission_type=strategy.commission.percent, 
+         commission_value=0.05)
+
+// ==========================================
+// 1. 超参数与风控阈值 (由 AlphaEvolve 演化确定)
+// ==========================================
+var string G_MODEL = "AlphaEvolve 演化超参"
+float gamma_decay   = input.float(0.88, "Q-Learning 状态折扣因子 (Gamma)", group=G_MODEL)
+float alpha_learn   = input.float(0.12, "TD 状态学习速率 (Alpha)", group=G_MODEL)
+float sig_thresh    = input.float(1.20, "开仓信号极值阈值", group=G_MODEL)
+
+var string G_RISK = "风控与加仓管理 (OKX双轨对齐)"
+float tp_pct        = input.float(0.90, "动态追踪快速止盈 (%)", group=G_RISK) / 100.0
+float sl_pct        = input.float(2.50, "硬性截断止损 (%)", group=G_RISK) / 100.0
+float add_pos_ratio = input.float(75.0, "二次加仓占可用保证金比例 (%)", group=G_RISK)
+
+// ==========================================
+// 2. 15m 永续合约高频特征提取 (Qlib 因子库对齐)
+// ==========================================
+float ret        = math.log(close / close[1])
+float vol_accel  = (volume - volume[1]) / (volume[1] + 1e-6)
+float hl_spread  = (high - low) / (close + 1e-6)
+float k_pos      = (close - low) / (high - low + 1e-6)
+
+// ==========================================
+// 3. 涌现的 Q-State 状态价值评估算子 (时序差分递归)
+//    机器在无人工干预的变异中自发编写的博弈状态价值记忆
+// ==========================================
+var float q_val = 0.0
+float reward_step = k_pos * 15.0 + hl_spread * 0.8
+q_val := (gamma_decay * nz(q_val[1])) + (alpha_learn * reward_step)
+
+// ==========================================
+// 4. AlphaEvolve 编译收敛的最优策略符号树 (AST)
+// ==========================================
+float sma_ret      = ta.sma(ret, 16)
+float std_ret      = ta.stdev(ret, 20)
+float zscore_ret   = (ret - sma_ret) / (std_ret + 1e-6)
+
+// 综合衍生信号
+float partA = (close - ta.sma(close, 20)) / (ta.stdev(close, 20) + 1e-6)
+float composite_sig = partA + (q_val > 0.05 ? 0.3 : (q_val < -0.05 ? -0.3 : 0.0))
+
+// ==========================================
+// 5. 双轨交易执行机制 (15m BarClose进场, Tick级出场)
+// ==========================================
+bool enter_long  = (composite_sig > sig_thresh)
+bool enter_short = (composite_sig < -sig_thresh)
+
+// 状态机记录加仓状态
+var int order_step = 0
+
+// 多头逻辑
+if (enter_long and barstate.isconfirmed)
+    if (strategy.position_size == 0)
+        strategy.entry("Long_Initial", strategy.long, qty=strategy.equity * 0.50 / close)
+        order_step := 1
+    else if (strategy.position_size > 0 and order_step == 1)
+        strategy.entry("Long_Add75", strategy.long, qty=strategy.equity * (add_pos_ratio/100.0) / close)
+        order_step := 2
+
+// 空头逻辑
+if (enter_short and barstate.isconfirmed)
+    if (strategy.position_size == 0)
+        strategy.entry("Short_Initial", strategy.short, qty=strategy.equity * 0.50 / close)
+        order_step := 1
+    else if (strategy.position_size < 0 and order_step == 1)
+        strategy.entry("Short_Add75", strategy.short, qty=strategy.equity * (add_pos_ratio/100.0) / close)
+        order_step := 2
+
+// 出场执行：Tick 级止盈与止损
+if (strategy.position_size > 0)
+    strategy.exit("Exit_Long", 
+                  profit=strategy.position_avg_price * tp_pct / syminfo.mintick, 
+                  loss=strategy.position_avg_price * sl_pct / syminfo.mintick)
+    if (strategy.position_size == 0)
+        order_step := 0
+
+if (strategy.position_size < 0)
+    strategy.exit("Exit_Short", 
+                  profit=strategy.position_avg_price * tp_pct / syminfo.mintick, 
+                  loss=strategy.position_avg_price * sl_pct / syminfo.mintick)
+    if (strategy.position_size == 0)
+        order_step := 0
+
+// 指标通道绘图
+plot(ta.sma(close, 20), "MA20 基准", color=color.blue)
+plot(ta.sma(close, 20) + 1.5 * ta.stdev(close, 20), "上轨通道", color=color.red)
+plot(ta.sma(close, 20) - 1.5 * ta.stdev(close, 20), "下轨通道", color=color.green)

@@ -1,0 +1,28 @@
+{
+  "engine": "NautilusTrader",
+  "symbol": "ETH-USDT-SWAP",
+  "start_time_utc": "2026-10-04 00:00:00+00:00",
+  "end_time_utc": "2026-10-20 23:45:00+00:00",
+  "total_bars": 1632,
+  "initial_capital": 750.0,
+  "final_equity": 784.45,
+  "final_cash": 787.48,
+  "total_return_pct": 4.59,
+  "cagr_pct": 162.43,
+  "max_drawdown_pct": 3.57,
+  "sharpe_ratio": 3.95,
+  "sortino_ratio": 7.25,
+  "calmar_ratio": 45.52,
+  "profit_factor": 1.528,
+  "total_trades": 38,
+  "winning_trades": 31,
+  "losing_trades": 7,
+  "win_rate_pct": 81.58,
+  "total_fees_usdt": 25.25,
+  "open_position_at_end": {
+    "pos_side": 1,
+    "units": 0.2803,
+    "avg_price": 2458.88,
+    "unrealized_pnl": -3.03
+  }
+}
