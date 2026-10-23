@@ -13,8 +13,10 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 
-DATA_PATH = Path("/mnt/iflow/database/03_governed_lake/v2_parquet_lake/crypto/futures_swap/ETH-USDT-SWAP/15m/ETH-USDT-SWAP_15m_governed.parquet")
-RAW_PATH = Path("/mnt/iflow/database/01_raw_lake/okx/futures_swap/ETH-USDT-SWAP/15m/ETH-USDT-SWAP_15m_raw.parquet")
+LOCAL_DATA_PATH = Path("/home/da/桌面/database/03_governed_lake/v2_parquet_lake/crypto/futures_swap/ETH-USDT-SWAP/15m/ETH-USDT-SWAP_15m_governed.parquet")
+MNT_DATA_PATH = Path("/mnt/iflow/database/03_governed_lake/v2_parquet_lake/crypto/futures_swap/ETH-USDT-SWAP/15m/ETH-USDT-SWAP_15m_governed.parquet")
+DATA_PATH = MNT_DATA_PATH if MNT_DATA_PATH.exists() else LOCAL_DATA_PATH
+RAW_PATH = Path("/home/da/桌面/database/01_raw_lake/okx/futures_swap/ETH-USDT-SWAP/15m/ETH-USDT-SWAP_15m_raw.parquet")
 
 START_DATE = "2026-10-04 00:00:00+00:00"
 END_DATE = "2026-10-20 23:45:00+00:00"

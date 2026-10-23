@@ -1,5 +1,5 @@
 {
-  "file_path": "/mnt/iflow/database/03_governed_lake/v2_parquet_lake/crypto/futures_swap/ETH-USDT-SWAP/15m/ETH-USDT-SWAP_15m_governed.parquet",
+  "file_path": "/home/da/桌面/database/03_governed_lake/v2_parquet_lake/crypto/futures_swap/ETH-USDT-SWAP/15m/ETH-USDT-SWAP_15m_governed.parquet",
   "total_rows": 3170,
   "columns": [
     "ts_event",

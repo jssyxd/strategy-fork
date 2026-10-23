@@ -97,3 +97,24 @@
    - `reports/data_validation_report.md` / `reports/data_validation_report.json`：数据湖 1,632 根 K 线完整性凭据。
 4. **自动化执行流水线**：
    - `./autoresearch.sh`：一键自动执行全量数据审计、双引擎回测、核验对账并输出基准指标。
+
+---
+
+## 七、 008 进阶：动态滚动演化 (WFO)、全景消融 (Ablation) 与 37 子 Agent 架构
+
+针对原版静态参数可能面临的中长周期概念漂移与柱内乐观成交缺陷，008 模块已全面集成最新 **自适应重训与全景消融架构 (`adaptive_engine/`)**：
+
+1. **悲观柱内高低点仲裁 (Anti-Intra-Bar Ambiguity)**：
+   - 当单根 15m K 线内同时触碰止损和止盈目标位时，**强制判定止损优先触发**，彻底排除回测乐观偏差。
+2. **动态 Walk-Forward 滚动切片矩阵 (`wfo_pipeline.py`)**：
+   - 引入 Purged ($N=20$) 与 Embargoed ($N=10$) 时序防泄漏隔离带，进行滑动窗口滚动重训。
+3. **多岛屿自适应遗传演化引擎 (`multi_island_ga.py`)**：
+   - 5 独立岛屿隔离演化 + 环形迁移 (Ring Migration) + 柯西重尾大突变 + 灾变重启机制，彻底打破 5,000 代后的早熟停滞壁垒。
+4. **四大出厂准入门禁与统计防过拟合审查 (`overfitting_auditor.py`)**：
+   - 集成 Deflated Sharpe Ratio (DSR) 扣除多重试验选择偏差；
+   - 集成 Minimum Track Record Length (MinTRL) 检验样本充分性。
+5. **六维度全景消融实验协议 (`ablation_study.py`)**：
+   - 包含 BASELINE、Ablation-A (剥离 Q-State)、Ablation-B (禁用加仓)、Ablation-C (禁用盘中动态止盈)、Ablation-D (禁用硬止损)、Ablation-E (杠杆归一化)；
+   - 输出双尾 Wilcoxon 符号秩检验显著性 $p$-value。
+6. **37 个原子子 Agent 编排流水线 (`SUB_AGENTS_ORCHESTRATION.md`)**：
+   - 细分为数据治理、特征工程、演化优化、悲观撮合、消融审计、AI 哨兵监控等 6 大专业集群。

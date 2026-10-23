@@ -1,8 +1,8 @@
 # OKX ETH-USDT 15m 数据湖入库校验与前置审计报告
 
-> **审计时间**：2026-10-22 00:02:24 UTC  
+> **审计时间**：2026-10-23 03:22:38 UTC  
 > **数据存储**：`smb://192.168.1.6/iflow/database`  
-> **挂载路径**：`/mnt/iflow/database/03_governed_lake/v2_parquet_lake/crypto/futures_swap/ETH-USDT-SWAP/15m/ETH-USDT-SWAP_15m_governed.parquet`  
+> **挂载路径**：`/home/da/桌面/database/03_governed_lake/v2_parquet_lake/crypto/futures_swap/ETH-USDT-SWAP/15m/ETH-USDT-SWAP_15m_governed.parquet`  
 > **审计结论**：**[PASS] 100% 校验通过，准予进入双引擎回测**
 
 ---

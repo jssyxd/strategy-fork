@@ -29,7 +29,9 @@ from strategy_signals import (
     AlphaEvolveSignal,
 )
 
-DATA_PATH = Path("/mnt/iflow/database/03_governed_lake/v2_parquet_lake/crypto/futures_swap/ETH-USDT-SWAP/15m/ETH-USDT-SWAP_15m_governed.parquet")
+LOCAL_DATA_PATH = Path("/home/da/桌面/database/03_governed_lake/v2_parquet_lake/crypto/futures_swap/ETH-USDT-SWAP/15m/ETH-USDT-SWAP_15m_governed.parquet")
+MNT_DATA_PATH = Path("/mnt/iflow/database/03_governed_lake/v2_parquet_lake/crypto/futures_swap/ETH-USDT-SWAP/15m/ETH-USDT-SWAP_15m_governed.parquet")
+DATA_PATH = MNT_DATA_PATH if MNT_DATA_PATH.exists() else LOCAL_DATA_PATH
 START_TS_MS = int(pd.Timestamp("2026-10-04 00:00:00+00:00").timestamp() * 1000)
 END_TS_MS = int(pd.Timestamp("2026-10-21 00:00:00+00:00").timestamp() * 1000)
 
@@ -131,14 +133,23 @@ class VectorBTBacktestEngine:
                 hit = None
 
                 if pos_side == 1:
-                    if b["high"] >= tp_target:
+                    hit_tp = (b["high"] >= tp_target)
+                    hit_sl = (b["low"] <= sl_target)
+                    if hit_tp and hit_sl:
+                        # 悲观原则：柱内同时触碰止损和止盈，判定止损优先触发
+                        hit = ("SL", sl_target)
+                    elif hit_tp:
                         hit = ("TP", tp_target)
-                    elif b["low"] <= sl_target:
+                    elif hit_sl:
                         hit = ("SL", sl_target)
                 else:
-                    if b["low"] <= tp_target:
+                    hit_tp = (b["low"] <= tp_target)
+                    hit_sl = (b["high"] >= sl_target)
+                    if hit_tp and hit_sl:
+                        hit = ("SL", sl_target)
+                    elif hit_tp:
                         hit = ("TP", tp_target)
-                    elif b["high"] >= sl_target:
+                    elif hit_sl:
                         hit = ("SL", sl_target)
 
                 if hit is not None:
