@@ -1,0 +1,139 @@
+//@version=6
+strategy("[月读量化] ETH AI 择时策略 (AlphaEvolve-Q v6 Production)", 
+         overlay=true, 
+         initial_capital=10000, 
+         default_qty_type=strategy.percent_of_equity, 
+         default_qty_value=50, 
+         commission_type=strategy.commission.percent, 
+         commission_value=0.05,
+         pyramiding=2)
+
+// ==========================================
+// 1. 超参数与状态机配置 (由 AlphaEvolve 演化收敛)
+// ==========================================
+var string G_MODEL = "AlphaEvolve 状态机参数"
+gamma_decay   = input.float(0.92, "状态折现衰减因子 (Gamma)", group=G_MODEL)
+alpha_learn   = input.float(0.10, "TD 状态学习速率 (Alpha)", group=G_MODEL)
+sig_thresh    = input.float(1.288, "开仓信号极值门限", group=G_MODEL)
+th_add        = input.float(1.650, "顺势二次加仓极值门限", group=G_MODEL)
+
+var string G_RISK  = "动态多轨风控参数 (OKX双轨对齐)"
+tp_pct        = input.float(0.90, "动态快速锁盈激活门限 (%)", group=G_RISK) / 100.0
+sl_pct        = input.float(2.50, "物理硬性截断止损 (%)", group=G_RISK) / 100.0
+trail_cb_pct  = input.float(0.06, "盘中极值安全移动回调 (%)", group=G_RISK) / 100.0
+max_hold_bars = input.int(202, "时间止损最长持仓 Bar 数 (50.5小时)", group=G_RISK)
+
+// ==========================================
+// 2. 特征提取与阻尼保护
+// ==========================================
+atr_val = ta.atr(14)
+safe_atr = math.max(nz(atr_val), syminfo.mintick * 10)
+
+hl_span = high - low
+f_imbalance = hl_span > 0 ? ((close - open) / hl_span) : 0.0
+
+hh16 = ta.highest(high, 16)
+ll16 = ta.lowest(low, 16)
+f_breakout = (hh16 - ll16) > 0 ? ((close - ll16) / (hh16 - ll16) - 0.5) : 0.0
+
+ma20 = ta.sma(close, 20)
+f_dev = (close - ma20) / safe_atr
+
+// ==========================================
+// 3. Q-State 递推状态机
+// ==========================================
+var float q_state = 0.0
+reward_step = (1.585 * f_imbalance) + (1.346 * f_breakout) + (0.303 * f_dev)
+q_state := (gamma_decay * nz(q_state[1])) + (alpha_learn * reward_step)
+
+// 衍生综合信号 (Z-Score + Q-State 增益)
+c_std = ta.stdev(close, 20)
+safe_std = math.max(nz(c_std), syminfo.mintick)
+z_score = (close - ma20) / safe_std
+composite_sig = z_score + (q_state > 0.05 ? 0.32 : (q_state < -0.05 ? -0.32 : 0.0))
+
+// ==========================================
+// 4. 双轨执行逻辑 (15m BarClose 确权入场，盘中连续极值出场)
+// ==========================================
+var int order_step = 0
+var float entry_price = na
+var float peak_price = na
+var float valley_price = na
+var bool trail_active = false
+var int entry_bar_index = 0
+
+// 入场决策 (仅在 K 线走完确权时触发，次根开盘撮合，杜绝未来函数)
+if (barstate.isconfirmed)
+    if (strategy.position_size == 0)
+        if (composite_sig > sig_thresh)
+            strategy.entry("Long_50", strategy.long, qty=strategy.equity * 0.50 / close)
+            order_step := 1
+            entry_price := close
+            peak_price := high
+            trail_active := false
+            entry_bar_index := bar_index
+        else if (composite_sig < -sig_thresh)
+            strategy.entry("Short_50", strategy.short, qty=strategy.equity * 0.50 / close)
+            order_step := 1
+            entry_price := close
+            valley_price := low
+            trail_active := false
+            entry_bar_index := bar_index
+    else if (order_step == 1)
+        if (strategy.position_size > 0 and composite_sig > th_add)
+            strategy.entry("Long_75", strategy.long, qty=strategy.equity * 0.75 / close)
+            order_step := 2
+            entry_price := (entry_price + close) / 2.0
+        else if (strategy.position_size < 0 and composite_sig < -th_add)
+            strategy.entry("Short_75", strategy.short, qty=strategy.equity * 0.75 / close)
+            order_step := 2
+            entry_price := (entry_price + close) / 2.0
+
+// 出场管理 (盘中极值检测)
+if (strategy.position_size > 0)
+    peak_price := math.max(nz(peak_price), high)
+    if ((high - entry_price) / entry_price >= tp_pct)
+        trail_active := true
+        
+    hard_stop_price = entry_price * (1.0 - sl_pct)
+    trail_stop_price = peak_price * (1.0 - trail_cb_pct)
+    
+    // 综合止损线
+    effective_stop = hard_stop_price
+    if (trail_active)
+        effective_stop := math.max(effective_stop, trail_stop_price)
+        
+    strategy.exit("Exit_Long", from_entry="Long_50", stop=effective_stop)
+    strategy.exit("Exit_Long_Add", from_entry="Long_75", stop=effective_stop)
+    
+    // 时间止损
+    if (bar_index - entry_bar_index >= max_hold_bars)
+        strategy.close_all(comment="TimeStop_50.5h")
+        order_step := 0
+
+if (strategy.position_size < 0)
+    valley_price := math.min(nz(valley_price), low)
+    if ((entry_price - low) / entry_price >= tp_pct)
+        trail_active := true
+        
+    hard_stop_price = entry_price * (1.0 + sl_pct)
+    trail_stop_price = valley_price * (1.0 + trail_cb_pct)
+    
+    effective_stop = hard_stop_price
+    if (trail_active)
+        effective_stop := math.min(effective_stop, trail_stop_price)
+        
+    strategy.exit("Exit_Short", from_entry="Short_50", stop=effective_stop)
+    strategy.exit("Exit_Short_Add", from_entry="Short_75", stop=effective_stop)
+    
+    if (bar_index - entry_bar_index >= max_hold_bars)
+        strategy.close_all(comment="TimeStop_50.5h")
+        order_step := 0
+
+if (strategy.position_size == 0)
+    order_step := 0
+    trail_active := false
+
+plot(ma20, "MA20 基准", color=color.blue)
+plot(ma20 + 1.5 * safe_std, "上轨通道", color=color.red)
+plot(ma20 - 1.5 * safe_std, "下轨通道", color=color.green)

@@ -1,0 +1,15 @@
+{
+  "id": "opclown1/eth-ai-alphaevolve-gp-q-learning-trainer",
+  "id_no": 139668754,
+  "title": "ETH AI AlphaEvolve GP Q-Learning Trainer",
+  "code_file": "trainer.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": ["finance", "crypto", "reinforcement-learning", "genetic-programming"],
+  "dataset_sources": [],
+  "kernel_sources": []
+}
