@@ -1,0 +1,38 @@
+[{"stream_name":"stdout","time":2.957430405,"data":"Gen 01/30 | Fit: 40.49 | IS Ret: +17.37% | MDD: 2.46% | WR: 73.6%\n"}
+,{"stream_name":"stdout","time":3.154395628,"data":"Gen 02/30 | Fit: 40.49 | IS Ret: +17.37% | MDD: 2.46% | WR: 73.6%\n"}
+,{"stream_name":"stdout","time":3.34613272,"data":"Gen 03/30 | Fit: 40.49 | IS Ret: +17.37% | MDD: 2.46% | WR: 73.6%\n"}
+,{"stream_name":"stdout","time":3.543861592,"data":"Gen 04/30 | Fit: 40.55 | IS Ret: +17.36% | MDD: 2.46% | WR: 74.0%\n"}
+,{"stream_name":"stdout","time":3.740520321,"data":"Gen 05/30 | Fit: 40.89 | IS Ret: +16.88% | MDD: 2.36% | WR: 72.0%\n"}
+,{"stream_name":"stdout","time":3.935419823,"data":"Gen 06/30 | Fit: 40.89 | IS Ret: +16.88% | MDD: 2.36% | WR: 72.0%\n"}
+,{"stream_name":"stdout","time":4.1282905,"data":"Gen 07/30 | Fit: 41.53 | IS Ret: +17.79% | MDD: 2.46% | WR: 74.0%\n"}
+,{"stream_name":"stdout","time":4.322133954,"data":"Gen 08/30 | Fit: 44.93 | IS Ret: +16.95% | MDD: 2.15% | WR: 70.6%\n"}
+,{"stream_name":"stdout","time":4.518447131,"data":"Gen 09/30 | Fit: 44.93 | IS Ret: +16.95% | MDD: 2.15% | WR: 70.6%\n"}
+,{"stream_name":"stdout","time":4.716403177,"data":"Gen 10/30 | Fit: 44.93 | IS Ret: +16.95% | MDD: 2.15% | WR: 70.6%\n"}
+,{"stream_name":"stdout","time":4.911338423,"data":"Gen 11/30 | Fit: 44.93 | IS Ret: +16.95% | MDD: 2.15% | WR: 70.6%\n"}
+,{"stream_name":"stdout","time":5.109668503,"data":"Gen 12/30 | Fit: 45.79 | IS Ret: +17.28% | MDD: 2.15% | WR: 71.2%\n"}
+,{"stream_name":"stdout","time":5.300269342,"data":"Gen 13/30 | Fit: 45.79 | IS Ret: +17.28% | MDD: 2.15% | WR: 71.2%\n"}
+,{"stream_name":"stdout","time":5.495735943,"data":"Gen 14/30 | Fit: 45.79 | IS Ret: +17.28% | MDD: 2.15% | WR: 71.2%\n"}
+,{"stream_name":"stdout","time":5.689214675,"data":"Gen 15/30 | Fit: 45.79 | IS Ret: +17.28% | MDD: 2.15% | WR: 71.2%\n"}
+,{"stream_name":"stdout","time":5.879633015,"data":"Gen 16/30 | Fit: 45.84 | IS Ret: +17.28% | MDD: 2.15% | WR: 71.2%\n"}
+,{"stream_name":"stdout","time":6.077296399,"data":"Gen 17/30 | Fit: 45.84 | IS Ret: +17.28% | MDD: 2.15% | WR: 71.2%\n"}
+,{"stream_name":"stdout","time":6.270913509,"data":"Gen 18/30 | Fit: 45.89 | IS Ret: +17.28% | MDD: 2.15% | WR: 71.2%\n"}
+,{"stream_name":"stdout","time":6.464571199,"data":"Gen 19/30 | Fit: 45.89 | IS Ret: +17.28% | MDD: 2.15% | WR: 71.2%\n"}
+,{"stream_name":"stdout","time":6.659612247,"data":"Gen 20/30 | Fit: 45.89 | IS Ret: +17.28% | MDD: 2.15% | WR: 71.2%\n"}
+,{"stream_name":"stdout","time":6.855951893,"data":"Gen 21/30 | Fit: 45.89 | IS Ret: +17.28% | MDD: 2.15% | WR: 71.2%\n"}
+,{"stream_name":"stdout","time":7.053836159,"data":"Gen 22/30 | Fit: 45.99 | IS Ret: +17.31% | MDD: 2.15% | WR: 71.2%\n"}
+,{"stream_name":"stdout","time":7.253189816,"data":"Gen 23/30 | Fit: 45.99 | IS Ret: +17.31% | MDD: 2.15% | WR: 71.2%\n"}
+,{"stream_name":"stdout","time":7.446403862,"data":"Gen 24/30 | Fit: 45.99 | IS Ret: +17.31% | MDD: 2.15% | WR: 71.2%\n"}
+,{"stream_name":"stdout","time":7.633852769,"data":"Gen 25/30 | Fit: 45.99 | IS Ret: +17.31% | MDD: 2.15% | WR: 71.2%\n"}
+,{"stream_name":"stdout","time":7.826654477,"data":"Gen 26/30 | Fit: 45.99 | IS Ret: +17.31% | MDD: 2.15% | WR: 71.2%\n"}
+,{"stream_name":"stdout","time":8.017659567,"data":"Gen 27/30 | Fit: 45.99 | IS Ret: +17.31% | MDD: 2.15% | WR: 71.2%\n"}
+,{"stream_name":"stdout","time":8.211613978,"data":"Gen 28/30 | Fit: 45.99 | IS Ret: +17.31% | MDD: 2.15% | WR: 71.2%\n"}
+,{"stream_name":"stdout","time":8.408891146,"data":"Gen 29/30 | Fit: 47.31 | IS Ret: +17.58% | MDD: 2.12% | WR: 71.2%\n"}
+,{"stream_name":"stdout","time":8.600456006,"data":"Gen 30/30 | Fit: 47.31 | IS Ret: +17.58% | MDD: 2.12% | WR: 71.2%\n"}
+,{"stream_name":"stdout","time":8.610862018,"data":"✔ Checkpoint exported successfully to alphaevolve_checkpoint.json\n"}
+,{"stream_name":"stderr","time":11.496611719,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":11.496649914,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":11.923752952,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":11.92378014,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":13.742434963000001,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":15.100322165,"data":"[NbConvertApp] Writing 464729 bytes to __results__.html\n"}
+]

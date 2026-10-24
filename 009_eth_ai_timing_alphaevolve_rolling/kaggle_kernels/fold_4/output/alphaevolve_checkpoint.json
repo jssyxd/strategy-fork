@@ -1,0 +1,50 @@
+{
+  "fold_id": 4,
+  "model_name": "AlphaEvolve-ETH-007-WF-Fold4",
+  "timestamp_utc": "2026-10-24T12:46:07Z",
+  "gates_evaluation": {
+    "gate1_complexity": {
+      "depth": 5,
+      "nodes": 7,
+      "passed": true
+    },
+    "gate2_oos_win_rate_ev": {
+      "oos_win_rate_pct": 66.67,
+      "oos_ev_pct": 0.17149999737739563,
+      "passed": true
+    },
+    "gate3_walk_forward_efficiency": {
+      "wfe_pct": 49.19,
+      "is_sharpe": 12.5,
+      "oos_sharpe": 6.15,
+      "passed": false
+    },
+    "gate4_extreme_drawdown": {
+      "oos_calmar": 2.630000114440918,
+      "oos_mdd_pct": 9.19,
+      "passed": true
+    },
+    "all_gates_cleared": false
+  },
+  "optimal_ast_genome": {
+    "gamma_decay": 0.8848,
+    "w_imb": 2.071,
+    "w_bo": 1.5903,
+    "w_dev": 0.5897,
+    "sig_thresh": 1.2143,
+    "trail_callback_pct": 0.00064,
+    "sl_pct": 0.0218,
+    "tree_depth": 5,
+    "node_count": 7
+  },
+  "out_of_sample_metrics": {
+    "oos_bars_count": 5000,
+    "total_return_pct": 24.18000030517578,
+    "max_drawdown_pct": 9.19,
+    "win_rate_pct": 66.67,
+    "trades_count": 141,
+    "sharpe_ratio": 6.15,
+    "calmar_ratio": 2.630000114440918,
+    "ev_per_trade_pct": 0.17149999737739563
+  }
+}
