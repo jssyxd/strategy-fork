@@ -1,0 +1,17 @@
+{
+  "id": "opclown1/eth-ai-dynamic-event-seg-5-trainer",
+  "title": "ETH AI Dynamic Event Seg 5 Trainer",
+  "code_file": "trainer.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [
+    "finance",
+    "reinforcement-learning"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": []
+}

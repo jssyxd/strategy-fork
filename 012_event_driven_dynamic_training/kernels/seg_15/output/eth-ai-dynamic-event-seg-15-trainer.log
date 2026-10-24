@@ -1,0 +1,8 @@
+[{"stream_name":"stdout","time":8.276694118,"data":"✔ 25,000 bars Dynamic Segment Checkpoint exported successfully!\n"}
+,{"stream_name":"stderr","time":11.533819413,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":11.533860895,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":11.912458069,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":11.912494479,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":12.933509998,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":14.280621292,"data":"[NbConvertApp] Writing 784497 bytes to __results__.html\n"}
+]

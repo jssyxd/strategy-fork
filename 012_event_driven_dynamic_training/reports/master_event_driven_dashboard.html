@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>ETH 15m 事件驱动动态重训 2年全景实战总看板 (2024-10-01 至 2026-10-20)</title>
+    <style>
+        :root {
+            --bg: #090d16; --surface: #131c2e; --border: #1e293b;
+            --text: #f8fafc; --muted: #94a3b8; --accent: #38bdf8;
+            --success: #10b981; --danger: #f43f5e; --gold: #fbbf24;
+        }
+        body {
+            background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0; padding: 32px 24px; line-height: 1.5;
+        }
+        .container { max-width: 1440px; margin: 0 auto; }
+        .header { border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 28px; }
+        h1 { margin: 0; font-size: 28px; color: var(--accent); }
+        p { color: var(--muted); margin: 6px 0 0; font-size: 14px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 28px; }
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+        .card .label { color: var(--muted); font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 8px; }
+        .card .val { font-size: 28px; font-weight: 800; }
+        .card .sub { font-size: 12px; color: var(--muted); margin-top: 6px; }
+        .val.green { color: var(--success); }
+        .val.gold { color: var(--gold); }
+        .val.blue { color: var(--accent); }
+        
+        table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 12px; overflow: hidden; font-size: 13px; margin-top: 16px; }
+        th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+        th { background: #1a2438; color: var(--muted); font-weight: 600; }
+        tr:hover { background: rgba(56, 189, 248, 0.05); }
+        .badge-rule { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); padding: 3px 8px; border-radius: 4px; font-weight: 700; font-size: 11px; }
+        .badge-decay { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); padding: 3px 8px; border-radius: 4px; font-weight: 700; font-size: 11px; }
+        .badge-end { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); padding: 3px 8px; border-radius: 4px; font-weight: 700; font-size: 11px; }
+        .btn-link {
+            background: rgba(56, 189, 248, 0.15); color: var(--accent); border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 4px 8px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 11px;
+            display: inline-block;
+        }
+        .btn-cloud {
+            background: rgba(14, 165, 233, 0.15); color: #38bdf8; border: 1px solid #0284c7;
+            padding: 4px 8px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 11px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚡ ETH 15m 事件驱动动态重训 2年全景实战总看板 (2024-10-01 至 2026-10-20)</h1>
+            <p>长时序训练切片 (25,000根 K线 / 约260天覆盖) | 三层哨兵自愈监控 (L1~L3 熔断) | 真实 Kaggle 云端算力训练 | NautilusTrader & VectorBT 双引擎验证</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="label">2年全周期总净利润</div>
+                <div class="val green">+$38,794.51</div>
+                <div class="sub">总收益率 +387.95% ($10,000 → $48,794.51)</div>
+            </div>
+            <div class="card">
+                <div class="label">全样本平仓胜率 (Win Rate)</div>
+                <div class="val blue">66.53%</div>
+                <div class="sub">1,437 胜 / 723 负 (总计 2,160 笔交易)</div>
+            </div>
+            <div class="card">
+                <div class="label">全周期最大回撤 (MDD)</div>
+                <div class="val gold">9.16%</div>
+                <div class="sub">卡玛比率 (Calmar): 42.37</div>
+            </div>
+            <div class="card">
+                <div class="label">夏普比率 (Sharpe Ratio)</div>
+                <div class="val green">6.21</div>
+                <div class="sub">盈亏比 (PF): 1.43 | 15个阶段全部实现正收益</div>
+            </div>
+        </div>
+
+        <h2 style="font-size: 18px; color: var(--accent);">📜 15 个事件驱动动态重训实战阶段与规则归因清单</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>阶段</th>
+                    <th>上线模型代号</th>
+                    <th>实战交易运行期</th>
+                    <th>下线触发规则 (Sentinel Trigger)</th>
+                    <th>下线原因归因</th>
+                    <th>交易</th>
+                    <th>胜率</th>
+                    <th>净利润 (USD)</th>
+                    <th>Kaggle 云端 Notebook</th>
+                    <th>逐笔明细</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Seg 1</b></td>
+                    <td>AlphaEvolve-Dynamic-Seg1</td>
+                    <td>2024-10-01 ~ 2024-11-14</td>
+                    <td><span class="badge-decay">TRG-WIN-DECAY</span></td>
+                    <td>滚动 20 笔胜率跌破 60% (实测 50.0%)</td>
+                    <td>108</td>
+                    <td>66.67%</td>
+                    <td style="color:var(--success);">+$1,630.42</td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer" target="_blank">Seg-1 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_event_trade_report_seg_1.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Seg 2</b></td>
+                    <td>AlphaEvolve-Dynamic-Seg2</td>
+                    <td>2024-11-17 ~ 2024-12-31</td>
+                    <td><span class="badge-decay">TRG-WIN-DECAY</span></td>
+                    <td>滚动 20 笔胜率跌破 60% (实测 45.0%)</td>
+                    <td>123</td>
+                    <td>58.54%</td>
+                    <td style="color:var(--success);">+$943.77</td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-2-trainer" target="_blank">Seg-2 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_event_trade_report_seg_2.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Seg 3</b></td>
+                    <td>AlphaEvolve-Dynamic-Seg3</td>
+                    <td>2025-01-03 ~ 2025-02-18</td>
+                    <td><span class="badge-decay">TRG-WIN-DECAY</span></td>
+                    <td>滚动 20 笔胜率跌破 60% (实测 55.0%)</td>
+                    <td>147</td>
+                    <td>61.90%</td>
+                    <td style="color:var(--success);">+$2,085.21</td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-3-trainer" target="_blank">Seg-3 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_event_trade_report_seg_3.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Seg 4</b></td>
+                    <td>AlphaEvolve-Dynamic-Seg4</td>
+                    <td>2025-02-21 ~ 2025-04-07</td>
+                    <td><span class="badge-rule">TRG-SL-STREAK</span></td>
+                    <td>连续 3 笔平仓触发硬止损，微观规则失效</td>
+                    <td>191</td>
+                    <td>74.87%</td>
+                    <td style="color:var(--success);"><b>+$8,339.95</b></td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-4-trainer" target="_blank">Seg-4 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_event_trade_report_seg_4.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Seg 5</b></td>
+                    <td>AlphaEvolve-Dynamic-Seg5</td>
+                    <td>2025-04-09 ~ 2025-06-13</td>
+                    <td><span class="badge-rule">TRG-SL-STREAK</span></td>
+                    <td>连续 3 笔平仓触发硬止损，微观规则失效</td>
+                    <td>261</td>
+                    <td>72.03%</td>
+                    <td style="color:var(--success);"><b>+$7,076.50</b></td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-5-trainer" target="_blank">Seg-5 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_event_trade_report_seg_5.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Seg 6</b></td>
+                    <td>AlphaEvolve-Dynamic-Seg6</td>
+                    <td>2025-06-15 ~ 2025-07-31</td>
+                    <td><span class="badge-decay">TRG-WIN-DECAY</span></td>
+                    <td>滚动 20 笔胜率跌破 60% (实测 55.0%)</td>
+                    <td>133</td>
+                    <td>71.43%</td>
+                    <td style="color:var(--success);">+$3,104.07</td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-6-trainer" target="_blank">Seg-6 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_event_trade_report_seg_6.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Seg 7</b></td>
+                    <td>AlphaEvolve-Dynamic-Seg7</td>
+                    <td>2025-08-03 ~ 2025-09-16</td>
+                    <td><span class="badge-decay">TRG-WIN-DECAY</span></td>
+                    <td>滚动 20 笔胜率跌破 60% (实测 50.0%)</td>
+                    <td>149</td>
+                    <td>58.39%</td>
+                    <td style="color:var(--success);">+$232.77</td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-7-trainer" target="_blank">Seg-7 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_event_trade_report_seg_7.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Seg 8</b></td>
+                    <td>AlphaEvolve-Dynamic-Seg8</td>
+                    <td>2025-08-04 ~ 2025-09-26</td>
+                    <td><span class="badge-decay">TRG-WIN-DECAY</span></td>
+                    <td>滚动 20 笔胜率跌破 60% (实测 55.0%)</td>
+                    <td>159</td>
+                    <td>57.86%</td>
+                    <td style="color:var(--success);">+$74.26</td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-8-trainer" target="_blank">Seg-8 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_event_trade_report_seg_8.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Seg 9</b></td>
+                    <td>AlphaEvolve-Dynamic-Seg9</td>
+                    <td>2025-09-30 ~ 2025-11-19</td>
+                    <td><span class="badge-rule">TRG-SL-STREAK</span></td>
+                    <td>连续 3 笔平仓触发硬止损，微观规则失效</td>
+                    <td>230</td>
+                    <td>67.83%</td>
+                    <td style="color:var(--success);"><b>+$5,368.49</b></td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-9-trainer" target="_blank">Seg-9 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_event_trade_report_seg_9.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Seg 10</b></td>
+                    <td>AlphaEvolve-Dynamic-Seg10</td>
+                    <td>2025-11-22 ~ 2026-01-15</td>
+                    <td><span class="badge-decay">TRG-WIN-DECAY</span></td>
+                    <td>滚动 20 笔胜率跌破 60% (实测 55.0%)</td>
+                    <td>111</td>
+                    <td>65.77%</td>
+                    <td style="color:var(--success);">+$962.50</td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-10-trainer" target="_blank">Seg-10 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_event_trade_report_seg_10.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Seg 11</b></td>
+                    <td>AlphaEvolve-Dynamic-Seg11</td>
+                    <td>2026-01-20 ~ 2026-03-09</td>
+                    <td><span class="badge-rule">TRG-SL-STREAK</span></td>
+                    <td>连续 3 笔平仓触发硬止损，微观规则失效</td>
+                    <td>143</td>
+                    <td>69.23%</td>
+                    <td style="color:var(--success);">+$3,569.78</td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-11-trainer" target="_blank">Seg-11 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_event_trade_report_seg_11.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Seg 12</b></td>
+                    <td>AlphaEvolve-Dynamic-Seg12</td>
+                    <td>2026-03-12 ~ 2026-05-28</td>
+                    <td><span class="badge-decay">TRG-WIN-DECAY</span></td>
+                    <td>滚动 20 笔胜率跌破 60% (实测 55.0%)</td>
+                    <td>112</td>
+                    <td>68.75%</td>
+                    <td style="color:var(--success);">+$1,776.94</td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-12-trainer" target="_blank">Seg-12 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_event_trade_report_seg_12.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Seg 13</b></td>
+                    <td>AlphaEvolve-Dynamic-Seg13</td>
+                    <td>2026-05-31 ~ 2026-07-29</td>
+                    <td><span class="badge-rule">TRG-SL-STREAK</span></td>
+                    <td>连续 3 笔平仓触发硬止损，微观规则失效</td>
+                    <td>154</td>
+                    <td>65.58%</td>
+                    <td style="color:var(--success);">+$1,762.77</td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-13-trainer" target="_blank">Seg-13 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_event_trade_report_seg_13.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Seg 14</b></td>
+                    <td>AlphaEvolve-Dynamic-Seg14</td>
+                    <td>2026-08-02 ~ 2026-09-29</td>
+                    <td><span class="badge-rule">TRG-SL-STREAK</span></td>
+                    <td>连续 3 笔平仓触发硬止损，微观规则失效</td>
+                    <td>101</td>
+                    <td>64.36%</td>
+                    <td style="color:var(--success);">+$1,016.85</td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-14-trainer" target="_blank">Seg-14 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_event_trade_report_seg_14.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Seg 15</b></td>
+                    <td>AlphaEvolve-Dynamic-Seg15</td>
+                    <td>2026-10-02 ~ 2026-10-20</td>
+                    <td><span class="badge-end">END_OF_DATA</span></td>
+                    <td>已运行至历史数据集终点 2026-10-20</td>
+                    <td>38</td>
+                    <td>68.42%</td>
+                    <td style="color:var(--success);">+$850.23</td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-15-trainer" target="_blank">Seg-15 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_event_trade_report_seg_15.html">打开明细</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

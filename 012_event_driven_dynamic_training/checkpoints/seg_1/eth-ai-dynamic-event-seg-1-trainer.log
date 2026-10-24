@@ -1,0 +1,38 @@
+[{"stream_name":"stdout","time":9.453631408,"data":"Gen 01/30 | Fit: 161.24 | Ret: +220.95% | MDD: 6.95% | WR: 67.2% | Trades: 506\n"}
+,{"stream_name":"stdout","time":9.467331222,"data":"Gen 02/30 | Fit: 161.24 | Ret: +220.95% | MDD: 6.95% | WR: 67.2% | Trades: 506\n"}
+,{"stream_name":"stdout","time":9.481333302,"data":"Gen 03/30 | Fit: 191.94 | Ret: +228.89% | MDD: 6.03% | WR: 67.4% | Trades: 506\n"}
+,{"stream_name":"stdout","time":9.495902748,"data":"Gen 04/30 | Fit: 191.94 | Ret: +228.89% | MDD: 6.03% | WR: 67.4% | Trades: 506\n"}
+,{"stream_name":"stdout","time":9.510020231,"data":"Gen 05/30 | Fit: 191.94 | Ret: +228.89% | MDD: 6.03% | WR: 67.4% | Trades: 506\n"}
+,{"stream_name":"stdout","time":9.524874219,"data":"Gen 06/30 | Fit: 191.94 | Ret: +228.89% | MDD: 6.03% | WR: 67.4% | Trades: 506\n"}
+,{"stream_name":"stdout","time":9.539482089,"data":"Gen 07/30 | Fit: 191.94 | Ret: +228.89% | MDD: 6.03% | WR: 67.4% | Trades: 506\n"}
+,{"stream_name":"stdout","time":9.553685954,"data":"Gen 08/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.567489593,"data":"Gen 09/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.583057438,"data":"Gen 10/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.596952073,"data":"Gen 11/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.611830756,"data":"Gen 12/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.625951947,"data":"Gen 13/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.641731654,"data":"Gen 14/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.656066752,"data":"Gen 15/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.672188867,"data":"Gen 16/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.687026321,"data":"Gen 17/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.702660808,"data":"Gen 18/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.717003888,"data":"Gen 19/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.731785477,"data":"Gen 20/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.745788476,"data":"Gen 21/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.760387008,"data":"Gen 22/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.775083789,"data":"Gen 23/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.78944014,"data":"Gen 24/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.804138407,"data":"Gen 25/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.817798074,"data":"Gen 26/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.83131405,"data":"Gen 27/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.845866672,"data":"Gen 28/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.860916101,"data":"Gen 29/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.874437556,"data":"Gen 30/30 | Fit: 204.65 | Ret: +252.02% | MDD: 6.22% | WR: 67.3% | Trades: 551\n"}
+,{"stream_name":"stdout","time":9.875604078,"data":"✔ 25,000 bars Dynamic Segment Checkpoint exported successfully!\n"}
+,{"stream_name":"stderr","time":13.592709995,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":13.592773261,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":14.039650565,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":14.039693253,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":15.174721394,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":16.799497112,"data":"[NbConvertApp] Writing 772641 bytes to __results__.html\n"}
+]

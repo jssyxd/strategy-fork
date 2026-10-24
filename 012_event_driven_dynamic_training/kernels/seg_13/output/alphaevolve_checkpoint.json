@@ -1,0 +1,28 @@
+{
+  "segment_id": 13,
+  "architecture": "EventDriven-LongHorizon-25k-Bars",
+  "model_name": "AlphaEvolve-Dynamic-Seg13",
+  "timestamp_utc": "2026-10-24T15:06:37Z",
+  "optimal_ast_genome": {
+    "gamma_decay": 0.8618,
+    "w_imb": 1.7196,
+    "w_bo": 2.3633,
+    "w_dev": 0.5893,
+    "sig_thresh": 1.2571,
+    "trail_callback_pct": 0.00062,
+    "sl_pct": 0.022,
+    "tree_depth": 6,
+    "node_count": 7
+  },
+  "out_of_sample_metrics": {
+    "oos_bars_count": 5000,
+    "total_return_pct": 17.17,
+    "max_drawdown_pct": 3.31,
+    "win_rate_pct": 68.09,
+    "trades_count": 94,
+    "sharpe_ratio": 7.11,
+    "calmar_ratio": 5.17,
+    "ev_per_trade_pct": 0.1826,
+    "wfe_pct": 91.3
+  }
+}
