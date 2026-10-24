@@ -1,6 +1,6 @@
 {
-  "id": "opclown1/eth-ai-alphaevolve-wf-fold-5-trainer",
-  "title": "ETH AI AlphaEvolve WF Fold 5 Trainer",
+  "id": "opclown1/eth-ai-automlzero-deap-jit-wf-fold-5-trainer",
+  "title": "ETH AI AutoMLZero DEAP JIT WF Fold 5 Trainer",
   "code_file": "trainer.py",
   "language": "python",
   "kernel_type": "script",

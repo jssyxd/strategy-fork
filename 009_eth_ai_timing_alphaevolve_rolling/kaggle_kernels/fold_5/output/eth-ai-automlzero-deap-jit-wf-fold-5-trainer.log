@@ -1,0 +1,39 @@
+[{"stream_name":"stdout","time":5.142611115,"data":"Starting AutoML-Zero DEAP JIT Cloud Evolution...\n"}
+,{"stream_name":"stdout","time":9.425111414,"data":"Gen 01/30 | Best Fit: 30.98 | Ret: +14.61% | MDD: 2.61% | WR: 81.8% | Trades: 33\n"}
+,{"stream_name":"stdout","time":9.434115073,"data":"Gen 02/30 | Best Fit: 36.86 | Ret: +10.37% | MDD: 1.54% | WR: 85.7% | Trades: 21\n"}
+,{"stream_name":"stdout","time":9.443384525,"data":"Gen 03/30 | Best Fit: 111.47 | Ret: +29.02% | MDD: 1.35% | WR: 92.9% | Trades: 42\n"}
+,{"stream_name":"stdout","time":9.453932239,"data":"Gen 04/30 | Best Fit: 111.47 | Ret: +29.02% | MDD: 1.35% | WR: 92.9% | Trades: 42\n"}
+,{"stream_name":"stdout","time":9.462522707,"data":"Gen 05/30 | Best Fit: 111.47 | Ret: +29.02% | MDD: 1.35% | WR: 92.9% | Trades: 42\n"}
+,{"stream_name":"stdout","time":9.469557061,"data":"Gen 06/30 | Best Fit: 114.61 | Ret: +29.46% | MDD: 1.32% | WR: 89.8% | Trades: 49\n"}
+,{"stream_name":"stdout","time":9.47673582,"data":"Gen 07/30 | Best Fit: 114.61 | Ret: +29.46% | MDD: 1.32% | WR: 89.8% | Trades: 49\n"}
+,{"stream_name":"stdout","time":9.484003448,"data":"Gen 08/30 | Best Fit: 114.61 | Ret: +29.46% | MDD: 1.32% | WR: 89.8% | Trades: 49\n"}
+,{"stream_name":"stdout","time":9.491745584,"data":"Gen 09/30 | Best Fit: 114.61 | Ret: +29.46% | MDD: 1.32% | WR: 89.8% | Trades: 49\n"}
+,{"stream_name":"stdout","time":9.498759376,"data":"Gen 10/30 | Best Fit: 115.06 | Ret: +30.52% | MDD: 1.37% | WR: 93.0% | Trades: 43\n"}
+,{"stream_name":"stdout","time":9.506106393,"data":"Gen 11/30 | Best Fit: 115.06 | Ret: +30.52% | MDD: 1.37% | WR: 93.0% | Trades: 43\n"}
+,{"stream_name":"stdout","time":9.51342468,"data":"Gen 12/30 | Best Fit: 115.06 | Ret: +30.52% | MDD: 1.37% | WR: 93.0% | Trades: 43\n"}
+,{"stream_name":"stdout","time":9.520583237,"data":"Gen 13/30 | Best Fit: 115.06 | Ret: +30.52% | MDD: 1.37% | WR: 93.0% | Trades: 43\n"}
+,{"stream_name":"stdout","time":9.527471172,"data":"Gen 14/30 | Best Fit: 115.41 | Ret: +30.87% | MDD: 1.38% | WR: 90.0% | Trades: 50\n"}
+,{"stream_name":"stdout","time":9.534977328,"data":"Gen 15/30 | Best Fit: 115.41 | Ret: +30.87% | MDD: 1.38% | WR: 90.0% | Trades: 50\n"}
+,{"stream_name":"stdout","time":9.542308876,"data":"Gen 16/30 | Best Fit: 115.41 | Ret: +30.87% | MDD: 1.38% | WR: 90.0% | Trades: 50\n"}
+,{"stream_name":"stdout","time":9.549437838,"data":"Gen 17/30 | Best Fit: 118.14 | Ret: +31.59% | MDD: 1.38% | WR: 93.2% | Trades: 44\n"}
+,{"stream_name":"stdout","time":9.556648149,"data":"Gen 18/30 | Best Fit: 118.14 | Ret: +31.59% | MDD: 1.38% | WR: 93.2% | Trades: 44\n"}
+,{"stream_name":"stdout","time":9.563811735,"data":"Gen 19/30 | Best Fit: 118.14 | Ret: +31.59% | MDD: 1.38% | WR: 93.2% | Trades: 44\n"}
+,{"stream_name":"stdout","time":9.570638339,"data":"Gen 20/30 | Best Fit: 118.14 | Ret: +31.59% | MDD: 1.38% | WR: 93.2% | Trades: 44\n"}
+,{"stream_name":"stdout","time":9.577962111,"data":"Gen 21/30 | Best Fit: 118.14 | Ret: +31.59% | MDD: 1.38% | WR: 93.2% | Trades: 44\n"}
+,{"stream_name":"stdout","time":9.585276350000001,"data":"Gen 22/30 | Best Fit: 118.14 | Ret: +31.59% | MDD: 1.38% | WR: 93.2% | Trades: 44\n"}
+,{"stream_name":"stdout","time":9.59256223,"data":"Gen 23/30 | Best Fit: 118.14 | Ret: +31.59% | MDD: 1.38% | WR: 93.2% | Trades: 44\n"}
+,{"stream_name":"stdout","time":9.599931758,"data":"Gen 24/30 | Best Fit: 118.14 | Ret: +31.59% | MDD: 1.38% | WR: 93.2% | Trades: 44\n"}
+,{"stream_name":"stdout","time":9.607560233,"data":"Gen 25/30 | Best Fit: 118.14 | Ret: +31.59% | MDD: 1.38% | WR: 93.2% | Trades: 44\n"}
+,{"stream_name":"stdout","time":9.61457234,"data":"Gen 26/30 | Best Fit: 118.14 | Ret: +31.59% | MDD: 1.38% | WR: 93.2% | Trades: 44\n"}
+,{"stream_name":"stdout","time":9.622118713,"data":"Gen 27/30 | Best Fit: 118.14 | Ret: +31.59% | MDD: 1.38% | WR: 93.2% | Trades: 44\n"}
+,{"stream_name":"stdout","time":9.628465656,"data":"Gen 28/30 | Best Fit: 118.14 | Ret: +31.59% | MDD: 1.38% | WR: 93.2% | Trades: 44\n"}
+,{"stream_name":"stdout","time":9.634930042,"data":"Gen 29/30 | Best Fit: 118.14 | Ret: +31.59% | MDD: 1.38% | WR: 93.2% | Trades: 44\n"}
+,{"stream_name":"stdout","time":9.641612439,"data":"Gen 30/30 | Best Fit: 118.14 | Ret: +31.59% | MDD: 1.38% | WR: 93.2% | Trades: 44\n"}
+,{"stream_name":"stdout","time":9.644603079,"data":"✔ AutoML-Zero JIT Checkpoint exported successfully!\n"}
+,{"stream_name":"stderr","time":12.982690908,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":12.982729092,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":13.412496276,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":13.412556705,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":14.434431247,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":15.897207757,"data":"[NbConvertApp] Writing 474025 bytes to __results__.html\n"}
+]

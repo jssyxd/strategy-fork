@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>ETH 15m AutoML-Zero DEAP JIT 交易日志报告 - Fold 7</title>
+    <style>
+        :root {
+            --bg: #090d16; --surface: #131c2e; --border: #1e293b;
+            --text: #f8fafc; --muted: #94a3b8; --accent: #10b981;
+            --success: #10b981; --danger: #f43f5e; --gold: #f59e0b;
+        }
+        body {
+            background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0; padding: 24px; line-height: 1.5;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 24px; }
+        .title h1 { margin: 0; font-size: 26px; color: var(--accent); }
+        .title p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+        .badge-cloud { background: #059669; color: white; padding: 4px 12px; border-radius: 9999px; font-weight: 600; font-size: 13px; text-decoration: none; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+        .card .label { color: var(--muted); font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 6px; }
+        .card .val { font-size: 24px; font-weight: 700; color: var(--text); }
+        .card .sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+        .val.green { color: var(--success); }
+        .val.red { color: var(--danger); }
+        .val.blue { color: var(--accent); }
+        
+        .section-title { font-size: 18px; font-weight: 600; margin: 24px 0 12px; display: flex; align-items: center; gap: 8px; }
+        table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 10px; overflow: hidden; font-size: 13px; }
+        th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+        th { background: #1a2438; color: var(--muted); font-weight: 600; }
+        tr:hover { background: rgba(16, 185, 129, 0.05); }
+        .badge { padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; display: inline-block; }
+        .badge-long { background: rgba(16, 185, 129, 0.2); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.4); }
+        .badge-short { background: rgba(244, 63, 94, 0.2); color: var(--danger); border: 1px solid rgba(244, 63, 94, 0.4); }
+        .badge-tp { background: rgba(16, 185, 129, 0.2); color: var(--accent); }
+        .badge-sl { background: rgba(245, 158, 11, 0.2); color: var(--gold); }
+        .profit { color: var(--success); }
+        .loss { color: var(--danger); }
+        .param-tag { background: #0f172a; padding: 4px 8px; border-radius: 6px; font-family: monospace; font-size: 12px; margin-right: 6px; border: 1px solid var(--border); }
+        .bytecode-box { background: #0b1120; border: 1px solid var(--border); border-radius: 6px; padding: 10px; font-family: monospace; font-size: 12px; color: #a7f3d0; margin-top: 8px; line-height: 1.6; word-break: break-all; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">
+                <h1>⚡ ETH 15m AutoML-Zero DEAP JIT 交易日志报告 (Fold 7)</h1>
+                <p>训练大区: Before 2026-05-01 00:00:00 (7200 bars) | 前向盲测交易期: 2026-05-01 00:00:00 ~ 2026-07-31 23:45:00 | 架构: AutoML-Zero Register ISA + Numba JIT (100x加速)</p>
+            </div>
+            <div>
+                <a class="badge-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-automlzero-deap-jit-wf-fold-7-trainer" target="_blank">☁ Kaggle 云端 Notebook</a>
+            </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 24px;">
+            <div class="label">🧬 AutoML-Zero 演化寄存器字节码 (Evolved Register Program)</div>
+            <div style="margin-top: 10px;">
+                <span class="param-tag">Q-State衰减γ: 0.8602</span>
+                <span class="param-tag">开仓阈值: 1.4672</span>
+                <span class="param-tag">追踪止盈回调: 0.081%</span>
+                <span class="param-tag">硬止损: 1.96%</span>
+                <span class="param-tag">指令条数: 6</span>
+            </div>
+            <div class="bytecode-box">
+                [dest += w * src (w=2.18, src=f_imb)] | [dest += w * src (w=1.37, src=f_bo)] | [dest += w * src (w=0.29, src=f_dev)] | [dest *= (1 + w * src) (w=-0.42, src=f_imb)] | [dest *= (1 + w * src) (w=-0.02, src=f_bo)] | [dest += w * src (w=1.04, src=cross)]
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="label">总收益率 (Total Return)</div>
+                <div class="val green">+18.61%</div>
+                <div class="sub">$10000.0 → $11860.67</div>
+            </div>
+            <div class="card">
+                <div class="label">平仓胜率 (Win Rate)</div>
+                <div class="val blue">65.62%</div>
+                <div class="sub">84 胜 / 44 负 (总 128 笔)</div>
+            </div>
+            <div class="card">
+                <div class="label">最大回撤 (Max Drawdown)</div>
+                <div class="val red">7.52%</div>
+                <div class="sub">卡玛比率 (Calmar): 2.47</div>
+            </div>
+            <div class="card">
+                <div class="label">夏普比率 (Sharpe Ratio)</div>
+                <div class="val green">7.17</div>
+                <div class="sub">盈亏比 (PF): 1.48</div>
+            </div>
+        </div>
+
+        <div class="section-title">📜 逐笔交易对齐明细清单 (共 128 笔成交记录)</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>方向</th>
+                    <th>入场时间 (UTC)</th>
+                    <th>出场时间 (UTC)</th>
+                    <th>入场价格</th>
+                    <th>出场价格</th>
+                    <th>持仓(Bar)</th>
+                    <th>净盈亏 (扣费)</th>
+                    <th>出场类型</th>
+                    <th>累计权益</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+        <tr>
+            <td>1</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-01 21:00:00</td>
+            <td>2026-05-02 21:30:00</td>
+            <td>$2283.80</td>
+            <td>$2328.56</td>
+            <td>98</td>
+            <td class="loss"><b>$-101.50</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$9895.00</b></td>
+        </tr>
+        
+        <tr>
+            <td>2</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-03 01:45:00</td>
+            <td>2026-05-03 22:00:00</td>
+            <td>$2303.89</td>
+            <td>$2349.05</td>
+            <td>81</td>
+            <td class="loss"><b>$-100.43</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$9791.11</b></td>
+        </tr>
+        
+        <tr>
+            <td>3</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-06 14:15:00</td>
+            <td>2026-05-07 00:45:00</td>
+            <td>$2357.69</td>
+            <td>$2329.48</td>
+            <td>42</td>
+            <td class="profit"><b>+$55.16</b> (+1.06%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$9842.84</b></td>
+        </tr>
+        
+        <tr>
+            <td>4</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-07 01:00:00</td>
+            <td>2026-05-07 14:30:00</td>
+            <td>$2328.18</td>
+            <td>$2289.48</td>
+            <td>54</td>
+            <td class="profit"><b>+$78.36</b> (+1.52%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$9917.75</b></td>
+        </tr>
+        
+        <tr>
+            <td>5</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-07 14:45:00</td>
+            <td>2026-05-08 02:15:00</td>
+            <td>$2295.69</td>
+            <td>$2268.35</td>
+            <td>46</td>
+            <td class="profit"><b>+$55.60</b> (+1.05%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$9969.88</b></td>
+        </tr>
+        
+        <tr>
+            <td>6</td>
+            <td><span class="badge badge-long">LONG</span></td>
+            <td>2026-05-10 18:15:00</td>
+            <td>2026-05-10 20:45:00</td>
+            <td>$2364.63</td>
+            <td>$2318.28</td>
+            <td>10</td>
+            <td class="loss"><b>$-101.06</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$9865.33</b></td>
+        </tr>
+        
+        <tr>
+            <td>7</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-11 03:15:00</td>
+            <td>2026-05-12 01:30:00</td>
+            <td>$2326.13</td>
+            <td>$2295.77</td>
+            <td>89</td>
+            <td class="profit"><b>+$60.93</b> (+1.17%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$9922.82</b></td>
+        </tr>
+        
+        <tr>
+            <td>8</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-12 01:45:00</td>
+            <td>2026-05-12 08:15:00</td>
+            <td>$2307.49</td>
+            <td>$2278.18</td>
+            <td>26</td>
+            <td class="profit"><b>+$59.54</b> (+1.13%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$9978.88</b></td>
+        </tr>
+        
+        <tr>
+            <td>9</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-12 08:30:00</td>
+            <td>2026-05-12 15:15:00</td>
+            <td>$2286.35</td>
+            <td>$2257.37</td>
+            <td>27</td>
+            <td class="profit"><b>+$59.76</b> (+1.13%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10035.15</b></td>
+        </tr>
+        
+        <tr>
+            <td>10</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-13 13:45:00</td>
+            <td>2026-05-13 15:45:00</td>
+            <td>$2269.56</td>
+            <td>$2234.82</td>
+            <td>8</td>
+            <td class="profit"><b>+$73.30</b> (+1.39%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10104.93</b></td>
+        </tr>
+        
+        <tr>
+            <td>11</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-13 16:00:00</td>
+            <td>2026-05-14 14:45:00</td>
+            <td>$2235.75</td>
+            <td>$2279.57</td>
+            <td>91</td>
+            <td class="loss"><b>$-102.56</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$9998.83</b></td>
+        </tr>
+        
+        <tr>
+            <td>12</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-15 02:15:00</td>
+            <td>2026-05-15 05:30:00</td>
+            <td>$2267.78</td>
+            <td>$2238.14</td>
+            <td>13</td>
+            <td class="profit"><b>+$61.84</b> (+1.17%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10057.18</b></td>
+        </tr>
+        
+        <tr>
+            <td>13</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-15 05:45:00</td>
+            <td>2026-05-15 13:45:00</td>
+            <td>$2245.86</td>
+            <td>$2210.57</td>
+            <td>32</td>
+            <td class="profit"><b>+$75.50</b> (+1.43%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10129.16</b></td>
+        </tr>
+        
+        <tr>
+            <td>14</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-15 14:00:00</td>
+            <td>2026-05-16 07:00:00</td>
+            <td>$2212.76</td>
+            <td>$2182.41</td>
+            <td>68</td>
+            <td class="profit"><b>+$65.93</b> (+1.23%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10191.54</b></td>
+        </tr>
+        
+        <tr>
+            <td>15</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-16 07:15:00</td>
+            <td>2026-05-16 09:15:00</td>
+            <td>$2190.94</td>
+            <td>$2161.76</td>
+            <td>8</td>
+            <td class="profit"><b>+$64.30</b> (+1.19%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10252.28</b></td>
+        </tr>
+        
+        <tr>
+            <td>16</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-16 09:30:00</td>
+            <td>2026-05-17 23:30:00</td>
+            <td>$2169.66</td>
+            <td>$2082.83</td>
+            <td>152</td>
+            <td class="profit"><b>+$201.57</b> (+3.86%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10450.27</b></td>
+        </tr>
+        
+        <tr>
+            <td>17</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-18 00:30:00</td>
+            <td>2026-05-18 12:30:00</td>
+            <td>$2112.01</td>
+            <td>$2153.41</td>
+            <td>48</td>
+            <td class="loss"><b>$-106.07</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$10340.54</b></td>
+        </tr>
+        
+        <tr>
+            <td>18</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-18 15:30:00</td>
+            <td>2026-05-18 21:30:00</td>
+            <td>$2096.83</td>
+            <td>$2137.93</td>
+            <td>24</td>
+            <td class="loss"><b>$-104.95</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$10231.97</b></td>
+        </tr>
+        
+        <tr>
+            <td>19</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-19 11:45:00</td>
+            <td>2026-05-21 01:15:00</td>
+            <td>$2108.47</td>
+            <td>$2149.80</td>
+            <td>150</td>
+            <td class="loss"><b>$-103.85</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$10124.53</b></td>
+        </tr>
+        
+        <tr>
+            <td>20</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-21 07:00:00</td>
+            <td>2026-05-22 18:45:00</td>
+            <td>$2127.85</td>
+            <td>$2084.69</td>
+            <td>143</td>
+            <td class="profit"><b>+$99.15</b> (+1.89%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10220.14</b></td>
+        </tr>
+        
+        <tr>
+            <td>21</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-22 19:15:00</td>
+            <td>2026-05-22 19:30:00</td>
+            <td>$2088.70</td>
+            <td>$2057.25</td>
+            <td>1</td>
+            <td class="profit"><b>+$73.38</b> (+1.37%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10289.94</b></td>
+        </tr>
+        
+        <tr>
+            <td>22</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-22 19:45:00</td>
+            <td>2026-05-23 07:45:00</td>
+            <td>$2064.71</td>
+            <td>$2008.10</td>
+            <td>48</td>
+            <td class="profit"><b>+$137.48</b> (+2.60%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10423.82</b></td>
+        </tr>
+        
+        <tr>
+            <td>23</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-23 08:00:00</td>
+            <td>2026-05-23 15:00:00</td>
+            <td>$2027.74</td>
+            <td>$2067.48</td>
+            <td>28</td>
+            <td class="loss"><b>$-105.80</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$10314.37</b></td>
+        </tr>
+        
+        <tr>
+            <td>24</td>
+            <td><span class="badge badge-long">LONG</span></td>
+            <td>2026-05-23 15:15:00</td>
+            <td>2026-05-23 20:30:00</td>
+            <td>$2066.04</td>
+            <td>$2131.45</td>
+            <td>21</td>
+            <td class="profit"><b>+$159.44</b> (+3.03%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10470.20</b></td>
+        </tr>
+        
+        <tr>
+            <td>25</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-24 14:15:00</td>
+            <td>2026-05-24 21:30:00</td>
+            <td>$2094.50</td>
+            <td>$2067.78</td>
+            <td>29</td>
+            <td class="profit"><b>+$63.11</b> (+1.14%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10529.65</b></td>
+        </tr>
+        
+        <tr>
+            <td>26</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-24 21:45:00</td>
+            <td>2026-05-25 00:30:00</td>
+            <td>$2068.27</td>
+            <td>$2108.81</td>
+            <td>11</td>
+            <td class="loss"><b>$-106.87</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$10419.09</b></td>
+        </tr>
+        
+        <tr>
+            <td>27</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-25 20:45:00</td>
+            <td>2026-05-26 00:45:00</td>
+            <td>$2111.75</td>
+            <td>$2085.37</td>
+            <td>16</td>
+            <td class="profit"><b>+$61.44</b> (+1.11%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10476.88</b></td>
+        </tr>
+        
+        <tr>
+            <td>28</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-26 01:00:00</td>
+            <td>2026-05-26 14:15:00</td>
+            <td>$2096.60</td>
+            <td>$2137.69</td>
+            <td>53</td>
+            <td class="loss"><b>$-106.34</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$10366.88</b></td>
+        </tr>
+        
+        <tr>
+            <td>29</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-26 17:30:00</td>
+            <td>2026-05-27 21:30:00</td>
+            <td>$2063.67</td>
+            <td>$2023.64</td>
+            <td>112</td>
+            <td class="profit"><b>+$96.93</b> (+1.80%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10460.18</b></td>
+        </tr>
+        
+        <tr>
+            <td>30</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-27 23:30:00</td>
+            <td>2026-05-28 03:15:00</td>
+            <td>$2018.63</td>
+            <td>$1966.87</td>
+            <td>15</td>
+            <td class="profit"><b>+$130.44</b> (+2.42%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10586.96</b></td>
+        </tr>
+        
+        <tr>
+            <td>31</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-28 04:00:00</td>
+            <td>2026-05-28 17:30:00</td>
+            <td>$1980.86</td>
+            <td>$2019.68</td>
+            <td>54</td>
+            <td class="loss"><b>$-107.45</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$10475.80</b></td>
+        </tr>
+        
+        <tr>
+            <td>32</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-31 07:45:00</td>
+            <td>2026-05-31 16:30:00</td>
+            <td>$2022.42</td>
+            <td>$1998.64</td>
+            <td>35</td>
+            <td class="profit"><b>+$57.93</b> (+1.04%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10530.06</b></td>
+        </tr>
+        
+        <tr>
+            <td>33</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-05-31 16:45:00</td>
+            <td>2026-06-01 07:45:00</td>
+            <td>$2000.05</td>
+            <td>$1971.72</td>
+            <td>60</td>
+            <td class="profit"><b>+$70.91</b> (+1.28%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10597.28</b></td>
+        </tr>
+        
+        <tr>
+            <td>34</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-01 08:00:00</td>
+            <td>2026-06-02 14:15:00</td>
+            <td>$1975.52</td>
+            <td>$1925.12</td>
+            <td>121</td>
+            <td class="profit"><b>+$131.48</b> (+2.41%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10725.05</b></td>
+        </tr>
+        
+        <tr>
+            <td>35</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-02 15:30:00</td>
+            <td>2026-06-02 15:30:00</td>
+            <td>$1912.37</td>
+            <td>$1889.53</td>
+            <td>0</td>
+            <td class="profit"><b>+$60.30</b> (+1.05%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10781.59</b></td>
+        </tr>
+        
+        <tr>
+            <td>36</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-02 15:45:00</td>
+            <td>2026-06-02 19:30:00</td>
+            <td>$1908.25</td>
+            <td>$1879.84</td>
+            <td>15</td>
+            <td class="profit"><b>+$76.48</b> (+1.35%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10854.30</b></td>
+        </tr>
+        
+        <tr>
+            <td>37</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-02 23:00:00</td>
+            <td>2026-06-02 23:15:00</td>
+            <td>$1867.65</td>
+            <td>$1838.42</td>
+            <td>1</td>
+            <td class="profit"><b>+$81.15</b> (+1.43%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10931.65</b></td>
+        </tr>
+        
+        <tr>
+            <td>38</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-02 23:30:00</td>
+            <td>2026-06-03 03:30:00</td>
+            <td>$1847.47</td>
+            <td>$1823.98</td>
+            <td>16</td>
+            <td class="profit"><b>+$65.68</b> (+1.13%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10993.51</b></td>
+        </tr>
+        
+        <tr>
+            <td>39</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-03 03:45:00</td>
+            <td>2026-06-03 05:00:00</td>
+            <td>$1823.30</td>
+            <td>$1859.04</td>
+            <td>5</td>
+            <td class="loss"><b>$-111.58</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$10878.08</b></td>
+        </tr>
+        
+        <tr>
+            <td>40</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-03 14:45:00</td>
+            <td>2026-06-03 16:00:00</td>
+            <td>$1853.12</td>
+            <td>$1831.80</td>
+            <td>5</td>
+            <td class="profit"><b>+$58.76</b> (+1.01%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10933.04</b></td>
+        </tr>
+        
+        <tr>
+            <td>41</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-03 16:15:00</td>
+            <td>2026-06-03 16:15:00</td>
+            <td>$1835.80</td>
+            <td>$1811.83</td>
+            <td>0</td>
+            <td class="profit"><b>+$67.56</b> (+1.17%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10996.78</b></td>
+        </tr>
+        
+        <tr>
+            <td>42</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-03 16:30:00</td>
+            <td>2026-06-03 19:45:00</td>
+            <td>$1818.21</td>
+            <td>$1795.15</td>
+            <td>13</td>
+            <td class="profit"><b>+$65.88</b> (+1.13%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11058.81</b></td>
+        </tr>
+        
+        <tr>
+            <td>43</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-03 20:00:00</td>
+            <td>2026-06-03 20:45:00</td>
+            <td>$1802.60</td>
+            <td>$1767.43</td>
+            <td>3</td>
+            <td class="profit"><b>+$104.01</b> (+1.81%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11158.95</b></td>
+        </tr>
+        
+        <tr>
+            <td>44</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-03 21:00:00</td>
+            <td>2026-06-03 21:30:00</td>
+            <td>$1780.40</td>
+            <td>$1815.30</td>
+            <td>2</td>
+            <td class="loss"><b>$-113.26</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11041.78</b></td>
+        </tr>
+        
+        <tr>
+            <td>45</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-04 02:00:00</td>
+            <td>2026-06-04 02:00:00</td>
+            <td>$1759.35</td>
+            <td>$1716.33</td>
+            <td>0</td>
+            <td class="profit"><b>+$131.14</b> (+2.31%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11169.06</b></td>
+        </tr>
+        
+        <tr>
+            <td>46</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-04 02:15:00</td>
+            <td>2026-06-04 03:00:00</td>
+            <td>$1744.84</td>
+            <td>$1779.04</td>
+            <td>3</td>
+            <td class="loss"><b>$-113.36</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11051.78</b></td>
+        </tr>
+        
+        <tr>
+            <td>47</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-04 09:30:00</td>
+            <td>2026-06-04 13:30:00</td>
+            <td>$1748.59</td>
+            <td>$1782.86</td>
+            <td>16</td>
+            <td class="loss"><b>$-112.17</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$10935.74</b></td>
+        </tr>
+        
+        <tr>
+            <td>48</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-05 02:30:00</td>
+            <td>2026-06-05 05:30:00</td>
+            <td>$1735.70</td>
+            <td>$1697.55</td>
+            <td>12</td>
+            <td class="profit"><b>+$116.34</b> (+2.06%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11048.26</b></td>
+        </tr>
+        
+        <tr>
+            <td>49</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-05 05:45:00</td>
+            <td>2026-06-05 06:00:00</td>
+            <td>$1698.60</td>
+            <td>$1666.52</td>
+            <td>1</td>
+            <td class="profit"><b>+$100.47</b> (+1.75%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11144.86</b></td>
+        </tr>
+        
+        <tr>
+            <td>50</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-05 06:15:00</td>
+            <td>2026-06-05 06:15:00</td>
+            <td>$1670.51</td>
+            <td>$1621.37</td>
+            <td>0</td>
+            <td class="profit"><b>+$160.01</b> (+2.80%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11300.98</b></td>
+        </tr>
+        
+        <tr>
+            <td>51</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-05 06:30:00</td>
+            <td>2026-06-05 07:45:00</td>
+            <td>$1643.90</td>
+            <td>$1676.12</td>
+            <td>5</td>
+            <td class="loss"><b>$-114.70</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11182.32</b></td>
+        </tr>
+        
+        <tr>
+            <td>52</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-05 08:15:00</td>
+            <td>2026-06-05 12:30:00</td>
+            <td>$1668.35</td>
+            <td>$1646.36</td>
+            <td>17</td>
+            <td class="profit"><b>+$69.78</b> (+1.18%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11248.18</b></td>
+        </tr>
+        
+        <tr>
+            <td>53</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-05 14:30:00</td>
+            <td>2026-06-05 15:00:00</td>
+            <td>$1602.15</td>
+            <td>$1578.28</td>
+            <td>2</td>
+            <td class="profit"><b>+$79.87</b> (+1.35%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11324.11</b></td>
+        </tr>
+        
+        <tr>
+            <td>54</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-05 15:15:00</td>
+            <td>2026-06-05 16:00:00</td>
+            <td>$1582.89</td>
+            <td>$1547.03</td>
+            <td>3</td>
+            <td class="profit"><b>+$124.30</b> (+2.13%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11444.45</b></td>
+        </tr>
+        
+        <tr>
+            <td>55</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-05 16:15:00</td>
+            <td>2026-06-05 18:15:00</td>
+            <td>$1586.37</td>
+            <td>$1563.27</td>
+            <td>8</td>
+            <td class="profit"><b>+$79.34</b> (+1.32%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11519.79</b></td>
+        </tr>
+        
+        <tr>
+            <td>56</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-05 18:30:00</td>
+            <td>2026-06-05 18:45:00</td>
+            <td>$1564.25</td>
+            <td>$1545.05</td>
+            <td>1</td>
+            <td class="profit"><b>+$66.67</b> (+1.09%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11582.42</b></td>
+        </tr>
+        
+        <tr>
+            <td>57</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-05 19:00:00</td>
+            <td>2026-06-05 20:00:00</td>
+            <td>$1551.96</td>
+            <td>$1582.38</td>
+            <td>4</td>
+            <td class="loss"><b>$-117.56</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11460.81</b></td>
+        </tr>
+        
+        <tr>
+            <td>58</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-06 04:15:00</td>
+            <td>2026-06-06 04:30:00</td>
+            <td>$1540.41</td>
+            <td>$1509.04</td>
+            <td>1</td>
+            <td class="profit"><b>+$112.68</b> (+1.90%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11569.48</b></td>
+        </tr>
+        
+        <tr>
+            <td>59</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-06 04:45:00</td>
+            <td>2026-06-06 05:15:00</td>
+            <td>$1518.88</td>
+            <td>$1548.65</td>
+            <td>2</td>
+            <td class="loss"><b>$-117.43</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11448.00</b></td>
+        </tr>
+        
+        <tr>
+            <td>60</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-06 05:30:00</td>
+            <td>2026-06-06 06:15:00</td>
+            <td>$1548.61</td>
+            <td>$1578.96</td>
+            <td>3</td>
+            <td class="loss"><b>$-116.19</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11327.80</b></td>
+        </tr>
+        
+        <tr>
+            <td>61</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-08 04:45:00</td>
+            <td>2026-06-08 11:15:00</td>
+            <td>$1656.31</td>
+            <td>$1688.77</td>
+            <td>26</td>
+            <td class="loss"><b>$-114.97</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11208.86</b></td>
+        </tr>
+        
+        <tr>
+            <td>62</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-09 14:30:00</td>
+            <td>2026-06-09 16:30:00</td>
+            <td>$1638.72</td>
+            <td>$1613.99</td>
+            <td>8</td>
+            <td class="profit"><b>+$80.67</b> (+1.37%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11285.61</b></td>
+        </tr>
+        
+        <tr>
+            <td>63</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-09 16:45:00</td>
+            <td>2026-06-09 20:00:00</td>
+            <td>$1627.85</td>
+            <td>$1659.76</td>
+            <td>13</td>
+            <td class="loss"><b>$-114.55</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11167.11</b></td>
+        </tr>
+        
+        <tr>
+            <td>64</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-10 03:00:00</td>
+            <td>2026-06-10 13:30:00</td>
+            <td>$1623.30</td>
+            <td>$1655.12</td>
+            <td>42</td>
+            <td class="loss"><b>$-113.34</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11049.86</b></td>
+        </tr>
+        
+        <tr>
+            <td>65</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-10 21:15:00</td>
+            <td>2026-06-11 03:30:00</td>
+            <td>$1617.89</td>
+            <td>$1649.60</td>
+            <td>25</td>
+            <td class="loss"><b>$-112.15</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$10933.84</b></td>
+        </tr>
+        
+        <tr>
+            <td>66</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-12 06:45:00</td>
+            <td>2026-06-12 15:00:00</td>
+            <td>$1653.91</td>
+            <td>$1686.33</td>
+            <td>33</td>
+            <td class="loss"><b>$-110.98</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$10819.04</b></td>
+        </tr>
+        
+        <tr>
+            <td>67</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-14 05:30:00</td>
+            <td>2026-06-14 14:30:00</td>
+            <td>$1674.92</td>
+            <td>$1654.95</td>
+            <td>36</td>
+            <td class="profit"><b>+$60.72</b> (+1.05%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10875.97</b></td>
+        </tr>
+        
+        <tr>
+            <td>68</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-14 14:45:00</td>
+            <td>2026-06-14 21:15:00</td>
+            <td>$1655.42</td>
+            <td>$1687.87</td>
+            <td>26</td>
+            <td class="loss"><b>$-110.39</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$10761.77</b></td>
+        </tr>
+        
+        <tr>
+            <td>69</td>
+            <td><span class="badge badge-long">LONG</span></td>
+            <td>2026-06-14 22:45:00</td>
+            <td>2026-06-15 10:45:00</td>
+            <td>$1724.92</td>
+            <td>$1748.33</td>
+            <td>48</td>
+            <td class="profit"><b>+$69.17</b> (+1.22%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10827.18</b></td>
+        </tr>
+        
+        <tr>
+            <td>70</td>
+            <td><span class="badge badge-long">LONG</span></td>
+            <td>2026-06-15 12:45:00</td>
+            <td>2026-06-15 13:00:00</td>
+            <td>$1773.58</td>
+            <td>$1796.05</td>
+            <td>1</td>
+            <td class="profit"><b>+$64.72</b> (+1.13%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10888.10</b></td>
+        </tr>
+        
+        <tr>
+            <td>71</td>
+            <td><span class="badge badge-long">LONG</span></td>
+            <td>2026-06-15 13:15:00</td>
+            <td>2026-06-15 13:15:00</td>
+            <td>$1793.19</td>
+            <td>$1825.34</td>
+            <td>0</td>
+            <td class="profit"><b>+$93.66</b> (+1.65%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10977.95</b></td>
+        </tr>
+        
+        <tr>
+            <td>72</td>
+            <td><span class="badge badge-long">LONG</span></td>
+            <td>2026-06-15 13:30:00</td>
+            <td>2026-06-15 15:45:00</td>
+            <td>$1819.20</td>
+            <td>$1847.15</td>
+            <td>9</td>
+            <td class="profit"><b>+$80.38</b> (+1.40%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11054.49</b></td>
+        </tr>
+        
+        <tr>
+            <td>73</td>
+            <td><span class="badge badge-long">LONG</span></td>
+            <td>2026-06-15 16:00:00</td>
+            <td>2026-06-15 22:00:00</td>
+            <td>$1844.61</td>
+            <td>$1808.46</td>
+            <td>24</td>
+            <td class="loss"><b>$-112.05</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$10938.58</b></td>
+        </tr>
+        
+        <tr>
+            <td>74</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-15 22:15:00</td>
+            <td>2026-06-15 22:30:00</td>
+            <td>$1808.23</td>
+            <td>$1787.45</td>
+            <td>1</td>
+            <td class="profit"><b>+$59.04</b> (+1.01%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10993.78</b></td>
+        </tr>
+        
+        <tr>
+            <td>75</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-15 22:45:00</td>
+            <td>2026-06-16 02:30:00</td>
+            <td>$1792.78</td>
+            <td>$1768.71</td>
+            <td>15</td>
+            <td class="profit"><b>+$69.95</b> (+1.20%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11059.89</b></td>
+        </tr>
+        
+        <tr>
+            <td>76</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-16 02:45:00</td>
+            <td>2026-06-16 12:00:00</td>
+            <td>$1773.87</td>
+            <td>$1808.64</td>
+            <td>37</td>
+            <td class="loss"><b>$-112.26</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$10943.76</b></td>
+        </tr>
+        
+        <tr>
+            <td>77</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-17 08:30:00</td>
+            <td>2026-06-17 12:15:00</td>
+            <td>$1775.01</td>
+            <td>$1744.07</td>
+            <td>15</td>
+            <td class="profit"><b>+$91.55</b> (+1.60%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11031.48</b></td>
+        </tr>
+        
+        <tr>
+            <td>78</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-17 12:30:00</td>
+            <td>2026-06-17 16:15:00</td>
+            <td>$1746.29</td>
+            <td>$1780.52</td>
+            <td>15</td>
+            <td class="loss"><b>$-111.97</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$10915.65</b></td>
+        </tr>
+        
+        <tr>
+            <td>79</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-18 04:45:00</td>
+            <td>2026-06-18 15:30:00</td>
+            <td>$1731.77</td>
+            <td>$1697.60</td>
+            <td>43</td>
+            <td class="profit"><b>+$103.86</b> (+1.83%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11015.69</b></td>
+        </tr>
+        
+        <tr>
+            <td>80</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-18 15:45:00</td>
+            <td>2026-06-18 15:45:00</td>
+            <td>$1698.00</td>
+            <td>$1678.37</td>
+            <td>0</td>
+            <td class="profit"><b>+$59.83</b> (+1.02%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11071.66</b></td>
+        </tr>
+        
+        <tr>
+            <td>81</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-18 16:00:00</td>
+            <td>2026-06-18 20:15:00</td>
+            <td>$1681.39</td>
+            <td>$1714.35</td>
+            <td>17</td>
+            <td class="loss"><b>$-112.37</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$10955.41</b></td>
+        </tr>
+        
+        <tr>
+            <td>82</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-20 14:15:00</td>
+            <td>2026-06-20 14:45:00</td>
+            <td>$1708.00</td>
+            <td>$1741.48</td>
+            <td>2</td>
+            <td class="loss"><b>$-111.19</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$10840.38</b></td>
+        </tr>
+        
+        <tr>
+            <td>83</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-22 17:30:00</td>
+            <td>2026-06-23 05:15:00</td>
+            <td>$1733.62</td>
+            <td>$1709.97</td>
+            <td>47</td>
+            <td class="profit"><b>+$70.14</b> (+1.22%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10906.73</b></td>
+        </tr>
+        
+        <tr>
+            <td>84</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-23 06:15:00</td>
+            <td>2026-06-23 06:15:00</td>
+            <td>$1706.49</td>
+            <td>$1680.85</td>
+            <td>0</td>
+            <td class="profit"><b>+$78.12</b> (+1.36%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10981.03</b></td>
+        </tr>
+        
+        <tr>
+            <td>85</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-23 06:30:00</td>
+            <td>2026-06-23 08:15:00</td>
+            <td>$1686.56</td>
+            <td>$1634.66</td>
+            <td>7</td>
+            <td class="profit"><b>+$165.11</b> (+2.94%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11142.29</b></td>
+        </tr>
+        
+        <tr>
+            <td>86</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-23 08:30:00</td>
+            <td>2026-06-23 16:00:00</td>
+            <td>$1641.23</td>
+            <td>$1673.40</td>
+            <td>30</td>
+            <td class="loss"><b>$-113.09</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11025.30</b></td>
+        </tr>
+        
+        <tr>
+            <td>87</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-24 11:15:00</td>
+            <td>2026-06-24 11:45:00</td>
+            <td>$1658.06</td>
+            <td>$1690.56</td>
+            <td>2</td>
+            <td class="loss"><b>$-111.90</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$10909.54</b></td>
+        </tr>
+        
+        <tr>
+            <td>88</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-24 15:15:00</td>
+            <td>2026-06-24 15:45:00</td>
+            <td>$1639.22</td>
+            <td>$1617.05</td>
+            <td>2</td>
+            <td class="profit"><b>+$69.96</b> (+1.21%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$10975.68</b></td>
+        </tr>
+        
+        <tr>
+            <td>89</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-24 16:00:00</td>
+            <td>2026-06-24 16:45:00</td>
+            <td>$1617.45</td>
+            <td>$1585.08</td>
+            <td>3</td>
+            <td class="profit"><b>+$105.98</b> (+1.86%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11077.82</b></td>
+        </tr>
+        
+        <tr>
+            <td>90</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-24 17:00:00</td>
+            <td>2026-06-24 17:15:00</td>
+            <td>$1589.17</td>
+            <td>$1567.92</td>
+            <td>1</td>
+            <td class="profit"><b>+$70.19</b> (+1.20%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11144.14</b></td>
+        </tr>
+        
+        <tr>
+            <td>91</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-24 17:30:00</td>
+            <td>2026-06-24 17:45:00</td>
+            <td>$1575.78</td>
+            <td>$1552.49</td>
+            <td>1</td>
+            <td class="profit"><b>+$78.47</b> (+1.34%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11218.71</b></td>
+        </tr>
+        
+        <tr>
+            <td>92</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-24 18:00:00</td>
+            <td>2026-06-24 20:00:00</td>
+            <td>$1559.50</td>
+            <td>$1590.07</td>
+            <td>8</td>
+            <td class="loss"><b>$-113.87</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11100.91</b></td>
+        </tr>
+        
+        <tr>
+            <td>93</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-25 11:30:00</td>
+            <td>2026-06-25 13:30:00</td>
+            <td>$1630.02</td>
+            <td>$1590.99</td>
+            <td>8</td>
+            <td class="profit"><b>+$129.03</b> (+2.25%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11226.06</b></td>
+        </tr>
+        
+        <tr>
+            <td>94</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-25 13:45:00</td>
+            <td>2026-06-25 13:45:00</td>
+            <td>$1591.75</td>
+            <td>$1531.25</td>
+            <td>0</td>
+            <td class="profit"><b>+$209.42</b> (+3.66%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11431.55</b></td>
+        </tr>
+        
+        <tr>
+            <td>95</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-25 14:00:00</td>
+            <td>2026-06-25 14:00:00</td>
+            <td>$1537.21</td>
+            <td>$1567.34</td>
+            <td>0</td>
+            <td class="loss"><b>$-116.03</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11311.52</b></td>
+        </tr>
+        
+        <tr>
+            <td>96</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-25 14:15:00</td>
+            <td>2026-06-25 15:15:00</td>
+            <td>$1563.99</td>
+            <td>$1544.54</td>
+            <td>4</td>
+            <td class="profit"><b>+$66.38</b> (+1.10%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11373.94</b></td>
+        </tr>
+        
+        <tr>
+            <td>97</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-25 15:30:00</td>
+            <td>2026-06-26 02:00:00</td>
+            <td>$1560.73</td>
+            <td>$1520.54</td>
+            <td>42</td>
+            <td class="profit"><b>+$142.46</b> (+2.44%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11512.42</b></td>
+        </tr>
+        
+        <tr>
+            <td>98</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-26 02:15:00</td>
+            <td>2026-06-26 03:45:00</td>
+            <td>$1521.31</td>
+            <td>$1551.13</td>
+            <td>6</td>
+            <td class="loss"><b>$-116.85</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11391.54</b></td>
+        </tr>
+        
+        <tr>
+            <td>99</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-29 23:30:00</td>
+            <td>2026-06-30 01:30:00</td>
+            <td>$1607.90</td>
+            <td>$1589.54</td>
+            <td>8</td>
+            <td class="profit"><b>+$61.07</b> (+1.00%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11448.62</b></td>
+        </tr>
+        
+        <tr>
+            <td>100</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-30 01:45:00</td>
+            <td>2026-06-30 12:00:00</td>
+            <td>$1590.53</td>
+            <td>$1572.65</td>
+            <td>41</td>
+            <td class="profit"><b>+$60.34</b> (+0.98%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11504.95</b></td>
+        </tr>
+        
+        <tr>
+            <td>101</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-30 12:15:00</td>
+            <td>2026-06-30 12:45:00</td>
+            <td>$1572.37</td>
+            <td>$1551.26</td>
+            <td>2</td>
+            <td class="profit"><b>+$73.22</b> (+1.20%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11574.15</b></td>
+        </tr>
+        
+        <tr>
+            <td>102</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-06-30 13:00:00</td>
+            <td>2026-06-30 20:00:00</td>
+            <td>$1551.95</td>
+            <td>$1582.37</td>
+            <td>28</td>
+            <td class="loss"><b>$-117.47</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11452.62</b></td>
+        </tr>
+        
+        <tr>
+            <td>103</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-02 00:30:00</td>
+            <td>2026-07-02 03:15:00</td>
+            <td>$1602.09</td>
+            <td>$1633.49</td>
+            <td>11</td>
+            <td class="loss"><b>$-116.24</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11332.37</b></td>
+        </tr>
+        
+        <tr>
+            <td>104</td>
+            <td><span class="badge badge-long">LONG</span></td>
+            <td>2026-07-02 13:45:00</td>
+            <td>2026-07-03 08:30:00</td>
+            <td>$1710.23</td>
+            <td>$1733.58</td>
+            <td>75</td>
+            <td class="profit"><b>+$73.30</b> (+1.23%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11401.71</b></td>
+        </tr>
+        
+        <tr>
+            <td>105</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-05 00:30:00</td>
+            <td>2026-07-05 09:30:00</td>
+            <td>$1774.46</td>
+            <td>$1748.74</td>
+            <td>36</td>
+            <td class="profit"><b>+$78.66</b> (+1.31%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11476.38</b></td>
+        </tr>
+        
+        <tr>
+            <td>106</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-06 05:30:00</td>
+            <td>2026-07-06 12:00:00</td>
+            <td>$1766.98</td>
+            <td>$1735.75</td>
+            <td>26</td>
+            <td class="profit"><b>+$97.39</b> (+1.63%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11569.75</b></td>
+        </tr>
+        
+        <tr>
+            <td>107</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-06 13:15:00</td>
+            <td>2026-07-06 15:30:00</td>
+            <td>$1734.33</td>
+            <td>$1768.32</td>
+            <td>9</td>
+            <td class="loss"><b>$-117.43</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11448.27</b></td>
+        </tr>
+        
+        <tr>
+            <td>108</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-07 02:30:00</td>
+            <td>2026-07-07 05:00:00</td>
+            <td>$1779.19</td>
+            <td>$1757.75</td>
+            <td>10</td>
+            <td class="profit"><b>+$64.97</b> (+1.06%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11509.23</b></td>
+        </tr>
+        
+        <tr>
+            <td>109</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-07 05:15:00</td>
+            <td>2026-07-07 12:15:00</td>
+            <td>$1757.44</td>
+            <td>$1791.89</td>
+            <td>28</td>
+            <td class="loss"><b>$-116.82</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11388.39</b></td>
+        </tr>
+        
+        <tr>
+            <td>110</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-08 02:15:00</td>
+            <td>2026-07-08 08:30:00</td>
+            <td>$1750.61</td>
+            <td>$1724.96</td>
+            <td>25</td>
+            <td class="profit"><b>+$79.46</b> (+1.33%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11463.86</b></td>
+        </tr>
+        
+        <tr>
+            <td>111</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-11 23:30:00</td>
+            <td>2026-07-13 00:00:00</td>
+            <td>$1794.88</td>
+            <td>$1830.06</td>
+            <td>98</td>
+            <td class="loss"><b>$-116.36</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11343.49</b></td>
+        </tr>
+        
+        <tr>
+            <td>112</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-13 03:45:00</td>
+            <td>2026-07-13 17:45:00</td>
+            <td>$1778.59</td>
+            <td>$1753.53</td>
+            <td>56</td>
+            <td class="profit"><b>+$75.95</b> (+1.27%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11415.47</b></td>
+        </tr>
+        
+        <tr>
+            <td>113</td>
+            <td><span class="badge badge-long">LONG</span></td>
+            <td>2026-07-14 15:00:00</td>
+            <td>2026-07-15 12:45:00</td>
+            <td>$1880.23</td>
+            <td>$1927.31</td>
+            <td>87</td>
+            <td class="profit"><b>+$138.72</b> (+2.36%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11550.20</b></td>
+        </tr>
+        
+        <tr>
+            <td>114</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-16 08:15:00</td>
+            <td>2026-07-16 17:15:00</td>
+            <td>$1884.65</td>
+            <td>$1861.84</td>
+            <td>36</td>
+            <td class="profit"><b>+$65.87</b> (+1.07%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11612.02</b></td>
+        </tr>
+        
+        <tr>
+            <td>115</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-17 02:45:00</td>
+            <td>2026-07-17 05:45:00</td>
+            <td>$1845.76</td>
+            <td>$1821.81</td>
+            <td>12</td>
+            <td class="profit"><b>+$71.26</b> (+1.16%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11679.22</b></td>
+        </tr>
+        
+        <tr>
+            <td>116</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-17 06:00:00</td>
+            <td>2026-07-18 18:15:00</td>
+            <td>$1823.30</td>
+            <td>$1859.04</td>
+            <td>145</td>
+            <td class="loss"><b>$-118.54</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11556.59</b></td>
+        </tr>
+        
+        <tr>
+            <td>117</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-22 06:30:00</td>
+            <td>2026-07-22 14:00:00</td>
+            <td>$1913.64</td>
+            <td>$1951.15</td>
+            <td>30</td>
+            <td class="loss"><b>$-117.30</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11435.25</b></td>
+        </tr>
+        
+        <tr>
+            <td>118</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-23 13:15:00</td>
+            <td>2026-07-23 17:45:00</td>
+            <td>$1897.64</td>
+            <td>$1873.52</td>
+            <td>18</td>
+            <td class="profit"><b>+$68.69</b> (+1.13%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11499.93</b></td>
+        </tr>
+        
+        <tr>
+            <td>119</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-23 18:00:00</td>
+            <td>2026-07-24 13:45:00</td>
+            <td>$1877.59</td>
+            <td>$1848.57</td>
+            <td>79</td>
+            <td class="profit"><b>+$84.86</b> (+1.41%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11580.76</b></td>
+        </tr>
+        
+        <tr>
+            <td>120</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-24 14:00:00</td>
+            <td>2026-07-26 14:00:00</td>
+            <td>$1857.12</td>
+            <td>$1893.52</td>
+            <td>192</td>
+            <td class="loss"><b>$-117.54</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11459.17</b></td>
+        </tr>
+        
+        <tr>
+            <td>121</td>
+            <td><span class="badge badge-long">LONG</span></td>
+            <td>2026-07-26 23:00:00</td>
+            <td>2026-07-27 06:00:00</td>
+            <td>$1948.89</td>
+            <td>$1980.68</td>
+            <td>28</td>
+            <td class="profit"><b>+$89.33</b> (+1.49%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11544.49</b></td>
+        </tr>
+        
+        <tr>
+            <td>122</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-27 12:30:00</td>
+            <td>2026-07-27 14:30:00</td>
+            <td>$1947.46</td>
+            <td>$1919.69</td>
+            <td>8</td>
+            <td class="profit"><b>+$78.26</b> (+1.29%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11618.71</b></td>
+        </tr>
+        
+        <tr>
+            <td>123</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-27 14:45:00</td>
+            <td>2026-07-27 22:45:00</td>
+            <td>$1920.20</td>
+            <td>$1892.13</td>
+            <td>32</td>
+            <td class="profit"><b>+$80.85</b> (+1.32%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11695.50</b></td>
+        </tr>
+        
+        <tr>
+            <td>124</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-27 23:00:00</td>
+            <td>2026-07-28 01:00:00</td>
+            <td>$1892.64</td>
+            <td>$1866.67</td>
+            <td>8</td>
+            <td class="profit"><b>+$76.15</b> (+1.23%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11767.56</b></td>
+        </tr>
+        
+        <tr>
+            <td>125</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-28 01:15:00</td>
+            <td>2026-07-28 15:15:00</td>
+            <td>$1875.05</td>
+            <td>$1911.80</td>
+            <td>56</td>
+            <td class="loss"><b>$-119.44</b> (-2.10%)</td>
+            <td><span class="badge badge-sl">STOP_LOSS</span></td>
+            <td><b>$11644.00</b></td>
+        </tr>
+        
+        <tr>
+            <td>126</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-29 03:30:00</td>
+            <td>2026-07-29 20:15:00</td>
+            <td>$1901.08</td>
+            <td>$1878.54</td>
+            <td>67</td>
+            <td class="profit"><b>+$64.95</b> (+1.05%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11704.88</b></td>
+        </tr>
+        
+        <tr>
+            <td>127</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-31 02:30:00</td>
+            <td>2026-07-31 09:30:00</td>
+            <td>$1903.71</td>
+            <td>$1881.69</td>
+            <td>28</td>
+            <td class="profit"><b>+$63.59</b> (+1.02%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11764.37</b></td>
+        </tr>
+        
+        <tr>
+            <td>128</td>
+            <td><span class="badge badge-short">SHORT</span></td>
+            <td>2026-07-31 09:45:00</td>
+            <td>2026-07-31 14:00:00</td>
+            <td>$1882.51</td>
+            <td>$1849.06</td>
+            <td>17</td>
+            <td class="profit"><b>+$100.42</b> (+1.64%)</td>
+            <td><span class="badge badge-tp">TRAIL_TP</span></td>
+            <td><b>$11860.67</b></td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

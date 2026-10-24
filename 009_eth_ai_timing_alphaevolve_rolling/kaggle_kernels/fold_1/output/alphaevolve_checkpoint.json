@@ -1,0 +1,56 @@
+{
+  "fold_id": 1,
+  "architecture": "AutoML-Zero-Register-DEAP-JIT-V3",
+  "model_name": "AlphaEvolve-AutoMLZero-JIT-Fold1",
+  "timestamp_utc": "2026-10-24T13:56:31Z",
+  "optimal_ast_genome": {
+    "gamma_decay": 0.8615,
+    "sig_thresh": 1.3316,
+    "trail_callback_pct": 0.00074,
+    "sl_pct": 0.0209,
+    "instructions_count": 5,
+    "program_bytecode": [
+      [
+        0.0,
+        4.0,
+        0.0,
+        1.8257
+      ],
+      [
+        0.0,
+        4.0,
+        1.0,
+        1.9328
+      ],
+      [
+        0.0,
+        4.0,
+        2.0,
+        0.2877
+      ],
+      [
+        0.0,
+        4.0,
+        3.0,
+        -0.9393
+      ],
+      [
+        0.0,
+        4.0,
+        1.0,
+        0.1138
+      ]
+    ]
+  },
+  "out_of_sample_metrics": {
+    "oos_bars_count": 5000,
+    "total_return_pct": 8.53,
+    "max_drawdown_pct": 6.13,
+    "win_rate_pct": 67.86,
+    "trades_count": 56,
+    "sharpe_ratio": 6.28,
+    "calmar_ratio": 1.39,
+    "ev_per_trade_pct": 0.1524,
+    "wfe_pct": 36.79
+  }
+}

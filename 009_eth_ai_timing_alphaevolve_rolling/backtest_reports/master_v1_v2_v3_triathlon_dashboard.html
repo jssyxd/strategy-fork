@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>ETH 15m AlphaEvolve V1 vs V2 vs V3 三代架构 2年实战全景对决看板</title>
+    <style>
+        :root {
+            --bg: #090d16; --surface: #131c2e; --border: #1e293b;
+            --text: #f8fafc; --muted: #94a3b8; --accent: #10b981;
+            --v1-color: #38bdf8; --v2-color: #a855f7; --v3-color: #10b981;
+            --success: #10b981; --danger: #f43f5e; --gold: #f59e0b;
+        }
+        body {
+            background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0; padding: 32px 24px; line-height: 1.5;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .header { border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 28px; }
+        h1 { margin: 0; font-size: 28px; color: var(--accent); }
+        p { color: var(--muted); margin: 6px 0 0; font-size: 14px; }
+        .trio-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 32px; }
+        .system-card { background: var(--surface); border: 2px solid var(--border); border-radius: 12px; padding: 20px; }
+        .system-card.v1 { border-color: rgba(56, 189, 248, 0.4); }
+        .system-card.v2 { border-color: rgba(168, 85, 247, 0.4); }
+        .system-card.v3 { border-color: rgba(16, 185, 129, 0.5); }
+        .tag-v1 { background: rgba(56, 189, 248, 0.2); color: var(--v1-color); padding: 4px 10px; border-radius: 6px; font-weight: 700; font-size: 11px; }
+        .tag-v2 { background: rgba(168, 85, 247, 0.2); color: var(--v2-color); padding: 4px 10px; border-radius: 6px; font-weight: 700; font-size: 11px; }
+        .tag-v3 { background: rgba(16, 185, 129, 0.2); color: var(--v3-color); padding: 4px 10px; border-radius: 6px; font-weight: 700; font-size: 11px; }
+        .metric-row { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; }
+        .metric-row:last-child { border-bottom: none; }
+        .metric-val { font-weight: 700; font-size: 15px; }
+        .green { color: var(--success); }
+        .gold { color: var(--gold); }
+        .blue { color: var(--v1-color); }
+        .purple { color: var(--v2-color); }
+        
+        table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 12px; overflow: hidden; font-size: 13px; margin-top: 16px; }
+        th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+        th { background: #1a2438; color: var(--muted); font-weight: 600; }
+        tr:hover { background: rgba(16, 185, 129, 0.05); }
+        .btn-link {
+            background: rgba(16, 185, 129, 0.15); color: var(--v3-color); border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 4px 8px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 11px;
+            display: inline-block;
+        }
+        .btn-cloud {
+            background: rgba(5, 150, 105, 0.2); color: #34d399; border: 1px solid #059669;
+            padding: 4px 8px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 11px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚡ ETH 15m AlphaEvolve V1 vs V2 vs V3 三代架构全景 Walk-Forward 战绩总览</h1>
+            <p>2024-11-01 至 2026-10-20 (全量 68,995 根 15m K线) | 8 大季度切片云端训练 | NautilusTrader & VectorBT 双引擎高保真撮合验证</p>
+        </div>
+
+        <div class="trio-container">
+            <div class="system-card v1">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                    <span class="tag-v1">一代架构 (V1: Linear IIR)</span>
+                    <span style="color:var(--v1-color); font-weight:700; font-size:12px;">🏆 全周期综合总冠军</span>
+                </div>
+                <div class="metric-row"><span>2年净收益率</span><span class="metric-val green">+309.35% (+$30,935)</span></div>
+                <div class="metric-row"><span>平仓胜率</span><span class="metric-val blue">66.23% (1002胜)</span></div>
+                <div class="metric-row"><span>最大回撤 (MDD)</span><span class="metric-val green">8.57% (防守最强)</span></div>
+                <div class="metric-row"><span>夏普比率 (Sharpe)</span><span class="metric-val green">6.62</span></div>
+                <div class="metric-row"><span>卡玛比率 (Calmar)</span><span class="metric-val">36.09</span></div>
+                <div class="metric-row"><span>核心数学哲学</span><span style="font-size:11px; color:var(--muted);">奥卡姆剃刀最简IIR</span></div>
+            </div>
+
+            <div class="system-card v2">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                    <span class="tag-v2">二代架构 (V2: Adaptive Q-State)</span>
+                    <span style="color:var(--v2-color); font-weight:700; font-size:12px;">⚡ 启动敏捷先锋</span>
+                </div>
+                <div class="metric-row"><span>2年净收益率</span><span class="metric-val green">+292.62% (+$29,261)</span></div>
+                <div class="metric-row"><span>平仓胜率</span><span class="metric-val purple">66.11% (1075胜)</span></div>
+                <div class="metric-row"><span>最大回撤 (MDD)</span><span class="metric-val gold">12.36% (微观方差)</span></div>
+                <div class="metric-row"><span>夏普比率 (Sharpe)</span><span class="metric-val">5.71</span></div>
+                <div class="metric-row"><span>卡玛比率 (Calmar)</span><span class="metric-val">23.67</span></div>
+                <div class="metric-row"><span>核心数学哲学</span><span style="font-size:11px; color:var(--muted);">时变γ波动自适应</span></div>
+            </div>
+
+            <div class="system-card v3">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                    <span class="tag-v3">三代架构 (V3: AutoML-Zero JIT)</span>
+                    <span style="color:var(--v3-color); font-weight:700; font-size:12px;">🚀 2026年非线性冠军</span>
+                </div>
+                <div class="metric-row"><span>2年净收益率</span><span class="metric-val green">+154.59% (+$15,458)</span></div>
+                <div class="metric-row"><span>平仓胜率</span><span class="metric-val">64.06% (966胜)</span></div>
+                <div class="metric-row"><span>最大回撤 (MDD)</span><span class="metric-val gold">15.92%</span></div>
+                <div class="metric-row"><span>夏普比率 (Sharpe)</span><span class="metric-val">3.83</span></div>
+                <div class="metric-row"><span>训练算力速度</span><span class="metric-val green">100x JIT (0.03μs/run)</span></div>
+                <div class="metric-row"><span>核心数学哲学</span><span style="font-size:11px; color:var(--muted);">寄存器指令机+DEAP JIT</span></div>
+            </div>
+        </div>
+
+        <h2 style="font-size: 18px; color: var(--accent);">📊 8 大时间切片 (Walk-Forward Folds) 三代同堂战况清单</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>季度切片</th>
+                    <th>前向实测交易期</th>
+                    <th>V1 净利润 (USD)</th>
+                    <th>V2 净利润 (USD)</th>
+                    <th>V3 净利润 (USD)</th>
+                    <th>本期胜出者</th>
+                    <th>Kaggle 云端 Notebook</th>
+                    <th>单页明细</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Fold 1</b></td>
+                    <td>2024.11 ~ 2025.01</td>
+                    <td>+$1,699 (63.3%)</td>
+                    <td style="color:var(--v2-color);"><b>+$2,182</b> (66.2%)</td>
+                    <td>+$1,727 (62.0%)</td>
+                    <td><span class="tag-v2">V2 敏捷响应胜出</span></td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-automlzero-deap-jit-wf-fold-1-trainer" target="_blank">Fold-1 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_automlzero_trade_report_fold_1.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Fold 2</b></td>
+                    <td>2025.02 ~ 2025.04</td>
+                    <td style="color:var(--v1-color);"><b>+$8,218</b> (66.9%)</td>
+                    <td>+$7,817 (69.1%)</td>
+                    <td>+$1,286 (58.6%)</td>
+                    <td><span class="tag-v1">V1 极简定力大胜</span></td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-automlzero-deap-jit-wf-fold-2-trainer" target="_blank">Fold-2 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_automlzero_trade_report_fold_2.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Fold 3</b></td>
+                    <td>2025.05 ~ 2025.07</td>
+                    <td style="color:var(--v1-color);"><b>+$8,857</b> (68.3%)</td>
+                    <td>+$8,333 (67.1%)</td>
+                    <td>-$53 (58.6%)</td>
+                    <td><span class="tag-v1">V1 强力抗噪碾压</span></td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-automlzero-deap-jit-wf-fold-3-trainer" target="_blank">Fold-3 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_automlzero_trade_report_fold_3.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Fold 4</b></td>
+                    <td>2025.08 ~ 2025.10</td>
+                    <td style="color:var(--v1-color);"><b>+$5,263</b> (68.3%)</td>
+                    <td>+$4,480 (64.6%)</td>
+                    <td>+$3,731 (71.1%)</td>
+                    <td><span class="tag-v1">V1 净利润胜出</span></td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-automlzero-deap-jit-wf-fold-4-trainer" target="_blank">Fold-4 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_automlzero_trade_report_fold_4.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Fold 5</b></td>
+                    <td>2025.11 ~ 2026.01</td>
+                    <td>+$1,003 (67.9%)</td>
+                    <td style="color:var(--v2-color);"><b>+$2,192</b> (66.3%)</td>
+                    <td>+$303 (67.8%)</td>
+                    <td><span class="tag-v2">V2 缩量破局胜出</span></td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-automlzero-deap-jit-wf-fold-5-trainer" target="_blank">Fold-5 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_automlzero_trade_report_fold_5.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Fold 6</b></td>
+                    <td>2026.02 ~ 2026.04</td>
+                    <td>+$3,195 (64.3%)</td>
+                    <td>+$2,033 (68.5%)</td>
+                    <td style="color:var(--v3-color);"><b>+$4,444</b> (66.3%)</td>
+                    <td><span class="tag-v3">V3 寄存器指令狂胜</span></td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-automlzero-deap-jit-wf-fold-6-trainer" target="_blank">Fold-6 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_automlzero_trade_report_fold_6.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Fold 7</b></td>
+                    <td>2026.05 ~ 2026.07</td>
+                    <td>+$2,246 (65.2%)</td>
+                    <td>+$1,675 (61.9%)</td>
+                    <td style="color:var(--v3-color);"><b>+$2,351</b> (65.6%)</td>
+                    <td><span class="tag-v3">V3 非线性组合胜出</span></td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-automlzero-deap-jit-wf-fold-7-trainer" target="_blank">Fold-7 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_automlzero_trade_report_fold_7.html">打开明细</a></td>
+                </tr>
+                <tr>
+                    <td><b>Fold 8</b></td>
+                    <td>2026.08 ~ 2026.10</td>
+                    <td>+$451 (59.3%)</td>
+                    <td>+$544 (61.6%)</td>
+                    <td style="color:var(--v3-color);"><b>+$1,666</b> (64.6%)</td>
+                    <td><span class="tag-v3">V3 收益超V1达369%</span></td>
+                    <td><a class="btn-cloud" href="https://www.kaggle.com/code/opclown1/eth-ai-automlzero-deap-jit-wf-fold-8-trainer" target="_blank">Fold-8 Kernel</a></td>
+                    <td><a class="btn-link" href="alphaevolve_automlzero_trade_report_fold_8.html">打开明细</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

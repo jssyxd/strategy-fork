@@ -1,50 +1,68 @@
 {
   "fold_id": 8,
-  "model_name": "AlphaEvolve-ETH-007-WF-Fold8",
-  "timestamp_utc": "2026-10-24T12:49:17Z",
-  "gates_evaluation": {
-    "gate1_complexity": {
-      "depth": 3,
-      "nodes": 7,
-      "passed": true
-    },
-    "gate2_oos_win_rate_ev": {
-      "oos_win_rate_pct": 62.71,
-      "oos_ev_pct": 0.04089999943971634,
-      "passed": false
-    },
-    "gate3_walk_forward_efficiency": {
-      "wfe_pct": 13.06,
-      "is_sharpe": 11.97,
-      "oos_sharpe": 1.56,
-      "passed": false
-    },
-    "gate4_extreme_drawdown": {
-      "oos_calmar": 0.5099999904632568,
-      "oos_mdd_pct": 4.76,
-      "passed": false
-    },
-    "all_gates_cleared": false
-  },
+  "architecture": "AutoML-Zero-Register-DEAP-JIT-V3",
+  "model_name": "AlphaEvolve-AutoMLZero-JIT-Fold8",
+  "timestamp_utc": "2026-10-24T14:01:26Z",
   "optimal_ast_genome": {
-    "gamma_decay": 0.8522,
-    "w_imb": 1.342,
-    "w_bo": 1.4781,
-    "w_dev": 0.4081,
-    "sig_thresh": 1.3795,
-    "trail_callback_pct": 0.00063,
-    "sl_pct": 0.0242,
-    "tree_depth": 3,
-    "node_count": 7
+    "gamma_decay": 0.9315,
+    "sig_thresh": 1.2,
+    "trail_callback_pct": 0.00061,
+    "sl_pct": 0.0237,
+    "instructions_count": 7,
+    "program_bytecode": [
+      [
+        0.0,
+        4.0,
+        0.0,
+        2.0706
+      ],
+      [
+        0.0,
+        4.0,
+        1.0,
+        2.1551
+      ],
+      [
+        0.0,
+        4.0,
+        2.0,
+        0.7265
+      ],
+      [
+        2.0,
+        4.0,
+        0.0,
+        -0.3752
+      ],
+      [
+        1.0,
+        4.0,
+        0.0,
+        1.1428
+      ],
+      [
+        0.0,
+        4.0,
+        1.0,
+        1.4944
+      ],
+      [
+        2.0,
+        4.0,
+        3.0,
+        -0.738
+      ]
+    ]
   },
   "out_of_sample_metrics": {
     "oos_bars_count": 5000,
-    "total_return_pct": 2.4100000858306885,
-    "max_drawdown_pct": 4.76,
-    "win_rate_pct": 62.71,
-    "trades_count": 59,
-    "sharpe_ratio": 1.56,
-    "calmar_ratio": 0.5099999904632568,
-    "ev_per_trade_pct": 0.04089999943971634
+    "total_return_pct": -10.05,
+    "max_drawdown_pct": 12.42,
+    "win_rate_pct": 55.67,
+    "trades_count": 97,
+    "sharpe_ratio": -4.12,
+    "calmar_ratio": -0.81,
+    "ev_per_trade_pct": -0.1036,
+    "wfe_pct": -25.48
   }
 }

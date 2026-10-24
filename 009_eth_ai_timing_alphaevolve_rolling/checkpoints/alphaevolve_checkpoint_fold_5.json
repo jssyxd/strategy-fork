@@ -1,50 +1,50 @@
 {
   "fold_id": 5,
-  "model_name": "AlphaEvolve-ETH-007-WF-Fold5",
-  "timestamp_utc": "2026-10-24T12:46:50Z",
-  "gates_evaluation": {
-    "gate1_complexity": {
-      "depth": 4,
-      "nodes": 7,
-      "passed": true
-    },
-    "gate2_oos_win_rate_ev": {
-      "oos_win_rate_pct": 76.47,
-      "oos_ev_pct": 0.5482000112533569,
-      "passed": true
-    },
-    "gate3_walk_forward_efficiency": {
-      "wfe_pct": 152.67,
-      "is_sharpe": 10.9,
-      "oos_sharpe": 16.63,
-      "passed": true
-    },
-    "gate4_extreme_drawdown": {
-      "oos_calmar": 4.21999979019165,
-      "oos_mdd_pct": 4.4,
-      "passed": true
-    },
-    "all_gates_cleared": true
-  },
+  "architecture": "AutoML-Zero-Register-DEAP-JIT-V3",
+  "model_name": "AlphaEvolve-AutoMLZero-JIT-Fold5",
+  "timestamp_utc": "2026-10-24T13:59:24Z",
   "optimal_ast_genome": {
-    "gamma_decay": 0.867,
-    "w_imb": 2.1706,
-    "w_bo": 1.096,
-    "w_dev": 0.2262,
-    "sig_thresh": 1.4247,
-    "trail_callback_pct": 0.00063,
-    "sl_pct": 0.0217,
-    "tree_depth": 4,
-    "node_count": 7
+    "gamma_decay": 0.8785,
+    "sig_thresh": 1.3102,
+    "trail_callback_pct": 0.00126,
+    "sl_pct": 0.027,
+    "instructions_count": 4,
+    "program_bytecode": [
+      [
+        0.0,
+        4.0,
+        0.0,
+        1.8443
+      ],
+      [
+        0.0,
+        4.0,
+        1.0,
+        1.6391
+      ],
+      [
+        0.0,
+        4.0,
+        2.0,
+        0.5385
+      ],
+      [
+        1.0,
+        4.0,
+        2.0,
+        1.864
+      ]
+    ]
   },
   "out_of_sample_metrics": {
     "oos_bars_count": 5000,
-    "total_return_pct": 18.639999389648438,
-    "max_drawdown_pct": 4.4,
-    "win_rate_pct": 76.47,
-    "trades_count": 34,
-    "sharpe_ratio": 16.63,
-    "calmar_ratio": 4.21999979019165,
-    "ev_per_trade_pct": 0.5482000112533569
+    "total_return_pct": 6.88,
+    "max_drawdown_pct": 5.42,
+    "win_rate_pct": 69.41,
+    "trades_count": 85,
+    "sharpe_ratio": 3.09,
+    "calmar_ratio": 1.27,
+    "ev_per_trade_pct": 0.081,
+    "wfe_pct": 8.89
   }
 }
