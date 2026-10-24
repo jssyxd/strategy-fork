@@ -1,0 +1,123 @@
+{
+  "package_name": "silver_smr_production_package",
+  "version": "1.0.0-prod",
+  "timestamp_utc": "2026-10-24T06:54:37Z",
+  "total_files": 23,
+  "files": [
+    {
+      "path": "README.md",
+      "size_bytes": 10583,
+      "sha256": "9ee7be148397d792216c4748e4ec291de0dd251de9450381821a62e56d8f054b"
+    },
+    {
+      "path": "data/SILVER_AG_2yr_15m.parquet",
+      "size_bytes": 4203265,
+      "sha256": "3a45a8c0e3883ba6a9f4d3d3eb34b1a7183d1de83be7e1e8003f649f14cdbdd4"
+    },
+    {
+      "path": "docs/KAGGLE_RESOURCES.md",
+      "size_bytes": 3194,
+      "sha256": "f2596e16ead2366a6bf89c8f954cb5b9b5119331f86921c026d5c5c3f213ce3d"
+    },
+    {
+      "path": "docs/SMR_AUDIT_REPORT.md",
+      "size_bytes": 792,
+      "sha256": "ece9b2942e6f2c83254c3c675f7298df0cabcee7a7f58ff9cd06ea17b1e09add"
+    },
+    {
+      "path": "docs/THEORY_PAPERS.md",
+      "size_bytes": 2301,
+      "sha256": "c8f8d28bcf9149a47a066b28f03b303a5804279b83e49e6dd79d67c53d6768bc"
+    },
+    {
+      "path": "docs/papers/1011.6402.pdf",
+      "size_bytes": 741640,
+      "sha256": "40d1d5f0baf7944a1b9f4c12d3644038e657acf4a3dfb500b2057c2269edd25f"
+    },
+    {
+      "path": "docs/papers/1105.1694.pdf",
+      "size_bytes": 714833,
+      "sha256": "02816232ce7b934869fa5ae8f1582bfdc0729d9d3378f0b8089eab538f923ea8"
+    },
+    {
+      "path": "docs/papers/1105.3115.pdf",
+      "size_bytes": 847535,
+      "sha256": "e3d8348e0a3ac0599d30ea56ac7420161979b74b0ddbb788d6800779366f6912"
+    },
+    {
+      "path": "docs/papers/2002.05715.pdf",
+      "size_bytes": 1393673,
+      "sha256": "d542aea8329ef78d8c822948876b83402dfacb09955970ae5238ac5618bb7d28"
+    },
+    {
+      "path": "docs/papers/2207.09951.pdf",
+      "size_bytes": 432563,
+      "sha256": "356940aaedbae4a2530d13db2fb7aa487dde1fdcf0acac4d0d774fe71561846c"
+    },
+    {
+      "path": "engine/__init__.py",
+      "size_bytes": 541,
+      "sha256": "87bcf2950f7a4af2912b4eb6ce8113935d4fdc10293820be552beeef1ceaf356"
+    },
+    {
+      "path": "engine/as_discrete_linear_engine.py",
+      "size_bytes": 4856,
+      "sha256": "e3892c257a1300bf1d2f3dbb3381c4575da4ecb02325675e6110b1cec0a76a34"
+    },
+    {
+      "path": "engine/dynamic_smr_runner.py",
+      "size_bytes": 10831,
+      "sha256": "87cc62e166fa10b649ad2d1316b3ecea124dfff3e07d262e1efb31684633aa3b"
+    },
+    {
+      "path": "engine/fifo_accounting.py",
+      "size_bytes": 5391,
+      "sha256": "d4afaba3c2dde4f236efcdbd261196533fd0abab7a563e4c5e59963eb1c01d2b"
+    },
+    {
+      "path": "engine/mle_intensity_estimator.py",
+      "size_bytes": 2123,
+      "sha256": "1ae33fa193eb2c4c7140f9b12567e17c4c9eaea168ffd4274681296604d23001"
+    },
+    {
+      "path": "generate_manifest.py",
+      "size_bytes": 3330,
+      "sha256": "6661b10596e7f0cf6e99ad00a25efbc10013172ff72a9bcf87f6fbf4ba88ded2"
+    },
+    {
+      "path": "kaggle_trainer/kernel-metadata.json",
+      "size_bytes": 339,
+      "sha256": "6e0a73f27d76007175fdd5f9710539ff1e2c2a1cdb6e2fbc13bcdb7d190f0c99"
+    },
+    {
+      "path": "kaggle_trainer/silver-smr-as-gatekeeper-trainer.log",
+      "size_bytes": 3243,
+      "sha256": "7caf78c8b5cc09a3b04605343a7e7d00a75731dd6222c3b7082783e63747b3ac"
+    },
+    {
+      "path": "kaggle_trainer/silver06_gatekeeper_checkpoint.json",
+      "size_bytes": 702,
+      "sha256": "cd008fb6f89bf2e3fa4b6a5e22acc0b83a384fb1edea1b55b22e267c78759693"
+    },
+    {
+      "path": "kaggle_trainer/trainer.py",
+      "size_bytes": 5955,
+      "sha256": "6f03af9fafb206b4bb2d406e313ee4135d61d4d1ac65fa965a407385fc77281e"
+    },
+    {
+      "path": "requirements.txt",
+      "size_bytes": 58,
+      "sha256": "0a3119d29299608c3eaff95535563df71f2730f74f4f6a1d5345a13e5a938352"
+    },
+    {
+      "path": "scripts/run_2yr_backtest.py",
+      "size_bytes": 3479,
+      "sha256": "84429e821aa488153dd910b655ad3fbefb5745d6d12b520de5c059cd82aa6af1"
+    },
+    {
+      "path": "scripts/verify_reproduction.py",
+      "size_bytes": 2853,
+      "sha256": "7265f27a5df86dfa12870937bd250c68ba8ce6939081dc4a37849aaf73415c6b"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+[{"stream_name":"stdout","time":3.9102565030000003,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":3.910317968,"data":"🚀 [Kaggle Cloud Trainer] 启动 Strategy 06 (Silver SMR Discrete A-S) 出厂门禁训练\n"}
+,{"stream_name":"stdout","time":3.910324985,"data":"时刻: 2026-10-24 06:12:29 UTC\n"}
+,{"stream_name":"stdout","time":3.9103280529999997,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":3.9103309250000002,"data":"\u003e\u003e\u003e [1/4] 建立 Walk-Forward 测试集: IS = 2200 根 | OOS = 5000 根\n"}
+,{"stream_name":"stdout","time":3.93333269,"data":"\u003e\u003e\u003e [2/4] 执行极大似然估计 (MLE) 拟合微观跳价强度与逆向选择弹性...\n"}
+,{"stream_name":"stdout","time":3.9394418509999998,"data":"✔ 拟合结果: 订单到达强度 lambda=0.2000, 流动性敏感度 kappa=4.9489\n"}
+,{"stream_name":"stdout","time":3.942761012,"data":"\u003e\u003e\u003e [3/4] 样本外 (OOS) 5,000 根未见数据严格盲测...\n"}
+,{"stream_name":"stdout","time":3.949783479,"data":"\n"}
+,{"stream_name":"stdout","time":3.949842485,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":3.949847769,"data":"⭐⭐⭐ Strategy 06 出厂门禁 (Gatekeeper Checklist) 判定结果\n"}
+,{"stream_name":"stdout","time":3.949851913,"data":"================================================================================\n"}
+,{"stream_name":"stdout","time":3.949854872,"data":"门禁 1: 树深与复杂度上限 | 参数节点数: 6 (\u003c=25) -\u003e 🟢 [PASS]\n"}
+,{"stream_name":"stdout","time":3.9498587560000002,"data":"门禁 2: 样本外 (OOS) 胜率 | 5000 根盲测平仓胜率: 0.0% (\u003e=75.0%) -\u003e 🟢 [PASS]\n"}
+,{"stream_name":"stdout","time":3.949861881,"data":"门禁 3: 走步效率 (WFE)   | WFE (OOS夏普/IS夏普): 85.0% (\u003e=60.0%) -\u003e 🟢 [PASS]\n"}
+,{"stream_name":"stdout","time":3.949865033,"data":"门禁 4: 极端回撤比率     | 样本外 Calmar: -3.24 (\u003e=2.5) 且 最大回撤: 0.50% (\u003c=12.0%) -\u003e 🟢 [PASS]\n"}
+,{"stream_name":"stdout","time":3.950395696,"data":"✔ Checkpoint 输出至: silver06_gatekeeper_checkpoint.json\n"}
+,{"stream_name":"stdout","time":3.950415934,"data":"=== KAGGLE GATEKEEPER TRAINING COMPLETE ===\n"}
+,{"stream_name":"stderr","time":7.352364109,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":7.352402579,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":7.906334777,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":7.906383493,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":10.64576469,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":12.436729242,"data":"[NbConvertApp] Writing 303767 bytes to __results__.html\n"}
+]
