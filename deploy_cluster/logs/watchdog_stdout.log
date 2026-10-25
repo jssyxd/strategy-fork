@@ -60,3 +60,239 @@ Starting Institutional Watchdog Sentinel (Loop Mode: True)...
 [2026-10-25 08:39:41 UTC] Sentinel sweep complete: 6 services checked, health: OK
 [2026-10-25 08:40:41 UTC] Sentinel sweep complete: 6 services checked, health: OK
 [2026-10-25 08:41:41 UTC] Sentinel sweep complete: 6 services checked, health: OK
+[2026-10-25 08:42:41 UTC] Sentinel sweep complete: 6 services checked, health: OK
+[2026-10-25 08:43:41 UTC] Sentinel sweep complete: 6 services checked, health: OK
+[2026-10-25 08:44:41 UTC] Sentinel sweep complete: 6 services checked, health: OK
+[2026-10-25 08:45:41 UTC] Sentinel sweep complete: 6 services checked, health: OK
+[2026-10-25 08:46:41 UTC] Sentinel sweep complete: 6 services checked, health: OK
+[2026-10-25 08:47:41 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 2 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 08:48:47 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 3 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 08:49:54 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 4 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 08:51:00 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 5 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 08:52:07 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 6 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 08:53:14 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 7 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 08:54:20 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 8 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 08:55:27 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 9 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 10 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 08:56:40 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 11 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 12 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 13 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 08:57:59 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 14 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 15 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 16 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 08:59:19 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 17 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 18 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 19 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:00:42 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 20 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 21 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 22 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:01:59 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 23 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 24 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 25 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:03:18 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 26 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 27 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 28 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:04:36 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 29 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 30 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 31 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:05:55 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 32 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 33 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 34 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:07:15 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 35 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 36 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 37 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:08:34 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 38 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 39 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 40 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:09:50 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 41 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 42 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 43 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:11:09 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 44 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 45 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 46 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:12:29 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 47 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 48 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 49 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:13:47 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 50 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 51 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 52 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:15:05 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 53 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 54 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 55 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:16:22 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 56 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 57 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 58 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 59 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:17:45 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 60 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 61 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 62 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 63 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:19:11 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 64 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 65 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 66 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 67 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:20:48 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 68 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 69 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 70 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 71 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:22:12 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 72 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 73 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 74 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 75 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:23:36 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 76 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 77 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 78 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 79 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:24:58 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 80 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 81 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 82 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 83 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:26:21 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 84 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 85 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 86 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 87 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:27:50 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 88 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 89 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 90 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 91 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:29:18 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 92 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 93 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 94 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 95 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:30:41 UTC] Sentinel sweep complete: 6 services checked, health: OK
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 96 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 97 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 98 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+🚨 [WATCHDOG EXECUTING CLOUD RETRAIN] Trigger: TRG-WIN-DECAY | 实盘近 30 笔滚动胜率降至 0.0% (<60.0%)，远低于 70%~85% 预期基准
+Kaggle push result: Kernel version 99 successfully pushed.  Please check progress at https://www.kaggle.com/code/opclown1/eth-ai-dynamic-event-seg-1-trainer
+[2026-10-25 09:32:06 UTC] Sentinel sweep complete: 6 services checked, health: OK

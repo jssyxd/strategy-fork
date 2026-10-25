@@ -5,3 +5,45 @@
 [2026-10-25 08:38:40 UTC] [01_eth_dynamic] Initializing NautilusTrader live service for ETH-USDT-SWAP...
 [2026-10-25 08:38:42 UTC] [01_eth_dynamic] Connected to OKX Demo Gateway. Available balance: N/A USDT
 [2026-10-25 08:40:23 UTC] [01_eth_dynamic] Heartbeat: Price=2333.61, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:42:35 UTC] [01_eth_dynamic] Heartbeat: Price=2335.87, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:44:45 UTC] [01_eth_dynamic] Heartbeat: Price=2338.66, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:46:55 UTC] [01_eth_dynamic] Heartbeat: Price=2337.14, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:49:05 UTC] [01_eth_dynamic] Heartbeat: Price=2338.83, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:51:15 UTC] [01_eth_dynamic] Heartbeat: Price=2338.7, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:53:27 UTC] [01_eth_dynamic] Heartbeat: Price=2338.35, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:55:40 UTC] [01_eth_dynamic] Heartbeat: Price=2334.45, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:57:49 UTC] [01_eth_dynamic] Heartbeat: Price=2334.32, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:00:03 UTC] [01_eth_dynamic] Heartbeat: Price=2334.44, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:02:14 UTC] [01_eth_dynamic] Heartbeat: Price=2333.65, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:04:23 UTC] [01_eth_dynamic] Heartbeat: Price=2333.76, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:06:35 UTC] [01_eth_dynamic] Heartbeat: Price=2334.11, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:08:45 UTC] [01_eth_dynamic] Heartbeat: Price=2333.31, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:10:57 UTC] [01_eth_dynamic] Heartbeat: Price=2334.6, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:13:07 UTC] [01_eth_dynamic] Heartbeat: Price=2334.06, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:15:17 UTC] [01_eth_dynamic] Heartbeat: Price=2330.49, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:17:30 UTC] [01_eth_dynamic] Heartbeat: Price=2329.76, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:18:39 UTC] [01_eth_dynamic] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 09:19:12 UTC] [01_eth_dynamic] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 09:19:46 UTC] [01_eth_dynamic] Heartbeat: Price=2310.0, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:20:29 UTC] [01_eth_dynamic] Error in strategy execution loop: <urlopen error _ssl.c:999: The handshake operation timed out>
+[2026-10-25 09:22:06 UTC] [01_eth_dynamic] Heartbeat: Price=2319.0, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:24:17 UTC] [01_eth_dynamic] Heartbeat: Price=2325.0, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:26:27 UTC] [01_eth_dynamic] Heartbeat: Price=2326.0, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:28:38 UTC] [01_eth_dynamic] Heartbeat: Price=2325.42, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:30:48 UTC] [01_eth_dynamic] Heartbeat: Price=2325.38, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:32:40 UTC] [01_eth_dynamic] Received shutdown signal. Stopping gracefully...
+[2026-10-25 09:32:41 UTC] [01_eth_dynamic] Strategy service successfully shut down.
+[2026-10-25 09:32:43 UTC] [01_eth_dynamic] Initializing NautilusTrader live service for ETH-USDT-SWAP...
+[2026-10-25 09:32:45 UTC] [01_eth_dynamic] Initializing NautilusTrader live service for ETH-USDT-SWAP...
+[2026-10-25 09:32:46 UTC] [01_eth_dynamic] Initializing NautilusTrader live service for ETH-USDT-SWAP...
+[2026-10-25 09:32:48 UTC] [01_eth_dynamic] Initializing NautilusTrader live service for ETH-USDT-SWAP...
+[2026-10-25 09:32:50 UTC] [01_eth_dynamic] Initializing NautilusTrader live service for ETH-USDT-SWAP...
+[2026-10-25 09:32:53 UTC] [01_eth_dynamic] Initializing NautilusTrader live service for ETH-USDT-SWAP...
+[2026-10-25 09:32:57 UTC] [01_eth_dynamic] Initializing NautilusTrader live service for ETH-USDT-SWAP...
+[2026-10-25 09:33:05 UTC] [01_eth_dynamic] Initializing NautilusTrader live service for ETH-USDT-SWAP...
+[2026-10-25 09:33:19 UTC] [01_eth_dynamic] Initializing NautilusTrader live service for ETH-USDT-SWAP...
+[2026-10-25 09:33:52 UTC] [01_eth_dynamic] Initializing NautilusTrader live service for ETH-USDT-SWAP...
+[2026-10-25 09:33:54 UTC] [01_eth_dynamic] Connected to OKX Demo Gateway. Available balance: N/A USDT
+[2026-10-25 09:35:35 UTC] [01_eth_dynamic] Heartbeat: Price=2324.48, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:37:45 UTC] [01_eth_dynamic] Heartbeat: Price=2324.88, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:39:54 UTC] [01_eth_dynamic] Heartbeat: Price=2325.0, Pos=0.0, Signal=0, Health=OK

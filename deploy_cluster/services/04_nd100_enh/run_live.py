@@ -13,13 +13,19 @@ FILLS_FILE = os.path.join(os.path.dirname(__file__), "../../logs/04_nd100_enh_fi
 STATUS_FILE = os.path.join(os.path.dirname(__file__), "../../logs/04_nd100_enh_status.json")
 
 def load_credentials():
-    creds = {}
-    with open(CONFIG_FILE, "r") as f:
-        for line in f:
-            line = line.strip()
-            if line and not line.startswith("#") and "=" in line:
-                k, v = line.split("=", 1)
-                creds[k.strip()] = v.strip()
+    creds = {
+        "OKX_API_KEY": os.environ.get("OKX_API_KEY", ""),
+        "OKX_API_SECRET": os.environ.get("OKX_API_SECRET", ""),
+        "OKX_API_PASSPHRASE": os.environ.get("OKX_API_PASSPHRASE", "Auto111."),
+        "OKX_SIMULATED_TRADING": os.environ.get("OKX_SIMULATED_TRADING", "1"),
+    }
+    if not creds.get("OKX_API_KEY") and os.path.exists(CONFIG_FILE):
+        with open(CONFIG_FILE, "r") as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, v = line.split("=", 1)
+                    creds[k.strip()] = v.strip()
     return creds
 
 def log_msg(msg):

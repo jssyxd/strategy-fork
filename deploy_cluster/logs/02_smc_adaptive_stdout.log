@@ -5,3 +5,63 @@
 [2026-10-25 08:38:40 UTC] [02_smc_adaptive] Initializing NautilusTrader live service for BTC-USDT-SWAP...
 [2026-10-25 08:38:41 UTC] [02_smc_adaptive] Connected to OKX Demo Gateway. Available balance: N/A USDT
 [2026-10-25 08:40:22 UTC] [02_smc_adaptive] Heartbeat: Price=80428.7, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:42:35 UTC] [02_smc_adaptive] Heartbeat: Price=80458.9, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:44:44 UTC] [02_smc_adaptive] Heartbeat: Price=80461.5, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:45:18 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:46:58 UTC] [02_smc_adaptive] Heartbeat: Price=80452.0, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:48:05 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:48:39 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:49:11 UTC] [02_smc_adaptive] Heartbeat: Price=80467.65, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:49:45 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:50:19 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:50:55 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:51:28 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:51:28 UTC] [02_smc_adaptive] Heartbeat: Price=80400.0, Pos=0.0, Signal=-1, Health=OK
+[2026-10-25 08:52:01 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:52:35 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:53:08 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:53:42 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:53:42 UTC] [02_smc_adaptive] Heartbeat: Price=80384.44, Pos=0.0, Signal=-1, Health=OK
+[2026-10-25 08:54:15 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:54:48 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:55:22 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:55:55 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:55:55 UTC] [02_smc_adaptive] Heartbeat: Price=80363.6, Pos=0.0, Signal=-1, Health=OK
+[2026-10-25 08:56:29 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:57:02 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:58:09 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:58:09 UTC] [02_smc_adaptive] Heartbeat: Price=80400.0, Pos=0.0, Signal=-1, Health=OK
+[2026-10-25 08:58:44 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:59:18 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:59:51 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 09:00:23 UTC] [02_smc_adaptive] Heartbeat: Price=80388.89, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:02:35 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 09:02:35 UTC] [02_smc_adaptive] Heartbeat: Price=80361.8, Pos=0.0, Signal=-1, Health=OK
+[2026-10-25 09:03:09 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 09:04:47 UTC] [02_smc_adaptive] Heartbeat: Price=80436.21, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:06:57 UTC] [02_smc_adaptive] Heartbeat: Price=80395.0, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:09:13 UTC] [02_smc_adaptive] Heartbeat: Price=80393.33, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:11:22 UTC] [02_smc_adaptive] Heartbeat: Price=80372.34, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:13:01 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 09:13:34 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 09:13:34 UTC] [02_smc_adaptive] Heartbeat: Price=80213.92, Pos=0.0, Signal=-1, Health=OK
+[2026-10-25 09:14:06 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 09:14:40 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 09:15:15 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 09:15:49 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 09:15:49 UTC] [02_smc_adaptive] Heartbeat: Price=80140.71, Pos=0.0, Signal=-1, Health=OK
+[2026-10-25 09:16:55 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 09:17:29 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 09:18:04 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 09:18:04 UTC] [02_smc_adaptive] Heartbeat: Price=80145.72, Pos=0.0, Signal=-1, Health=OK
+[2026-10-25 09:18:38 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 09:19:12 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 09:20:29 UTC] [02_smc_adaptive] Error in strategy execution loop: <urlopen error _ssl.c:999: The handshake operation timed out>
+[2026-10-25 09:22:39 UTC] [02_smc_adaptive] Heartbeat: Price=80200.0, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:24:50 UTC] [02_smc_adaptive] Heartbeat: Price=80225.7, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:27:00 UTC] [02_smc_adaptive] Heartbeat: Price=80320.0, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:29:12 UTC] [02_smc_adaptive] Heartbeat: Price=80156.0, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:30:18 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 09:31:24 UTC] [02_smc_adaptive] Heartbeat: Price=80196.0, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:32:40 UTC] [02_smc_adaptive] Received shutdown signal. Stopping gracefully...
+[2026-10-25 09:32:41 UTC] [02_smc_adaptive] Strategy service successfully shut down.

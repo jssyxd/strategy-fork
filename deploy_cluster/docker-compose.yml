@@ -1,94 +1,114 @@
-version: '3.8'
-
 services:
-  # Strategy 1: 012 ETH 15m Event-Driven Dynamic Q-State
   strat_012_eth_dynamic:
-    build:
-      context: .
-      dockerfile: services/01_eth_dynamic/Dockerfile
-    container_name: nautilus_012_eth_dynamic
-    restart: always
-    env_file:
-      - config/okx_demo_credentials.env
+    image: nautilus_cluster_base:latest
+    container_name: nautilus_local_001_eth
+    restart: unless-stopped
+    command: ["python", "-u", "/app/services/01_eth_dynamic/run_live.py"]
+    environment:
+      - OKX_API_KEY=c0020735-b707-4084-9718-d3dd68173ebd
+      - OKX_API_SECRET=548F11F8FEFEB8A02CC127900908CD15
+      - OKX_API_PASSPHRASE=Auto111.
+      - OKX_SIMULATED_TRADING=1
     volumes:
       - ./logs:/app/logs
-      - ./config:/app/config:ro
+    deploy:
+      resources:
+        limits:
+          memory: 150M
 
-  # Strategy 2: 005 SMC Multi-Asset Adaptive Evidential
   strat_005_smc_adaptive:
-    build:
-      context: .
-      dockerfile: services/02_smc_adaptive/Dockerfile
-    container_name: nautilus_005_smc_adaptive
-    restart: always
-    env_file:
-      - config/okx_demo_credentials.env
+    image: nautilus_cluster_base:latest
+    container_name: nautilus_local_002_smc
+    restart: unless-stopped
+    command: ["python", "-u", "/app/services/02_smc_adaptive/run_live.py"]
+    environment:
+      - OKX_API_KEY=486ce070-c0ed-4345-9ca6-2106091349b5
+      - OKX_API_SECRET=9B09B91E6971FC9CD1E2F0B4BC7214F9
+      - OKX_API_PASSPHRASE=Auto111.
+      - OKX_SIMULATED_TRADING=1
     volumes:
       - ./logs:/app/logs
-      - ./config:/app/config:ro
+    deploy:
+      resources:
+        limits:
+          memory: 150M
 
-  # Strategy 3: 012 Avellaneda-Stoikov Microstructure Grid
   strat_012_as_grid:
-    build:
-      context: .
-      dockerfile: services/03_as_grid/Dockerfile
-    container_name: nautilus_012_as_grid
-    restart: always
-    env_file:
-      - config/okx_demo_credentials.env
+    image: nautilus_cluster_base:latest
+    container_name: nautilus_local_003_as_grid
+    restart: unless-stopped
+    command: ["python", "-u", "/app/services/03_as_grid/run_live.py"]
+    environment:
+      - OKX_API_KEY=54f2f9a3-648b-43d8-9bb2-5da929fc7f29
+      - OKX_API_SECRET=F12B356808C00BF1B76F01670E8FEB51
+      - OKX_API_PASSPHRASE=Auto111.
+      - OKX_SIMULATED_TRADING=1
     volumes:
       - ./logs:/app/logs
-      - ./config:/app/config:ro
+    deploy:
+      resources:
+        limits:
+          memory: 150M
 
-  # Strategy 4: 004 QQQ / ND100 Momentum Options Overlay
   strat_004_nd100_enh:
-    build:
-      context: .
-      dockerfile: services/04_nd100_enh/Dockerfile
-    container_name: nautilus_004_nd100_enh
-    restart: always
-    env_file:
-      - config/okx_demo_credentials.env
+    image: nautilus_cluster_base:latest
+    container_name: nautilus_local_004_nd100
+    restart: unless-stopped
+    command: ["python", "-u", "/app/services/04_nd100_enh/run_live.py"]
+    environment:
+      - OKX_API_KEY=1a082a87-cc59-4a4a-9a34-2430c0cb5fcf
+      - OKX_API_SECRET=743C9A33452496BC37F7074EA0624B05
+      - OKX_API_PASSPHRASE=Auto111.
+      - OKX_SIMULATED_TRADING=1
     volumes:
       - ./logs:/app/logs
-      - ./config:/app/config:ro
+    deploy:
+      resources:
+        limits:
+          memory: 150M
 
-  # Strategy 5: 008 DOGE Micro Momentum & Carry
   strat_008_doge_carry:
-    build:
-      context: .
-      dockerfile: services/05_doge_carry/Dockerfile
-    container_name: nautilus_008_doge_carry
-    restart: always
-    env_file:
-      - config/okx_demo_credentials.env
+    image: nautilus_cluster_base:latest
+    container_name: nautilus_local_005_doge
+    restart: unless-stopped
+    command: ["python", "-u", "/app/services/05_doge_carry/run_live.py"]
+    environment:
+      - OKX_API_KEY=5e482ba7-f254-454a-a694-f4cabb9e363d
+      - OKX_API_SECRET=84F065F15B8D0A2985143A236266CEE3
+      - OKX_API_PASSPHRASE=Auto111.
+      - OKX_SIMULATED_TRADING=1
     volumes:
       - ./logs:/app/logs
-      - ./config:/app/config:ro
+    deploy:
+      resources:
+        limits:
+          memory: 150M
 
-  # Strategy 6: 009 ETH Volatility Squeeze
   strat_009_eth_squeeze:
-    build:
-      context: .
-      dockerfile: services/06_eth_squeeze/Dockerfile
-    container_name: nautilus_009_eth_squeeze
-    restart: always
-    env_file:
-      - config/okx_demo_credentials.env
+    image: nautilus_cluster_base:latest
+    container_name: nautilus_local_006_eth_squeeze
+    restart: unless-stopped
+    command: ["python", "-u", "/app/services/06_eth_squeeze/run_live.py"]
+    environment:
+      - OKX_API_KEY=c1d94957-db59-4065-b04d-505f1ff34986
+      - OKX_API_SECRET=8F27B4E9BE40848FFAD937330BFB2648
+      - OKX_API_PASSPHRASE=Auto111.
+      - OKX_SIMULATED_TRADING=1
     volumes:
       - ./logs:/app/logs
-      - ./config:/app/config:ro
+    deploy:
+      resources:
+        limits:
+          memory: 150M
 
-  # Watchdog Sentinel Daemon
   watchdog_sentinel:
-    build:
-      context: .
-      dockerfile: Dockerfile.watchdog
-    container_name: nautilus_watchdog_sentinel
-    restart: always
-    env_file:
-      - config/okx_demo_credentials.env
+    image: nautilus_cluster_base:latest
+    container_name: nautilus_local_watchdog
+    restart: unless-stopped
+    command: ["python", "-u", "/app/watchdog_trader_sentinel.py"]
     volumes:
       - ./logs:/app/logs
-      - ./config:/app/config:ro
-      - ../:/app/repo
+    deploy:
+      resources:
+        limits:
+          memory: 150M

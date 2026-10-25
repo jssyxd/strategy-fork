@@ -12,3 +12,42 @@
 [2026-10-25 08:38:44 UTC] [06_eth_squeeze] Connected to OKX Demo Gateway. Available balance: N/A USDT
 [2026-10-25 08:38:45 UTC] [06_eth_squeeze] Strategy service successfully shut down.
 [2026-10-25 08:40:25 UTC] [06_eth_squeeze] Heartbeat: Price=2333.61, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:42:35 UTC] [06_eth_squeeze] Heartbeat: Price=2335.87, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:44:46 UTC] [06_eth_squeeze] Heartbeat: Price=2338.66, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:46:56 UTC] [06_eth_squeeze] Heartbeat: Price=2337.14, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:49:08 UTC] [06_eth_squeeze] Heartbeat: Price=2338.83, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:51:18 UTC] [06_eth_squeeze] Heartbeat: Price=2338.7, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:53:28 UTC] [06_eth_squeeze] Heartbeat: Price=2338.35, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:55:37 UTC] [06_eth_squeeze] Heartbeat: Price=2334.45, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 08:57:50 UTC] [06_eth_squeeze] Heartbeat: Price=2334.32, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:00:02 UTC] [06_eth_squeeze] Heartbeat: Price=2334.44, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:02:15 UTC] [06_eth_squeeze] Heartbeat: Price=2333.65, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:04:28 UTC] [06_eth_squeeze] Heartbeat: Price=2333.98, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:06:39 UTC] [06_eth_squeeze] Heartbeat: Price=2334.05, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:08:52 UTC] [06_eth_squeeze] Heartbeat: Price=2332.83, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:11:03 UTC] [06_eth_squeeze] Heartbeat: Price=2336.67, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:13:14 UTC] [06_eth_squeeze] Heartbeat: Price=2333.45, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:15:24 UTC] [06_eth_squeeze] Heartbeat: Price=2329.8, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:17:37 UTC] [06_eth_squeeze] Heartbeat: Price=2329.6, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:19:46 UTC] [06_eth_squeeze] Heartbeat: Price=2310.22, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:22:09 UTC] [06_eth_squeeze] Heartbeat: Price=2318.0, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:24:20 UTC] [06_eth_squeeze] Heartbeat: Price=2325.21, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:26:30 UTC] [06_eth_squeeze] Heartbeat: Price=2326.0, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:28:41 UTC] [06_eth_squeeze] Heartbeat: Price=2324.99, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:30:52 UTC] [06_eth_squeeze] Heartbeat: Price=2325.33, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:32:40 UTC] [06_eth_squeeze] Received shutdown signal. Stopping gracefully...
+[2026-10-25 09:32:41 UTC] [06_eth_squeeze] Strategy service successfully shut down.
+[2026-10-25 09:32:42 UTC] [06_eth_squeeze] Initializing NautilusTrader live service for ETH-USDT-SWAP...
+[2026-10-25 09:32:44 UTC] [06_eth_squeeze] Initializing NautilusTrader live service for ETH-USDT-SWAP...
+[2026-10-25 09:32:46 UTC] [06_eth_squeeze] Initializing NautilusTrader live service for ETH-USDT-SWAP...
+[2026-10-25 09:32:48 UTC] [06_eth_squeeze] Initializing NautilusTrader live service for ETH-USDT-SWAP...
+[2026-10-25 09:32:50 UTC] [06_eth_squeeze] Initializing NautilusTrader live service for ETH-USDT-SWAP...
+[2026-10-25 09:32:52 UTC] [06_eth_squeeze] Initializing NautilusTrader live service for ETH-USDT-SWAP...
+[2026-10-25 09:32:57 UTC] [06_eth_squeeze] Initializing NautilusTrader live service for ETH-USDT-SWAP...
+[2026-10-25 09:33:04 UTC] [06_eth_squeeze] Initializing NautilusTrader live service for ETH-USDT-SWAP...
+[2026-10-25 09:33:18 UTC] [06_eth_squeeze] Initializing NautilusTrader live service for ETH-USDT-SWAP...
+[2026-10-25 09:33:51 UTC] [06_eth_squeeze] Initializing NautilusTrader live service for ETH-USDT-SWAP...
+[2026-10-25 09:33:53 UTC] [06_eth_squeeze] Connected to OKX Demo Gateway. Available balance: N/A USDT
+[2026-10-25 09:35:33 UTC] [06_eth_squeeze] Heartbeat: Price=2324.28, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:37:42 UTC] [06_eth_squeeze] Heartbeat: Price=2324.88, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:39:55 UTC] [06_eth_squeeze] Heartbeat: Price=2325.0, Pos=0.0, Signal=0, Health=OK
