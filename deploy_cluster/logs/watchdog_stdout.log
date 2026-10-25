@@ -1,0 +1,62 @@
+Traceback (most recent call last):
+  File "/home/da/.omp/wt/mhf-ml-training/deploy_cluster/watchdog_trader_sentinel.py", line 36, in <module>
+    class InstitutionalWatchdogSentinel:
+  File "/home/da/.omp/wt/mhf-ml-training/deploy_cluster/watchdog_trader_sentinel.py", line 66, in InstitutionalWatchdogSentinel
+    def check_strategy_service(self, service_id: str, symbol: str) -> Dict:
+                                                                      ^^^^
+NameError: name 'Dict' is not defined. Did you mean: 'dict'?
+Watchdog sweep completed. Summary:
+[
+  {
+    "service_id": "01_eth_dynamic",
+    "symbol": "ETH-USDT-SWAP",
+    "days_since_train": 15.0,
+    "in_freeze_period": true,
+    "triggers": [],
+    "status": "HEALTHY"
+  },
+  {
+    "service_id": "02_smc_adaptive",
+    "symbol": "BTC-USDT-SWAP",
+    "days_since_train": 15.0,
+    "in_freeze_period": true,
+    "triggers": [],
+    "status": "HEALTHY"
+  },
+  {
+    "service_id": "03_as_grid",
+    "symbol": "BTC-USDT-SWAP",
+    "days_since_train": 15.0,
+    "in_freeze_period": true,
+    "triggers": [],
+    "status": "HEALTHY"
+  },
+  {
+    "service_id": "04_nd100_enh",
+    "symbol": "BTC-USDT-SWAP",
+    "days_since_train": 15.0,
+    "in_freeze_period": true,
+    "triggers": [],
+    "status": "HEALTHY"
+  },
+  {
+    "service_id": "05_doge_carry",
+    "symbol": "DOGE-USDT-SWAP",
+    "days_since_train": 15.0,
+    "in_freeze_period": true,
+    "triggers": [],
+    "status": "HEALTHY"
+  },
+  {
+    "service_id": "06_eth_squeeze",
+    "symbol": "ETH-USDT-SWAP",
+    "days_since_train": 15.0,
+    "in_freeze_period": true,
+    "triggers": [],
+    "status": "HEALTHY"
+  }
+]
+Starting Institutional Watchdog Sentinel (Loop Mode: True)...
+[2026-10-25 08:39:41 UTC] Sentinel sweep complete: 6 services checked, health: OK
+[2026-10-25 08:40:41 UTC] Sentinel sweep complete: 6 services checked, health: OK
+[2026-10-25 08:41:41 UTC] Sentinel sweep complete: 6 services checked, health: OK

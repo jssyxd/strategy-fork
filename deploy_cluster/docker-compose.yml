@@ -1,0 +1,94 @@
+version: '3.8'
+
+services:
+  # Strategy 1: 012 ETH 15m Event-Driven Dynamic Q-State
+  strat_012_eth_dynamic:
+    build:
+      context: .
+      dockerfile: services/01_eth_dynamic/Dockerfile
+    container_name: nautilus_012_eth_dynamic
+    restart: always
+    env_file:
+      - config/okx_demo_credentials.env
+    volumes:
+      - ./logs:/app/logs
+      - ./config:/app/config:ro
+
+  # Strategy 2: 005 SMC Multi-Asset Adaptive Evidential
+  strat_005_smc_adaptive:
+    build:
+      context: .
+      dockerfile: services/02_smc_adaptive/Dockerfile
+    container_name: nautilus_005_smc_adaptive
+    restart: always
+    env_file:
+      - config/okx_demo_credentials.env
+    volumes:
+      - ./logs:/app/logs
+      - ./config:/app/config:ro
+
+  # Strategy 3: 012 Avellaneda-Stoikov Microstructure Grid
+  strat_012_as_grid:
+    build:
+      context: .
+      dockerfile: services/03_as_grid/Dockerfile
+    container_name: nautilus_012_as_grid
+    restart: always
+    env_file:
+      - config/okx_demo_credentials.env
+    volumes:
+      - ./logs:/app/logs
+      - ./config:/app/config:ro
+
+  # Strategy 4: 004 QQQ / ND100 Momentum Options Overlay
+  strat_004_nd100_enh:
+    build:
+      context: .
+      dockerfile: services/04_nd100_enh/Dockerfile
+    container_name: nautilus_004_nd100_enh
+    restart: always
+    env_file:
+      - config/okx_demo_credentials.env
+    volumes:
+      - ./logs:/app/logs
+      - ./config:/app/config:ro
+
+  # Strategy 5: 008 DOGE Micro Momentum & Carry
+  strat_008_doge_carry:
+    build:
+      context: .
+      dockerfile: services/05_doge_carry/Dockerfile
+    container_name: nautilus_008_doge_carry
+    restart: always
+    env_file:
+      - config/okx_demo_credentials.env
+    volumes:
+      - ./logs:/app/logs
+      - ./config:/app/config:ro
+
+  # Strategy 6: 009 ETH Volatility Squeeze
+  strat_009_eth_squeeze:
+    build:
+      context: .
+      dockerfile: services/06_eth_squeeze/Dockerfile
+    container_name: nautilus_009_eth_squeeze
+    restart: always
+    env_file:
+      - config/okx_demo_credentials.env
+    volumes:
+      - ./logs:/app/logs
+      - ./config:/app/config:ro
+
+  # Watchdog Sentinel Daemon
+  watchdog_sentinel:
+    build:
+      context: .
+      dockerfile: Dockerfile.watchdog
+    container_name: nautilus_watchdog_sentinel
+    restart: always
+    env_file:
+      - config/okx_demo_credentials.env
+    volumes:
+      - ./logs:/app/logs
+      - ./config:/app/config:ro
+      - ../:/app/repo

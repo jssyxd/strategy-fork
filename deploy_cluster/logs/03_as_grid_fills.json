@@ -1,0 +1,232 @@
+[
+  {
+    "timestamp": "2026-10-25T08:38:47.831746+00:00",
+    "side": "BUY",
+    "price": 80462.0,
+    "sz": "1",
+    "result": {
+      "code": "1",
+      "data": [
+        {
+          "clOrdId": "c_03_a_1792917526",
+          "ordId": "",
+          "sCode": "51000",
+          "sMsg": "Parameter clOrdId error",
+          "subCode": "",
+          "tag": "",
+          "ts": "1792917527395"
+        }
+      ],
+      "inTime": "1792917527395413",
+      "msg": "All operations failed",
+      "outTime": "1792917527395565"
+    }
+  },
+  {
+    "timestamp": "2026-10-25T08:39:08.038870+00:00",
+    "side": "BUY",
+    "price": 80470.59,
+    "sz": "1",
+    "result": {
+      "code": "1",
+      "data": [
+        {
+          "clOrdId": "c_03_a_1792917546",
+          "ordId": "",
+          "sCode": "51000",
+          "sMsg": "Parameter clOrdId error",
+          "subCode": "",
+          "tag": "",
+          "ts": "1792917547224"
+        }
+      ],
+      "inTime": "1792917547224444",
+      "msg": "All operations failed",
+      "outTime": "1792917547224631"
+    }
+  },
+  {
+    "timestamp": "2026-10-25T08:39:27.288363+00:00",
+    "side": "BUY",
+    "price": 80464.2,
+    "sz": "1",
+    "result": {
+      "code": "1",
+      "data": [
+        {
+          "clOrdId": "c_03_a_1792917565",
+          "ordId": "",
+          "sCode": "51000",
+          "sMsg": "Parameter clOrdId error",
+          "subCode": "",
+          "tag": "",
+          "ts": "1792917566483"
+        }
+      ],
+      "inTime": "1792917566483391",
+      "msg": "All operations failed",
+      "outTime": "1792917566483523"
+    }
+  },
+  {
+    "timestamp": "2026-10-25T08:39:44.968897+00:00",
+    "side": "BUY",
+    "price": 80428.0,
+    "sz": "1",
+    "result": {
+      "code": "1",
+      "data": [
+        {
+          "clOrdId": "c_03_a_1792917584",
+          "ordId": "",
+          "sCode": "51000",
+          "sMsg": "Parameter clOrdId error",
+          "subCode": "",
+          "tag": "",
+          "ts": "1792917584753"
+        }
+      ],
+      "inTime": "1792917584753540",
+      "msg": "All operations failed",
+      "outTime": "1792917584753680"
+    }
+  },
+  {
+    "timestamp": "2026-10-25T08:40:04.530774+00:00",
+    "side": "BUY",
+    "price": 80427.08,
+    "sz": "1",
+    "result": {
+      "code": "1",
+      "data": [
+        {
+          "clOrdId": "c_03_a_1792917603",
+          "ordId": "",
+          "sCode": "51000",
+          "sMsg": "Parameter clOrdId error",
+          "subCode": "",
+          "tag": "",
+          "ts": "1792917604292"
+        }
+      ],
+      "inTime": "1792917604292031",
+      "msg": "All operations failed",
+      "outTime": "1792917604292191"
+    }
+  },
+  {
+    "timestamp": "2026-10-25T08:40:22.999607+00:00",
+    "side": "BUY",
+    "price": 80429.1,
+    "sz": "1",
+    "result": {
+      "code": "1",
+      "data": [
+        {
+          "clOrdId": "c_03_a_1792917621",
+          "ordId": "",
+          "sCode": "51000",
+          "sMsg": "Parameter clOrdId error",
+          "subCode": "",
+          "tag": "",
+          "ts": "1792917622785"
+        }
+      ],
+      "inTime": "1792917622784858",
+      "msg": "All operations failed",
+      "outTime": "1792917622785024"
+    }
+  },
+  {
+    "timestamp": "2026-10-25T08:40:41.740794+00:00",
+    "side": "BUY",
+    "price": 80443.5,
+    "sz": "1",
+    "result": {
+      "code": "1",
+      "data": [
+        {
+          "clOrdId": "c_03_a_1792917640",
+          "ordId": "",
+          "sCode": "51000",
+          "sMsg": "Parameter clOrdId error",
+          "subCode": "",
+          "tag": "",
+          "ts": "1792917641259"
+        }
+      ],
+      "inTime": "1792917641259660",
+      "msg": "All operations failed",
+      "outTime": "1792917641259823"
+    }
+  },
+  {
+    "timestamp": "2026-10-25T08:41:00.417819+00:00",
+    "side": "BUY",
+    "price": 80443.5,
+    "sz": "1",
+    "result": {
+      "code": "1",
+      "data": [
+        {
+          "clOrdId": "c_03_a_1792917659",
+          "ordId": "",
+          "sCode": "51000",
+          "sMsg": "Parameter clOrdId error",
+          "subCode": "",
+          "tag": "",
+          "ts": "1792917660187"
+        }
+      ],
+      "inTime": "1792917660187599",
+      "msg": "All operations failed",
+      "outTime": "1792917660187725"
+    }
+  },
+  {
+    "timestamp": "2026-10-25T08:41:19.348798+00:00",
+    "side": "BUY",
+    "price": 80469.42,
+    "sz": "1",
+    "result": {
+      "code": "1",
+      "data": [
+        {
+          "clOrdId": "c_03_a_1792917678",
+          "ordId": "",
+          "sCode": "51000",
+          "sMsg": "Parameter clOrdId error",
+          "subCode": "",
+          "tag": "",
+          "ts": "1792917679132"
+        }
+      ],
+      "inTime": "1792917679132683",
+      "msg": "All operations failed",
+      "outTime": "1792917679132834"
+    }
+  },
+  {
+    "timestamp": "2026-10-25T08:41:38.782959+00:00",
+    "side": "BUY",
+    "price": 80452.13,
+    "sz": "1",
+    "result": {
+      "code": "1",
+      "data": [
+        {
+          "clOrdId": "c_03_a_1792917697",
+          "ordId": "",
+          "sCode": "51000",
+          "sMsg": "Parameter clOrdId error",
+          "subCode": "",
+          "tag": "",
+          "ts": "1792917698552"
+        }
+      ],
+      "inTime": "1792917698552256",
+      "msg": "All operations failed",
+      "outTime": "1792917698552401"
+    }
+  }
+]

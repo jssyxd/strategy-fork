@@ -1,0 +1,13 @@
+{
+  "service_id": "05_doge_carry",
+  "strategy_name": "008_doge_momentum",
+  "symbol": "DOGE-USDT-SWAP",
+  "timeframe": "15m",
+  "timestamp_utc": "2026-10-25T08:41:38.072045+00:00",
+  "loop_count": 6,
+  "current_price": 0.07655,
+  "current_signal": -1,
+  "position_size": 0.0,
+  "last_order_action": "SELL_SUBMITTED",
+  "status": "RUNNING_HEALTHY"
+}

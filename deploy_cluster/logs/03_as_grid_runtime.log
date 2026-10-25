@@ -1,0 +1,23 @@
+[2026-10-25 08:37:24 UTC] [03_as_grid] Initializing NautilusTrader live service for BTC-USDT-SWAP...
+[2026-10-25 08:37:26 UTC] [03_as_grid] Connected to OKX Demo Gateway. Available balance: N/A USDT
+[2026-10-25 08:37:32 UTC] [03_as_grid] Triggered LONG entry signal! Submitted market buy: 1, msg: All operations failed
+[2026-10-25 08:37:51 UTC] [03_as_grid] Triggered LONG entry signal! Submitted market buy: 1, msg: All operations failed
+[2026-10-25 08:38:11 UTC] [03_as_grid] Triggered LONG entry signal! Submitted market buy: 1, msg: All operations failed
+[2026-10-25 08:38:31 UTC] [03_as_grid] Triggered LONG entry signal! Submitted market buy: 1, msg: All operations failed
+[2026-10-25 08:38:31 UTC] [03_as_grid] Heartbeat: Price=80462.89, Pos=0.0, Signal=1, Health=OK
+[2026-10-25 08:38:37 UTC] [03_as_grid] Received shutdown signal. Stopping gracefully...
+[2026-10-25 08:38:38 UTC] [03_as_grid] Strategy service successfully shut down.
+[2026-10-25 08:38:41 UTC] [03_as_grid] Initializing NautilusTrader live service for BTC-USDT-SWAP...
+[2026-10-25 08:38:43 UTC] [03_as_grid] Connected to OKX Demo Gateway. Available balance: N/A USDT
+[2026-10-25 08:38:47 UTC] [03_as_grid] Triggered LONG entry signal! Submitted market buy: 1, msg: All operations failed
+[2026-10-25 08:39:08 UTC] [03_as_grid] Triggered LONG entry signal! Submitted market buy: 1, msg: All operations failed
+[2026-10-25 08:39:27 UTC] [03_as_grid] Triggered LONG entry signal! Submitted market buy: 1, msg: All operations failed
+[2026-10-25 08:39:44 UTC] [03_as_grid] Triggered LONG entry signal! Submitted market buy: 1, msg: All operations failed
+[2026-10-25 08:39:44 UTC] [03_as_grid] Heartbeat: Price=80428.0, Pos=0.0, Signal=1, Health=OK
+[2026-10-25 08:40:04 UTC] [03_as_grid] Triggered LONG entry signal! Submitted market buy: 1, msg: All operations failed
+[2026-10-25 08:40:22 UTC] [03_as_grid] Triggered LONG entry signal! Submitted market buy: 1, msg: All operations failed
+[2026-10-25 08:40:41 UTC] [03_as_grid] Triggered LONG entry signal! Submitted market buy: 1, msg: All operations failed
+[2026-10-25 08:41:00 UTC] [03_as_grid] Triggered LONG entry signal! Submitted market buy: 1, msg: All operations failed
+[2026-10-25 08:41:00 UTC] [03_as_grid] Heartbeat: Price=80443.5, Pos=0.0, Signal=1, Health=OK
+[2026-10-25 08:41:19 UTC] [03_as_grid] Triggered LONG entry signal! Submitted market buy: 1, msg: All operations failed
+[2026-10-25 08:41:38 UTC] [03_as_grid] Triggered LONG entry signal! Submitted market buy: 1, msg: All operations failed

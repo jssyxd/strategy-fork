@@ -1,0 +1,14 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl ca-certificates git && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN pip install --no-cache-dir kaggle numpy pandas requests
+
+COPY config/ /app/config/
+COPY watchdog_trader_sentinel.py /app/watchdog_trader_sentinel.py
+
+CMD ["python", "-u", "/app/watchdog_trader_sentinel.py"]

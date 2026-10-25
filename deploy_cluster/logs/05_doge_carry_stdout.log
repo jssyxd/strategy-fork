@@ -1,0 +1,16 @@
+[2026-10-25 08:37:25 UTC] [05_doge_carry] Initializing NautilusTrader live service for DOGE-USDT-SWAP...
+[2026-10-25 08:37:28 UTC] [05_doge_carry] Connected to OKX Demo Gateway. Available balance: N/A USDT
+[2026-10-25 08:37:31 UTC] [05_doge_carry] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:38:05 UTC] [05_doge_carry] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:38:37 UTC] [05_doge_carry] Received shutdown signal. Stopping gracefully...
+[2026-10-25 08:38:39 UTC] [05_doge_carry] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:38:39 UTC] [05_doge_carry] Strategy service successfully shut down.
+[2026-10-25 08:38:42 UTC] [05_doge_carry] Initializing NautilusTrader live service for DOGE-USDT-SWAP...
+[2026-10-25 08:38:43 UTC] [05_doge_carry] Connected to OKX Demo Gateway. Available balance: N/A USDT
+[2026-10-25 08:38:48 UTC] [05_doge_carry] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:39:22 UTC] [05_doge_carry] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:39:56 UTC] [05_doge_carry] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:40:30 UTC] [05_doge_carry] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:40:30 UTC] [05_doge_carry] Heartbeat: Price=0.0764598, Pos=0.0, Signal=-1, Health=OK
+[2026-10-25 08:41:03 UTC] [05_doge_carry] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 08:41:38 UTC] [05_doge_carry] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed

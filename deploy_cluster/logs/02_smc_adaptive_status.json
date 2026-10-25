@@ -1,0 +1,13 @@
+{
+  "service_id": "02_smc_adaptive",
+  "strategy_name": "005_smc_ml_adaptive",
+  "symbol": "BTC-USDT-SWAP",
+  "timeframe": "15m",
+  "timestamp_utc": "2026-10-25T08:41:29.200340+00:00",
+  "loop_count": 6,
+  "current_price": 80448.0,
+  "current_signal": 0,
+  "position_size": 0.0,
+  "last_order_action": "HOLD",
+  "status": "RUNNING_HEALTHY"
+}

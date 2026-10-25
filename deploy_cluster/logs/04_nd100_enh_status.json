@@ -1,0 +1,13 @@
+{
+  "service_id": "04_nd100_enh",
+  "strategy_name": "004_nd100_enh",
+  "symbol": "BTC-USDT-SWAP",
+  "timeframe": "1H",
+  "timestamp_utc": "2026-10-25T08:41:36.346486+00:00",
+  "loop_count": 6,
+  "current_price": 80452.13,
+  "current_signal": 1,
+  "position_size": 0.0,
+  "last_order_action": "BUY_SUBMITTED",
+  "status": "RUNNING_HEALTHY"
+}

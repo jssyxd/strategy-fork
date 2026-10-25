@@ -1,0 +1,65 @@
+name: Watchdog Kaggle ML Cloud Retrain Pipeline
+
+on:
+  schedule:
+    # 1. 定期触发：每月 1 号与 15 号例行巡检 (每 2 个月增量演化迭代)
+    - cron: '0 0 1,15 * *'
+  # 2. 事件驱动触发：允许通过 GitHub 仓库事件、Webhook 或 API 远程分发触发
+  repository_dispatch:
+    types: [sentinel_trigger, regime_shift_alert, deficit_alert, slippage_alert]
+  # 3. 手动一键调度测试
+  workflow_dispatch:
+    inputs:
+      strategy_id:
+        description: 'Target Strategy to Retrain (012_eth, 005_smc, 012_as_grid, etc.)'
+        required: true
+        default: '012_eth'
+      trigger_reason:
+        description: 'Reason for retraining trigger'
+        required: false
+        default: 'Manual operator dispatch or sentinel alert'
+
+jobs:
+  kaggle_cloud_evolution:
+    name: Execute Real Kaggle Cloud ML Evolution
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Quant & Kaggle Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install kaggle pandas numpy numba lightgbm requests pyarrow
+
+      - name: Configure Kaggle API Credentials
+        env:
+          KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
+        run: |
+          mkdir -p ~/.kaggle
+          echo "KAGGLE_API_TOKEN configured from repository secrets."
+
+      - name: Execute Watchdog Sentinel Audit & Kaggle Dispatch
+        env:
+          KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
+        run: |
+          echo ">>> [Watchdog Action] Checking Strategy Sentinel Conditions..."
+          echo "Triggered Strategy: ${{ github.event.inputs.strategy_id || github.event.client_payload.strategy_id || 'ALL' }}"
+          echo "Trigger Reason: ${{ github.event.inputs.trigger_reason || github.event.client_payload.trigger_reason || 'Scheduled Bi-Monthly Walk-Forward' }}"
+          
+          # Run watchdog sweep script
+          python deploy_cluster/watchdog_trader_sentinel.py
+
+      - name: Commit and Push Updated Checkpoints & Audit Logs
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Watchdog"
+          git add deploy_cluster/logs/ deploy_cluster/TRADING_ALERT_REPORT.md
+          git diff-index --quiet HEAD || git commit -m "chore(watchdog): record automated sentinel sweep and Kaggle cloud retrain"
+          git push origin HEAD || true
