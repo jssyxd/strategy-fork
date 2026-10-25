@@ -1,0 +1,64 @@
+{
+  "dual_engine": [
+    {
+      "engine": "NautilusTrader",
+      "trades_count": 941,
+      "win_rate_pct": 33.16,
+      "total_return_pct": -82.93,
+      "max_drawdown_pct": 83.1,
+      "calmar_ratio": -1.0,
+      "sharpe_ratio": -5.15,
+      "final_equity": 1707.46
+    },
+    {
+      "engine": "VectorBT",
+      "trades_count": 941,
+      "win_rate_pct": 33.16,
+      "total_return_pct": -82.93,
+      "max_drawdown_pct": 83.1,
+      "calmar_ratio": -1.0,
+      "sharpe_ratio": -5.15,
+      "final_equity": 1707.46
+    }
+  ],
+  "perturbations": [
+    {
+      "engine": "Perturb_-15%",
+      "trades_count": 690,
+      "win_rate_pct": 32.17,
+      "total_return_pct": -71.69,
+      "max_drawdown_pct": 72.55,
+      "calmar_ratio": -0.99,
+      "sharpe_ratio": -5.47,
+      "final_equity": 2830.87
+    },
+    {
+      "engine": "Perturb_+15%",
+      "trades_count": 1052,
+      "win_rate_pct": 32.32,
+      "total_return_pct": -88.66,
+      "max_drawdown_pct": 88.66,
+      "calmar_ratio": -1.0,
+      "sharpe_ratio": -5.05,
+      "final_equity": 1134.24
+    }
+  ],
+  "is_oos": [
+    {
+      "slice": "In-Sample (2023-2024)",
+      "trades": 535,
+      "win_rate": 31.21,
+      "net_pnl": -6185.16,
+      "sharpe": -6.26
+    },
+    {
+      "slice": "Out-of-Sample (2025-2026)",
+      "trades": 406,
+      "win_rate": 35.71,
+      "net_pnl": -1360.6,
+      "sharpe": -3.25
+    }
+  ],
+  "monte_carlo_95_mdd": 78.84,
+  "monte_carlo_99_mdd": 80.2
+}
