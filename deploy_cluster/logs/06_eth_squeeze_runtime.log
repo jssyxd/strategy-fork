@@ -94,3 +94,11 @@
 [2026-10-25 10:24:43 UTC] [06_eth_squeeze] Error in strategy execution loop: <urlopen error _ssl.c:999: The handshake operation timed out>
 [2026-10-25 10:25:17 UTC] [06_eth_squeeze] Heartbeat: Price=2326.31, Pos=0.0, Signal=0, Health=OK
 [2026-10-25 10:27:30 UTC] [06_eth_squeeze] Heartbeat: Price=2328.0, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 10:29:44 UTC] [06_eth_squeeze] Heartbeat: Price=2327.58, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 10:31:55 UTC] [06_eth_squeeze] Heartbeat: Price=2326.05, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 10:34:04 UTC] [06_eth_squeeze] Heartbeat: Price=2324.92, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 10:36:13 UTC] [06_eth_squeeze] Heartbeat: Price=2324.92, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 10:38:25 UTC] [06_eth_squeeze] Heartbeat: Price=2326.21, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 10:40:35 UTC] [06_eth_squeeze] Heartbeat: Price=2324.69, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 10:42:45 UTC] [06_eth_squeeze] Heartbeat: Price=2326.06, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 10:44:54 UTC] [06_eth_squeeze] Heartbeat: Price=2326.18, Pos=0.0, Signal=0, Health=OK

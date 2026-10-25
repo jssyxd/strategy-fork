@@ -170,3 +170,11 @@
 [2026-10-25 10:24:39 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error _ssl.c:999: The handshake operation timed out>
 [2026-10-25 10:25:14 UTC] [05_doge_carry] Heartbeat: Price=0.0764838, Pos=-1.0, Signal=-1, Health=OK
 [2026-10-25 10:27:26 UTC] [05_doge_carry] Heartbeat: Price=0.0764297, Pos=-1.0, Signal=-1, Health=OK
+[2026-10-25 10:29:44 UTC] [05_doge_carry] Heartbeat: Price=0.0764278, Pos=-1.0, Signal=-1, Health=OK
+[2026-10-25 10:31:54 UTC] [05_doge_carry] Heartbeat: Price=0.07645, Pos=-1.0, Signal=0, Health=OK
+[2026-10-25 10:34:05 UTC] [05_doge_carry] Heartbeat: Price=0.07648, Pos=-1.0, Signal=0, Health=OK
+[2026-10-25 10:36:16 UTC] [05_doge_carry] Heartbeat: Price=0.0764345, Pos=-1.0, Signal=0, Health=OK
+[2026-10-25 10:38:26 UTC] [05_doge_carry] Heartbeat: Price=0.07647, Pos=-1.0, Signal=0, Health=OK
+[2026-10-25 10:40:38 UTC] [05_doge_carry] Heartbeat: Price=0.07648, Pos=-1.0, Signal=0, Health=OK
+[2026-10-25 10:42:48 UTC] [05_doge_carry] Heartbeat: Price=0.0764555, Pos=-1.0, Signal=0, Health=OK
+[2026-10-25 10:45:00 UTC] [05_doge_carry] Heartbeat: Price=0.0764803, Pos=-1.0, Signal=0, Health=OK
