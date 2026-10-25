@@ -1,0 +1,774 @@
+2026-10-24 00:04:34,826 [INFO] AE007: [HEARTBEAT] px=2406.03 signal=0.964940019790653 q=+7.169 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=314/4708 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 00:09:34,826 [INFO] AE007: [HEARTBEAT] px=2407.70 signal=0.964940019790653 q=+7.169 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=314/4713 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 00:14:34,826 [INFO] AE007: [HEARTBEAT] px=2403.34 signal=0.964940019790653 q=+7.169 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=314/4718 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 00:19:34,826 [INFO] AE007: [HEARTBEAT] px=2403.28 signal=0.22906738245669706 q=+6.309 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=315/4723 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 00:24:34,826 [INFO] AE007: [HEARTBEAT] px=2399.22 signal=0.22906738245669706 q=+6.309 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=315/4728 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 00:29:34,826 [INFO] AE007: [HEARTBEAT] px=2399.08 signal=0.22906738245669706 q=+6.309 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=315/4733 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-23T16:33:43.089823711Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-23T16:33:43.340379810Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-24 00:34:34,826 [INFO] AE007: [HEARTBEAT] px=2404.00 signal=-0.3900590612481348 q=+5.786 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=316/4738 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 00:39:34,826 [INFO] AE007: [HEARTBEAT] px=2405.21 signal=-0.3900590612481348 q=+5.786 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=316/4743 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 00:44:34,826 [INFO] AE007: [HEARTBEAT] px=2409.00 signal=-0.3900590612481348 q=+5.786 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=316/4748 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 00:45:01,048 [INFO] AE007: [ENTRY] 多 @≈2408.74 | signal=+1.31 | 名义=2500.00 USDT (50% of 5000.00) | 10.37 张 | id=O20261023164501007007131
+2026-10-24 00:45:01,062 [ERROR] AE007: [REJECTED] O20261023164501007007131: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 00:45:01,062 [ERROR] AE007: [REJECTED] 在途委托 O20261023164501007007131 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-23T16:45:01.062110086Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023164501007007131, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792773901061941282)[0m
+2026-10-24 00:49:34,826 [INFO] AE007: [HEARTBEAT] px=2407.70 signal=1.3098538007584795 q=+6.335 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=317/4753 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 00:54:34,826 [INFO] AE007: [HEARTBEAT] px=2405.63 signal=1.3098538007584795 q=+6.335 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=317/4758 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 00:59:34,826 [INFO] AE007: [HEARTBEAT] px=2405.00 signal=1.3098538007584795 q=+6.335 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=317/4763 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 01:04:34,826 [INFO] AE007: [HEARTBEAT] px=2407.75 signal=0.8054708584256378 q=+5.759 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=318/4768 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 01:09:34,826 [INFO] AE007: [HEARTBEAT] px=2406.16 signal=0.8054708584256378 q=+5.759 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=318/4773 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 01:14:34,826 [INFO] AE007: [HEARTBEAT] px=2408.68 signal=0.8054708584256378 q=+5.759 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=318/4778 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 01:15:00,479 [INFO] AE007: [ENTRY] 多 @≈2410.13 | signal=+1.39 | 名义=2500.00 USDT (50% of 5000.00) | 10.37 张 | id=O20261023171500007007132
+[1m2026-10-23T17:15:00.492702077Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023171500007007132, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792775700492617634)[0m
+2026-10-24 01:15:00,492 [ERROR] AE007: [REJECTED] O20261023171500007007132: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 01:15:00,492 [ERROR] AE007: [REJECTED] 在途委托 O20261023171500007007132 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-24 01:19:34,826 [INFO] AE007: [HEARTBEAT] px=2409.90 signal=1.3906185833058082 q=+6.299 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=319/4783 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 01:24:34,826 [INFO] AE007: [HEARTBEAT] px=2407.57 signal=1.3906185833058082 q=+6.299 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=319/4788 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 01:29:34,826 [INFO] AE007: [HEARTBEAT] px=2406.11 signal=1.3906185833058082 q=+6.299 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=319/4793 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 01:34:34,826 [INFO] AE007: [HEARTBEAT] px=2408.00 signal=0.7926893577518772 q=+6.185 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=320/4798 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 01:39:34,826 [INFO] AE007: [HEARTBEAT] px=2405.56 signal=0.7926893577518772 q=+6.185 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=320/4803 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 01:44:34,826 [INFO] AE007: [HEARTBEAT] px=2403.44 signal=0.7926893577518772 q=+6.185 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=320/4808 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 01:49:34,826 [INFO] AE007: [HEARTBEAT] px=2407.29 signal=0.39256179625898024 q=+5.872 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=321/4813 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 01:54:34,826 [INFO] AE007: [HEARTBEAT] px=2405.04 signal=0.39256179625898024 q=+5.872 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=321/4818 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 01:59:34,826 [INFO] AE007: [HEARTBEAT] px=2408.32 signal=0.39256179625898024 q=+5.872 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=321/4823 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 02:04:34,826 [INFO] AE007: [HEARTBEAT] px=2405.04 signal=0.9371629686893526 q=+6.515 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=322/4828 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 02:09:34,826 [INFO] AE007: [HEARTBEAT] px=2403.27 signal=0.9371629686893526 q=+6.515 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=322/4833 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-23T18:14:20.093798707Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-23T18:14:20.346173913Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-24 02:14:34,826 [INFO] AE007: [HEARTBEAT] px=2405.50 signal=0.9371629686893526 q=+6.515 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=322/4838 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 02:19:34,826 [INFO] AE007: [HEARTBEAT] px=2408.35 signal=0.7336526543914008 q=+7.302 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=323/4843 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 02:24:34,826 [INFO] AE007: [HEARTBEAT] px=2404.21 signal=0.7336526543914008 q=+7.302 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=323/4848 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 02:29:34,826 [INFO] AE007: [HEARTBEAT] px=2406.71 signal=0.7336526543914008 q=+7.302 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=323/4853 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-23T18:34:05.953268092Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-23T18:34:06.203242316Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-24 02:34:34,826 [INFO] AE007: [HEARTBEAT] px=2402.60 signal=0.5159201598165418 q=+7.271 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=324/4858 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 02:39:34,826 [INFO] AE007: [HEARTBEAT] px=2404.06 signal=0.5159201598165418 q=+7.271 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=324/4863 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 02:44:34,826 [INFO] AE007: [HEARTBEAT] px=2401.38 signal=0.5159201598165418 q=+7.271 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=324/4868 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 02:49:34,827 [INFO] AE007: [HEARTBEAT] px=2400.13 signal=-0.40217901960751096 q=+6.988 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=325/4873 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 02:54:34,826 [INFO] AE007: [HEARTBEAT] px=2402.14 signal=-0.40217901960751096 q=+6.988 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=325/4878 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 02:59:34,826 [INFO] AE007: [HEARTBEAT] px=2402.00 signal=-0.40217901960751096 q=+6.988 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=325/4883 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 03:04:34,826 [INFO] AE007: [HEARTBEAT] px=2398.42 signal=-0.39680894795602156 q=+6.865 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=326/4888 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 03:09:34,826 [INFO] AE007: [HEARTBEAT] px=2394.23 signal=-0.39680894795602156 q=+6.865 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=326/4893 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 03:14:34,826 [INFO] AE007: [HEARTBEAT] px=2395.00 signal=-0.39680894795602156 q=+6.865 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=326/4898 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 03:15:00,406 [INFO] AE007: [ENTRY] 空 @≈2393.78 | signal=-1.74 | 名义=2500.00 USDT (50% of 5000.00) | 10.44 张 | id=O20261023191500007007133
+[1m2026-10-23T19:15:00.418056120Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023191500007007133, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792782900417947841)[0m
+2026-10-24 03:15:00,418 [ERROR] AE007: [REJECTED] O20261023191500007007133: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 03:15:00,418 [ERROR] AE007: [REJECTED] 在途委托 O20261023191500007007133 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-24 03:19:34,826 [INFO] AE007: [HEARTBEAT] px=2391.72 signal=-1.74058702658494 q=+6.386 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=327/4903 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 03:24:34,826 [INFO] AE007: [HEARTBEAT] px=2392.51 signal=-1.74058702658494 q=+6.386 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=327/4908 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 03:29:34,826 [INFO] AE007: [HEARTBEAT] px=2396.25 signal=-1.74058702658494 q=+6.386 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=327/4913 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 03:34:34,826 [INFO] AE007: [HEARTBEAT] px=2394.22 signal=-1.0717769856794837 q=+7.333 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=328/4918 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 03:39:34,826 [INFO] AE007: [HEARTBEAT] px=2396.44 signal=-1.0717769856794837 q=+7.333 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=328/4923 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 03:44:34,826 [INFO] AE007: [HEARTBEAT] px=2395.77 signal=-1.0717769856794837 q=+7.333 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=328/4928 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 03:49:34,826 [INFO] AE007: [HEARTBEAT] px=2395.07 signal=-1.15784503074898 q=+7.360 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=329/4933 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 03:54:34,826 [INFO] AE007: [HEARTBEAT] px=2394.91 signal=-1.15784503074898 q=+7.360 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=329/4938 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 03:59:34,826 [INFO] AE007: [HEARTBEAT] px=2393.31 signal=-1.15784503074898 q=+7.360 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=329/4943 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 04:00:00,802 [INFO] AE007: [ENTRY] 空 @≈2393.15 | signal=-1.57 | 名义=2500.00 USDT (50% of 5000.00) | 10.44 张 | id=O20261023200000007007134
+[1m2026-10-23T20:00:00.814287778Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023200000007007134, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792785600814208334)[0m
+2026-10-24 04:00:00,814 [ERROR] AE007: [REJECTED] O20261023200000007007134: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 04:00:00,814 [ERROR] AE007: [REJECTED] 在途委托 O20261023200000007007134 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-24 04:04:34,827 [INFO] AE007: [HEARTBEAT] px=2394.09 signal=-1.568026544283421 q=+6.708 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=330/4948 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 04:09:34,826 [INFO] AE007: [HEARTBEAT] px=2393.59 signal=-1.568026544283421 q=+6.708 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=330/4953 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 04:14:34,826 [INFO] AE007: [HEARTBEAT] px=2396.42 signal=-1.568026544283421 q=+6.708 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=330/4958 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 04:19:34,826 [INFO] AE007: [HEARTBEAT] px=2394.58 signal=-1.0230090229048232 q=+7.322 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=331/4963 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 04:24:34,826 [INFO] AE007: [HEARTBEAT] px=2395.25 signal=-1.0230090229048232 q=+7.322 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=331/4968 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 04:29:34,826 [INFO] AE007: [HEARTBEAT] px=2396.64 signal=-1.0230090229048232 q=+7.322 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=331/4973 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 04:34:34,826 [INFO] AE007: [HEARTBEAT] px=2397.36 signal=-0.5719179833377812 q=+7.637 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=332/4978 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 04:39:34,826 [INFO] AE007: [HEARTBEAT] px=2399.65 signal=-0.5719179833377812 q=+7.637 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=332/4983 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-23T20:40:49.703407262Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-23T20:40:49.953082234Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-24 04:44:34,826 [INFO] AE007: [HEARTBEAT] px=2397.60 signal=-0.5719179833377812 q=+7.637 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=332/4988 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-23T20:49:30.515519655Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-23T20:49:30.761673336Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-24 04:49:34,826 [INFO] AE007: [HEARTBEAT] px=2401.46 signal=0.08272826126815036 q=+8.503 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=333/4993 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-23T20:50:31.596932780Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-23T20:50:31.852832461Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-24 04:54:34,826 [INFO] AE007: [HEARTBEAT] px=2400.54 signal=0.08272826126815036 q=+8.503 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=333/4998 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 04:59:34,826 [INFO] AE007: [HEARTBEAT] px=2399.54 signal=0.08272826126815036 q=+8.503 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=333/5003 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-23T20:59:35.116538642Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-23T20:59:35.365424248Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-24 05:04:34,826 [INFO] AE007: [HEARTBEAT] px=2403.42 signal=-0.09854707315470385 q=+7.906 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=334/5008 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 05:09:34,826 [INFO] AE007: [HEARTBEAT] px=2402.18 signal=-0.09854707315470385 q=+7.906 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=334/5013 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 05:14:34,826 [INFO] AE007: [HEARTBEAT] px=2400.84 signal=-0.09854707315470385 q=+7.906 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=334/5018 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 05:19:34,826 [INFO] AE007: [HEARTBEAT] px=2401.68 signal=0.16448983627346409 q=+7.474 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=335/5023 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 05:24:34,826 [INFO] AE007: [HEARTBEAT] px=2402.29 signal=0.16448983627346409 q=+7.474 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=335/5028 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 05:29:34,826 [INFO] AE007: [HEARTBEAT] px=2400.55 signal=0.16448983627346409 q=+7.474 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=335/5033 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 05:34:34,826 [INFO] AE007: [HEARTBEAT] px=2398.79 signal=-0.05123651787478212 q=+7.212 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=336/5038 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-23T21:35:14.422960978Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-23T21:35:14.682799793Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-24 05:39:34,826 [INFO] AE007: [HEARTBEAT] px=2399.22 signal=-0.05123651787478212 q=+7.212 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=336/5043 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 05:44:34,826 [INFO] AE007: [HEARTBEAT] px=2398.33 signal=-0.05123651787478212 q=+7.212 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=336/5048 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 05:49:34,826 [INFO] AE007: [HEARTBEAT] px=2397.75 signal=-0.45937630320602746 q=+6.472 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=337/5053 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 05:54:34,826 [INFO] AE007: [HEARTBEAT] px=2396.00 signal=-0.45937630320602746 q=+6.472 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=337/5058 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 05:59:34,826 [INFO] AE007: [HEARTBEAT] px=2394.22 signal=-0.45937630320602746 q=+6.472 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=337/5063 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 06:04:34,826 [INFO] AE007: [HEARTBEAT] px=2399.55 signal=-0.36300027514556527 q=+6.440 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=338/5068 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 06:09:34,826 [INFO] AE007: [HEARTBEAT] px=2397.20 signal=-0.36300027514556527 q=+6.440 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=338/5073 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 06:14:34,826 [INFO] AE007: [HEARTBEAT] px=2390.06 signal=-0.36300027514556527 q=+6.440 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=338/5078 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 06:15:00,570 [INFO] AE007: [ENTRY] 空 @≈2391.78 | signal=-1.42 | 名义=2500.00 USDT (50% of 5000.00) | 10.45 张 | id=O20261023221500007007135
+[1m2026-10-23T22:15:00.587721669Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023221500007007135, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792793700587020635)[0m
+2026-10-24 06:15:00,589 [ERROR] AE007: [REJECTED] O20261023221500007007135: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 06:15:00,589 [ERROR] AE007: [REJECTED] 在途委托 O20261023221500007007135 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-24 06:19:34,826 [INFO] AE007: [HEARTBEAT] px=2397.78 signal=-1.4155802176239756 q=+6.134 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=339/5083 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 06:24:34,826 [INFO] AE007: [HEARTBEAT] px=2394.22 signal=-1.4155802176239756 q=+6.134 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=339/5088 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 06:29:34,826 [INFO] AE007: [HEARTBEAT] px=2393.50 signal=-1.4155802176239756 q=+6.134 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=339/5093 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-23T22:32:57.320222462Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-23T22:32:57.575902802Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-24 06:34:34,826 [INFO] AE007: [HEARTBEAT] px=2379.23 signal=-0.9655310321092452 q=+6.241 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=340/5098 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 06:39:34,826 [INFO] AE007: [HEARTBEAT] px=2383.00 signal=-0.9655310321092452 q=+6.241 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=340/5103 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 06:44:34,826 [INFO] AE007: [HEARTBEAT] px=2381.00 signal=-0.9655310321092452 q=+6.241 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=340/5108 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 06:45:01,150 [INFO] AE007: [ENTRY] 空 @≈2380.37 | signal=-2.62 | 名义=2500.00 USDT (50% of 5000.00) | 10.5 张 | id=O20261023224501007007136
+[1m2026-10-23T22:45:01.166033758Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023224501007007136, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792795501165946325)[0m
+2026-10-24 06:45:01,166 [ERROR] AE007: [REJECTED] O20261023224501007007136: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 06:45:01,166 [ERROR] AE007: [REJECTED] 在途委托 O20261023224501007007136 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-24 06:49:34,826 [INFO] AE007: [HEARTBEAT] px=2377.82 signal=-2.619633718379498 q=+6.426 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=341/5113 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-23T22:53:02.388384311Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Received connection error, terminating: connection reset[0m
+[1m2026-10-23T22:53:02.642293282Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-24 06:54:34,826 [INFO] AE007: [HEARTBEAT] px=2364.00 signal=-2.619633718379498 q=+6.426 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=341/5118 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 06:59:34,826 [INFO] AE007: [HEARTBEAT] px=2355.42 signal=-2.619633718379498 q=+6.426 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=341/5123 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 07:00:01,349 [INFO] AE007: [ENTRY] 空 @≈2359.40 | signal=-3.32 | 名义=2500.00 USDT (50% of 5000.00) | 10.59 张 | id=O20261023230001007007137
+2026-10-24 07:00:01,361 [ERROR] AE007: [REJECTED] O20261023230001007007137: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 07:00:01,362 [ERROR] AE007: [REJECTED] 在途委托 O20261023230001007007137 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-23T23:00:01.361783240Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023230001007007137, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792796401361615089)[0m
+2026-10-24 07:04:34,826 [INFO] AE007: [HEARTBEAT] px=2365.95 signal=-3.3203762861370145 q=+6.415 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=342/5128 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 07:09:34,826 [INFO] AE007: [HEARTBEAT] px=2361.46 signal=-3.3203762861370145 q=+6.415 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=342/5133 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 07:14:34,826 [INFO] AE007: [HEARTBEAT] px=2362.18 signal=-3.3203762861370145 q=+6.415 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=342/5138 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 07:15:01,287 [INFO] AE007: [ENTRY] 空 @≈2364.26 | signal=-2.19 | 名义=2500.00 USDT (50% of 5000.00) | 10.57 张 | id=O20261023231501007007138
+2026-10-24 07:15:01,302 [ERROR] AE007: [REJECTED] O20261023231501007007138: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 07:15:01,302 [ERROR] AE007: [REJECTED] 在途委托 O20261023231501007007138 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-23T23:15:01.301965946Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023231501007007138, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792797301301757331)[0m
+2026-10-24 07:19:34,826 [INFO] AE007: [HEARTBEAT] px=2371.35 signal=-2.1896155575174037 q=+6.603 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=343/5143 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 07:24:34,826 [INFO] AE007: [HEARTBEAT] px=2376.28 signal=-2.1896155575174037 q=+6.603 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=343/5148 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 07:29:34,826 [INFO] AE007: [HEARTBEAT] px=2376.00 signal=-2.1896155575174037 q=+6.603 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=343/5153 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 07:34:34,826 [INFO] AE007: [HEARTBEAT] px=2373.95 signal=-1.0373512097036104 q=+6.652 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=344/5158 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 07:39:34,827 [INFO] AE007: [HEARTBEAT] px=2377.88 signal=-1.0373512097036104 q=+6.652 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=344/5163 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 07:44:34,827 [INFO] AE007: [HEARTBEAT] px=2379.46 signal=-1.0373512097036104 q=+6.652 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=344/5168 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 07:49:34,826 [INFO] AE007: [HEARTBEAT] px=2384.03 signal=-0.6354140323793731 q=+7.540 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=345/5173 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 07:54:34,826 [INFO] AE007: [HEARTBEAT] px=2386.46 signal=-0.6354140323793731 q=+7.540 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=345/5178 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 07:59:34,826 [INFO] AE007: [HEARTBEAT] px=2385.84 signal=-0.6354140323793731 q=+7.540 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=345/5183 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 08:04:34,826 [INFO] AE007: [HEARTBEAT] px=2385.25 signal=-0.009717527732814757 q=+8.065 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=346/5188 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 08:09:34,826 [INFO] AE007: [HEARTBEAT] px=2382.50 signal=-0.009717527732814757 q=+8.065 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=346/5193 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 08:14:34,826 [INFO] AE007: [HEARTBEAT] px=2381.37 signal=-0.009717527732814757 q=+8.065 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=346/5198 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 08:19:34,826 [INFO] AE007: [HEARTBEAT] px=2376.50 signal=-0.4863884774423894 q=+7.097 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=347/5203 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 08:24:34,826 [INFO] AE007: [HEARTBEAT] px=2371.74 signal=-0.4863884774423894 q=+7.097 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=347/5208 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 08:29:34,826 [INFO] AE007: [HEARTBEAT] px=2375.63 signal=-0.4863884774423894 q=+7.097 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=347/5213 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 08:34:34,826 [INFO] AE007: [HEARTBEAT] px=2372.80 signal=-0.7862192516754161 q=+6.978 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=348/5218 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 08:39:34,826 [INFO] AE007: [HEARTBEAT] px=2372.01 signal=-0.7862192516754161 q=+6.978 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=348/5223 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 08:44:34,826 [INFO] AE007: [HEARTBEAT] px=2368.44 signal=-0.7862192516754161 q=+6.978 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=348/5228 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 08:49:34,826 [INFO] AE007: [HEARTBEAT] px=2369.06 signal=-1.0042231202068503 q=+6.657 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=349/5233 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 08:54:34,826 [INFO] AE007: [HEARTBEAT] px=2373.23 signal=-1.0042231202068503 q=+6.657 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=349/5238 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 08:59:34,826 [INFO] AE007: [HEARTBEAT] px=2374.54 signal=-1.0042231202068503 q=+6.657 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=349/5243 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 09:04:34,826 [INFO] AE007: [HEARTBEAT] px=2373.83 signal=-0.49311284320127285 q=+7.659 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=350/5248 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 09:09:34,826 [INFO] AE007: [HEARTBEAT] px=2375.00 signal=-0.49311284320127285 q=+7.659 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=350/5253 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 09:14:34,826 [INFO] AE007: [HEARTBEAT] px=2375.95 signal=-0.49311284320127285 q=+7.659 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=350/5258 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 09:19:34,827 [INFO] AE007: [HEARTBEAT] px=2379.20 signal=-0.339205331383203 q=+7.978 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=351/5263 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 09:24:34,826 [INFO] AE007: [HEARTBEAT] px=2377.27 signal=-0.339205331383203 q=+7.978 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=351/5268 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 09:29:34,826 [INFO] AE007: [HEARTBEAT] px=2375.00 signal=-0.339205331383203 q=+7.978 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=351/5273 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 09:34:34,826 [INFO] AE007: [HEARTBEAT] px=2375.76 signal=-0.4562135063663412 q=+7.150 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=352/5278 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 09:39:34,826 [INFO] AE007: [HEARTBEAT] px=2373.81 signal=-0.4562135063663412 q=+7.150 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=352/5283 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 09:44:34,826 [INFO] AE007: [HEARTBEAT] px=2376.66 signal=-0.4562135063663412 q=+7.150 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=352/5288 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 09:49:34,826 [INFO] AE007: [HEARTBEAT] px=2379.88 signal=-0.15755491367773916 q=+7.683 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=353/5293 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 09:54:34,826 [INFO] AE007: [HEARTBEAT] px=2381.82 signal=-0.15755491367773916 q=+7.683 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=353/5298 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 09:59:34,826 [INFO] AE007: [HEARTBEAT] px=2381.17 signal=-0.15755491367773916 q=+7.683 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=353/5303 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 10:04:34,826 [INFO] AE007: [HEARTBEAT] px=2381.92 signal=0.22035485972420066 q=+7.967 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=354/5308 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 10:09:34,826 [INFO] AE007: [HEARTBEAT] px=2382.79 signal=0.22035485972420066 q=+7.967 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=354/5313 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 10:14:34,826 [INFO] AE007: [HEARTBEAT] px=2382.67 signal=0.22035485972420066 q=+7.967 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=354/5318 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 10:19:34,826 [INFO] AE007: [HEARTBEAT] px=2380.08 signal=0.4408240692958396 q=+7.680 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=355/5323 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 10:24:34,826 [INFO] AE007: [HEARTBEAT] px=2379.70 signal=0.4408240692958396 q=+7.680 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=355/5328 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 10:29:34,826 [INFO] AE007: [HEARTBEAT] px=2381.86 signal=0.4408240692958396 q=+7.680 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=355/5333 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 10:34:34,826 [INFO] AE007: [HEARTBEAT] px=2382.47 signal=0.6131132038584914 q=+8.524 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=356/5338 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 10:39:34,826 [INFO] AE007: [HEARTBEAT] px=2382.08 signal=0.6131132038584914 q=+8.524 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=356/5343 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 10:44:34,826 [INFO] AE007: [HEARTBEAT] px=2381.22 signal=0.6131132038584914 q=+8.524 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=356/5348 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 10:49:34,826 [INFO] AE007: [HEARTBEAT] px=2382.74 signal=0.4879961853653324 q=+8.127 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=357/5353 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 10:54:34,826 [INFO] AE007: [HEARTBEAT] px=2381.73 signal=0.4879961853653324 q=+8.127 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=357/5358 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 10:59:34,826 [INFO] AE007: [HEARTBEAT] px=2383.41 signal=0.4879961853653324 q=+8.127 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=357/5363 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 11:04:34,826 [INFO] AE007: [HEARTBEAT] px=2387.18 signal=0.8699576628048298 q=+8.349 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=358/5368 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 11:09:34,826 [INFO] AE007: [HEARTBEAT] px=2382.40 signal=0.8699576628048298 q=+8.349 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=358/5373 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 11:14:34,826 [INFO] AE007: [HEARTBEAT] px=2383.54 signal=0.8699576628048298 q=+8.349 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=358/5378 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 11:19:34,826 [INFO] AE007: [HEARTBEAT] px=2383.82 signal=1.1678053514099214 q=+7.936 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=359/5383 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 11:24:34,826 [INFO] AE007: [HEARTBEAT] px=2385.12 signal=1.1678053514099214 q=+7.936 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=359/5388 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 11:29:34,826 [INFO] AE007: [HEARTBEAT] px=2383.84 signal=1.1678053514099214 q=+7.936 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=359/5393 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 11:30:01,216 [INFO] AE007: [ENTRY] 多 @≈2384.40 | signal=+1.29 | 名义=2500.00 USDT (50% of 5000.00) | 10.48 张 | id=O20261024033001007007139
+[1m2026-10-24T03:30:01.254189421Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261024033001007007139, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792812601250650599)[0m
+2026-10-24 11:30:01,258 [ERROR] AE007: [REJECTED] O20261024033001007007139: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 11:30:01,258 [ERROR] AE007: [REJECTED] 在途委托 O20261024033001007007139 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-24 11:34:34,826 [INFO] AE007: [HEARTBEAT] px=2385.87 signal=1.292595263149506 q=+7.800 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=360/5398 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 11:39:34,826 [INFO] AE007: [HEARTBEAT] px=2382.84 signal=1.292595263149506 q=+7.800 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=360/5403 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 11:44:34,826 [INFO] AE007: [HEARTBEAT] px=2383.24 signal=1.292595263149506 q=+7.800 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=360/5408 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 11:49:34,826 [INFO] AE007: [HEARTBEAT] px=2381.56 signal=1.0751001873416945 q=+7.292 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=361/5413 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 11:54:34,826 [INFO] AE007: [HEARTBEAT] px=2378.99 signal=1.0751001873416945 q=+7.292 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=361/5418 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 11:59:34,826 [INFO] AE007: [HEARTBEAT] px=2381.57 signal=1.0751001873416945 q=+7.292 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=361/5423 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 12:04:34,826 [INFO] AE007: [HEARTBEAT] px=2383.21 signal=0.7472445492302284 q=+7.442 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=362/5428 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 12:09:34,826 [INFO] AE007: [HEARTBEAT] px=2380.51 signal=0.7472445492302284 q=+7.442 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=362/5433 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 12:14:34,826 [INFO] AE007: [HEARTBEAT] px=2379.70 signal=0.7472445492302284 q=+7.442 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=362/5438 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 12:19:34,827 [INFO] AE007: [HEARTBEAT] px=2377.68 signal=0.14778020450173715 q=+6.725 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=363/5443 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 12:24:34,827 [INFO] AE007: [HEARTBEAT] px=2379.20 signal=0.14778020450173715 q=+6.725 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=363/5448 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 12:29:34,826 [INFO] AE007: [HEARTBEAT] px=2379.56 signal=0.14778020450173715 q=+6.725 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=363/5453 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 12:34:34,826 [INFO] AE007: [HEARTBEAT] px=2380.67 signal=0.19812447685979057 q=+6.945 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=364/5458 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 12:39:34,826 [INFO] AE007: [HEARTBEAT] px=2382.08 signal=0.19812447685979057 q=+6.945 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=364/5463 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 12:44:35,052 [INFO] AE007: [HEARTBEAT] px=2382.10 signal=0.19812447685979057 q=+6.945 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=364/5468 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-24T04:45:42.839236584Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Received connection error, terminating: connection closed[0m
+[1m2026-10-24T04:45:49.494829752Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-24 12:49:36,745 [INFO] AE007: [HEARTBEAT] px=2381.78 signal=0.9024696893120838 q=+7.521 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=365/5473 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 12:54:34,839 [INFO] AE007: [HEARTBEAT] px=2383.26 signal=0.9024696893120838 q=+7.521 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=365/5478 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 12:59:34,862 [INFO] AE007: [HEARTBEAT] px=2381.16 signal=0.9024696893120838 q=+7.521 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=365/5483 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-24T05:03:09.632199793Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Received connection error, terminating: connection closed[0m
+[1m2026-10-24T05:03:38.262251217Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Received connection error, terminating: connection closed[0m
+[1m2026-10-24T05:03:42.312698618Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 1 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:03:48.891075723Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 1 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:03:55.005760196Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 2 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:03:55.365614747Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 2.038s...[0m
+[1m2026-10-24T05:04:00.325080205Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 2 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:04:00.445888744Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 2.077s...[0m
+[1m2026-10-24T05:04:09.440406204Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 3 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:04:09.550544785Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 3.044s...[0m
+[1m2026-10-24T05:04:13.829104452Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:04:14.989066011Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 3 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:04:15.169188916Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 3.052s...[0m
+[1m2026-10-24T05:04:18.958406796Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:04:27.763049039Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 4 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:04:28.093353000Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 4.531s...[0m
+[1m2026-10-24T05:04:32.370590531Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 4 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:04:32.651057364Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 4.523s...[0m
+[1m2026-10-24T05:04:34.220839375Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+2026-10-24 13:04:36,365 [INFO] AE007: [HEARTBEAT] px=2379.50 signal=0.6562784580763066 q=+7.504 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=366/5488 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-24T05:04:40.194622699Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:04:46.861704885Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 5 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:04:47.181720351Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 6.846s...[0m
+[1m2026-10-24T05:04:51.816190740Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 5 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:04:52.195737300Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 6.837s...[0m
+[1m2026-10-24T05:04:54.726087800Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:05:00.433344054Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:05:07.237980396Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 6 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:05:07.607683212Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 10.21s...[0m
+[1m2026-10-24T05:05:19.386266853Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 6 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:05:19.815157684Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 10.133s...[0m
+[1m2026-10-24T05:05:32.778719626Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:05:46.131650168Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:05:56.822986865Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 7 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:05:57.062663229Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 15.1885s...[0m
+[1m2026-10-24T05:06:02.997908604Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 7 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:06:03.197782806Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 15.2465s...[0m
+[1m2026-10-24T05:06:16.159361649Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:06:21.778073123Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:06:28.732585020Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 8 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:06:29.163331103Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 22.79425s...[0m
+[1m2026-10-24T05:06:35.966117223Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 8 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:06:36.416377844Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 22.86425s...[0m
+[1m2026-10-24T05:07:54.869006002Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 9 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:07:55.739114774Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.941s...[0m
+[1m2026-10-24T05:07:59.900037698Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 9 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:08:00.969696419Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.904s...[0m
+[1m2026-10-24T05:08:36.498533646Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Received connection error, terminating: I/O error: WebSocket Pong deadline expired[0m
+[1m2026-10-24T05:08:38.226747630Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Received connection error, terminating: I/O error: WebSocket Pong deadline expired[0m
+[1m2026-10-24T05:08:51.989366836Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 1 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:08:59.073752750Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 1 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:09:06.151680000Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 10 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:09:07.031674646Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.981s...[0m
+[1m2026-10-24T05:09:08.811523928Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 10 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:09:09.241491000Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.95s...[0m
+[1m2026-10-24T05:09:10.220885490Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 2 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:09:10.741915485Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 2.051s...[0m
+[1m2026-10-24T05:09:12.711693198Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 2 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:09:13.111721666Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 2.071s...[0m
+[1m2026-10-24T05:09:26.848567632Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 3 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:09:27.408524450Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 3.022s...[0m
+[1m2026-10-24T05:09:29.048028243Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 3 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:09:29.587755629Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 3.034s...[0m
+[1m2026-10-24T05:09:34.435852420Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:09:38.155767070Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+2026-10-24 13:09:44,824 [INFO] AE007: [HEARTBEAT] px=2379.41 signal=0.6562784580763066 q=+7.504 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=366/5491 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-24T05:09:58.908295899Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 4 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:09:59.568227341Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 4.525s...[0m
+[1m2026-10-24T05:10:04.721132130Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 4 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:10:05.343935698Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 4.525s...[0m
+[1m2026-10-24T05:10:10.423399046Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 11 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:10:11.722905778Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.971s...[0m
+[1m2026-10-24T05:10:15.481582015Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 11 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:10:16.798766655Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.936s...[0m
+[1m2026-10-24T05:10:20.975539692Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:10:36.749935833Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:10:46.125702986Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 5 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:10:47.146007149Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 6.754s...[0m
+[1m2026-10-24T05:10:57.383466438Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 5 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:10:58.373067229Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 6.848s...[0m
+[1m2026-10-24T05:11:04.408253236Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:11:08.632859145Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 12 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:11:09.517529003Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.906s...[0m
+[1m2026-10-24T05:11:12.771029627Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:11:14.650589746Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 12 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:11:15.690478780Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.958s...[0m
+[1m2026-10-24T05:11:20.430389629Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 6 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:11:21.490068413Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 10.161s...[0m
+[1m2026-10-24T05:11:29.594540201Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 6 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:11:30.554831434Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 10.168s...[0m
+[1m2026-10-24T05:11:36.594985552Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:11:51.269690359Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 7 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:11:52.534978505Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 15.1945s...[0m
+[1m2026-10-24T05:11:56.390739703Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 7 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:11:57.070185350Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 15.1945s...[0m
+[1m2026-10-24T05:11:59.349541832Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 13 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:11:59.909929747Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.912s...[0m
+[1m2026-10-24T05:12:05.860286372Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 13 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:12:06.570802881Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.924s...[0m
+[1m2026-10-24T05:12:10.805267542Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:12:15.824364234Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:12:24.128678878Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 8 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:12:24.749749884Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 22.85425s...[0m
+[1m2026-10-24T05:12:30.418728662Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 8 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:12:31.129160168Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 22.85425s...[0m
+[1m2026-10-24T05:12:45.141104380Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 14 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:12:45.641524509Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.961s...[0m
+[1m2026-10-24T05:12:49.054663746Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:12:49.744234962Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 14 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:12:50.133816311Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.902s...[0m
+[1m2026-10-24T05:12:56.703730143Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:13:02.212988380Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 9 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:13:02.842760511Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.963s...[0m
+[1m2026-10-24T05:13:10.276060279Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 9 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:13:10.916478380Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.976s...[0m
+[1m2026-10-24T05:13:31.024089023Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 15 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:13:31.654179017Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.914s...[0m
+[1m2026-10-24T05:13:34.973992024Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 15 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:13:35.544036953Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.963s...[0m
+[1m2026-10-24T05:13:37.823963145Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:13:52.162513329Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 10 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:13:52.992784873Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.91s...[0m
+[1m2026-10-24T05:13:58.743069770Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 10 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:13:59.532966003Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.962s...[0m
+[1m2026-10-24T05:14:18.247299844Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 16 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:14:19.036655048Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.958s...[0m
+[1m2026-10-24T05:14:23.676449036Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 16 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:14:24.555849922Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.913s...[0m
+[1m2026-10-24T05:14:42.438541362Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 11 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:14:43.388932004Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.958s...[0m
+[1m2026-10-24T05:14:48.107959346Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 11 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:14:49.227325407Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.972s...[0m
+2026-10-24 13:14:51,667 [INFO] AE007: [HEARTBEAT] px=2379.91 signal=0.6562784580763066 q=+7.504 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=366/5492 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-24T05:15:09.228792615Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 17 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:15:10.077805394Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.991s...[0m
+[1m2026-10-24T05:15:17.337392067Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 17 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:15:18.025661401Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.996s...[0m
+[1m2026-10-24T05:15:29.477740457Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 12 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:15:30.097458206Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.912s...[0m
+[1m2026-10-24T05:15:35.259135342Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 12 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:15:35.949651478Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.953s...[0m
+[1m2026-10-24T05:15:56.865158635Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 18 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:15:57.696656440Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.928s...[0m
+[1m2026-10-24T05:16:05.736981424Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 18 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:16:06.447345373Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.997s...[0m
+[1m2026-10-24T05:16:14.789849108Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 13 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:16:15.509570791Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.967s...[0m
+[1m2026-10-24T05:16:19.358762659Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 13 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:16:20.079386444Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.914s...[0m
+[1m2026-10-24T05:16:43.821676106Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 19 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:16:44.490926889Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.966s...[0m
+[1m2026-10-24T05:16:52.921105173Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 19 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:16:53.751149553Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.999s...[0m
+[1m2026-10-24T05:17:02.041197638Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 14 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:17:02.740870987Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.98s...[0m
+[1m2026-10-24T05:17:06.731035294Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 14 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:17:07.500531542Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.98s...[0m
+[1m2026-10-24T05:17:34.036371641Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 20 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:17:35.107203724Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.955s...[0m
+[1m2026-10-24T05:17:38.897216799Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 20 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:17:39.936553029Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.903s...[0m
+[1m2026-10-24T05:17:54.490300495Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 15 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:17:55.620160451Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.993s...[0m
+[1m2026-10-24T05:17:58.649200583Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 15 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:17:59.930255223Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.972s...[0m
+[1m2026-10-24T05:18:20.583542263Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 21 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:18:20.853300868Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.934s...[0m
+[1m2026-10-24T05:18:24.222706220Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 21 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:18:24.573289354Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.93s...[0m
+[1m2026-10-24T05:18:38.278478397Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 16 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:18:38.787655123Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.958s...[0m
+[1m2026-10-24T05:18:43.547048369Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 16 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:18:44.057726498Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.968s...[0m
+[1m2026-10-24T05:19:03.264660520Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 22 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:19:03.554977950Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.986s...[0m
+[1m2026-10-24T05:19:06.905002348Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 22 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:19:07.375834900Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.9s...[0m
+[1m2026-10-24T05:19:22.218427210Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 17 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:19:22.857598925Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.937s...[0m
+[1m2026-10-24T05:19:28.361396122Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 17 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:19:28.951048159Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.982s...[0m
+2026-10-24 13:19:43,611 [INFO] AE007: [HEARTBEAT] px=2379.91 signal=0.6562784580763066 q=+7.504 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=366/5492 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-24T05:19:47.501448354Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 23 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:19:48.231568909Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.985s...[0m
+[1m2026-10-24T05:19:53.843725144Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 23 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:19:54.523532910Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.936s...[0m
+[1m2026-10-24T05:20:09.968645178Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 18 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:20:10.858433846Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.928s...[0m
+[1m2026-10-24T05:20:14.457696073Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 18 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:20:15.048409625Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.946s...[0m
+[1m2026-10-24T05:20:34.375301306Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 24 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:20:35.247313798Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.902s...[0m
+[1m2026-10-24T05:20:39.824313894Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 24 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:20:40.364774850Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.967s...[0m
+[1m2026-10-24T05:20:57.450183332Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 19 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:20:58.130394500Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.961s...[0m
+[1m2026-10-24T05:20:59.709567346Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 19 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:20:59.879928491Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.921s...[0m
+[1m2026-10-24T05:21:16.885871332Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 25 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:21:17.075833491Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.959s...[0m
+[1m2026-10-24T05:21:22.325321518Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 25 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:21:22.485335616Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.972s...[0m
+[1m2026-10-24T05:21:39.244747020Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 20 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:21:39.364376387Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.908s...[0m
+[1m2026-10-24T05:21:40.664294263Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 20 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:21:40.887072192Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.968s...[0m
+[1m2026-10-24T05:22:00.333391903Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 26 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:22:00.923094898Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.937s...[0m
+[1m2026-10-24T05:22:04.992812996Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 26 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:22:05.673400579Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.95s...[0m
+[1m2026-10-24T05:22:24.095048284Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 21 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:22:25.025270214Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.974s...[0m
+[1m2026-10-24T05:22:28.188418593Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 21 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:22:28.997747658Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.903s...[0m
+[1m2026-10-24T05:22:43.687862692Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 27 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:22:44.018728061Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.986s...[0m
+[1m2026-10-24T05:22:48.188201003Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 27 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:22:48.577392239Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.938s...[0m
+[1m2026-10-24T05:23:06.783194858Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 22 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:23:07.223364156Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.974s...[0m
+[1m2026-10-24T05:23:11.064601103Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 22 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:23:11.554604288Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.912s...[0m
+[1m2026-10-24T05:23:30.694622922Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 28 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:23:31.834424329Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.956s...[0m
+[1m2026-10-24T05:23:35.397778338Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 28 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:23:36.517114850Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.99s...[0m
+[1m2026-10-24T05:23:45.096753263Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+[1m2026-10-24T05:23:45.686226520Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+[1m2026-10-24T05:24:02.928647692Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+[1m2026-10-24T05:24:07.446719175Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-24 13:24:34,837 [INFO] AE007: [HEARTBEAT] px=2375.20 signal=0.6562784580763066 q=+7.504 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=366/5493 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 13:29:34,825 [INFO] AE007: [HEARTBEAT] px=2376.22 signal=0.6562784580763066 q=+7.504 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=366/5498 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 13:34:34,826 [INFO] AE007: [HEARTBEAT] px=2375.45 signal=-0.5051531361635415 q=+7.238 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=367/5503 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 13:39:34,826 [INFO] AE007: [HEARTBEAT] px=2377.25 signal=-0.5051531361635415 q=+7.238 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=367/5508 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 13:44:34,826 [INFO] AE007: [HEARTBEAT] px=2376.45 signal=-0.5051531361635415 q=+7.238 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=367/5513 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-24T05:48:25.931245232Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Received close frame, terminating: code=4004, reason='No data received in 30s.'[0m
+[1m2026-10-24T05:48:33.980369333Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Received connection error, terminating: connection closed[0m
+[1m2026-10-24T05:49:09.048981382Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Received connection error, terminating: I/O error: WebSocket Pong deadline expired[0m
+[1m2026-10-24T05:49:50.129990305Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 1 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:50:13.558296026Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 1 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:50:22.462869812Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 1 failed: I/O error: reconnection timed out after 10s[0m
+2026-10-24 13:50:38,922 [INFO] AE007: [HEARTBEAT] px=2377.30 signal=-0.5383420827600116 q=+7.441 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=368/5517 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-24T05:50:48.137437870Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 2 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:50:48.838324243Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 2.091s...[0m
+[1m2026-10-24T05:50:55.658919393Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 2 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:50:56.319886180Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 2.064s...[0m
+[1m2026-10-24T05:51:02.248863507Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 2 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:51:02.889274330Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 2.016s...[0m
+[1m2026-10-24T05:51:22.538315672Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 3 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:51:23.367157783Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 3.081s...[0m
+[1m2026-10-24T05:51:37.830844492Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 3 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:51:37.830783212Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 3 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:51:38.640362301Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 3.08s...[0m
+[1m2026-10-24T05:51:38.640220557Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 3.028s...[0m
+[1m2026-10-24T05:52:00.302352143Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 4 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:52:00.591142732Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 4.5120000000000005s...[0m
+[1m2026-10-24T05:52:06.132530774Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 4 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:52:06.581821794Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 4.517s...[0m
+[1m2026-10-24T05:52:11.072651107Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 4 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:52:11.632703421Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 4.574s...[0m
+[1m2026-10-24T05:52:15.186611081Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:52:20.424494341Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 5 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:52:20.984772868Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 6.759s...[0m
+[1m2026-10-24T05:52:29.963999046Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 5 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:52:30.523804047Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 6.799s...[0m
+[1m2026-10-24T05:52:31.595659692Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 5 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:52:32.075765448Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 6.837s...[0m
+[1m2026-10-24T05:52:32.565906407Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:52:39.764822303Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:52:40.416394149Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:52:46.819306872Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 6 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:52:47.380142377Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 10.213s...[0m
+[1m2026-10-24T05:52:54.159783460Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 6 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:52:54.638599977Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 10.175s...[0m
+[1m2026-10-24T05:52:57.264563961Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 6 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:52:57.934270528Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 10.207s...[0m
+[1m2026-10-24T05:53:03.254220104Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:53:15.645580049Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:53:18.895221961Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:53:30.556237364Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 7 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:53:31.337640668Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 15.2165s...[0m
+[1m2026-10-24T05:53:36.005972587Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 7 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:53:36.935478468Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 15.1905s...[0m
+[1m2026-10-24T05:53:44.560503749Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 7 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:53:45.440715610Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 15.1875s...[0m
+[1m2026-10-24T05:53:56.637509084Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:54:08.081238581Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:54:12.777647715Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 1s...[0m
+[1m2026-10-24T05:54:24.659192045Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 8 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:54:25.349208487Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 22.81425s...[0m
+[1m2026-10-24T05:54:32.298428171Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 8 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:54:33.004208304Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 22.87325s...[0m
+[1m2026-10-24T05:54:40.212751274Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 8 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:54:40.833754715Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 22.83025s...[0m
+2026-10-24 13:54:51,186 [INFO] AE007: [HEARTBEAT] px=2377.30 signal=-0.5383420827600116 q=+7.441 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=368/5517 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-24T05:55:38.922767839Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 9 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:55:39.822988744Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.946s...[0m
+[1m2026-10-24T05:55:41.852512522Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 9 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:55:43.047469390Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.958s...[0m
+[1m2026-10-24T05:56:02.082019774Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 9 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:56:03.081612077Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.98s...[0m
+[1m2026-10-24T05:56:44.923190310Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 10 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:56:46.453075031Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.917s...[0m
+[1m2026-10-24T05:56:56.585374280Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 10 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:56:57.654984897Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.947s...[0m
+[1m2026-10-24T05:57:21.680723789Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 10 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:57:23.061346145Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.927s...[0m
+[1m2026-10-24T05:57:57.667633564Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 11 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:57:59.017580887Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.94s...[0m
+[1m2026-10-24T05:58:01.652529551Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 11 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:58:03.053109545Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.917s...[0m
+[1m2026-10-24T05:58:32.127003012Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 11 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:58:33.406647749Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.946s...[0m
+[1m2026-10-24T05:59:23.253399673Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 12 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:59:24.532911146Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.998s...[0m
+[1m2026-10-24T05:59:29.013478077Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 12 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T05:59:30.393027457Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.965s...[0m
+[1m2026-10-24T06:00:03.417518384Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 12 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:00:05.027025305Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.922s...[0m
+2026-10-24 14:00:19,777 [INFO] AE007: [HEARTBEAT] px=2377.30 signal=-0.5383420827600116 q=+7.441 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=368/5517 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-24T06:01:21.227308777Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 13 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:01:22.337696851Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.916s...[0m
+[1m2026-10-24T06:01:41.570039315Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 13 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:01:43.129635796Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.944s...[0m
+[1m2026-10-24T06:02:26.878339857Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 13 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:02:28.237582793Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.972s...[0m
+[1m2026-10-24T06:03:17.868270984Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 14 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:03:19.508887565Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.978s...[0m
+[1m2026-10-24T06:03:39.849115984Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 14 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:03:41.089149104Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.959s...[0m
+[1m2026-10-24T06:04:36.807355257Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 14 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:04:38.356653592Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.912s...[0m
+[1m2026-10-24T06:05:08.032526978Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 15 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:05:09.561342225Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.908s...[0m
+2026-10-24 14:05:30,480 [INFO] AE007: [HEARTBEAT] px=2377.30 signal=-0.5383420827600116 q=+7.441 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=368/5517 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-24T06:06:17.121423363Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 15 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:06:19.101259573Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.971s...[0m
+[1m2026-10-24T06:06:37.472738565Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Received connection error, terminating: I/O error: WebSocket Pong deadline expired[0m
+[1m2026-10-24T06:07:07.154683006Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 15 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:07:09.014725222Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.945s...[0m
+[1m2026-10-24T06:07:16.129225804Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 1 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:07:32.681643656Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 16 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:07:35.581164907Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.917s...[0m
+[1m2026-10-24T06:07:59.345980380Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 2 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:08:00.866600388Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 2.019s...[0m
+[1m2026-10-24T06:08:17.408764462Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 16 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:08:19.428369611Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.933s...[0m
+[1m2026-10-24T06:09:03.682588073Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 3 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:09:05.743267882Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 3.066s...[0m
+[1m2026-10-24T06:09:15.022091747Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 16 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:09:16.662472962Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.92s...[0m
+[1m2026-10-24T06:09:30.579717970Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 17 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:09:32.971550668Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.914s...[0m
+[1m2026-10-24T06:10:19.936461892Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 4 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:10:22.905991385Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 4.552s...[0m
+[1m2026-10-24T06:10:53.629413280Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 17 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:10:56.706881259Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.92s...[0m
+2026-10-24 14:10:43,068 [INFO] AE007: [HEARTBEAT] px=2377.30 signal=-0.5383420827600116 q=+7.441 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=368/5517 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-24T06:11:02.487757246Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 17 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:11:02.536880135Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.951999999999998s...[0m
+[1m2026-10-24T06:11:13.109616654Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 18 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:11:13.130487216Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 5 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-24T06:11:13.160695986Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 29.993s...[0m
+[1m2026-10-24T06:11:13.160797996Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 6.774s...[0m
+[1m2026-10-24T06:11:20.399516248Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+[1m2026-10-24T06:11:28.830478576Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+[1m2026-10-24T06:11:32.853844902Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+[1m2026-10-24T06:11:43.511774061Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-24 14:14:37,226 [INFO] AE007: [HEARTBEAT] px=2378.23 signal=-0.5383420827600116 q=+7.441 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=368/5520 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 14:19:35,316 [INFO] AE007: [HEARTBEAT] px=2377.21 signal=-0.6792466274108016 q=+7.752 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=369/5525 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 14:24:34,869 [INFO] AE007: [HEARTBEAT] px=2376.50 signal=-0.6792466274108016 q=+7.752 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=369/5530 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 14:29:35,083 [INFO] AE007: [HEARTBEAT] px=2376.04 signal=-0.6792466274108016 q=+7.752 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=369/5535 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 14:34:35,028 [INFO] AE007: [HEARTBEAT] px=2377.27 signal=-0.9404431622079208 q=+7.523 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=370/5540 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 14:39:35,020 [INFO] AE007: [HEARTBEAT] px=2377.99 signal=-0.9404431622079208 q=+7.523 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=370/5545 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 14:44:34,832 [INFO] AE007: [HEARTBEAT] px=2376.48 signal=-0.9404431622079208 q=+7.523 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=370/5550 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 14:49:34,826 [INFO] AE007: [HEARTBEAT] px=2376.23 signal=-0.8427648727613832 q=+7.041 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=371/5555 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 14:54:34,827 [INFO] AE007: [HEARTBEAT] px=2376.24 signal=-0.8427648727613832 q=+7.041 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=371/5560 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 14:59:34,826 [INFO] AE007: [HEARTBEAT] px=2375.35 signal=-0.8427648727613832 q=+7.041 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=371/5565 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 15:04:34,827 [INFO] AE007: [HEARTBEAT] px=2380.67 signal=-1.1579596125318958 q=+7.023 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=372/5570 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 15:09:34,826 [INFO] AE007: [HEARTBEAT] px=2378.95 signal=-1.1579596125318958 q=+7.023 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=372/5575 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 15:14:34,826 [INFO] AE007: [HEARTBEAT] px=2379.10 signal=-1.1579596125318958 q=+7.023 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=372/5580 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 15:19:34,826 [INFO] AE007: [HEARTBEAT] px=2382.34 signal=-0.7113107877068305 q=+6.740 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=373/5585 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 15:24:34,826 [INFO] AE007: [HEARTBEAT] px=2378.00 signal=-0.7113107877068305 q=+6.740 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=373/5590 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 15:29:34,826 [INFO] AE007: [HEARTBEAT] px=2377.87 signal=-0.7113107877068305 q=+6.740 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=373/5595 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 15:34:34,826 [INFO] AE007: [HEARTBEAT] px=2377.13 signal=-0.6110822709800212 q=+6.085 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=374/5600 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 15:39:34,826 [INFO] AE007: [HEARTBEAT] px=2378.00 signal=-0.6110822709800212 q=+6.085 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=374/5605 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 15:44:34,826 [INFO] AE007: [HEARTBEAT] px=2378.23 signal=-0.6110822709800212 q=+6.085 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=374/5610 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 15:49:34,826 [INFO] AE007: [HEARTBEAT] px=2377.63 signal=-0.10537480696310292 q=+6.615 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=375/5615 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 15:54:34,826 [INFO] AE007: [HEARTBEAT] px=2376.31 signal=-0.10537480696310292 q=+6.615 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=375/5620 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 15:59:34,826 [INFO] AE007: [HEARTBEAT] px=2375.43 signal=-0.10537480696310292 q=+6.615 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=375/5625 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 16:00:00,958 [INFO] AE007: [ENTRY] 空 @≈2373.50 | signal=-1.60 | 名义=2500.00 USDT (50% of 5000.00) | 10.53 张 | id=O20261024080000007007140
+[1m2026-10-24T08:00:00.986509760Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261024080000007007140, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792828800983256577)[0m
+2026-10-24 16:00:00,989 [ERROR] AE007: [REJECTED] O20261024080000007007140: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 16:00:00,989 [ERROR] AE007: [REJECTED] 在途委托 O20261024080000007007140 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-24 16:04:34,826 [INFO] AE007: [HEARTBEAT] px=2372.13 signal=-1.600248685971278 q=+6.133 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=376/5630 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 16:09:34,826 [INFO] AE007: [HEARTBEAT] px=2371.86 signal=-1.600248685971278 q=+6.133 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=376/5635 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 16:14:34,827 [INFO] AE007: [HEARTBEAT] px=2372.91 signal=-1.600248685971278 q=+6.133 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=376/5640 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 16:19:34,826 [INFO] AE007: [HEARTBEAT] px=2371.95 signal=-1.1097699454842611 q=+7.148 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=377/5645 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 16:24:34,826 [INFO] AE007: [HEARTBEAT] px=2371.97 signal=-1.1097699454842611 q=+7.148 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=377/5650 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 16:29:34,826 [INFO] AE007: [HEARTBEAT] px=2372.93 signal=-1.1097699454842611 q=+7.148 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=377/5655 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 16:30:00,303 [INFO] AE007: [ENTRY] 空 @≈2372.43 | signal=-1.49 | 名义=2500.00 USDT (50% of 5000.00) | 10.53 张 | id=O20261024083000007007141
+2026-10-24 16:30:00,317 [ERROR] AE007: [REJECTED] O20261024083000007007141: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 16:30:00,317 [ERROR] AE007: [REJECTED] 在途委托 O20261024083000007007141 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-24T08:30:00.316854921Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261024083000007007141, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792830600316635463)[0m
+2026-10-24 16:34:34,826 [INFO] AE007: [HEARTBEAT] px=2372.89 signal=-1.488384145504494 q=+7.076 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=378/5660 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 16:39:34,826 [INFO] AE007: [HEARTBEAT] px=2368.11 signal=-1.488384145504494 q=+7.076 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=378/5665 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 16:44:34,826 [INFO] AE007: [HEARTBEAT] px=2367.75 signal=-1.488384145504494 q=+7.076 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=378/5670 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 16:45:00,896 [INFO] AE007: [ENTRY] 空 @≈2366.73 | signal=-2.44 | 名义=2500.00 USDT (50% of 5000.00) | 10.56 张 | id=O20261024084500007007142
+2026-10-24 16:45:00,908 [ERROR] AE007: [REJECTED] O20261024084500007007142: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 16:45:00,908 [ERROR] AE007: [REJECTED] 在途委托 O20261024084500007007142 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-24T08:45:00.908540586Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261024084500007007142, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792831500908306835)[0m
+2026-10-24 16:49:34,826 [INFO] AE007: [HEARTBEAT] px=2367.60 signal=-2.4426225431738975 q=+7.191 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=379/5675 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 16:54:34,826 [INFO] AE007: [HEARTBEAT] px=2367.98 signal=-2.4426225431738975 q=+7.191 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=379/5680 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 16:59:34,826 [INFO] AE007: [HEARTBEAT] px=2367.62 signal=-2.4426225431738975 q=+7.191 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=379/5685 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 17:00:00,303 [INFO] AE007: [ENTRY] 空 @≈2368.07 | signal=-1.80 | 名义=2500.00 USDT (50% of 5000.00) | 10.55 张 | id=O20261024090000007007143
+2026-10-24 17:00:00,316 [ERROR] AE007: [REJECTED] O20261024090000007007143: OKX error 51010: You can't complete this request under your current account mode.
+[1m2026-10-24T09:00:00.316513549Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261024090000007007143, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792832400316388421)[0m
+2026-10-24 17:00:00,317 [ERROR] AE007: [REJECTED] 在途委托 O20261024090000007007143 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-24T09:01:10.131251938Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-24T09:01:10.405132475Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+[1m2026-10-24T09:02:06.628337891Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-24T09:02:06.884101174Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+[1m2026-10-24T09:04:31.986102367Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-24T09:04:32.238397874Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-24 17:04:34,826 [INFO] AE007: [HEARTBEAT] px=2364.63 signal=-1.7971566880618417 q=+7.278 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=380/5690 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 17:09:34,826 [INFO] AE007: [HEARTBEAT] px=2364.25 signal=-1.7971566880618417 q=+7.278 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=380/5695 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 17:14:34,826 [INFO] AE007: [HEARTBEAT] px=2364.63 signal=-1.7971566880618417 q=+7.278 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=380/5700 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 17:15:00,506 [INFO] AE007: [ENTRY] 空 @≈2364.18 | signal=-2.17 | 名义=2500.00 USDT (50% of 5000.00) | 10.57 张 | id=O20261024091500007007144
+2026-10-24 17:15:00,518 [ERROR] AE007: [REJECTED] O20261024091500007007144: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 17:15:00,518 [ERROR] AE007: [REJECTED] 在途委托 O20261024091500007007144 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-24T09:15:00.518345609Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261024091500007007144, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792833300518274491)[0m
+2026-10-24 17:19:34,826 [INFO] AE007: [HEARTBEAT] px=2363.00 signal=-2.170995467838638 q=+6.771 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=381/5705 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-24T09:22:57.254057209Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-24T09:22:57.514261344Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-24 17:24:34,826 [INFO] AE007: [HEARTBEAT] px=2362.35 signal=-2.170995467838638 q=+6.771 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=381/5710 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 17:29:34,826 [INFO] AE007: [HEARTBEAT] px=2361.59 signal=-2.170995467838638 q=+6.771 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=381/5715 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 17:30:00,810 [INFO] AE007: [ENTRY] 空 @≈2361.88 | signal=-2.09 | 名义=2500.00 USDT (50% of 5000.00) | 10.58 张 | id=O20261024093000007007145
+2026-10-24 17:30:00,822 [ERROR] AE007: [REJECTED] O20261024093000007007145: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 17:30:00,823 [ERROR] AE007: [REJECTED] 在途委托 O20261024093000007007145 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-24T09:30:00.822691614Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261024093000007007145, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792834200822394193)[0m
+2026-10-24 17:34:34,826 [INFO] AE007: [HEARTBEAT] px=2362.21 signal=-2.0907936014216184 q=+6.709 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=382/5720 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 17:39:34,826 [INFO] AE007: [HEARTBEAT] px=2357.14 signal=-2.0907936014216184 q=+6.709 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=382/5725 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-24T09:39:54.948485666Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-24T09:39:55.205235554Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-24 17:44:34,826 [INFO] AE007: [HEARTBEAT] px=2358.52 signal=-2.0907936014216184 q=+6.709 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=382/5730 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 17:45:01,218 [INFO] AE007: [ENTRY] 空 @≈2358.75 | signal=-2.07 | 名义=2500.00 USDT (50% of 5000.00) | 10.59 张 | id=O20261024094501007007146
+2026-10-24 17:45:01,230 [ERROR] AE007: [REJECTED] O20261024094501007007146: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 17:45:01,231 [ERROR] AE007: [REJECTED] 在途委托 O20261024094501007007146 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-24T09:45:01.230734434Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261024094501007007146, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792835101230651751)[0m
+2026-10-24 17:49:34,826 [INFO] AE007: [HEARTBEAT] px=2360.36 signal=-2.0722970220127936 q=+6.977 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=383/5735 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 17:54:34,826 [INFO] AE007: [HEARTBEAT] px=2365.57 signal=-2.0722970220127936 q=+6.977 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=383/5740 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 17:59:34,827 [INFO] AE007: [HEARTBEAT] px=2367.23 signal=-2.0722970220127936 q=+6.977 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=383/5745 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 18:04:34,826 [INFO] AE007: [HEARTBEAT] px=2367.56 signal=-0.7433847929788591 q=+7.636 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=384/5750 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 18:09:34,826 [INFO] AE007: [HEARTBEAT] px=2365.46 signal=-0.7433847929788591 q=+7.636 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=384/5755 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 18:14:34,826 [INFO] AE007: [HEARTBEAT] px=2364.28 signal=-0.7433847929788591 q=+7.636 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=384/5760 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 18:19:34,826 [INFO] AE007: [HEARTBEAT] px=2365.04 signal=-0.8846458823290895 q=+7.280 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=385/5765 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-24T10:21:08.105114366Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-24T10:21:08.368319675Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-24 18:24:34,826 [INFO] AE007: [HEARTBEAT] px=2363.54 signal=-0.8846458823290895 q=+7.280 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=385/5770 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-24T10:28:48.136043389Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-24T10:28:48.391106491Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-24 18:29:34,826 [INFO] AE007: [HEARTBEAT] px=2366.60 signal=-0.8846458823290895 q=+7.280 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=385/5775 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 18:34:34,827 [INFO] AE007: [HEARTBEAT] px=2371.23 signal=-0.44201951550973634 q=+8.167 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=386/5780 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-24T10:37:28.176761027Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-24T10:37:28.424349293Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-24 18:39:34,826 [INFO] AE007: [HEARTBEAT] px=2370.95 signal=-0.44201951550973634 q=+8.167 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=386/5785 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 18:44:34,826 [INFO] AE007: [HEARTBEAT] px=2370.14 signal=-0.44201951550973634 q=+8.167 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=386/5790 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-24T10:49:31.705588465Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-24T10:49:31.966869136Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-24 18:49:34,826 [INFO] AE007: [HEARTBEAT] px=2370.35 signal=0.19776822575858982 q=+7.967 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=387/5795 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 18:54:34,826 [INFO] AE007: [HEARTBEAT] px=2365.00 signal=0.19776822575858982 q=+7.967 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=387/5800 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 18:59:34,826 [INFO] AE007: [HEARTBEAT] px=2367.00 signal=0.19776822575858982 q=+7.967 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=387/5805 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 19:04:34,826 [INFO] AE007: [HEARTBEAT] px=2369.58 signal=-0.17887942158020503 q=+7.656 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=388/5810 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 19:09:34,826 [INFO] AE007: [HEARTBEAT] px=2368.63 signal=-0.17887942158020503 q=+7.656 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=388/5815 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 19:14:34,826 [INFO] AE007: [HEARTBEAT] px=2368.43 signal=-0.17887942158020503 q=+7.656 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=388/5820 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 19:19:34,826 [INFO] AE007: [HEARTBEAT] px=2367.24 signal=0.11326694230912471 q=+7.571 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=389/5825 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 19:24:34,826 [INFO] AE007: [HEARTBEAT] px=2365.79 signal=0.11326694230912471 q=+7.571 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=389/5830 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 19:29:34,826 [INFO] AE007: [HEARTBEAT] px=2364.68 signal=0.11326694230912471 q=+7.571 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=389/5835 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 19:34:34,825 [INFO] AE007: [HEARTBEAT] px=2363.89 signal=-0.6269666980447619 q=+7.025 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=390/5840 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 19:39:34,826 [INFO] AE007: [HEARTBEAT] px=2365.10 signal=-0.6269666980447619 q=+7.025 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=390/5845 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 19:44:34,826 [INFO] AE007: [HEARTBEAT] px=2364.25 signal=-0.6269666980447619 q=+7.025 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=390/5850 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 19:49:34,826 [INFO] AE007: [HEARTBEAT] px=2365.53 signal=-0.5261253868293405 q=+6.715 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=391/5855 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 19:54:34,826 [INFO] AE007: [HEARTBEAT] px=2365.75 signal=-0.5261253868293405 q=+6.715 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=391/5860 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 19:59:34,826 [INFO] AE007: [HEARTBEAT] px=2364.95 signal=-0.5261253868293405 q=+6.715 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=391/5865 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 20:04:34,826 [INFO] AE007: [HEARTBEAT] px=2365.26 signal=-0.4759157191089021 q=+6.793 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=392/5870 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 20:09:34,826 [INFO] AE007: [HEARTBEAT] px=2362.32 signal=-0.4759157191089021 q=+6.793 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=392/5875 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 20:14:34,826 [INFO] AE007: [HEARTBEAT] px=2364.27 signal=-0.4759157191089021 q=+6.793 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=392/5880 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 20:19:34,826 [INFO] AE007: [HEARTBEAT] px=2366.36 signal=-0.4788037629502087 q=+6.901 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=393/5885 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 20:24:34,826 [INFO] AE007: [HEARTBEAT] px=2368.45 signal=-0.4788037629502087 q=+6.901 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=393/5890 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 20:29:34,826 [INFO] AE007: [HEARTBEAT] px=2369.00 signal=-0.4788037629502087 q=+6.901 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=393/5895 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 20:34:34,826 [INFO] AE007: [HEARTBEAT] px=2370.09 signal=0.5840324706197086 q=+7.071 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=394/5900 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 20:39:34,826 [INFO] AE007: [HEARTBEAT] px=2370.14 signal=0.5840324706197086 q=+7.071 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=394/5905 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 20:44:34,826 [INFO] AE007: [HEARTBEAT] px=2368.80 signal=0.5840324706197086 q=+7.071 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=394/5910 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 20:49:34,826 [INFO] AE007: [HEARTBEAT] px=2371.80 signal=0.35821837825362346 q=+6.583 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=395/5915 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 20:54:34,826 [INFO] AE007: [HEARTBEAT] px=2370.16 signal=0.35821837825362346 q=+6.583 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=395/5920 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 20:59:34,826 [INFO] AE007: [HEARTBEAT] px=2367.95 signal=0.35821837825362346 q=+6.583 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=395/5925 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 21:04:34,826 [INFO] AE007: [HEARTBEAT] px=2370.04 signal=0.6112150037457327 q=+6.175 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=396/5930 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 21:09:34,826 [INFO] AE007: [HEARTBEAT] px=2368.20 signal=0.6112150037457327 q=+6.175 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=396/5935 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 21:14:34,826 [INFO] AE007: [HEARTBEAT] px=2368.20 signal=0.6112150037457327 q=+6.175 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=396/5940 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 21:19:34,826 [INFO] AE007: [HEARTBEAT] px=2364.70 signal=0.843777127982215 q=+5.758 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=397/5945 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 21:24:34,826 [INFO] AE007: [HEARTBEAT] px=2365.28 signal=0.843777127982215 q=+5.758 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=397/5950 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 21:29:34,826 [INFO] AE007: [HEARTBEAT] px=2368.28 signal=0.843777127982215 q=+5.758 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=397/5955 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 21:34:34,826 [INFO] AE007: [HEARTBEAT] px=2364.26 signal=0.3903892327760098 q=+5.793 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=398/5960 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 21:39:34,826 [INFO] AE007: [HEARTBEAT] px=2365.00 signal=0.3903892327760098 q=+5.793 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=398/5965 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 21:44:34,826 [INFO] AE007: [HEARTBEAT] px=2365.55 signal=0.3903892327760098 q=+5.793 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=398/5970 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 21:49:34,826 [INFO] AE007: [HEARTBEAT] px=2366.41 signal=0.3968087872820958 q=+5.908 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=399/5975 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 21:54:34,826 [INFO] AE007: [HEARTBEAT] px=2367.60 signal=0.3968087872820958 q=+5.908 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=399/5980 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 21:59:34,826 [INFO] AE007: [HEARTBEAT] px=2367.35 signal=0.3968087872820958 q=+5.908 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=399/5985 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 22:04:34,826 [INFO] AE007: [HEARTBEAT] px=2368.86 signal=0.42982367053571857 q=+5.890 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=400/5990 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 22:09:34,826 [INFO] AE007: [HEARTBEAT] px=2365.76 signal=0.42982367053571857 q=+5.890 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=400/5995 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 22:14:34,826 [INFO] AE007: [HEARTBEAT] px=2360.98 signal=0.42982367053571857 q=+5.890 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=400/6000 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 22:15:01,264 [INFO] AE007: [ENTRY] 空 @≈2358.69 | signal=-2.00 | 名义=2500.00 USDT (50% of 5000.00) | 10.59 张 | id=O20261024141501007007147
+2026-10-24 22:15:01,278 [ERROR] AE007: [REJECTED] O20261024141501007007147: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 22:15:01,278 [ERROR] AE007: [REJECTED] 在途委托 O20261024141501007007147 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-24T14:15:01.278279389Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261024141501007007147, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792851301277872658)[0m
+2026-10-24 22:19:34,826 [INFO] AE007: [HEARTBEAT] px=2337.04 signal=-2.000297608789094 q=+5.296 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=401/6005 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 22:24:34,826 [INFO] AE007: [HEARTBEAT] px=2344.26 signal=-2.000297608789094 q=+5.296 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=401/6010 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 22:29:34,826 [INFO] AE007: [HEARTBEAT] px=2339.87 signal=-2.000297608789094 q=+5.296 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=401/6015 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 22:30:01,082 [INFO] AE007: [ENTRY] 空 @≈2348.75 | signal=-3.13 | 名义=2500.00 USDT (50% of 5000.00) | 10.64 张 | id=O20261024143001007007148
+2026-10-24 22:30:01,097 [ERROR] AE007: [REJECTED] O20261024143001007007148: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 22:30:01,098 [ERROR] AE007: [REJECTED] 在途委托 O20261024143001007007148 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-24T14:30:01.097434836Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261024143001007007148, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792852201097191487)[0m
+2026-10-24 22:34:34,826 [INFO] AE007: [HEARTBEAT] px=2349.52 signal=-3.1291040814556066 q=+5.710 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=402/6020 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 22:39:34,826 [INFO] AE007: [HEARTBEAT] px=2348.02 signal=-3.1291040814556066 q=+5.710 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=402/6025 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 22:44:34,826 [INFO] AE007: [HEARTBEAT] px=2344.15 signal=-3.1291040814556066 q=+5.710 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=402/6030 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 22:45:01,295 [INFO] AE007: [ENTRY] 空 @≈2346.41 | signal=-2.64 | 名义=2500.00 USDT (50% of 5000.00) | 10.65 张 | id=O20261024144501007007149
+2026-10-24 22:45:01,311 [ERROR] AE007: [REJECTED] O20261024144501007007149: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 22:45:01,311 [ERROR] AE007: [REJECTED] 在途委托 O20261024144501007007149 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-24T14:45:01.310886256Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261024144501007007149, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792853101310797124)[0m
+2026-10-24 22:49:34,825 [INFO] AE007: [HEARTBEAT] px=2342.60 signal=-2.6395591349376337 q=+5.875 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=403/6035 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 22:54:34,826 [INFO] AE007: [HEARTBEAT] px=2344.02 signal=-2.6395591349376337 q=+5.875 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=403/6040 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 22:59:34,826 [INFO] AE007: [HEARTBEAT] px=2341.65 signal=-2.6395591349376337 q=+5.875 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=403/6045 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 23:00:00,304 [INFO] AE007: [ENTRY] 空 @≈2341.21 | signal=-2.47 | 名义=2500.00 USDT (50% of 5000.00) | 10.67 张 | id=O20261024150000007007150
+2026-10-24 23:00:00,318 [ERROR] AE007: [REJECTED] O20261024150000007007150: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 23:00:00,318 [ERROR] AE007: [REJECTED] 在途委托 O20261024150000007007150 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-24T15:00:00.318388063Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261024150000007007150, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792854000318309024)[0m
+2026-10-24 23:04:34,826 [INFO] AE007: [HEARTBEAT] px=2323.96 signal=-2.47072890564998 q=+5.388 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=404/6050 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 23:09:34,826 [INFO] AE007: [HEARTBEAT] px=2321.14 signal=-2.47072890564998 q=+5.388 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=404/6055 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 23:14:34,826 [INFO] AE007: [HEARTBEAT] px=2312.93 signal=-2.47072890564998 q=+5.388 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=404/6060 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 23:15:00,494 [INFO] AE007: [ENTRY] 空 @≈2311.88 | signal=-3.25 | 名义=2500.00 USDT (50% of 5000.00) | 10.81 张 | id=O20261024151500007007151
+2026-10-24 23:15:00,506 [ERROR] AE007: [REJECTED] O20261024151500007007151: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 23:15:00,506 [ERROR] AE007: [REJECTED] 在途委托 O20261024151500007007151 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-24T15:15:00.506267390Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261024151500007007151, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792854900506181987)[0m
+2026-10-24 23:19:34,826 [INFO] AE007: [HEARTBEAT] px=2295.25 signal=-3.253161406822436 q=+5.549 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=405/6065 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 23:24:34,826 [INFO] AE007: [HEARTBEAT] px=2294.69 signal=-3.253161406822436 q=+5.549 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=405/6070 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 23:29:34,826 [INFO] AE007: [HEARTBEAT] px=2291.60 signal=-3.253161406822436 q=+5.549 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=405/6075 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 23:30:00,602 [INFO] AE007: [ENTRY] 空 @≈2289.48 | signal=-2.97 | 名义=2500.00 USDT (50% of 5000.00) | 10.91 张 | id=O20261024153000007007152
+2026-10-24 23:30:00,614 [ERROR] AE007: [REJECTED] O20261024153000007007152: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 23:30:00,615 [ERROR] AE007: [REJECTED] 在途委托 O20261024153000007007152 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-24T15:30:00.614623683Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261024153000007007152, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792855800614554855)[0m
+2026-10-24 23:34:34,826 [INFO] AE007: [HEARTBEAT] px=2297.00 signal=-2.9666154522024177 q=+5.895 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=406/6080 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 23:39:34,826 [INFO] AE007: [HEARTBEAT] px=2296.01 signal=-2.9666154522024177 q=+5.895 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=406/6085 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 23:44:34,826 [INFO] AE007: [HEARTBEAT] px=2293.02 signal=-2.9666154522024177 q=+5.895 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=406/6090 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 23:45:01,442 [INFO] AE007: [ENTRY] 空 @≈2292.96 | signal=-2.14 | 名义=2500.00 USDT (50% of 5000.00) | 10.9 张 | id=O20261024154501007007153
+2026-10-24 23:45:01,455 [ERROR] AE007: [REJECTED] O20261024154501007007153: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-24 23:45:01,455 [ERROR] AE007: [REJECTED] 在途委托 O20261024154501007007153 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-24T15:45:01.455074262Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261024154501007007153, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792856701454915931)[0m
+2026-10-24 23:49:34,826 [INFO] AE007: [HEARTBEAT] px=2294.72 signal=-2.1400424648063727 q=+5.944 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=407/6095 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 23:54:34,826 [INFO] AE007: [HEARTBEAT] px=2297.48 signal=-2.1400424648063727 q=+5.944 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=407/6100 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-24 23:59:34,826 [INFO] AE007: [HEARTBEAT] px=2305.41 signal=-2.1400424648063727 q=+5.944 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=407/6105 | cash=5000.00 已平=0 胜率=0% PnL=+0.00

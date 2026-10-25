@@ -1,0 +1,457 @@
+2026-10-23 00:04:34,827 [INFO] AE007: [HEARTBEAT] px=2397.39 signal=-0.4014121960979468 q=+6.505 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=219/3280 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 00:09:34,826 [INFO] AE007: [HEARTBEAT] px=2393.67 signal=-0.4014121960979468 q=+6.505 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=219/3285 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 00:14:34,826 [INFO] AE007: [HEARTBEAT] px=2395.30 signal=-0.4014121960979468 q=+6.505 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=219/3290 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 00:19:34,826 [INFO] AE007: [HEARTBEAT] px=2397.48 signal=-0.5591223711685211 q=+6.471 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=220/3295 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 00:24:34,826 [INFO] AE007: [HEARTBEAT] px=2394.50 signal=-0.5591223711685211 q=+6.471 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=220/3300 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 00:29:34,826 [INFO] AE007: [HEARTBEAT] px=2392.75 signal=-0.5591223711685211 q=+6.471 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=220/3305 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 00:34:34,826 [INFO] AE007: [HEARTBEAT] px=2386.84 signal=-0.874470834287703 q=+6.494 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=221/3310 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 00:39:34,826 [INFO] AE007: [HEARTBEAT] px=2388.87 signal=-0.874470834287703 q=+6.494 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=221/3315 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 00:44:34,826 [INFO] AE007: [HEARTBEAT] px=2381.75 signal=-0.874470834287703 q=+6.494 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=221/3320 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 00:45:00,482 [INFO] AE007: [ENTRY] 空 @≈2382.25 | signal=-2.06 | 名义=2500.00 USDT (50% of 5000.00) | 10.49 张 | id=O20261022164500007007100
+2026-10-23 00:45:00,496 [ERROR] AE007: [REJECTED] O20261022164500007007100: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 00:45:00,496 [ERROR] AE007: [REJECTED] 在途委托 O20261022164500007007100 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-22T16:45:00.496609457Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261022164500007007100, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792687500496316392)[0m
+2026-10-23 00:49:34,826 [INFO] AE007: [HEARTBEAT] px=2372.01 signal=-2.0630300510023605 q=+5.942 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=222/3325 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 00:54:34,826 [INFO] AE007: [HEARTBEAT] px=2364.70 signal=-2.0630300510023605 q=+5.942 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=222/3330 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 00:59:34,826 [INFO] AE007: [HEARTBEAT] px=2379.25 signal=-2.0630300510023605 q=+5.942 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=222/3335 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 01:00:00,774 [INFO] AE007: [ENTRY] 空 @≈2379.25 | signal=-1.95 | 名义=2500.00 USDT (50% of 5000.00) | 10.5 张 | id=O20261022170000007007101
+[1m2026-10-22T17:00:00.785947521Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261022170000007007101, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792688400785873425)[0m
+2026-10-23 01:00:00,786 [ERROR] AE007: [REJECTED] O20261022170000007007101: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 01:00:00,786 [ERROR] AE007: [REJECTED] 在途委托 O20261022170000007007101 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 01:04:34,826 [INFO] AE007: [HEARTBEAT] px=2376.80 signal=-1.9532294098721492 q=+6.043 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=223/3340 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 01:09:34,826 [INFO] AE007: [HEARTBEAT] px=2375.81 signal=-1.9532294098721492 q=+6.043 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=223/3345 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-22T17:18:44.385299870Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Received connection error, terminating: I/O error: WebSocket Pong deadline expired[0m
+[1m2026-10-22T17:18:52.209651383Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Received connection error, terminating: connection closed[0m
+[1m2026-10-22T17:19:00.412742693Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Received connection error, terminating: connection closed[0m
+[1m2026-10-22T17:20:25.305150318Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Timed out sending message after 5s[0m
+[1m2026-10-22T17:20:27.594515927Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Writer triggering reconnect[0m
+2026-10-23 01:20:30,824 [INFO] AE007: [HEARTBEAT] px=2373.94 signal=-1.9532294098721492 q=+6.043 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=223/3350 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-22T17:21:27.975978927Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 1 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-22T17:21:49.422011453Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 1 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-22T17:22:18.283128813Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 1 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-22T17:22:43.697297634Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 1 failed: I/O error: reconnection timed out after 10s[0m
+2026-10-23 01:22:08,068 [INFO] AE007: [HEARTBEAT] px=2373.94 signal=-1.9532294098721492 q=+6.043 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=223/3350 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-22T17:23:39.896050983Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 2 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-22T17:23:42.667573161Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 2.063s...[0m
+[1m2026-10-22T17:23:48.867101692Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 2 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-22T17:23:52.817470322Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 2.072s...[0m
+[1m2026-10-22T17:24:14.344292260Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 2 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-22T17:24:30.075860255Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 2.036s...[0m
+[1m2026-10-22T17:25:03.827864499Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Reconnect attempt 2 failed: I/O error: reconnection timed out after 10s[0m
+[1m2026-10-22T17:25:19.267096807Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Backing off for 2.057s...[0m
+2026-10-23 01:26:13,655 [INFO] AE007: [HEARTBEAT] px=2373.94 signal=-1.9532294098721492 q=+6.043 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=223/3350 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-22T17:26:14.194130528Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+[1m2026-10-22T17:26:14.194305844Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+[1m2026-10-22T17:26:14.226333935Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+[1m2026-10-22T17:26:14.315461340Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+[1m2026-10-22T17:27:11.386966393Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Received close frame, terminating: code=4004, reason='No data received in 30s.'[0m
+[1m2026-10-22T17:27:11.527420142Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Received close frame, terminating: code=4004, reason='No data received in 30s.'[0m
+[1m2026-10-22T17:27:11.928423259Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Failed to send message: connection closed[0m
+[1m2026-10-22T17:27:11.928574397Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Writer triggering reconnect[0m
+[1m2026-10-22T17:27:13.317880280Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+[1m2026-10-22T17:27:13.322450227Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-23 01:29:34,844 [INFO] AE007: [HEARTBEAT] px=2382.87 signal=-1.9532294098721492 q=+6.043 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=223/3353 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 01:30:01,205 [INFO] AE007: [ENTRY] 空 @≈2381.77 | signal=-1.41 | 名义=2500.00 USDT (50% of 5000.00) | 10.49 张 | id=O20261022173001007007102
+[1m2026-10-22T17:30:01.254948725Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261022173001007007102, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792690201250932485)[0m
+2026-10-23 01:30:01,262 [ERROR] AE007: [REJECTED] O20261022173001007007102: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 01:30:01,264 [ERROR] AE007: [REJECTED] 在途委托 O20261022173001007007102 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 01:34:34,845 [INFO] AE007: [HEARTBEAT] px=2380.62 signal=-1.4133921427597154 q=+6.316 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=224/3358 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 01:39:34,839 [INFO] AE007: [HEARTBEAT] px=2381.48 signal=-1.4133921427597154 q=+6.316 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=224/3363 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 01:44:34,840 [INFO] AE007: [HEARTBEAT] px=2380.32 signal=-1.4133921427597154 q=+6.316 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=224/3368 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 01:45:00,515 [INFO] AE007: [ENTRY] 空 @≈2381.58 | signal=-1.23 | 名义=2500.00 USDT (50% of 5000.00) | 10.49 张 | id=O20261022174500007007103
+2026-10-23 01:45:00,565 [ERROR] AE007: [REJECTED] O20261022174500007007103: OKX error 51010: You can't complete this request under your current account mode.
+[1m2026-10-22T17:45:00.559562451Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261022174500007007103, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792691100554562836)[0m
+2026-10-23 01:45:00,565 [ERROR] AE007: [REJECTED] 在途委托 O20261022174500007007103 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 01:49:34,835 [INFO] AE007: [HEARTBEAT] px=2380.37 signal=-1.2285652999419956 q=+6.671 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=225/3373 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 01:54:34,827 [INFO] AE007: [HEARTBEAT] px=2381.43 signal=-1.2285652999419956 q=+6.671 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=225/3378 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 01:59:34,826 [INFO] AE007: [HEARTBEAT] px=2378.55 signal=-1.2285652999419956 q=+6.671 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=225/3383 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 02:00:00,523 [INFO] AE007: [ENTRY] 空 @≈2378.44 | signal=-1.31 | 名义=2500.00 USDT (50% of 5000.00) | 10.51 张 | id=O20261022180000007007104
+[1m2026-10-22T18:00:00.538640079Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261022180000007007104, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792692000538106614)[0m
+2026-10-23 02:00:00,539 [ERROR] AE007: [REJECTED] O20261022180000007007104: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 02:00:00,539 [ERROR] AE007: [REJECTED] 在途委托 O20261022180000007007104 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 02:04:34,826 [INFO] AE007: [HEARTBEAT] px=2375.25 signal=-1.309486086233358 q=+6.347 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=226/3388 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 02:09:34,826 [INFO] AE007: [HEARTBEAT] px=2377.38 signal=-1.309486086233358 q=+6.347 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=226/3393 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 02:14:34,826 [INFO] AE007: [HEARTBEAT] px=2376.07 signal=-1.309486086233358 q=+6.347 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=226/3398 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 02:15:00,208 [INFO] AE007: [ENTRY] 空 @≈2375.22 | signal=-1.36 | 名义=2500.00 USDT (50% of 5000.00) | 10.52 张 | id=O20261022181500007007105
+[1m2026-10-22T18:15:00.220805420Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261022181500007007105, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792692900220723045)[0m
+2026-10-23 02:15:00,220 [ERROR] AE007: [REJECTED] O20261022181500007007105: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 02:15:00,221 [ERROR] AE007: [REJECTED] 在途委托 O20261022181500007007105 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 02:19:34,826 [INFO] AE007: [HEARTBEAT] px=2377.68 signal=-1.3613976103431493 q=+6.123 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=227/3403 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 02:24:34,826 [INFO] AE007: [HEARTBEAT] px=2378.50 signal=-1.3613976103431493 q=+6.123 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=227/3408 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 02:29:34,826 [INFO] AE007: [HEARTBEAT] px=2377.19 signal=-1.3613976103431493 q=+6.123 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=227/3413 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 02:34:34,826 [INFO] AE007: [HEARTBEAT] px=2377.27 signal=-1.0432856018061172 q=+6.173 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=228/3418 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 02:39:34,826 [INFO] AE007: [HEARTBEAT] px=2377.34 signal=-1.0432856018061172 q=+6.173 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=228/3423 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 02:44:34,826 [INFO] AE007: [HEARTBEAT] px=2378.36 signal=-1.0432856018061172 q=+6.173 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=228/3428 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 02:49:34,826 [INFO] AE007: [HEARTBEAT] px=2381.16 signal=-0.7162113426240195 q=+6.930 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=229/3433 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-22T18:54:30.682781050Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Received connection error, terminating: connection reset[0m
+[1m2026-10-22T18:54:30.931735767Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-23 02:54:34,826 [INFO] AE007: [HEARTBEAT] px=2383.68 signal=-0.7162113426240195 q=+6.930 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=229/3438 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 02:59:34,826 [INFO] AE007: [HEARTBEAT] px=2382.87 signal=-0.7162113426240195 q=+6.930 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=229/3443 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 03:04:34,826 [INFO] AE007: [HEARTBEAT] px=2380.51 signal=-0.3559591277984088 q=+7.190 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=230/3448 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 03:09:34,826 [INFO] AE007: [HEARTBEAT] px=2379.56 signal=-0.3559591277984088 q=+7.190 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=230/3453 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 03:14:34,826 [INFO] AE007: [HEARTBEAT] px=2380.72 signal=-0.3559591277984088 q=+7.190 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=230/3458 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 03:19:34,826 [INFO] AE007: [HEARTBEAT] px=2383.19 signal=-0.45922442826772575 q=+7.252 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=231/3463 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-22T19:21:11.699832287Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-22T19:21:11.946879692Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-23 03:24:34,826 [INFO] AE007: [HEARTBEAT] px=2388.24 signal=-0.45922442826772575 q=+7.252 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=231/3468 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 03:29:34,826 [INFO] AE007: [HEARTBEAT] px=2390.93 signal=-0.45922442826772575 q=+7.252 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=231/3473 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 03:34:34,826 [INFO] AE007: [HEARTBEAT] px=2390.28 signal=0.36098693404669485 q=+7.611 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=232/3478 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 03:39:34,826 [INFO] AE007: [HEARTBEAT] px=2386.28 signal=0.36098693404669485 q=+7.611 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=232/3483 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 03:44:34,826 [INFO] AE007: [HEARTBEAT] px=2381.92 signal=0.36098693404669485 q=+7.611 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=232/3488 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 03:49:34,826 [INFO] AE007: [HEARTBEAT] px=2381.12 signal=-0.28569466534222926 q=+6.740 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=233/3493 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 03:54:34,826 [INFO] AE007: [HEARTBEAT] px=2385.41 signal=-0.28569466534222926 q=+6.740 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=233/3498 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 03:59:34,826 [INFO] AE007: [HEARTBEAT] px=2384.32 signal=-0.28569466534222926 q=+6.740 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=233/3503 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 04:04:34,826 [INFO] AE007: [HEARTBEAT] px=2385.41 signal=0.19588611987151516 q=+7.352 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=234/3508 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 04:09:34,826 [INFO] AE007: [HEARTBEAT] px=2386.00 signal=0.19588611987151516 q=+7.352 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=234/3513 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 04:14:34,826 [INFO] AE007: [HEARTBEAT] px=2385.97 signal=0.19588611987151516 q=+7.352 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=234/3518 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 04:19:34,826 [INFO] AE007: [HEARTBEAT] px=2382.16 signal=0.1711614025526713 q=+6.696 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=235/3523 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 04:24:34,826 [INFO] AE007: [HEARTBEAT] px=2382.59 signal=0.1711614025526713 q=+6.696 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=235/3528 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 04:29:34,826 [INFO] AE007: [HEARTBEAT] px=2384.65 signal=0.1711614025526713 q=+6.696 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=235/3533 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 04:34:34,826 [INFO] AE007: [HEARTBEAT] px=2381.09 signal=0.14386919107520518 q=+7.268 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=236/3538 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 04:39:34,826 [INFO] AE007: [HEARTBEAT] px=2382.27 signal=0.14386919107520518 q=+7.268 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=236/3543 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 04:44:34,826 [INFO] AE007: [HEARTBEAT] px=2380.17 signal=0.14386919107520518 q=+7.268 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=236/3548 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 04:49:34,826 [INFO] AE007: [HEARTBEAT] px=2380.23 signal=-0.007986863091156149 q=+7.416 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=237/3553 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 04:54:34,826 [INFO] AE007: [HEARTBEAT] px=2377.90 signal=-0.007986863091156149 q=+7.416 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=237/3558 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 04:59:34,826 [INFO] AE007: [HEARTBEAT] px=2381.97 signal=-0.007986863091156149 q=+7.416 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=237/3563 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 05:04:34,826 [INFO] AE007: [HEARTBEAT] px=2379.85 signal=-0.057395433061365186 q=+8.077 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=238/3568 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 05:09:34,826 [INFO] AE007: [HEARTBEAT] px=2386.49 signal=-0.057395433061365186 q=+8.077 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=238/3573 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 05:14:34,826 [INFO] AE007: [HEARTBEAT] px=2388.45 signal=-0.057395433061365186 q=+8.077 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=238/3578 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 05:15:01,212 [INFO] AE007: [ENTRY] 多 @≈2390.81 | signal=+1.66 | 名义=2500.00 USDT (50% of 5000.00) | 10.45 张 | id=O20261022211501007007106
+[1m2026-10-22T21:15:01.225312197Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261022211501007007106, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792703701225225597)[0m
+2026-10-23 05:15:01,225 [ERROR] AE007: [REJECTED] O20261022211501007007106: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 05:15:01,225 [ERROR] AE007: [REJECTED] 在途委托 O20261022211501007007106 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 05:19:34,826 [INFO] AE007: [HEARTBEAT] px=2396.00 signal=1.6596399230537004 q=+8.729 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=239/3583 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 05:24:34,826 [INFO] AE007: [HEARTBEAT] px=2397.20 signal=1.6596399230537004 q=+8.729 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=239/3588 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 05:29:34,827 [INFO] AE007: [HEARTBEAT] px=2393.00 signal=1.6596399230537004 q=+8.729 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=239/3593 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 05:30:00,494 [INFO] AE007: [ENTRY] 多 @≈2393.28 | signal=+2.29 | 名义=2500.00 USDT (50% of 5000.00) | 10.44 张 | id=O20261022213000007007107
+[1m2026-10-22T21:30:00.505570662Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261022213000007007107, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792704600505448359)[0m
+2026-10-23 05:30:00,505 [ERROR] AE007: [REJECTED] O20261022213000007007107: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 05:30:00,505 [ERROR] AE007: [REJECTED] 在途委托 O20261022213000007007107 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 05:34:34,826 [INFO] AE007: [HEARTBEAT] px=2392.55 signal=2.286740111584 q=+8.148 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=240/3598 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 05:39:34,826 [INFO] AE007: [HEARTBEAT] px=2390.99 signal=2.286740111584 q=+8.148 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=240/3603 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 05:44:34,826 [INFO] AE007: [HEARTBEAT] px=2392.21 signal=2.286740111584 q=+8.148 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=240/3608 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 05:45:00,294 [INFO] AE007: [ENTRY] 多 @≈2391.89 | signal=+2.09 | 名义=2500.00 USDT (50% of 5000.00) | 10.45 张 | id=O20261022214500007007108
+[1m2026-10-22T21:45:00.304912515Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261022214500007007108, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792705500304803853)[0m
+2026-10-23 05:45:00,305 [ERROR] AE007: [REJECTED] O20261022214500007007108: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 05:45:00,305 [ERROR] AE007: [REJECTED] 在途委托 O20261022214500007007108 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 05:49:34,826 [INFO] AE007: [HEARTBEAT] px=2390.17 signal=2.0918680521184068 q=+7.986 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=241/3613 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-22T21:50:24.295129008Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Received connection error, terminating: connection reset[0m
+[1m2026-10-22T21:50:24.546728683Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-23 05:54:34,826 [INFO] AE007: [HEARTBEAT] px=2390.93 signal=2.0918680521184068 q=+7.986 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=241/3618 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 05:59:34,830 [INFO] AE007: [HEARTBEAT] px=2391.78 signal=2.0918680521184068 q=+7.986 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=241/3623 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 06:00:00,891 [INFO] AE007: [ENTRY] 多 @≈2392.00 | signal=+1.90 | 名义=2500.00 USDT (50% of 5000.00) | 10.45 张 | id=O20261022220000007007109
+2026-10-23 06:00:00,904 [ERROR] AE007: [REJECTED] O20261022220000007007109: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 06:00:00,905 [ERROR] AE007: [REJECTED] 在途委托 O20261022220000007007109 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-22T22:00:00.904588442Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261022220000007007109, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792706400904119880)[0m
+2026-10-23 06:04:34,827 [INFO] AE007: [HEARTBEAT] px=2396.50 signal=1.895868016492873 q=+7.942 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=242/3628 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 06:09:34,826 [INFO] AE007: [HEARTBEAT] px=2392.93 signal=1.895868016492873 q=+7.942 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=242/3633 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 06:14:34,826 [INFO] AE007: [HEARTBEAT] px=2390.25 signal=1.895868016492873 q=+7.942 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=242/3638 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 06:15:00,454 [INFO] AE007: [ENTRY] 多 @≈2390.00 | signal=+1.39 | 名义=2500.00 USDT (50% of 5000.00) | 10.46 张 | id=O20261022221500007007110
+[1m2026-10-22T22:15:00.466116117Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261022221500007007110, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792707300465848035)[0m
+2026-10-23 06:15:00,466 [ERROR] AE007: [REJECTED] O20261022221500007007110: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 06:15:00,466 [ERROR] AE007: [REJECTED] 在途委托 O20261022221500007007110 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 06:19:34,826 [INFO] AE007: [HEARTBEAT] px=2386.56 signal=1.3869848654000922 q=+7.168 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=243/3643 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 06:24:34,826 [INFO] AE007: [HEARTBEAT] px=2383.94 signal=1.3869848654000922 q=+7.168 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=243/3648 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 06:29:34,826 [INFO] AE007: [HEARTBEAT] px=2385.67 signal=1.3869848654000922 q=+7.168 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=243/3653 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 06:34:34,826 [INFO] AE007: [HEARTBEAT] px=2385.24 signal=0.15814434649073747 q=+6.736 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=244/3658 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 06:39:34,826 [INFO] AE007: [HEARTBEAT] px=2385.38 signal=0.15814434649073747 q=+6.736 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=244/3663 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 06:44:34,826 [INFO] AE007: [HEARTBEAT] px=2383.22 signal=0.15814434649073747 q=+6.736 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=244/3668 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 06:49:34,826 [INFO] AE007: [HEARTBEAT] px=2383.69 signal=0.21392423089378865 q=+6.563 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=245/3673 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 06:54:34,826 [INFO] AE007: [HEARTBEAT] px=2382.74 signal=0.21392423089378865 q=+6.563 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=245/3678 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 06:59:34,826 [INFO] AE007: [HEARTBEAT] px=2382.74 signal=0.21392423089378865 q=+6.563 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=245/3683 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 07:04:34,826 [INFO] AE007: [HEARTBEAT] px=2382.74 signal=0.13566835276409567 q=+6.473 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=246/3688 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 07:09:34,826 [INFO] AE007: [HEARTBEAT] px=2384.37 signal=0.13566835276409567 q=+6.473 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=246/3693 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 07:14:34,826 [INFO] AE007: [HEARTBEAT] px=2383.33 signal=0.13566835276409567 q=+6.473 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=246/3698 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 07:19:34,826 [INFO] AE007: [HEARTBEAT] px=2381.13 signal=0.13108244553173062 q=+6.537 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=247/3703 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 07:24:34,826 [INFO] AE007: [HEARTBEAT] px=2384.03 signal=0.13108244553173062 q=+6.537 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=247/3708 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 07:29:34,826 [INFO] AE007: [HEARTBEAT] px=2383.58 signal=0.13108244553173062 q=+6.537 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=247/3713 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 07:34:34,826 [INFO] AE007: [HEARTBEAT] px=2382.57 signal=-0.42721658161110226 q=+6.309 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=248/3718 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 07:39:34,826 [INFO] AE007: [HEARTBEAT] px=2381.90 signal=-0.42721658161110226 q=+6.309 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=248/3723 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 07:44:34,826 [INFO] AE007: [HEARTBEAT] px=2384.13 signal=-0.42721658161110226 q=+6.309 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=248/3728 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 07:49:34,826 [INFO] AE007: [HEARTBEAT] px=2385.49 signal=-0.2342647922199234 q=+7.064 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=249/3733 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 07:54:34,826 [INFO] AE007: [HEARTBEAT] px=2387.31 signal=-0.2342647922199234 q=+7.064 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=249/3738 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 07:59:34,826 [INFO] AE007: [HEARTBEAT] px=2388.28 signal=-0.2342647922199234 q=+7.064 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=249/3743 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 08:04:34,827 [INFO] AE007: [HEARTBEAT] px=2386.03 signal=0.8383377103436533 q=+7.363 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=250/3748 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 08:09:34,826 [INFO] AE007: [HEARTBEAT] px=2384.00 signal=0.8383377103436533 q=+7.363 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=250/3753 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 08:14:34,826 [INFO] AE007: [HEARTBEAT] px=2384.28 signal=0.8383377103436533 q=+7.363 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=250/3758 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 08:19:34,826 [INFO] AE007: [HEARTBEAT] px=2386.94 signal=0.7083930149868518 q=+7.730 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=251/3763 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 08:24:34,826 [INFO] AE007: [HEARTBEAT] px=2384.76 signal=0.7083930149868518 q=+7.730 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=251/3768 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 08:29:34,826 [INFO] AE007: [HEARTBEAT] px=2384.77 signal=0.7083930149868518 q=+7.730 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=251/3773 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 08:34:34,826 [INFO] AE007: [HEARTBEAT] px=2388.08 signal=-0.2612617977231419 q=+7.318 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=252/3778 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 08:39:34,826 [INFO] AE007: [HEARTBEAT] px=2389.25 signal=-0.2612617977231419 q=+7.318 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=252/3783 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 08:44:34,826 [INFO] AE007: [HEARTBEAT] px=2393.29 signal=-0.2612617977231419 q=+7.318 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=252/3788 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 08:45:00,901 [INFO] AE007: [ENTRY] 多 @≈2391.53 | signal=+1.66 | 名义=2500.00 USDT (50% of 5000.00) | 10.45 张 | id=O20261023004500007007111
+2026-10-23 08:45:00,912 [ERROR] AE007: [REJECTED] O20261023004500007007111: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 08:45:00,913 [ERROR] AE007: [REJECTED] 在途委托 O20261023004500007007111 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-23T00:45:00.912616138Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023004500007007111, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792716300912374833)[0m
+2026-10-23 08:49:34,826 [INFO] AE007: [HEARTBEAT] px=2395.50 signal=1.6642307134921221 q=+7.929 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=253/3793 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 08:54:34,826 [INFO] AE007: [HEARTBEAT] px=2395.29 signal=1.6642307134921221 q=+7.929 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=253/3798 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 08:59:34,826 [INFO] AE007: [HEARTBEAT] px=2392.81 signal=1.6642307134921221 q=+7.929 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=253/3803 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 09:00:00,492 [INFO] AE007: [ENTRY] 多 @≈2394.15 | signal=+2.10 | 名义=2500.00 USDT (50% of 5000.00) | 10.44 张 | id=O20261023010000007007112
+[1m2026-10-23T01:00:00.505074290Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023010000007007112, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792717200504852440)[0m
+2026-10-23 09:00:00,505 [ERROR] AE007: [REJECTED] O20261023010000007007112: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 09:00:00,505 [ERROR] AE007: [REJECTED] 在途委托 O20261023010000007007112 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 09:04:34,826 [INFO] AE007: [HEARTBEAT] px=2392.75 signal=2.1009693867193904 q=+7.777 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=254/3808 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 09:09:34,826 [INFO] AE007: [HEARTBEAT] px=2387.44 signal=2.1009693867193904 q=+7.777 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=254/3813 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 09:14:34,826 [INFO] AE007: [HEARTBEAT] px=2389.38 signal=2.1009693867193904 q=+7.777 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=254/3818 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 09:19:34,826 [INFO] AE007: [HEARTBEAT] px=2385.20 signal=0.7475530642068937 q=+7.176 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=255/3823 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 09:24:34,826 [INFO] AE007: [HEARTBEAT] px=2388.69 signal=0.7475530642068937 q=+7.176 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=255/3828 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 09:29:34,826 [INFO] AE007: [HEARTBEAT] px=2391.60 signal=0.7475530642068937 q=+7.176 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=255/3833 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 09:34:34,826 [INFO] AE007: [HEARTBEAT] px=2387.58 signal=0.9301946251796491 q=+7.529 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=256/3838 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 09:39:34,826 [INFO] AE007: [HEARTBEAT] px=2384.19 signal=0.9301946251796491 q=+7.529 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=256/3843 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 09:44:34,826 [INFO] AE007: [HEARTBEAT] px=2393.62 signal=0.9301946251796491 q=+7.529 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=256/3848 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 09:45:00,906 [INFO] AE007: [ENTRY] 多 @≈2397.60 | signal=+2.46 | 名义=2500.00 USDT (50% of 5000.00) | 10.42 张 | id=O20261023014500007007113
+[1m2026-10-23T01:45:00.916805211Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023014500007007113, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792719900916707457)[0m
+2026-10-23 09:45:00,916 [ERROR] AE007: [REJECTED] O20261023014500007007113: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 09:45:00,917 [ERROR] AE007: [REJECTED] 在途委托 O20261023014500007007113 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 09:49:34,826 [INFO] AE007: [HEARTBEAT] px=2400.23 signal=2.459088263990839 q=+8.426 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=257/3853 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 09:54:34,826 [INFO] AE007: [HEARTBEAT] px=2396.17 signal=2.459088263990839 q=+8.426 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=257/3858 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 09:59:34,826 [INFO] AE007: [HEARTBEAT] px=2389.71 signal=2.459088263990839 q=+8.426 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=257/3863 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 10:04:34,826 [INFO] AE007: [HEARTBEAT] px=2388.72 signal=0.9143444253176152 q=+7.574 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=258/3868 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 10:09:34,826 [INFO] AE007: [HEARTBEAT] px=2391.59 signal=0.9143444253176152 q=+7.574 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=258/3873 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 10:14:34,827 [INFO] AE007: [HEARTBEAT] px=2394.40 signal=0.9143444253176152 q=+7.574 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=258/3878 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 10:15:00,607 [INFO] AE007: [ENTRY] 多 @≈2393.72 | signal=+1.44 | 名义=2500.00 USDT (50% of 5000.00) | 10.44 张 | id=O20261023021500007007114
+2026-10-23 10:15:00,622 [ERROR] AE007: [REJECTED] O20261023021500007007114: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 10:15:00,622 [ERROR] AE007: [REJECTED] 在途委托 O20261023021500007007114 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-23T02:15:00.621879062Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023021500007007114, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792721700621701605)[0m
+2026-10-23 10:19:34,827 [INFO] AE007: [HEARTBEAT] px=2392.17 signal=1.443234126384741 q=+7.925 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=259/3883 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 10:24:34,826 [INFO] AE007: [HEARTBEAT] px=2403.75 signal=1.443234126384741 q=+7.925 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=259/3888 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 10:29:34,826 [INFO] AE007: [HEARTBEAT] px=2402.70 signal=1.443234126384741 q=+7.925 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=259/3893 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 10:30:01,329 [INFO] AE007: [ENTRY] 多 @≈2401.65 | signal=+2.78 | 名义=2500.00 USDT (50% of 5000.00) | 10.4 张 | id=O20261023023001007007115
+[1m2026-10-23T02:30:01.340652344Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023023001007007115, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792722601340574667)[0m
+2026-10-23 10:30:01,340 [ERROR] AE007: [REJECTED] O20261023023001007007115: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 10:30:01,340 [ERROR] AE007: [REJECTED] 在途委托 O20261023023001007007115 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 10:34:34,826 [INFO] AE007: [HEARTBEAT] px=2411.30 signal=2.7774421695151643 q=+8.444 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=260/3898 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 10:39:34,826 [INFO] AE007: [HEARTBEAT] px=2408.92 signal=2.7774421695151643 q=+8.444 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=260/3903 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 10:44:34,827 [INFO] AE007: [HEARTBEAT] px=2410.75 signal=2.7774421695151643 q=+8.444 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=260/3908 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 10:45:01,397 [INFO] AE007: [ENTRY] 多 @≈2410.27 | signal=+3.27 | 名义=2500.00 USDT (50% of 5000.00) | 10.37 张 | id=O20261023024501007007116
+[1m2026-10-23T02:45:01.408278386Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023024501007007116, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792723501408138751)[0m
+2026-10-23 10:45:01,408 [ERROR] AE007: [REJECTED] O20261023024501007007116: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 10:45:01,408 [ERROR] AE007: [REJECTED] 在途委托 O20261023024501007007116 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 10:49:34,826 [INFO] AE007: [HEARTBEAT] px=2411.95 signal=3.2681630620844597 q=+8.374 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=261/3913 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 10:54:34,826 [INFO] AE007: [HEARTBEAT] px=2412.80 signal=3.2681630620844597 q=+8.374 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=261/3918 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 10:59:34,826 [INFO] AE007: [HEARTBEAT] px=2413.23 signal=3.2681630620844597 q=+8.374 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=261/3923 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 11:00:00,499 [INFO] AE007: [ENTRY] 多 @≈2414.80 | signal=+3.02 | 名义=2500.00 USDT (50% of 5000.00) | 10.35 张 | id=O20261023030000007007117
+[1m2026-10-23T03:00:00.510623459Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023030000007007117, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792724400510538614)[0m
+2026-10-23 11:00:00,510 [ERROR] AE007: [REJECTED] O20261023030000007007117: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 11:00:00,510 [ERROR] AE007: [REJECTED] 在途委托 O20261023030000007007117 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 11:04:34,826 [INFO] AE007: [HEARTBEAT] px=2413.11 signal=3.01799744279739 q=+8.604 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=262/3928 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 11:09:34,826 [INFO] AE007: [HEARTBEAT] px=2412.08 signal=3.01799744279739 q=+8.604 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=262/3933 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 11:14:34,826 [INFO] AE007: [HEARTBEAT] px=2412.19 signal=3.01799744279739 q=+8.604 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=262/3938 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 11:15:00,907 [INFO] AE007: [ENTRY] 多 @≈2411.93 | signal=+2.31 | 名义=2500.00 USDT (50% of 5000.00) | 10.36 张 | id=O20261023031500007007118
+2026-10-23 11:15:00,919 [ERROR] AE007: [REJECTED] O20261023031500007007118: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 11:15:00,919 [ERROR] AE007: [REJECTED] 在途委托 O20261023031500007007118 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-23T03:15:00.919115999Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023031500007007118, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792725300918975622)[0m
+2026-10-23 11:19:34,826 [INFO] AE007: [HEARTBEAT] px=2407.92 signal=2.3058406583441706 q=+8.210 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=263/3943 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 11:24:34,826 [INFO] AE007: [HEARTBEAT] px=2407.26 signal=2.3058406583441706 q=+8.210 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=263/3948 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 11:29:34,827 [INFO] AE007: [HEARTBEAT] px=2408.11 signal=2.3058406583441706 q=+8.210 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=263/3953 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 11:30:00,622 [INFO] AE007: [ENTRY] 多 @≈2407.87 | signal=+1.71 | 名义=2500.00 USDT (50% of 5000.00) | 10.38 张 | id=O20261023033000007007119
+[1m2026-10-23T03:30:00.634766469Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023033000007007119, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792726200634572745)[0m
+2026-10-23 11:30:00,634 [ERROR] AE007: [REJECTED] O20261023033000007007119: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 11:30:00,635 [ERROR] AE007: [REJECTED] 在途委托 O20261023033000007007119 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 11:34:34,826 [INFO] AE007: [HEARTBEAT] px=2410.63 signal=1.7141931577996252 q=+8.182 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=264/3958 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 11:39:34,826 [INFO] AE007: [HEARTBEAT] px=2408.00 signal=1.7141931577996252 q=+8.182 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=264/3963 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 11:44:34,826 [INFO] AE007: [HEARTBEAT] px=2410.00 signal=1.7141931577996252 q=+8.182 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=264/3968 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 11:45:00,851 [INFO] AE007: [ENTRY] 多 @≈2411.55 | signal=+1.87 | 名义=2500.00 USDT (50% of 5000.00) | 10.36 张 | id=O20261023034500007007120
+[1m2026-10-23T03:45:00.865134649Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023034500007007120, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792727100865059624)[0m
+2026-10-23 11:45:00,865 [ERROR] AE007: [REJECTED] O20261023034500007007120: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 11:45:00,865 [ERROR] AE007: [REJECTED] 在途委托 O20261023034500007007120 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 11:49:34,826 [INFO] AE007: [HEARTBEAT] px=2413.45 signal=1.8713467292553128 q=+8.869 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=265/3973 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 11:54:34,826 [INFO] AE007: [HEARTBEAT] px=2413.69 signal=1.8713467292553128 q=+8.869 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=265/3978 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 11:59:34,826 [INFO] AE007: [HEARTBEAT] px=2409.21 signal=1.8713467292553128 q=+8.869 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=265/3983 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 12:00:01,430 [INFO] AE007: [ENTRY] 多 @≈2409.85 | signal=+1.57 | 名义=2500.00 USDT (50% of 5000.00) | 10.37 张 | id=O20261023040001007007121
+[1m2026-10-23T04:00:01.445833537Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023040001007007121, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792728001445756197)[0m
+2026-10-23 12:00:01,445 [ERROR] AE007: [REJECTED] O20261023040001007007121: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 12:00:01,446 [ERROR] AE007: [REJECTED] 在途委托 O20261023040001007007121 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 12:04:34,826 [INFO] AE007: [HEARTBEAT] px=2408.40 signal=1.56799118331746 q=+8.142 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=266/3988 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 12:09:34,826 [INFO] AE007: [HEARTBEAT] px=2406.00 signal=1.56799118331746 q=+8.142 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=266/3993 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 12:14:34,826 [INFO] AE007: [HEARTBEAT] px=2405.41 signal=1.56799118331746 q=+8.142 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=266/3998 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 12:19:34,826 [INFO] AE007: [HEARTBEAT] px=2404.87 signal=1.072317411222272 q=+7.685 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=267/4003 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 12:24:34,826 [INFO] AE007: [HEARTBEAT] px=2406.09 signal=1.072317411222272 q=+7.685 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=267/4008 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 12:29:34,826 [INFO] AE007: [HEARTBEAT] px=2399.61 signal=1.072317411222272 q=+7.685 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=267/4013 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 12:34:34,826 [INFO] AE007: [HEARTBEAT] px=2399.55 signal=0.39753737088076496 q=+7.145 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=268/4018 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 12:39:34,826 [INFO] AE007: [HEARTBEAT] px=2401.63 signal=0.39753737088076496 q=+7.145 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=268/4023 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 12:44:34,826 [INFO] AE007: [HEARTBEAT] px=2398.51 signal=0.39753737088076496 q=+7.145 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=268/4028 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 12:49:34,826 [INFO] AE007: [HEARTBEAT] px=2396.67 signal=0.2548470210393964 q=+6.998 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=269/4033 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 12:54:34,826 [INFO] AE007: [HEARTBEAT] px=2395.66 signal=0.2548470210393964 q=+6.998 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=269/4038 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 12:59:34,826 [INFO] AE007: [HEARTBEAT] px=2393.00 signal=0.2548470210393964 q=+6.998 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=269/4043 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 13:04:34,826 [INFO] AE007: [HEARTBEAT] px=2396.61 signal=-0.36855012368527645 q=+7.324 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=270/4048 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 13:09:34,826 [INFO] AE007: [HEARTBEAT] px=2400.00 signal=-0.36855012368527645 q=+7.324 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=270/4053 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 13:14:34,826 [INFO] AE007: [HEARTBEAT] px=2402.68 signal=-0.36855012368527645 q=+7.324 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=270/4058 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 13:19:34,827 [INFO] AE007: [HEARTBEAT] px=2401.08 signal=0.5771267644041906 q=+7.885 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=271/4063 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 13:24:34,825 [INFO] AE007: [HEARTBEAT] px=2401.05 signal=0.5771267644041906 q=+7.885 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=271/4068 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 13:29:34,827 [INFO] AE007: [HEARTBEAT] px=2397.71 signal=0.5771267644041906 q=+7.885 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=271/4073 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 13:34:34,826 [INFO] AE007: [HEARTBEAT] px=2402.80 signal=-0.2047510885167682 q=+7.036 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=272/4078 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 13:39:34,826 [INFO] AE007: [HEARTBEAT] px=2402.16 signal=-0.2047510885167682 q=+7.036 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=272/4083 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 13:44:34,826 [INFO] AE007: [HEARTBEAT] px=2403.36 signal=-0.2047510885167682 q=+7.036 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=272/4088 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 13:49:34,826 [INFO] AE007: [HEARTBEAT] px=2405.49 signal=0.6962756464079856 q=+7.762 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=273/4093 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 13:54:34,826 [INFO] AE007: [HEARTBEAT] px=2403.71 signal=0.6962756464079856 q=+7.762 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=273/4098 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 13:59:34,826 [INFO] AE007: [HEARTBEAT] px=2404.33 signal=0.6962756464079856 q=+7.762 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=273/4103 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 14:04:34,826 [INFO] AE007: [HEARTBEAT] px=2400.12 signal=0.5063882904596342 q=+7.272 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=274/4108 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 14:09:34,827 [INFO] AE007: [HEARTBEAT] px=2404.92 signal=0.5063882904596342 q=+7.272 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=274/4113 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 14:14:34,827 [INFO] AE007: [HEARTBEAT] px=2404.42 signal=0.5063882904596342 q=+7.272 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=274/4118 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 14:19:34,826 [INFO] AE007: [HEARTBEAT] px=2405.50 signal=0.9301163821247771 q=+8.025 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=275/4123 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 14:24:34,826 [INFO] AE007: [HEARTBEAT] px=2405.67 signal=0.9301163821247771 q=+8.025 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=275/4128 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 14:29:34,826 [INFO] AE007: [HEARTBEAT] px=2403.08 signal=0.9301163821247771 q=+8.025 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=275/4133 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 14:34:34,826 [INFO] AE007: [HEARTBEAT] px=2404.86 signal=0.503695969327175 q=+7.471 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=276/4138 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 14:39:34,826 [INFO] AE007: [HEARTBEAT] px=2404.54 signal=0.503695969327175 q=+7.471 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=276/4143 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 14:44:34,826 [INFO] AE007: [HEARTBEAT] px=2405.88 signal=0.503695969327175 q=+7.471 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=276/4148 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 14:49:34,827 [INFO] AE007: [HEARTBEAT] px=2408.08 signal=0.7433201306762816 q=+8.174 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=277/4153 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 14:54:34,826 [INFO] AE007: [HEARTBEAT] px=2409.01 signal=0.7433201306762816 q=+8.174 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=277/4158 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 14:59:34,826 [INFO] AE007: [HEARTBEAT] px=2408.58 signal=0.7433201306762816 q=+8.174 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=277/4163 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 15:04:34,826 [INFO] AE007: [HEARTBEAT] px=2403.63 signal=0.9139227039721998 q=+7.878 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=278/4168 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 15:09:34,826 [INFO] AE007: [HEARTBEAT] px=2404.64 signal=0.9139227039721998 q=+7.878 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=278/4173 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 15:14:34,826 [INFO] AE007: [HEARTBEAT] px=2405.00 signal=0.9139227039721998 q=+7.878 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=278/4178 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 15:19:34,826 [INFO] AE007: [HEARTBEAT] px=2401.71 signal=0.28158577488399245 q=+7.334 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=279/4183 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 15:24:34,826 [INFO] AE007: [HEARTBEAT] px=2401.71 signal=0.28158577488399245 q=+7.334 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=279/4188 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 15:29:34,826 [INFO] AE007: [HEARTBEAT] px=2402.50 signal=0.28158577488399245 q=+7.334 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=279/4193 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 15:34:34,826 [INFO] AE007: [HEARTBEAT] px=2407.83 signal=-0.1001151437619131 q=+7.100 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=280/4198 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 15:39:34,826 [INFO] AE007: [HEARTBEAT] px=2406.72 signal=-0.1001151437619131 q=+7.100 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=280/4203 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 15:44:34,826 [INFO] AE007: [HEARTBEAT] px=2405.59 signal=-0.1001151437619131 q=+7.100 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=280/4208 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 15:49:34,827 [INFO] AE007: [HEARTBEAT] px=2402.98 signal=0.18018066344156863 q=+6.808 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=281/4213 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 15:54:34,826 [INFO] AE007: [HEARTBEAT] px=2400.60 signal=0.18018066344156863 q=+6.808 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=281/4218 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-23T07:57:17.591950623Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-23T07:57:17.845751058Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-23 15:59:34,826 [INFO] AE007: [HEARTBEAT] px=2399.26 signal=0.18018066344156863 q=+6.808 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=281/4223 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 16:04:34,827 [INFO] AE007: [HEARTBEAT] px=2402.39 signal=-0.5856280227951776 q=+6.459 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=282/4228 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 16:09:34,827 [INFO] AE007: [HEARTBEAT] px=2401.92 signal=-0.5856280227951776 q=+6.459 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=282/4233 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 16:14:34,826 [INFO] AE007: [HEARTBEAT] px=2406.54 signal=-0.5856280227951776 q=+6.459 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=282/4238 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 16:19:34,826 [INFO] AE007: [HEARTBEAT] px=2408.64 signal=0.8220894882714807 q=+7.349 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=283/4243 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 16:24:34,826 [INFO] AE007: [HEARTBEAT] px=2408.36 signal=0.8220894882714807 q=+7.349 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=283/4248 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 16:29:34,826 [INFO] AE007: [HEARTBEAT] px=2408.63 signal=0.8220894882714807 q=+7.349 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=283/4253 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 16:30:00,699 [INFO] AE007: [ENTRY] 多 @≈2408.67 | signal=+1.37 | 名义=2500.00 USDT (50% of 5000.00) | 10.37 张 | id=O20261023083000007007122
+[1m2026-10-23T08:30:00.711354049Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023083000007007122, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792744200711280262)[0m
+2026-10-23 16:30:00,711 [ERROR] AE007: [REJECTED] O20261023083000007007122: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 16:30:00,711 [ERROR] AE007: [REJECTED] 在途委托 O20261023083000007007122 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 16:34:34,826 [INFO] AE007: [HEARTBEAT] px=2407.04 signal=1.3700644226903116 q=+7.521 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=284/4258 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 16:39:34,826 [INFO] AE007: [HEARTBEAT] px=2408.11 signal=1.3700644226903116 q=+7.521 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=284/4263 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 16:44:34,826 [INFO] AE007: [HEARTBEAT] px=2408.09 signal=1.3700644226903116 q=+7.521 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=284/4268 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 16:45:00,878 [INFO] AE007: [ENTRY] 多 @≈2408.77 | signal=+1.48 | 名义=2500.00 USDT (50% of 5000.00) | 10.37 张 | id=O20261023084500007007123
+2026-10-23 16:45:00,893 [ERROR] AE007: [REJECTED] O20261023084500007007123: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 16:45:00,893 [ERROR] AE007: [REJECTED] 在途委托 O20261023084500007007123 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-23T08:45:00.893089885Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023084500007007123, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792745100892889268)[0m
+2026-10-23 16:49:34,826 [INFO] AE007: [HEARTBEAT] px=2409.56 signal=1.4756289768395943 q=+7.765 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=285/4273 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 16:54:34,827 [INFO] AE007: [HEARTBEAT] px=2407.49 signal=1.4756289768395943 q=+7.765 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=285/4278 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 16:59:34,826 [INFO] AE007: [HEARTBEAT] px=2406.00 signal=1.4756289768395943 q=+7.765 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=285/4283 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 17:04:34,826 [INFO] AE007: [HEARTBEAT] px=2405.99 signal=0.7240009801937223 q=+7.211 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=286/4288 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 17:09:34,826 [INFO] AE007: [HEARTBEAT] px=2405.14 signal=0.7240009801937223 q=+7.211 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=286/4293 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 17:14:34,826 [INFO] AE007: [HEARTBEAT] px=2403.40 signal=0.7240009801937223 q=+7.211 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=286/4298 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 17:19:34,826 [INFO] AE007: [HEARTBEAT] px=2403.63 signal=0.5981967259584073 q=+7.211 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=287/4303 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 17:24:34,826 [INFO] AE007: [HEARTBEAT] px=2400.00 signal=0.5981967259584073 q=+7.211 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=287/4308 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 17:29:34,826 [INFO] AE007: [HEARTBEAT] px=2393.08 signal=0.5981967259584073 q=+7.211 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=287/4313 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 17:30:01,288 [INFO] AE007: [ENTRY] 空 @≈2392.56 | signal=-1.98 | 名义=2500.00 USDT (50% of 5000.00) | 10.44 张 | id=O20261023093001007007124
+[1m2026-10-23T09:30:01.300797101Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023093001007007124, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792747801300716580)[0m
+2026-10-23 17:30:01,300 [ERROR] AE007: [REJECTED] O20261023093001007007124: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 17:30:01,301 [ERROR] AE007: [REJECTED] 在途委托 O20261023093001007007124 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 17:34:34,826 [INFO] AE007: [HEARTBEAT] px=2394.95 signal=-1.9762398974893058 q=+6.779 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=288/4318 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 17:39:34,826 [INFO] AE007: [HEARTBEAT] px=2392.68 signal=-1.9762398974893058 q=+6.779 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=288/4323 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 17:44:34,826 [INFO] AE007: [HEARTBEAT] px=2398.59 signal=-1.9762398974893058 q=+6.779 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=288/4328 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 17:49:34,826 [INFO] AE007: [HEARTBEAT] px=2393.75 signal=-0.6159126661954761 q=+7.717 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=289/4333 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 17:54:34,826 [INFO] AE007: [HEARTBEAT] px=2397.60 signal=-0.6159126661954761 q=+7.717 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=289/4338 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 17:59:34,826 [INFO] AE007: [HEARTBEAT] px=2395.97 signal=-0.6159126661954761 q=+7.717 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=289/4343 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 18:04:34,826 [INFO] AE007: [HEARTBEAT] px=2392.50 signal=-1.0944259053272452 q=+7.866 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=290/4348 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 18:09:34,826 [INFO] AE007: [HEARTBEAT] px=2397.49 signal=-1.0944259053272452 q=+7.866 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=290/4353 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 18:14:34,826 [INFO] AE007: [HEARTBEAT] px=2398.00 signal=-1.0944259053272452 q=+7.866 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=290/4358 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 18:19:34,826 [INFO] AE007: [HEARTBEAT] px=2401.49 signal=-0.008621316731069029 q=+8.387 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=291/4363 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 18:24:34,826 [INFO] AE007: [HEARTBEAT] px=2402.52 signal=-0.008621316731069029 q=+8.387 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=291/4368 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 18:29:34,826 [INFO] AE007: [HEARTBEAT] px=2399.99 signal=-0.008621316731069029 q=+8.387 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=291/4373 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 18:34:34,826 [INFO] AE007: [HEARTBEAT] px=2398.92 signal=-0.636121160731038 q=+7.712 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=292/4378 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 18:39:34,826 [INFO] AE007: [HEARTBEAT] px=2399.97 signal=-0.636121160731038 q=+7.712 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=292/4383 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 18:44:34,827 [INFO] AE007: [HEARTBEAT] px=2399.00 signal=-0.636121160731038 q=+7.712 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=292/4388 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 18:49:34,826 [INFO] AE007: [HEARTBEAT] px=2397.43 signal=-0.9258128963981307 q=+7.210 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=293/4393 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 18:54:34,826 [INFO] AE007: [HEARTBEAT] px=2397.03 signal=-0.9258128963981307 q=+7.210 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=293/4398 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 18:59:34,826 [INFO] AE007: [HEARTBEAT] px=2396.23 signal=-0.9258128963981307 q=+7.210 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=293/4403 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 19:00:00,759 [INFO] AE007: [ENTRY] 空 @≈2395.29 | signal=-1.36 | 名义=2500.00 USDT (50% of 5000.00) | 10.43 张 | id=O20261023110000007007125
+[1m2026-10-23T11:00:00.772942646Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023110000007007125, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792753200772859958)[0m
+2026-10-23 19:00:00,773 [ERROR] AE007: [REJECTED] O20261023110000007007125: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 19:00:00,773 [ERROR] AE007: [REJECTED] 在途委托 O20261023110000007007125 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 19:04:34,826 [INFO] AE007: [HEARTBEAT] px=2392.75 signal=-1.3641323898087123 q=+6.678 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=294/4408 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 19:09:34,826 [INFO] AE007: [HEARTBEAT] px=2394.69 signal=-1.3641323898087123 q=+6.678 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=294/4413 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 19:14:34,826 [INFO] AE007: [HEARTBEAT] px=2393.08 signal=-1.3641323898087123 q=+6.678 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=294/4418 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 19:15:01,313 [INFO] AE007: [ENTRY] 空 @≈2394.38 | signal=-1.34 | 名义=2500.00 USDT (50% of 5000.00) | 10.44 张 | id=O20261023111501007007126
+[1m2026-10-23T11:15:01.325169058Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023111501007007126, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792754101325037631)[0m
+2026-10-23 19:15:01,325 [ERROR] AE007: [REJECTED] O20261023111501007007126: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 19:15:01,325 [ERROR] AE007: [REJECTED] 在途委托 O20261023111501007007126 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 19:19:34,826 [INFO] AE007: [HEARTBEAT] px=2396.78 signal=-1.3376914217610887 q=+6.975 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=295/4423 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 19:24:34,826 [INFO] AE007: [HEARTBEAT] px=2396.05 signal=-1.3376914217610887 q=+6.975 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=295/4428 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 19:29:34,827 [INFO] AE007: [HEARTBEAT] px=2396.70 signal=-1.3376914217610887 q=+6.975 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=295/4433 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 19:34:34,826 [INFO] AE007: [HEARTBEAT] px=2397.72 signal=-0.8756468960253905 q=+6.905 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=296/4438 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 19:39:34,826 [INFO] AE007: [HEARTBEAT] px=2397.38 signal=-0.8756468960253905 q=+6.905 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=296/4443 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 19:44:34,826 [INFO] AE007: [HEARTBEAT] px=2402.36 signal=-0.8756468960253905 q=+6.905 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=296/4448 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 19:49:34,826 [INFO] AE007: [HEARTBEAT] px=2404.22 signal=0.2903661074276042 q=+7.199 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=297/4453 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 19:54:34,826 [INFO] AE007: [HEARTBEAT] px=2400.52 signal=0.2903661074276042 q=+7.199 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=297/4458 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 19:59:34,826 [INFO] AE007: [HEARTBEAT] px=2401.68 signal=0.2903661074276042 q=+7.199 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=297/4463 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 20:04:34,826 [INFO] AE007: [HEARTBEAT] px=2399.85 signal=0.48578344501716486 q=+6.807 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=298/4468 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 20:09:34,826 [INFO] AE007: [HEARTBEAT] px=2397.50 signal=0.48578344501716486 q=+6.807 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=298/4473 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 20:14:34,826 [INFO] AE007: [HEARTBEAT] px=2395.29 signal=0.48578344501716486 q=+6.807 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=298/4478 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 20:19:34,826 [INFO] AE007: [HEARTBEAT] px=2394.69 signal=-1.1211617279034374 q=+6.242 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=299/4483 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 20:24:34,826 [INFO] AE007: [HEARTBEAT] px=2398.32 signal=-1.1211617279034374 q=+6.242 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=299/4488 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 20:29:34,826 [INFO] AE007: [HEARTBEAT] px=2398.44 signal=-1.1211617279034374 q=+6.242 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=299/4493 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 20:34:34,826 [INFO] AE007: [HEARTBEAT] px=2402.24 signal=0.11468026533373343 q=+6.857 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=300/4498 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 20:39:34,826 [INFO] AE007: [HEARTBEAT] px=2400.84 signal=0.11468026533373343 q=+6.857 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=300/4503 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 20:44:34,826 [INFO] AE007: [HEARTBEAT] px=2401.31 signal=0.11468026533373343 q=+6.857 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=300/4508 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 20:49:34,827 [INFO] AE007: [HEARTBEAT] px=2399.98 signal=0.41446529638250096 q=+6.778 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=301/4513 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 20:54:34,826 [INFO] AE007: [HEARTBEAT] px=2399.43 signal=0.41446529638250096 q=+6.778 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=301/4518 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 20:59:34,826 [INFO] AE007: [HEARTBEAT] px=2401.38 signal=0.41446529638250096 q=+6.778 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=301/4523 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 21:04:34,826 [INFO] AE007: [HEARTBEAT] px=2401.34 signal=0.42489624223049915 q=+6.998 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=302/4528 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 21:09:34,826 [INFO] AE007: [HEARTBEAT] px=2396.72 signal=0.42489624223049915 q=+6.998 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=302/4533 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 21:14:34,826 [INFO] AE007: [HEARTBEAT] px=2398.98 signal=0.42489624223049915 q=+6.998 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=302/4538 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 21:19:34,826 [INFO] AE007: [HEARTBEAT] px=2396.72 signal=-0.21961285767511013 q=+6.541 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=303/4543 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 21:24:34,826 [INFO] AE007: [HEARTBEAT] px=2404.56 signal=-0.21961285767511013 q=+6.541 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=303/4548 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 21:29:34,826 [INFO] AE007: [HEARTBEAT] px=2401.50 signal=-0.21961285767511013 q=+6.541 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=303/4553 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 21:34:34,826 [INFO] AE007: [HEARTBEAT] px=2400.00 signal=0.3776222989863549 q=+6.489 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=304/4558 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 21:39:34,826 [INFO] AE007: [HEARTBEAT] px=2399.46 signal=0.3776222989863549 q=+6.489 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=304/4563 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 21:44:34,826 [INFO] AE007: [HEARTBEAT] px=2431.87 signal=0.3776222989863549 q=+6.489 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=304/4568 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 21:45:01,105 [INFO] AE007: [ENTRY] 多 @≈2420.22 | signal=+3.85 | 名义=2500.00 USDT (50% of 5000.00) | 10.32 张 | id=O20261023134501007007127
+[1m2026-10-23T13:45:01.120220781Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023134501007007127, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792763101119936324)[0m
+2026-10-23 21:45:01,120 [ERROR] AE007: [REJECTED] O20261023134501007007127: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 21:45:01,120 [ERROR] AE007: [REJECTED] 在途委托 O20261023134501007007127 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 21:49:34,826 [INFO] AE007: [HEARTBEAT] px=2410.99 signal=3.8457292208856066 q=+6.680 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=305/4573 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-23T13:51:08.817507549Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-23T13:51:09.094464581Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-23 21:54:34,826 [INFO] AE007: [HEARTBEAT] px=2412.89 signal=3.8457292208856066 q=+6.680 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=305/4578 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 21:59:34,826 [INFO] AE007: [HEARTBEAT] px=2411.25 signal=3.8457292208856066 q=+6.680 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=305/4583 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-23T13:59:35.640876005Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-23T13:59:35.898773063Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-23 22:00:00,715 [INFO] AE007: [ENTRY] 多 @≈2411.76 | signal=+2.15 | 名义=2500.00 USDT (50% of 5000.00) | 10.36 张 | id=O20261023140000007007128
+2026-10-23 22:00:00,735 [ERROR] AE007: [REJECTED] O20261023140000007007128: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 22:00:00,735 [ERROR] AE007: [REJECTED] 在途委托 O20261023140000007007128 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-23T14:00:00.735029325Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023140000007007128, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792764000734830293)[0m
+2026-10-23 22:04:34,826 [INFO] AE007: [HEARTBEAT] px=2413.96 signal=2.153521460835381 q=+6.407 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=306/4588 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-23T14:09:05.217591437Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-23T14:09:05.471459787Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-23 22:09:34,826 [INFO] AE007: [HEARTBEAT] px=2408.00 signal=2.153521460835381 q=+6.407 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=306/4593 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-23T14:12:27.996500256Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-23T14:12:28.252045305Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-23 22:14:34,826 [INFO] AE007: [HEARTBEAT] px=2397.48 signal=2.153521460835381 q=+6.407 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=306/4598 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 22:19:34,827 [INFO] AE007: [HEARTBEAT] px=2380.37 signal=0.05672848485564608 q=+5.954 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=307/4603 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 22:24:34,826 [INFO] AE007: [HEARTBEAT] px=2392.21 signal=0.05672848485564608 q=+5.954 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=307/4608 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 22:29:34,826 [INFO] AE007: [HEARTBEAT] px=2393.75 signal=0.05672848485564608 q=+5.954 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=307/4613 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 22:34:34,826 [INFO] AE007: [HEARTBEAT] px=2394.17 signal=-0.7571626049985174 q=+6.665 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=308/4618 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 22:39:34,826 [INFO] AE007: [HEARTBEAT] px=2406.25 signal=-0.7571626049985174 q=+6.665 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=308/4623 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 22:44:34,826 [INFO] AE007: [HEARTBEAT] px=2406.37 signal=-0.7571626049985174 q=+6.665 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=308/4628 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 22:45:01,342 [INFO] AE007: [ENTRY] 多 @≈2408.11 | signal=+1.51 | 名义=2500.00 USDT (50% of 5000.00) | 10.38 张 | id=O20261023144501007007129
+2026-10-23 22:45:01,357 [ERROR] AE007: [REJECTED] O20261023144501007007129: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 22:45:01,357 [ERROR] AE007: [REJECTED] 在途委托 O20261023144501007007129 (entry) 失效 → 状态回滚 (order_step=0)
+[1m2026-10-23T14:45:01.357082422Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023144501007007129, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792766701356948090)[0m
+2026-10-23 22:49:34,826 [INFO] AE007: [HEARTBEAT] px=2409.27 signal=1.5057749339501725 q=+7.416 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=309/4633 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+[1m2026-10-23T14:50:19.257791769Z[0m [1;33m[WARN] AE-007.nautilus_network::websocket::client: Connection closed by peer (no close frame), terminating[0m
+[1m2026-10-23T14:50:19.520345907Z[0m [1;31m[ERROR] AE-007.nautilus_okx::websocket::handler: WebSocket error: 64010 - WebSocket port 8443 will be retired soon. Please migrate to port 443.[0m
+2026-10-23 22:54:34,826 [INFO] AE007: [HEARTBEAT] px=2414.86 signal=1.5057749339501725 q=+7.416 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=309/4638 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 22:59:34,826 [INFO] AE007: [HEARTBEAT] px=2405.90 signal=1.5057749339501725 q=+7.416 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=309/4643 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 23:00:01,001 [INFO] AE007: [ENTRY] 多 @≈2407.34 | signal=+1.28 | 名义=2500.00 USDT (50% of 5000.00) | 10.38 张 | id=O20261023150001007007130
+[1m2026-10-23T15:00:01.017746540Z[0m [1;33m[WARN] AE-007.nautilus_trading::strategy: AE-ETH-007 <--[EVT] OrderRejected(instrument_id=ETH-USDT-SWAP.OKX, client_order_id=O20261023150001007007130, account_id=OKX-007-001, reason='OKX error 51010: You can't complete this request under your current account mode.', due_post_only=false, ts_event=1792767601017671810)[0m
+2026-10-23 23:00:01,017 [ERROR] AE007: [REJECTED] O20261023150001007007130: OKX error 51010: You can't complete this request under your current account mode.
+2026-10-23 23:00:01,017 [ERROR] AE007: [REJECTED] 在途委托 O20261023150001007007130 (entry) 失效 → 状态回滚 (order_step=0)
+2026-10-23 23:04:34,826 [INFO] AE007: [HEARTBEAT] px=2400.06 signal=1.2841859828572477 q=+7.084 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=310/4648 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 23:09:34,826 [INFO] AE007: [HEARTBEAT] px=2401.17 signal=1.2841859828572477 q=+7.084 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=310/4653 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 23:14:34,826 [INFO] AE007: [HEARTBEAT] px=2399.19 signal=1.2841859828572477 q=+7.084 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=310/4658 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 23:19:34,826 [INFO] AE007: [HEARTBEAT] px=2401.50 signal=-0.1466831070248258 q=+6.452 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=311/4663 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 23:24:34,826 [INFO] AE007: [HEARTBEAT] px=2401.15 signal=-0.1466831070248258 q=+6.452 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=311/4668 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 23:29:34,826 [INFO] AE007: [HEARTBEAT] px=2401.63 signal=-0.1466831070248258 q=+6.452 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=311/4673 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 23:34:34,826 [INFO] AE007: [HEARTBEAT] px=2406.40 signal=0.616632965627481 q=+6.795 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=312/4678 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 23:39:34,826 [INFO] AE007: [HEARTBEAT] px=2401.27 signal=0.616632965627481 q=+6.795 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=312/4683 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 23:44:34,826 [INFO] AE007: [HEARTBEAT] px=2398.57 signal=0.616632965627481 q=+6.795 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=312/4688 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 23:49:34,826 [INFO] AE007: [HEARTBEAT] px=2401.49 signal=0.2058713323070771 q=+6.374 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=313/4693 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 23:54:34,826 [INFO] AE007: [HEARTBEAT] px=2403.50 signal=0.2058713323070771 q=+6.374 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=313/4698 | cash=5000.00 已平=0 胜率=0% PnL=+0.00
+2026-10-23 23:59:34,827 [INFO] AE007: [HEARTBEAT] px=2405.50 signal=0.2058713323070771 q=+6.374 | InPos=False side=+0 张=0.0 net=0.0 | K线 15m/1m=313/4703 | cash=5000.00 已平=0 胜率=0% PnL=+0.00

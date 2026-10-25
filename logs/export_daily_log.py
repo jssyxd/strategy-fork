@@ -2,12 +2,14 @@
 """按北京时间自然日，从某个 smc-trader 实例的日志中切出某一天的日志。
 
 用法:
-    # 主实例（无 stream 后缀，文件名 smc_matrix_YYYY_MM_DD.log）
+    # 历史主实例 live.log（2026-10-14 已停用；无后缀，文件名 smc_matrix_YYYY_MM_DD.log）
     python3 export_daily_log.py 2026-10-11 /tmp/live.log --old /tmp/live.log.old
 
-    # 多实例（c1 / c2 ...，文件名 smc_matrix_c1_YYYY_MM_DD.log）
-    python3 export_daily_log.py 2026-10-11 /tmp/live-c1.log --stream c1
-    python3 export_daily_log.py 2026-10-11 /tmp/live-c2.log --stream c2
+    # 现行多实例（--stream NAME 一律加后缀 _NAME）
+    python3 export_daily_log.py 2026-10-18 /tmp/live-main.log --stream main
+    python3 export_daily_log.py 2026-10-19 /tmp/live-c1.log   --stream c1
+    python3 export_daily_log.py 2026-10-18 /tmp/live-c2.log   --stream c2
+    python3 export_daily_log.py 2026-10-20 /tmp/live-007.log  --stream 007
 
 内容逐字节原样，不做任何加工。--old 只在主实例首次归档时需要（首个归档文件里混有
 live.log.old 的内容，校验时要按它实际的字节数扣除偏移）。
@@ -39,8 +41,9 @@ from datetime import datetime, timedelta
 ANSI = re.compile(rb"\x1b\[[0-9;]*m")
 LOC = re.compile(r"^(\d{4}-\d{2}-\d{2}) \d{2}:")
 UTC = re.compile(r"^(\d{4}-\d{2}-\d{2})T(\d{2}):")
-# smc_matrix_2026_10_11.log -> stream=None(main) ; smc_matrix_c1_2026_10_11.log -> stream="c1"
-NAME = re.compile(r"^smc_matrix(?:_([a-z][a-z0-9]*))?_(\d{4})_(\d{2})_(\d{2})\.log$")
+# 无后缀(legacy live.log) -> "legacy" ; _main/_c1/_c2/_007 -> "main"/"c1"/"c2"/"007"
+LEGACY = "legacy"
+NAME = re.compile(r"^smc_matrix(?:_([a-z0-9][a-z0-9]*))?_(\d{4})_(\d{2})_(\d{2})\.log$")
 
 
 def cst_day(line: bytes) -> str | None:
@@ -60,7 +63,7 @@ def sha(b: bytes) -> str:
 
 def parse_args(argv: list[str]):
     """位置参数: <date> <src>；可选: --stream NAME  --old PATH"""
-    pos, stream, old = [], "main", None
+    pos, stream, old = [], LEGACY, None
     i = 0
     while i < len(argv):
         a = argv[i]
@@ -83,7 +86,7 @@ def parse_args(argv: list[str]):
 def main() -> int:
     day, src, stream, old = parse_args(sys.argv[1:])
     out_dir = os.path.dirname(os.path.abspath(__file__))
-    suffix = "" if stream in ("main", "", None) else f"_{stream}"
+    suffix = "" if stream in (LEGACY, "", None) else f"_{stream}"
 
     raw = open(src, "rb").read()
     print(f"源日志 : {src}  ({len(raw):,} 字节)")
@@ -94,7 +97,7 @@ def main() -> int:
     archived = []
     for name in sorted(os.listdir(out_dir)):
         if m := NAME.match(name):
-            s = m.group(1) or "main"
+            s = m.group(1) or LEGACY
             if s == stream:
                 archived.append((f"{m.group(2)}-{m.group(3)}-{m.group(4)}", os.path.join(out_dir, name)))
     if archived:

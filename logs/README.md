@@ -11,8 +11,20 @@
 ```
 
 * **策略名称**：与策略目录命名规范中的「策略英文名」保持一致（`smc_matrix`）。
-* **实例标识**：**可省略**。省略表示主实例；多实例部署时追加实例名（`c1`、`c2` …）。
-  例：`smc_matrix_2026_10_11.log`（主）、`smc_matrix_c1_2026_10_11.log`、`smc_matrix_c2_2026_10_11.log`。
+* **实例标识**：**可省略**。省略表示**旧纪元主实例**（`live.log`，10-14 已停用，脚本里称 `legacy`）；
+  其余实例一律追加标识。当前共 5 个 stream：
+
+  | stream | 文件前缀 | 源日志 | 对应实例 |
+  | :--- | :--- | :--- | :--- |
+  | `legacy`（无后缀） | `smc_matrix_YYYY_MM_DD.log` | `/root/live.log` | 旧主实例，10-05 – 10-14 |
+  | `main` | `smc_matrix_main_YYYY_MM_DD.log` | `/root/live-main.log` | `smc-trader-main`，10-18 起 |
+  | `c1` | `smc_matrix_c1_YYYY_MM_DD.log` | `/root/live-c1.log.bak-20261019` | 旧 c1，10-11 – 10-14 |
+  | `top1c1` | `smc_matrix_top1c1_YYYY_MM_DD.log` | `/root/live-c1.log` | `smc-top1-c1`，10-19 起 |
+  | `c2` | `smc_matrix_c2_YYYY_MM_DD.log` | `/root/live-c2.log` | `smc-trader-c2`，10-11 – 10-19 |
+  | `007` | `smc_matrix_007_YYYY_MM_DD.log` | `/root/live-007.log` | `smc-trader-007` 模拟盘，10-20 起 |
+
+  > 同一个账户换了服务/脚本、或者日志文件被重新创建时，**必须另开 stream**，不要硬续到旧 stream 上——
+  > 脚本的连续性校验会把「当前日志前缀 ≠ 已归档内容」当 FAIL 拒写，这正是它该有的行为。
 * **日期**：以**北京时间 (CST, UTC+8)** 划分自然日。文件内容 = 该自然日内该实例产生的全部日志行。
 
 > 文件名一律用**下划线**，不要用连字符。
@@ -21,15 +33,27 @@
 
 ## 二、数据来源
 
-服务器（`ssh jy`）上三个 systemd 服务的标准输出与标准错误，**每个实例一个独立日志文件**：
+服务器（`ssh jy`）上各 systemd 服务的标准输出与标准错误，**每个实例一个独立日志文件**。
+2026-10-14 主实例与 c1 被删除重来，10-19/10-20 又上了新实例，因此当前共有 **6 个日志文件、
+5 个归档 stream**（详见第四节）：
 
-| 服务 | 脚本 | 日志 | 账户 / 参数 |
-| :--- | :--- | :--- | :--- |
-| `smc-trader` | `smc_live_trader_live.py` | `/root/live.log` | OKX-LIVE-001，20x，risk 5% |
-| `smc-trader-c1` | `smc_live_trader_multi.py` | `/root/live-c1.log` | OKX-C1-001，20x，risk 2% |
-| `smc-trader-c2` | `smc_live_trader_multi.py` | `/root/live-c2.log` | OKX-C2-001，3x，risk 1% |
+| 实例（unit） | 脚本 | 日志 | 账户 / 参数 | 存续 |
+| :--- | :--- | :--- | :--- | :--- |
+| `smc-trader`（旧） | `smc_live_trader_live.py` | `/root/live.log` | OKX-LIVE-001，20x，risk 5% | 10-05 17:19 – 10-14 **23:11 停用** |
+| `smc-trader-main`（新） | `smc_live_trader_v4ml.py` | `/root/live-main.log` | 主账户，4 资产 15m + ML regime | 10-18 13:32 起；10-20 起 `OBSERVE_ONLY=True` |
+| `smc-trader-c1`（旧） | `smc_live_trader_multi.py` | `/root/live-c1.log.bak-20261019` | OKX-C1-001，20x，risk 2% | 10-11 12:22 – 10-14 **23:11 停用** |
+| `smc-top1-c1`（新） | `run_live_top1_node.py` | `/root/live-c1.log` | ETH/SOL/BNB 1H，score≥80，TP 3R，risk 1% | 10-19 16:19 起 |
+| `smc-trader-c2` | `smc_live_trader_multi.py` | `/root/live-c2.log` | OKX-C2-001，10-14 23:49 起 BTC-only 2h / 10x / risk 1% | 10-11 12:22 – 10-19 **18:48 停用** |
+| `smc-trader-007`（模拟盘） | `smc_eth_007_live.py` | `/root/live-007.log` | demo1，ETH-USDT-SWAP 15m，10x cross，首仓 50%/加仓 75% | 10-20 17:24 起 |
 
-`/root/live.log.old` 是主实例历史上轮转保留的一份旧日志（10-05 的内容），校验偏移量时要用到。
+两个历史凭证文件，校验旧纪元归档时要用到：
+
+- `/root/live.log.old`（57,615 字节）= 旧主实例 10-05 的轮转旧段，用于首次归档的偏移自校准。
+- `/root/live-c1.log.bak-20261019`（23,111,234 字节）= 旧 c1 实例的完整日志（10-11 12:22 – 10-14 23:11），
+  在 10-19 新 c1 上线前被移走，新实例重新创建了 `/root/live-c1.log`（因此两个纪元**不连续**）。
+
+> ⚠️ **c2 账户自 10-19 18:48 起由 OKX 平台信号策略接管**（不是本目录任何脚本）：账户资金全部冻结、
+> API 看不到持仓，成交时点不在 K 线边界上。`/root/live-c2.log` 因此停在 10-19 18:48，不再增长。
 
 日志**原样归档，不做任何加工**：保留 ANSI 颜色转义序列、原始时间戳、原始字段顺序，逐字节落盘，不重排、不合并单行、不裁剪字段。
 
@@ -71,6 +95,27 @@
 | [smc_matrix_2026_10_13.log](./smc_matrix_2026_10_13.log) | 2026-10-13 00:00:00 → 2026-10-13 23:59:59 | 20055 | 8.05 MiB（8,439,109 字节） | `06cc79a3c25f832e` |
 | [smc_matrix_2026_10_14.log](./smc_matrix_2026_10_14.log) | 2026-10-14 00:00:00 → 2026-10-14 **23:11:08** | 18523 | 7.54 MiB（7,908,620 字节） | `86200dae0c5487a7` |
 
+> 旧纪元到此结束（10-14 23:11 单元被删除）。**完整性核对**：本表 10 个文件合计
+> 76,914,780 字节 = `/root/live.log`（76,857,165）+ `/root/live.log.old`（57,615），逐字节吻合，
+> 即旧主实例从 10-05 17:15 到 10-14 23:11 的日志**无缺失**。
+
+### 主实例·新纪元 `smc-trader-main`（`live-main.log`，4 资产 15m + ML regime）
+
+| 文件 | 覆盖时段（北京时间） | 行数 | 大小 | SHA256（前 16 位） |
+| :--- | :--- | ---: | ---: | :--- |
+| [smc_matrix_main_2026_10_18.log](./smc_matrix_main_2026_10_18.log) | 2026-10-18 13:18:08 → 2026-10-18 23:59:55 | 8,904 | 3.52 MiB（3,688,456 字节） | `012de6631b966298` |
+| [smc_matrix_main_2026_10_19.log](./smc_matrix_main_2026_10_19.log) | 2026-10-19 00:00:00 → 2026-10-19 23:59:56 | 19,926 | 7.91 MiB（8,291,348 字节） | `f07c0daadc00e19e` |
+| [smc_matrix_main_2026_10_20.log](./smc_matrix_main_2026_10_20.log) | 2026-10-20 00:00:00 → 2026-10-20 23:59:58 | 19,547 | 7.88 MiB（8,258,142 字节） | `02f381e85ef96e4b` |
+| [smc_matrix_main_2026_10_21.log](./smc_matrix_main_2026_10_21.log) | 2026-10-21 00:00:03 → 2026-10-21 23:59:56 | 18,982 | 7.69 MiB（8,068,354 字节） | `63fc192be3dbadea` |
+| [smc_matrix_main_2026_10_22.log](./smc_matrix_main_2026_10_22.log) | 2026-10-22 00:00:01 → 2026-10-22 23:59:59 | 18,863 | 7.68 MiB（8,049,682 字节） | `ecf7aff72dc617fc` |
+| [smc_matrix_main_2026_10_23.log](./smc_matrix_main_2026_10_23.log) | 2026-10-23 00:00:04 → 2026-10-23 23:59:56 | 19,156 | 7.73 MiB（8,109,338 字节） | `eb6c65fd1daf98c6` |
+| [smc_matrix_main_2026_10_24.log](./smc_matrix_main_2026_10_24.log) | 2026-10-24 00:00:01 → 2026-10-24 23:59:58 | 19,225 | 7.65 MiB（8,020,907 字节） | `20871a495573c24e` |
+| [smc_matrix_main_2026_10_25.log](./smc_matrix_main_2026_10_25.log) | 2026-10-25 00:00:03 → 2026-10-25 17:37:34 | 13,703 | 5.61 MiB（5,884,811 字节） | `65c2ea232babdf2c` |
+
+> 与旧主实例**不是同一个 stream**：旧实例文件名无后缀（`smc_matrix_YYYY_MM_DD.log`），
+> 新实例统一带 `_main` 后缀（`smc_matrix_main_YYYY_MM_DD.log`），两者内容不连续，
+> 脚本按 stream 分开做连续性校验。10-18 13:18 之前的日志属于旧实例，已在旧表内。
+
 ### 实例 c1 `smc-trader-c1`（OKX-C1-001，20x / risk 2%）
 
 | 文件 | 覆盖时段（北京时间） | 行数 | 大小 | SHA256（前 16 位） |
@@ -79,6 +124,35 @@
 | [smc_matrix_c1_2026_10_12.log](./smc_matrix_c1_2026_10_12.log) | 2026-10-12 00:00:00 → 2026-10-12 23:59:58 | 19208 | 6.37 MiB（6,674,598 字节） | `a8f4347c0ab4c692` |
 | [smc_matrix_c1_2026_10_13.log](./smc_matrix_c1_2026_10_13.log) | 2026-10-13 00:00:00 → 2026-10-13 23:59:55 | 19633 | 6.47 MiB（6,781,788 字节） | `320a36799389cecd` |
 | [smc_matrix_c1_2026_10_14.log](./smc_matrix_c1_2026_10_14.log) | 2026-10-14 00:00:00 → 2026-10-14 **23:11:19** | 18610 | 6.14 MiB（6,437,021 字节） | `019e152f29d54e4f` |
+
+> 旧纪元到此结束（10-14 23:11 单元被删除）。**完整性核对**：本表 4 个文件合计 23,111,234 字节
+> = `/root/live-c1.log.bak-20261019`（23,111,234 字节，即旧 c1 的完整日志），逐字节吻合，
+> 旧 c1 从 10-11 12:22 到 10-14 23:11 **无缺失**。
+
+### c1·新纪元 `smc-top1-c1`（`live-c1.log`，ETH/SOL/BNB 1H，TP 3R）
+
+| 文件 | 覆盖时段（北京时间） | 行数 | 大小 | SHA256（前 16 位） |
+| :--- | :--- | ---: | ---: | :--- |
+| [smc_matrix_top1c1_2026_10_19.log](./smc_matrix_top1c1_2026_10_19.log) | 2026-10-19 16:19:25 → 2026-10-19 23:59:55 | 5,788 | 1.93 MiB（2,025,628 字节） | `d9fd0f162d5bd6fd` |
+| [smc_matrix_top1c1_2026_10_20.log](./smc_matrix_top1c1_2026_10_20.log) | 2026-10-20 00:00:00 → 2026-10-20 23:59:55 | 18,019 | 6.01 MiB（6,297,775 字节） | `838b111d6c37f9d7` |
+| [smc_matrix_top1c1_2026_10_21.log](./smc_matrix_top1c1_2026_10_21.log) | 2026-10-21 00:00:00 → 2026-10-21 23:59:57 | 17,542 | 5.94 MiB（6,225,238 字节） | `f870d9bae6d11dce` |
+| [smc_matrix_top1c1_2026_10_22.log](./smc_matrix_top1c1_2026_10_22.log) | 2026-10-22 00:00:00 → 2026-10-22 23:59:57 | 17,763 | 5.97 MiB（6,263,058 字节） | `3e42968325537e27` |
+| [smc_matrix_top1c1_2026_10_23.log](./smc_matrix_top1c1_2026_10_23.log) | 2026-10-23 00:00:00 → 2026-10-23 **23:49:13** | 3,176 | 0.85 MiB（894,129 字节） | `85b1d77209c8109f` |
+| [smc_matrix_top1c1_2026_10_24.log](./smc_matrix_top1c1_2026_10_24.log) | 2026-10-24 **00:52:08** → 2026-10-24 23:59:59 | 440 | 0.09 MiB（89,878 字节） | `425b1dff43667d91` |
+| [smc_matrix_top1c1_2026_10_25.log](./smc_matrix_top1c1_2026_10_25.log) | 2026-10-25 00:00:00 → 2026-10-25 17:37:57 | 2,903 | 0.86 MiB（901,968 字节） | `7ee9e654285163e8` |
+
+> **与旧 c1 不是同一个 stream**：旧实例（`live-c1.log.bak-20261019`）归档为 `_c1`，新实例
+> （`smc-top1-c1` + `run_live_top1_node.py`，10-19 16:19 启动）归档为 `_top1c1`，因为新实例
+> **重新创建了 `/root/live-c1.log`**，两个纪元的文件不连续。
+>
+> ⚠️ **10-23 23:49 起至 10-25 14:44 重启前，该实例处于「半瘫」状态**：10-23 有 49 次
+> `WebSocket authentication failed` / `Re-authentication after reconnection failed`、
+> 42 条 `Failed to send authentication message after retries`、3 条
+> `WebSocket error: 60031 - The WebSocket endpoint does not allow multiple or too many connections`；
+> 10-24 全天仅 440 行（正常约 1.8 万行），日志里全是
+> `Reconnect attempt N failed: I/O error: reconnection timeout`。表现为交易所私有 WS 断连后
+> 反复重连失败，账户推送与行情中断（`Updated AccountState` 完全消失），当日**无任何成交**。
+> 10-25 14:44 人工重启后恢复。
 
 ### 实例 c2 `smc-trader-c2`（OKX-C2-001，3x / risk 1%）
 
@@ -91,26 +165,61 @@
 | [smc_matrix_c2_2026_10_15.log](./smc_matrix_c2_2026_10_15.log) | 2026-10-15 00:00:00 → 2026-10-15 23:59:56 | 20465 | 6.57 MiB（6,886,807 字节） | `95ccb64e8066f264` |
 | [smc_matrix_c2_2026_10_16.log](./smc_matrix_c2_2026_10_16.log) | 2026-10-16 00:00:00 → 2026-10-16 23:59:58 | 18376 | 6.10 MiB（6,395,650 字节） | `d4ada33e140efd84` |
 | [smc_matrix_c2_2026_10_17.log](./smc_matrix_c2_2026_10_17.log) | 2026-10-17 00:00:00 → 2026-10-17 23:59:55 | 17643 | 5.95 MiB（6,234,493 字节） | `97fe91456568cfd0` |
+| [smc_matrix_c2_2026_10_18.log](./smc_matrix_c2_2026_10_18.log) | 2026-10-18 00:00:00 → 2026-10-18 23:59:57 | 17,618 | 5.93 MiB（6,222,867 字节） | `a9500429e3a08535` |
+| [smc_matrix_c2_2026_10_19.log](./smc_matrix_c2_2026_10_19.log) | 2026-10-19 00:00:00 → 2026-10-19 **18:48:42** | 13,845 | 4.68 MiB（4,905,834 字节） | `6435517ae1ff6c42` |
 
-> **实例存续（截至 2026-10-18）**
+> **c2 到此为止**：10-19 18:48:43 单元被干净停止（`Event loop stopped`），此后 `/root/live-c2.log`
+> 不再增长；10-20 起该账户改由 **OKX 平台信号策略**交易（单品种 ETH、持仓 12–36 小时、
+> 资金全部冻结、API 看不到持仓），与本目录的脚本无关，因此**不再有归档**。
+
+### 模拟盘实例 `smc-trader-007`（`live-007.log`，demo1 / ETH-USDT-SWAP 15m）
+
+| 文件 | 覆盖时段（北京时间） | 行数 | 大小 | SHA256（前 16 位） |
+| :--- | :--- | ---: | ---: | :--- |
+| [smc_matrix_007_2026_10_20.log](./smc_matrix_007_2026_10_20.log) | 2026-10-20 17:24:33 → 2026-10-20 23:59:34 | 152 | 0.03 MiB（28,832 字节） | `200b70a1d09e1458` |
+| [smc_matrix_007_2026_10_21.log](./smc_matrix_007_2026_10_21.log) | 2026-10-21 00:04:34 → 2026-10-21 23:59:34 | 590 | 0.11 MiB（113,964 字节） | `d82476465f8d6ec4` |
+| [smc_matrix_007_2026_10_22.log](./smc_matrix_007_2026_10_22.log) | 2026-10-22 00:00:00 → 2026-10-22 23:59:34 | 563 | 0.11 MiB（110,751 字节） | `7296d8b49d8ffc3d` |
+| [smc_matrix_007_2026_10_23.log](./smc_matrix_007_2026_10_23.log) | 2026-10-23 00:04:34 → 2026-10-23 23:59:34 | 457 | 0.09 MiB（91,028 字节） | `962c44d282879105` |
+| [smc_matrix_007_2026_10_24.log](./smc_matrix_007_2026_10_24.log) | 2026-10-24 00:04:34 → 2026-10-24 23:59:34 | 774 | 0.13 MiB（137,153 字节） | `3e1445a3f06f4e7c` |
+| [smc_matrix_007_2026_10_25.log](./smc_matrix_007_2026_10_25.log) | 2026-10-25 00:00:01 → 2026-10-25 **17:34:33** | 418 | 0.08 MiB（81,185 字节） | `25f5a14415c0f6e4` |
+
+> **这份日志很轻（约 100 KB/天）是刻意的**：007 把 nautilus 内部日志压到 `WARNING`，
+> 策略自身日志走 Python logging，否则 OKX 每 5 秒一条 `Updated AccountState` 会让它涨到 ~10 MB/天。
+> 因此它**不含**其它实例那种大段账户轮询噪声，`[ENTRY] / [EXIT-*] / [CLOSE-*] / [HEARTBEAT]`
+> 都能直接读。
 >
-> - 主实例 `smc-trader` 与 `smc-trader-c1` 已于 **2026-10-14 23:11 被干净停止并删除单元文件**
->   （`journalctl` 显示 `Stopping` → `Deactivated successfully`，此后 `systemctl status` 报
->   `Unit could not be found`）。因此主实例与 c1 的 10-14 日志止于 23:11，**当日 23:11–24:00 无日志**；
->   10-15 起二者不再产出任何日志。
-> - `smc-trader-c2` 是 10-15 – 10-17 期间**唯一在跑**的实例。其配置在 10-14 23:49 被改写为
->   **BTC-only、2h 周期、10x、risk 1%**（此前为 4 资产 15m）。日志为 append 模式，
->   10-15/10-16 的多次重启不影响文件连续性。
-> - **2026-10-18 13:32 新起了一个 `smc-trader-main`**，跑的是**另一个脚本**
->   `smc_live_trader_v4ml.py`（4 资产 15m + ML regime），日志为 `/root/live-main.log`，
->   与原来的 `live.log` 不是同一个文件。该实例尚未归档。
+> ⚠️ **10-20 20:30 – 10-25 15:00 期间共 190 次开仓全部被 OKX 拒绝**：日志里成对出现
+> `[ENTRY] ...` 与 `[REJECTED] ... OKX error 51010: You can't complete this request under your
+> current account mode.`，根因是模拟盘账户当时为「简单交易模式」，API 不能用 `tdMode=cross`。
+> 该期间**零成交**。10-25 15:50 账户升级为单币种保证金后重启，51010 不再出现
+> （10-25 之后的行数骤降也与此有关：15:50 重启后 1m 心跳日志从 5 秒一条改为按 K 线输出）。
+>
+> 10-25 16:10 有一条 `[WATCHDOG] 发现无人管理的交易所持仓 net=11.45 → 按最新价接管`：
+> 这是排查 51010 时在模拟盘上下的探针单残留，16:14 已手动平仓并重启，之后 `[HYDRATE]` 显示无遗留持仓。
+
+> **实例存续（截至 2026-10-25）**
+>
+> - **旧纪元（已结束）**：`smc-trader` 与 `smc-trader-c1` 于 **2026-10-14 23:11 被干净停止并删除单元文件**；
+>   `smc-trader-c2` 于 **2026-10-19 18:48 被干净停止**（单元保留但 disabled），账户此后交给 OKX 平台信号策略。
+> - **现役四个**：`smc-trader-main`（10-18 起，10-23 01:50 重启过一次）、`smc-top1-c1`（10-19 16:19 起，
+>   10-20 / 10-22 / 10-25 各重启一次）、`smc-trader-007`（10-20 17:24 起，10-25 15:50 重启）、
+>   以及不再产出日志的 `smc-trader-c2`（disabled）。
+> - 旧主实例与旧 c1 的归档已用 `.old` / `.bak` 逐字节核对完整；新纪元各自另开 stream，互不混算。
 
 **缺口说明**：
 
 - 2026-10-05 当天 00:00 – 17:15 无留存日志（该时段服务尚未以实盘方式运行，或已被轮转覆盖）。
 - 2026-10-06 – 10-13 各实例均为完整自然日，无缺口。
-- **2026-10-14 主实例与 c1 只到 23:11**（服务被停掉），23:11–24:00 无日志；c2 当日完整。
-- **2026-10-15 – 10-17 只有 c2 有日志**；主实例与 c1 已于 10-14 停服，新 `smc-trader-main` 到 10-18 才启动。
+- **2026-10-14 旧主实例与旧 c1 只到 23:11**（服务被停掉），23:11–24:00 无日志；c2 当日完整。
+- **2026-10-15 – 10-17 只有 c2 有日志**；旧主实例与旧 c1 已于 10-14 停服，新 `smc-trader-main` 到 10-18 才启动。
+- **2026-10-18**：c2 完整；新 main 从 13:18 开始（当日之前无该实例）。
+- **2026-10-19**：新 main 完整；新 c1 从 16:19 开始；c2 到 18:48 结束（停服）。
+- **2026-10-20 – 10-25**：main / c1 大部分完整，但见下条。
+- **2026-10-23 23:49 – 2026-10-25 14:44 新 c1 呈「半瘫」状态**（私有 WS 重连失败、账户推送中断、
+  每日日志从 1.8 万行降到 440 行），日志本身**没有丢失**——该实例这几天本来就没产生多少日志。
+  10-25 14:44 重启后恢复。
+- **2026-10-25 各实例只到当天归档时刻**（main 17:37、top1c1 17:37、007 17:34，均为 17:40 导出），
+  当日晚间日志待次日归档。
 
 **10-05 文件构成**：`/root/live.log.old` 全量（17:15:06 – 17:20:00，一次手工启动的实例）
 + `/root/live.log` 中属于 10-05 的部分（17:19:53 – 23:59:56，systemd 实例，中间跨越 21:24 的一次机器重启）。
@@ -213,13 +322,15 @@ grep -aE "SIGNAL:|Order(Filled|Submitted|Canceled|Rejected|Denied)|\[ERROR\]|\[W
 
 ## 五、新增归档的操作方法
 
-1. 从服务器拉取原始日志。**日志高度重复，压缩比约 9:1，务必走压缩**——直传约 74 MB 需数分钟，
-   压缩后不到 1 秒。三个实例一次打包：
+1. 从服务器拉取原始日志。**日志高度重复，压缩比约 9:1，务必走压缩**——`main+c1+007+c2` 共 135 MB，
+   压完 15 MB。四个在跑的日志一次打包：
 
    ```bash
-   ssh jy 'tar -cf - -C /root live.log live-c1.log live-c2.log | gzip -1' > /tmp/logs.tar.gz
+   ssh jy 'tar -cf - -C /root live-main.log live-c1.log live-007.log live-c2.log | gzip -1' \
+     > /tmp/logs.tar.gz
    mkdir -p /tmp/logs && tar -xzf /tmp/logs.tar.gz -C /tmp/logs
-   scp jy:/root/live.log.old /tmp/live.log.old   # 可选，见下
+   # 只在核对旧纪元时才需要：
+   scp jy:/root/live.log.old jy:/root/live-c1.log.bak-20261019 /tmp/   # 可选
    ```
 
    > `live.log.old`（57 KB）会被用来确定首日归档中属于它的字节偏移。**传了最稳妥，但不传也不会错**
@@ -230,9 +341,14 @@ grep -aE "SIGNAL:|Order(Filled|Submitted|Canceled|Rejected|Denied)|\[ERROR\]|\[W
    **每个实例必须用 `--stream` 区分**，否则主实例的归档会被拿去和别的实例比对而误报：
 
    ```bash
-   python3 logs/export_daily_log.py 2026-10-11 /tmp/logs/live.log    --old /tmp/live.log.old
-   python3 logs/export_daily_log.py 2026-10-11 /tmp/logs/live-c1.log --stream c1
-   python3 logs/export_daily_log.py 2026-10-11 /tmp/logs/live-c2.log --stream c2
+   # 旧纪元（只在补历史时用）
+   python3 logs/export_daily_log.py 2026-10-11 /tmp/live.log --old /tmp/live.log.old
+   python3 logs/export_daily_log.py 2026-10-11 /tmp/logs/live-c1.log --stream c1   # 需 .bak 那份旧日志
+   # 现役实例
+   python3 logs/export_daily_log.py 2026-10-25 /tmp/logs/live-main.log --stream main
+   python3 logs/export_daily_log.py 2026-10-25 /tmp/logs/live-c1.log   --stream top1c1
+   python3 logs/export_daily_log.py 2026-10-25 /tmp/logs/live-c2.log   --stream c2
+   python3 logs/export_daily_log.py 2026-10-25 /tmp/logs/live-007.log  --stream 007
    ```
 
    脚本逐字节写出 `{策略名称}[_{实例标识}]_{yyyy_MM_dd}.log`，并执行两项自校验：
@@ -242,4 +358,5 @@ grep -aE "SIGNAL:|Order(Filled|Submitted|Canceled|Rejected|Denied)|\[ERROR\]|\[W
 
 3. 更新上方「归档清单」表格，并将新文件与脚本改动一并提交。
 
-> 注意：文件名一律用**下划线** `smc_matrix_2026_10_11.log` / `smc_matrix_c1_2026_10_11.log`，不是连字符。
+> 注意：文件名一律用**下划线**（`smc_matrix_main_2026_10_25.log`），不是连字符；
+> `--stream` 省略或传 `legacy` 时写出**无后缀**的历史主实例文件。
