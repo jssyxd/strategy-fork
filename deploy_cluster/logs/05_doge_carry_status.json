@@ -3,11 +3,11 @@
   "strategy_name": "008_doge_momentum",
   "symbol": "DOGE-USDT-SWAP",
   "timeframe": "15m",
-  "timestamp_utc": "2026-10-25T09:41:41.055430+00:00",
-  "loop_count": 15,
-  "current_price": 0.0761972,
-  "current_signal": 0,
-  "position_size": 0.0,
+  "timestamp_utc": "2026-10-25T10:28:00.667584+00:00",
+  "loop_count": 17,
+  "current_price": 0.0764278,
+  "current_signal": -1,
+  "position_size": -1.0,
   "last_order_action": "HOLD",
   "status": "RUNNING_HEALTHY"
 }

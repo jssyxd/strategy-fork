@@ -79,3 +79,48 @@
 [2026-10-25 09:35:31 UTC] [02_smc_adaptive] Heartbeat: Price=80166.0, Pos=0.0, Signal=0, Health=OK
 [2026-10-25 09:37:42 UTC] [02_smc_adaptive] Heartbeat: Price=80202.8, Pos=0.0, Signal=0, Health=OK
 [2026-10-25 09:39:54 UTC] [02_smc_adaptive] Heartbeat: Price=80191.8, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:42:19 UTC] [02_smc_adaptive] Heartbeat: Price=80235.44, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:44:34 UTC] [02_smc_adaptive] Heartbeat: Price=80234.3, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:45:07 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 09:46:50 UTC] [02_smc_adaptive] Heartbeat: Price=80252.6, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:48:59 UTC] [02_smc_adaptive] Heartbeat: Price=80288.8, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:51:11 UTC] [02_smc_adaptive] Heartbeat: Price=80268.91, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:53:23 UTC] [02_smc_adaptive] Heartbeat: Price=80250.0, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:54:37 UTC] [02_smc_adaptive] Error in strategy execution loop: <urlopen error _ssl.c:999: The handshake operation timed out>
+[2026-10-25 09:55:13 UTC] [02_smc_adaptive] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 09:55:48 UTC] [02_smc_adaptive] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 09:56:24 UTC] [02_smc_adaptive] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 09:56:59 UTC] [02_smc_adaptive] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 09:57:34 UTC] [02_smc_adaptive] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 09:58:09 UTC] [02_smc_adaptive] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 09:58:44 UTC] [02_smc_adaptive] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 09:59:19 UTC] [02_smc_adaptive] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 09:59:54 UTC] [02_smc_adaptive] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 10:00:29 UTC] [02_smc_adaptive] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 10:01:04 UTC] [02_smc_adaptive] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 10:01:46 UTC] [02_smc_adaptive] Error in strategy execution loop: <urlopen error _ssl.c:999: The handshake operation timed out>
+[2026-10-25 10:02:21 UTC] [02_smc_adaptive] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 10:02:56 UTC] [02_smc_adaptive] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 10:03:31 UTC] [02_smc_adaptive] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 10:04:06 UTC] [02_smc_adaptive] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 10:04:41 UTC] [02_smc_adaptive] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 10:05:26 UTC] [02_smc_adaptive] Heartbeat: Price=80315.04, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 10:08:03 UTC] [02_smc_adaptive] Heartbeat: Price=80308.65, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 10:10:17 UTC] [02_smc_adaptive] Heartbeat: Price=80334.94, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 10:12:32 UTC] [02_smc_adaptive] Heartbeat: Price=80354.96, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 10:14:47 UTC] [02_smc_adaptive] Heartbeat: Price=80369.9, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 10:15:53 UTC] [02_smc_adaptive] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 10:17:04 UTC] [02_smc_adaptive] Heartbeat: Price=80360.0, Pos=1.0, Signal=0, Health=OK
+[2026-10-25 10:17:08 UTC] [02_smc_adaptive] Received shutdown signal. Stopping gracefully...
+[2026-10-25 10:17:09 UTC] [02_smc_adaptive] Strategy service successfully shut down.
+[2026-10-25 10:17:11 UTC] [02_smc_adaptive] Initializing NautilusTrader live service for BTC-USDT-SWAP...
+[2026-10-25 10:17:12 UTC] [02_smc_adaptive] Connected to OKX Demo Gateway. Available balance: N/A USDT
+[2026-10-25 10:18:03 UTC] [02_smc_adaptive] Received shutdown signal. Stopping gracefully...
+[2026-10-25 10:18:03 UTC] [02_smc_adaptive] Strategy service successfully shut down.
+[2026-10-25 10:18:15 UTC] [02_smc_adaptive] Initializing NautilusTrader live service for BTC-USDT-SWAP...
+[2026-10-25 10:18:19 UTC] [02_smc_adaptive] Connected to OKX Demo Gateway. Available balance: N/A USDT
+[2026-10-25 10:20:15 UTC] [02_smc_adaptive] Heartbeat: Price=80359.7, Pos=1.0, Signal=0, Health=OK
+[2026-10-25 10:22:49 UTC] [02_smc_adaptive] Heartbeat: Price=80365.6, Pos=1.0, Signal=0, Health=OK
+[2026-10-25 10:24:42 UTC] [02_smc_adaptive] Error in strategy execution loop: <urlopen error _ssl.c:999: The handshake operation timed out>
+[2026-10-25 10:25:15 UTC] [02_smc_adaptive] Heartbeat: Price=80320.1, Pos=1.0, Signal=-1, Health=OK
+[2026-10-25 10:27:30 UTC] [02_smc_adaptive] Heartbeat: Price=80286.96, Pos=1.0, Signal=-1, Health=OK

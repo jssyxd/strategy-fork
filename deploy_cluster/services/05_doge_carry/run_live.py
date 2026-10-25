@@ -101,7 +101,7 @@ def main():
             
             if signal == 1 and pos_sz == 0:
                 order_action = "BUY_SUBMITTED"
-                cl_id = f"c_05_d_{int(time.time())}"[-32:]
+                cl_id = f"c05d{int(time.time()*1000)}"[-32:]
                 res = client.place_order(inst_id="DOGE-USDT-SWAP", td_mode="cross", side="buy", ord_type="market", sz="1", cl_ord_id=cl_id)
                 log_msg(f"Triggered LONG entry signal! Submitted market buy: {res.get('code')}, msg: {res.get('msg')}")
                 recent_fills.append({
@@ -113,7 +113,7 @@ def main():
                 })
             elif signal == -1 and pos_sz == 0:
                 order_action = "SELL_SUBMITTED"
-                cl_id = f"c_05_d_{int(time.time())}"[-32:]
+                cl_id = f"c05d{int(time.time()*1000)}"[-32:]
                 res = client.place_order(inst_id="DOGE-USDT-SWAP", td_mode="cross", side="sell", ord_type="market", sz="1", cl_ord_id=cl_id)
                 log_msg(f"Triggered SHORT entry signal! Submitted market sell: {res.get('code')}, msg: {res.get('msg')}")
                 recent_fills.append({

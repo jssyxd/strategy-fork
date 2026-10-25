@@ -3,11 +3,11 @@
   "strategy_name": "005_smc_ml_adaptive",
   "symbol": "BTC-USDT-SWAP",
   "timeframe": "15m",
-  "timestamp_utc": "2026-10-25T09:41:43.488137+00:00",
-  "loop_count": 15,
-  "current_price": 80218.5,
-  "current_signal": 0,
-  "position_size": 0.0,
+  "timestamp_utc": "2026-10-25T10:28:05.617913+00:00",
+  "loop_count": 17,
+  "current_price": 80313.58,
+  "current_signal": -1,
+  "position_size": 1.0,
   "last_order_action": "HOLD",
   "status": "RUNNING_HEALTHY"
 }

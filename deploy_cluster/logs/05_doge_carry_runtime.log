@@ -120,3 +120,53 @@
 [2026-10-25 09:35:33 UTC] [05_doge_carry] Heartbeat: Price=0.07616, Pos=0.0, Signal=0, Health=OK
 [2026-10-25 09:37:44 UTC] [05_doge_carry] Heartbeat: Price=0.07617, Pos=0.0, Signal=0, Health=OK
 [2026-10-25 09:39:53 UTC] [05_doge_carry] Heartbeat: Price=0.076175, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:42:18 UTC] [05_doge_carry] Heartbeat: Price=0.076225, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:44:39 UTC] [05_doge_carry] Heartbeat: Price=0.07624, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:46:56 UTC] [05_doge_carry] Heartbeat: Price=0.07631, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:49:05 UTC] [05_doge_carry] Heartbeat: Price=0.07634, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:51:17 UTC] [05_doge_carry] Heartbeat: Price=0.07637, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:53:26 UTC] [05_doge_carry] Heartbeat: Price=0.07641, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 09:54:42 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error _ssl.c:999: The handshake operation timed out>
+[2026-10-25 09:55:17 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 09:55:52 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 09:56:29 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 09:57:04 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 09:57:39 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 09:58:14 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 09:58:49 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 09:59:24 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 09:59:59 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 10:00:34 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 10:01:09 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 10:01:51 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error _ssl.c:999: The handshake operation timed out>
+[2026-10-25 10:02:26 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 10:03:01 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 10:03:36 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 10:04:11 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 10:04:46 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1016)>
+[2026-10-25 10:05:27 UTC] [05_doge_carry] Heartbeat: Price=0.0765, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 10:07:45 UTC] [05_doge_carry] Heartbeat: Price=0.0765396, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 10:10:03 UTC] [05_doge_carry] Heartbeat: Price=0.07655, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 10:12:19 UTC] [05_doge_carry] Heartbeat: Price=0.07656, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 10:14:31 UTC] [05_doge_carry] Heartbeat: Price=0.07658, Pos=0.0, Signal=0, Health=OK
+[2026-10-25 10:15:39 UTC] [05_doge_carry] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 10:16:14 UTC] [05_doge_carry] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 10:16:54 UTC] [05_doge_carry] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 10:16:54 UTC] [05_doge_carry] Heartbeat: Price=0.0765292, Pos=0.0, Signal=-1, Health=OK
+[2026-10-25 10:17:08 UTC] [05_doge_carry] Received shutdown signal. Stopping gracefully...
+[2026-10-25 10:17:09 UTC] [05_doge_carry] Strategy service successfully shut down.
+[2026-10-25 10:17:11 UTC] [05_doge_carry] Initializing NautilusTrader live service for DOGE-USDT-SWAP...
+[2026-10-25 10:17:12 UTC] [05_doge_carry] Connected to OKX Demo Gateway. Available balance: N/A USDT
+[2026-10-25 10:17:17 UTC] [05_doge_carry] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 10:17:51 UTC] [05_doge_carry] Triggered SHORT entry signal! Submitted market sell: 1, msg: All operations failed
+[2026-10-25 10:18:03 UTC] [05_doge_carry] Received shutdown signal. Stopping gracefully...
+[2026-10-25 10:18:03 UTC] [05_doge_carry] Strategy service successfully shut down.
+[2026-10-25 10:18:15 UTC] [05_doge_carry] Initializing NautilusTrader live service for DOGE-USDT-SWAP...
+[2026-10-25 10:18:24 UTC] [05_doge_carry] Connected to OKX Demo Gateway. Available balance: N/A USDT
+[2026-10-25 10:18:34 UTC] [05_doge_carry] Triggered SHORT entry signal! Submitted market sell: 0, msg: 
+[2026-10-25 10:20:15 UTC] [05_doge_carry] Heartbeat: Price=0.07651, Pos=-1.0, Signal=-1, Health=OK
+[2026-10-25 10:21:40 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error _ssl.c:999: The handshake operation timed out>
+[2026-10-25 10:22:48 UTC] [05_doge_carry] Heartbeat: Price=0.07652, Pos=-1.0, Signal=-1, Health=OK
+[2026-10-25 10:24:39 UTC] [05_doge_carry] Error in strategy execution loop: <urlopen error _ssl.c:999: The handshake operation timed out>
+[2026-10-25 10:25:14 UTC] [05_doge_carry] Heartbeat: Price=0.0764838, Pos=-1.0, Signal=-1, Health=OK
+[2026-10-25 10:27:26 UTC] [05_doge_carry] Heartbeat: Price=0.0764297, Pos=-1.0, Signal=-1, Health=OK
