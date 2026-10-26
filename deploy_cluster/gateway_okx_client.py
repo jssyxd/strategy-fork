@@ -43,6 +43,11 @@ class OKXGatewayClient:
         data = res.get('data', [])
         return data[0] if data else {}
 
+    def get_books(self, inst_id: str, sz: int = 20) -> Dict[str, Any]:
+        res = self._sign_and_request('GET', '/api/v5/market/books', {'instId': inst_id, 'sz': str(sz)})
+        data = res.get('data', [])
+        return data[0] if data else {}
+
     def get_candles(self, inst_id: str, bar: str = '15m', limit: int = 100) -> List[List[str]]:
         res = self._sign_and_request('GET', '/api/v5/market/candles', {'instId': inst_id, 'bar': bar, 'limit': limit})
         return res.get('data', [])
@@ -50,7 +55,12 @@ class OKXGatewayClient:
     def get_balance(self, ccy: str = 'USDT') -> Dict[str, Any]:
         res = self._sign_and_request('GET', '/api/v5/account/balance', {'ccy': ccy})
         data = res.get('data', [])
-        return data[0] if data else {}
+        if data:
+            details = data[0].get('details', [])
+            if details:
+                return details[0]
+            return data[0]
+        return {}
 
     def get_positions(self, inst_type: str = 'SWAP', inst_id: Optional[str] = None) -> List[Dict[str, Any]]:
         params = {'instType': inst_type}
@@ -80,3 +90,10 @@ class OKXGatewayClient:
         if cl_ord_id:
             body['clOrdId'] = cl_ord_id
         return self._sign_and_request('POST', '/api/v5/trade/cancel-order', body=body)
+
+    def get_pending_orders(self, inst_type: str = 'SWAP', inst_id: Optional[str] = None) -> List[Dict[str, Any]]:
+        params = {'instType': inst_type}
+        if inst_id:
+            params['instId'] = inst_id
+        res = self._sign_and_request('GET', '/api/v5/trade/orders-pending', params)
+        return res.get('data', [])
