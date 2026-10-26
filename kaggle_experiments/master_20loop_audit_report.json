@@ -1,0 +1,24 @@
+{
+  "generated_at_utc": "2026-10-26T15:14:15.183920+00:00",
+  "total_loops": 20,
+  "window_geometry": "5,000 bars per loop (2,500 Train IS / 2,500 Test OOS)",
+  "acceptance_criteria": "OOS Win Rate >= 60.0%",
+  "strategy_1_smc": {
+    "avg_win_rate": 47.47,
+    "pass_ratio": "0/20",
+    "total_cum_pnl_pct": -37.22,
+    "avg_gpu_sec": 0.093
+  },
+  "strategy_2_avellaneda": {
+    "avg_win_rate": 94.0,
+    "pass_ratio": "20/20",
+    "total_cum_pnl_pct": 295.8,
+    "avg_gpu_sec": 0.11
+  },
+  "strategy_3_eth_alphaevolve": {
+    "avg_win_rate": 47.16,
+    "pass_ratio": "1/20",
+    "total_cum_pnl_pct": -31.58,
+    "avg_tpu_sec": 0.333
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "version": "1.0",
+    "author": "AlphaGPT Factor Miner (Herdr Swarm, Worker factor-miner)",
+    "data_source": "BTCUSDT_1m_3years_governed.parquet resampled to 15m",
+    "bars_evaluated": 109308,
+    "forward_return": "next-15m close-to-close return",
+    "ic_method": "Spearman rank correlation, monthly ICIR",
+    "calmar_method": "sign(factor - median) L/S, annualised at 96 bars/day \u00d7 252",
+    "base_factors_from": "alphagpt_miner.py (extended with 5 new factors)"
+  },
+  "factor_definitions": {
+    "F1_vol_gated_ofi_mom": {
+      "description": "Volatility-Gated OFI Momentum",
+      "intuition": "OFI signal credible only when Parkinson/GK vol_ratio < 1 (compressed, informed flow). Suppresses noise in high-dispersion regimes.",
+      "ast": "scale(ts_mean(ofi_density * sign(1 - vol_ratio), 8))",
+      "primitives": [
+        "ts_mean",
+        "sign",
+        "scale"
+      ],
+      "input_features": [
+        "bar_ofi",
+        "atr14",
+        "parkinson_vol",
+        "garman_klass_vol"
+      ]
+    },
+    "F2_convex_displace_rev": {
+      "description": "Convex Displacement Reversion",
+      "intuition": "Volume-weighted price displacement z-scored then tanh-squeezed. Captures bounded mean-reversion after extreme displacement while remaining sign-consistent.",
+      "ast": "ts_rank(tanh(vwdisplace / ts_std(vwdisplace, 32)), 32) - 0.5",
+      "primitives": [
+        "ts_rank",
+        "tanh",
+        "ts_std"
+      ],
+      "input_features": [
+        "close",
+        "open",
+        "high",
+        "low",
+        "volume"
+      ]
+    },
+    "F3_ofi_volratio_cross": {
+      "description": "OFI \u00d7 Vol-Ratio Cross-Momentum",
+      "intuition": "Lagged OFI acceleration multiplied by vol_ratio rank. Identifies breakouts from quiet accumulation phases by pairing flow acceleration with regime transition.",
+      "ast": "clip_z(ts_delta(ofi_density, 4) * ts_rank(vol_ratio, 16))",
+      "primitives": [
+        "ts_delta",
+        "ts_rank",
+        "clip_z"
+      ],
+      "input_features": [
+        "bar_ofi",
+        "atr14",
+        "parkinson_vol",
+        "garman_klass_vol"
+      ]
+    },
+    "F4_vw_trend_atr_norm": {
+      "description": "Volatility-Normalized Volume-Weighted Trend",
+      "intuition": "Rolling vwdisplace normalised by ATR, signed by 4-bar price momentum. Measures directional urgency in risk-adjusted units \u2014 strong trend signal with volatility regime awareness.",
+      "ast": "ts_mean(vwdisplace, 8) / (atr14 + eps) * sign(ts_delta(close, 4))",
+      "primitives": [
+        "ts_mean",
+        "sign",
+        "ts_delta"
+      ],
+      "input_features": [
+        "close",
+        "open",
+        "high",
+        "low",
+        "volume",
+        "atr14"
+      ]
+    },
+    "F5_ofi_rank_body_squeeze": {
+      "description": "Non-Linear OFI Rank \u00d7 Body-Range Squeeze",
+      "intuition": "Robust OFI rank (monotone, outlier-immune) multiplied by squared body/range ratio. Aggressive signal when directional flow fills most of the bar's range \u2014 conviction candles.",
+      "ast": "ts_rank(bar_ofi, 16) * (body / range_hl) ** 2",
+      "primitives": [
+        "ts_rank",
+        "power"
+      ],
+      "input_features": [
+        "bar_ofi",
+        "close",
+        "open",
+        "high",
+        "low"
+      ]
+    }
+  },
+  "performance_metrics": {
+    "F1_vol_gated_ofi_mom": {
+      "ic": 0.020515,
+      "ic_monthly_mean": 0.02081,
+      "icir": 1.274,
+      "calmar_annret": -0.208307,
+      "calmar_maxdd": -1.69682,
+      "calmar_ratio": -0.1228
+    },
+    "F2_convex_displace_rev": {
+      "ic": -0.042554,
+      "ic_monthly_mean": -0.04362,
+      "icir": -1.8417,
+      "calmar_annret": -0.397954,
+      "calmar_maxdd": -2.347027,
+      "calmar_ratio": -0.1696
+    },
+    "F3_ofi_volratio_cross": {
+      "ic": -0.017448,
+      "ic_monthly_mean": -0.01934,
+      "icir": -0.9873,
+      "calmar_annret": -0.184096,
+      "calmar_maxdd": -1.30859,
+      "calmar_ratio": -0.1407
+    },
+    "F4_vw_trend_atr_norm": {
+      "ic": -0.003203,
+      "ic_monthly_mean": -0.00393,
+      "icir": -0.2072,
+      "calmar_annret": 0.025122,
+      "calmar_maxdd": -0.850942,
+      "calmar_ratio": 0.0295
+    },
+    "F5_ofi_rank_body_squeeze": {
+      "ic": -0.017395,
+      "ic_monthly_mean": -0.017402,
+      "icir": -0.905,
+      "calmar_annret": 0.253894,
+      "calmar_maxdd": -0.759926,
+      "calmar_ratio": 0.3341
+    }
+  },
+  "summary": {
+    "best_ic_factor": "F2_convex_displace_rev",
+    "best_icir_factor": "F1_vol_gated_ofi_mom",
+    "best_calmar_factor": "F5_ofi_rank_body_squeeze",
+    "mean_ic_across_factors": -0.012017,
+    "mean_calmar_across_factors": -0.0139
+  }
+}

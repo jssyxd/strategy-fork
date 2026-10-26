@@ -1,0 +1,390 @@
+{
+  "timestamp_utc": "2026-10-26T15:32:21.911291+00:00",
+  "strategy_004_matrix": {
+    "total_trades": 1329,
+    "wins": 419,
+    "losses": 910,
+    "win_rate": 31.53,
+    "cum_pnl_pct": -124.19,
+    "sample_trades": [
+      {
+        "entry_time": "2023-01-01 01:00:00",
+        "exit_time": "2023-01-01 09:00:00",
+        "side": "LONG",
+        "pnl": -0.00302,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-01-01 10:00:00",
+        "exit_time": "2023-01-01 13:00:00",
+        "side": "SHORT",
+        "pnl": -0.00301,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-01-01 15:00:00",
+        "exit_time": "2023-01-01 21:00:00",
+        "side": "LONG",
+        "pnl": 0.0033,
+        "result": "WIN"
+      },
+      {
+        "entry_time": "2023-01-02 04:00:00",
+        "exit_time": "2023-01-02 05:00:00",
+        "side": "LONG",
+        "pnl": 0.00365,
+        "result": "WIN"
+      },
+      {
+        "entry_time": "2023-01-03 00:00:00",
+        "exit_time": "2023-01-03 02:00:00",
+        "side": "LONG",
+        "pnl": -0.00341,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-01-03 07:00:00",
+        "exit_time": "2023-01-03 16:00:00",
+        "side": "LONG",
+        "pnl": -0.00335,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-01-04 03:00:00",
+        "exit_time": "2023-01-04 05:00:00",
+        "side": "LONG",
+        "pnl": 0.00615,
+        "result": "WIN"
+      },
+      {
+        "entry_time": "2023-01-04 17:00:00",
+        "exit_time": "2023-01-04 20:00:00",
+        "side": "LONG",
+        "pnl": 0.00703,
+        "result": "WIN"
+      },
+      {
+        "entry_time": "2023-01-04 21:00:00",
+        "exit_time": "2023-01-05 16:00:00",
+        "side": "LONG",
+        "pnl": -0.00525,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-01-05 17:00:00",
+        "exit_time": "2023-01-05 20:00:00",
+        "side": "LONG",
+        "pnl": -0.00297,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-01-05 21:00:00",
+        "exit_time": "2023-01-06 04:00:00",
+        "side": "LONG",
+        "pnl": -0.00344,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-01-06 15:00:00",
+        "exit_time": "2023-01-06 17:00:00",
+        "side": "SHORT",
+        "pnl": -0.00361,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-01-07 13:00:00",
+        "exit_time": "2023-01-08 17:00:00",
+        "side": "LONG",
+        "pnl": 0.00279,
+        "result": "WIN"
+      },
+      {
+        "entry_time": "2023-01-08 22:00:00",
+        "exit_time": "2023-01-09 01:00:00",
+        "side": "LONG",
+        "pnl": 0.00392,
+        "result": "WIN"
+      },
+      {
+        "entry_time": "2023-01-10 02:00:00",
+        "exit_time": "2023-01-10 20:00:00",
+        "side": "LONG",
+        "pnl": 0.00993,
+        "result": "WIN"
+      },
+      {
+        "entry_time": "2023-01-11 05:00:00",
+        "exit_time": "2023-01-11 17:00:00",
+        "side": "LONG",
+        "pnl": -0.00542,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-01-11 20:00:00",
+        "exit_time": "2023-01-12 01:00:00",
+        "side": "LONG",
+        "pnl": 0.00729,
+        "result": "WIN"
+      },
+      {
+        "entry_time": "2023-01-12 15:00:00",
+        "exit_time": "2023-01-12 16:00:00",
+        "side": "LONG",
+        "pnl": -0.00923,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-01-12 17:00:00",
+        "exit_time": "2023-01-12 19:00:00",
+        "side": "LONG",
+        "pnl": 0.01815,
+        "result": "WIN"
+      },
+      {
+        "entry_time": "2023-01-14 12:00:00",
+        "exit_time": "2023-01-16 04:00:00",
+        "side": "LONG",
+        "pnl": 0.04151,
+        "result": "WIN"
+      },
+      {
+        "entry_time": "2023-01-16 17:00:00",
+        "exit_time": "2023-01-16 22:00:00",
+        "side": "LONG",
+        "pnl": 0.02038,
+        "result": "WIN"
+      },
+      {
+        "entry_time": "2023-01-17 02:00:00",
+        "exit_time": "2023-01-17 03:00:00",
+        "side": "LONG",
+        "pnl": -0.01069,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-01-17 04:00:00",
+        "exit_time": "2023-01-18 16:00:00",
+        "side": "LONG",
+        "pnl": 0.02252,
+        "result": "WIN"
+      },
+      {
+        "entry_time": "2023-01-19 16:00:00",
+        "exit_time": "2023-01-19 17:00:00",
+        "side": "SHORT",
+        "pnl": -0.0058,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-01-20 06:00:00",
+        "exit_time": "2023-01-20 18:00:00",
+        "side": "LONG",
+        "pnl": 0.01618,
+        "result": "WIN"
+      },
+      {
+        "entry_time": "2023-01-22 02:00:00",
+        "exit_time": "2023-01-22 22:00:00",
+        "side": "LONG",
+        "pnl": -0.01385,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-01-23 06:00:00",
+        "exit_time": "2023-01-23 16:00:00",
+        "side": "LONG",
+        "pnl": -0.01064,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-01-23 17:00:00",
+        "exit_time": "2023-01-25 01:00:00",
+        "side": "LONG",
+        "pnl": -0.00988,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-01-25 09:00:00",
+        "exit_time": "2023-01-25 22:00:00",
+        "side": "SHORT",
+        "pnl": -0.00939,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-01-26 08:00:00",
+        "exit_time": "2023-01-27 03:00:00",
+        "side": "LONG",
+        "pnl": -0.01476,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-01-27 07:00:00",
+        "exit_time": "2023-01-27 22:00:00",
+        "side": "LONG",
+        "pnl": 0.01737,
+        "result": "WIN"
+      },
+      {
+        "entry_time": "2023-01-28 01:00:00",
+        "exit_time": "2023-01-29 13:00:00",
+        "side": "LONG",
+        "pnl": 0.0175,
+        "result": "WIN"
+      },
+      {
+        "entry_time": "2023-01-30 04:00:00",
+        "exit_time": "2023-01-30 11:00:00",
+        "side": "LONG",
+        "pnl": -0.00887,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-01-31 10:00:00",
+        "exit_time": "2023-01-31 15:00:00",
+        "side": "SHORT",
+        "pnl": -0.00923,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-01-31 23:00:00",
+        "exit_time": "2023-02-01 00:00:00",
+        "side": "SHORT",
+        "pnl": -0.00722,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-02-01 08:00:00",
+        "exit_time": "2023-02-01 21:00:00",
+        "side": "SHORT",
+        "pnl": -0.00745,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-02-02 17:00:00",
+        "exit_time": "2023-02-02 23:00:00",
+        "side": "LONG",
+        "pnl": -0.00762,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-02-03 17:00:00",
+        "exit_time": "2023-02-03 20:00:00",
+        "side": "LONG",
+        "pnl": -0.00785,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-02-04 01:00:00",
+        "exit_time": "2023-02-05 18:00:00",
+        "side": "SHORT",
+        "pnl": 0.01739,
+        "result": "WIN"
+      },
+      {
+        "entry_time": "2023-02-06 02:00:00",
+        "exit_time": "2023-02-06 07:00:00",
+        "side": "SHORT",
+        "pnl": 0.01601,
+        "result": "WIN"
+      },
+      {
+        "entry_time": "2023-02-06 14:00:00",
+        "exit_time": "2023-02-06 17:00:00",
+        "side": "SHORT",
+        "pnl": -0.00657,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-02-06 23:00:00",
+        "exit_time": "2023-02-07 19:00:00",
+        "side": "SHORT",
+        "pnl": -0.00727,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-02-07 20:00:00",
+        "exit_time": "2023-02-07 21:00:00",
+        "side": "SHORT",
+        "pnl": -0.00839,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-02-08 10:00:00",
+        "exit_time": "2023-02-08 15:00:00",
+        "side": "LONG",
+        "pnl": -0.00597,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-02-09 16:00:00",
+        "exit_time": "2023-02-09 21:00:00",
+        "side": "SHORT",
+        "pnl": 0.01519,
+        "result": "WIN"
+      },
+      {
+        "entry_time": "2023-02-11 18:00:00",
+        "exit_time": "2023-02-11 23:00:00",
+        "side": "SHORT",
+        "pnl": -0.0033,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-02-13 02:00:00",
+        "exit_time": "2023-02-13 11:00:00",
+        "side": "SHORT",
+        "pnl": 0.01338,
+        "result": "WIN"
+      },
+      {
+        "entry_time": "2023-02-13 20:00:00",
+        "exit_time": "2023-02-14 01:00:00",
+        "side": "SHORT",
+        "pnl": -0.00863,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-02-14 10:00:00",
+        "exit_time": "2023-02-14 11:00:00",
+        "side": "SHORT",
+        "pnl": -0.00518,
+        "result": "LOSS"
+      },
+      {
+        "entry_time": "2023-02-14 15:00:00",
+        "exit_time": "2023-02-14 16:00:00",
+        "side": "SHORT",
+        "pnl": -0.00567,
+        "result": "LOSS"
+      }
+    ]
+  },
+  "strategy_005_adaptive": {
+    "regime_distribution": {
+      "0": 80385,
+      "1": 24796,
+      "2": 4128
+    },
+    "status": "REGIME_SYSTEM_ONLINE"
+  },
+  "strategy_006_qlearning": {
+    "q_table": [
+      [
+        0.0,
+        0.65,
+        0.0
+      ],
+      [
+        0.5,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.68
+      ]
+    ],
+    "status": "CONVERGED"
+  }
+}

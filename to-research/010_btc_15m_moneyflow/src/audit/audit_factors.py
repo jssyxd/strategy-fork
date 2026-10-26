@@ -24,6 +24,7 @@ def run_factor_audit(symbol: str = "BTC") -> dict:
     
     factor_cols = [
         'ofi_impulse', 'cmf_16', 'fvg_net', 'sweep_intensity',
+        'parkinson_vol', 'garman_klass_vol', 'garman_klass_ortho',
         'ema_ratio', 'ema_accel', 'vol_compression', 'alpha_composite'
     ]
     
