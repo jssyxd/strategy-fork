@@ -9,6 +9,7 @@ Features:
 - Adverse selection / toxic shock circuit breaker
 - Inventory skew with max inventory bound (max 3 contracts)
 - Active quote management & stale order cancellation
+- Safe type conversion preventing crash on empty OKX returns
 """
 
 import os
@@ -28,6 +29,14 @@ CONFIG_FILE = os.path.join(os.path.dirname(__file__), "../../config/okx_demo_cre
 LOG_FILE = os.path.join(os.path.dirname(__file__), "../../logs/03_as_grid_runtime.log")
 FILLS_FILE = os.path.join(os.path.dirname(__file__), "../../logs/03_as_grid_fills.json")
 STATUS_FILE = os.path.join(os.path.dirname(__file__), "../../logs/03_as_grid_status.json")
+
+def safe_float(val, default=0.0):
+    if val is None or val == "" or val == "None":
+        return default
+    try:
+        return float(val)
+    except (ValueError, TypeError):
+        return default
 
 def load_credentials():
     creds = {
@@ -73,10 +82,10 @@ class AvellanedaStoikovLiveKernel:
 
     def compute_gk_volatility(self, candles):
         arr = np.array(candles, dtype=object)[::-1]
-        o = arr[:, 1].astype(float)
-        h = arr[:, 2].astype(float)
-        l = arr[:, 3].astype(float)
-        c = arr[:, 4].astype(float)
+        o = np.array([safe_float(x) for x in arr[:, 1]])
+        h = np.array([safe_float(x) for x in arr[:, 2]])
+        l = np.array([safe_float(x) for x in arr[:, 3]])
+        c = np.array([safe_float(x) for x in arr[:, 4]])
         
         log_hl = np.log(np.maximum(h, 1e-6) / np.maximum(l, 1e-6))
         log_co = np.log(np.maximum(c, 1e-6) / np.maximum(o, 1e-6))
@@ -94,14 +103,14 @@ class AvellanedaStoikovLiveKernel:
         if not bids or not asks:
             return 0.0, 0.0, 0.0
             
-        best_bid = float(bids[0][0])
-        best_ask = float(asks[0][0])
+        best_bid = safe_float(bids[0][0])
+        best_ask = safe_float(asks[0][0])
         mid_price = (best_bid + best_ask) / 2.0
         
         # Depth 5 OFI calculation
         n = min(5, len(bids), len(asks))
-        bid_vol = sum(float(bids[i][1]) for i in range(n))
-        ask_vol = sum(float(asks[i][1]) for i in range(n))
+        bid_vol = sum(safe_float(bids[i][1]) for i in range(n))
+        ask_vol = sum(safe_float(asks[i][1]) for i in range(n))
         ofi = (bid_vol - ask_vol) / (bid_vol + ask_vol + 1e-6)
         
         return ofi, mid_price, (best_ask - best_bid)
@@ -170,8 +179,8 @@ def main():
                 
             # 3. Fetch real net position
             pos_list = client.get_positions(inst_type="SWAP", inst_id="BTC-USDT-SWAP")
-            pos_sz = float(pos_list[0].get("pos", 0)) if pos_list else 0.0
-            upl = float(pos_list[0].get("upl", 0)) if pos_list else 0.0
+            pos_sz = safe_float(pos_list[0].get("pos")) if pos_list else 0.0
+            upl = safe_float(pos_list[0].get("upl")) if pos_list else 0.0
             
             # 4. Compute Avellaneda-Stoikov Quotes
             r, bid_px, ask_px, allow_bid, allow_ask = kernel.compute_quotes(mid_price, sigma, pos_sz, ofi)
@@ -250,7 +259,7 @@ def main():
         except Exception as e:
             log_msg(f"Error in AS Market Making loop: {e}")
             
-        # Sleep for next 1m quoting cycle (20 seconds per order update)
+        # Sleep for next quoting cycle (20 seconds per order update)
         for _ in range(20):
             if not running:
                 break

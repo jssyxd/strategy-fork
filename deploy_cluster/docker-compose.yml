@@ -4,9 +4,7 @@ services:
     container_name: nautilus_vps_003_as_grid
     restart: unless-stopped
     command: ["python", "-u", "/app/services/03_as_grid/run_live.py"]
-    dns:
-      - 8.8.8.8
-      - 8.8.4.4
+    network_mode: host
     environment:
       - OKX_API_KEY=b5c1bc86-925e-4552-a94a-4fab49cf2ffc
       - OKX_API_SECRET=C5C3EEE57B830DD5529EB263DDA636D0
@@ -27,9 +25,7 @@ services:
     container_name: nautilus_vps_watchdog
     restart: unless-stopped
     command: ["python", "-u", "/app/watchdog_trader_sentinel.py"]
-    dns:
-      - 8.8.8.8
-      - 8.8.4.4
+    network_mode: host
     volumes:
       - ./logs:/app/logs
       - ./gateway_okx_client.py:/app/gateway_okx_client.py

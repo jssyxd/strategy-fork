@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-120-Minute Autonomous Trading & System Health Monitor Daemon.
-Runs on the VPS every 180 seconds (3 minutes) for 40 cycles (120 minutes).
+Continuous Autonomous Trading & System Health Monitor Daemon.
+Runs on the VPS every 180 seconds (3 minutes) continuously.
 Logs:
 - System resources (CPU %, RAM MB, Swap MB)
 - Strategy 012 Avellaneda-Stoikov market making state
@@ -23,11 +23,10 @@ STATUS_FILE = os.path.join(BASE_DIR, "logs/03_as_grid_status.json")
 LOG_OUT = os.path.join(BASE_DIR, "logs/monitor_120m_log.json")
 RUNTIME_LOG = os.path.join(BASE_DIR, "logs/03_as_grid_runtime.log")
 
-TOTAL_CYCLES = 40  # 40 * 3 min = 120 min
 INTERVAL_SEC = 180
+MAX_HISTORY_ENTRIES = 240 # Keep up to 12 hours of 3-min snapshots
 
 def get_system_stats():
-    # Read memory
     mem_info = {}
     with open('/proc/meminfo', 'r') as f:
         for line in f:
@@ -39,7 +38,6 @@ def get_system_stats():
     avail_mb = mem_info.get('MemAvailable', 0) // 1024
     used_mb = total_mb - avail_mb
     
-    # Read loadavg
     with open('/proc/loadavg', 'r') as f:
         load = f.read().split()[:3]
         
@@ -64,10 +62,19 @@ def get_container_stats():
         return {"error": str(e)}
 
 def main():
-    print(f"[{datetime.now(timezone.utc).isoformat()}] Starting 120-minute monitor daemon (40 cycles x 3 min)...")
+    print(f"[{datetime.now(timezone.utc).isoformat()}] Starting continuous system monitor daemon (every 3 minutes)...", flush=True)
     history = []
+    if os.path.exists(LOG_OUT):
+        try:
+            with open(LOG_OUT, 'r', encoding='utf-8') as f:
+                history = json.load(f)
+        except Exception:
+            history = []
+            
+    cycle = len(history)
     
-    for cycle in range(1, TOTAL_CYCLES + 1):
+    while True:
+        cycle += 1
         now_ts = datetime.now(timezone.utc).isoformat()
         sys_stats = get_system_stats()
         c_stats = get_container_stats()
@@ -75,31 +82,28 @@ def main():
         strat_status = {}
         if os.path.exists(STATUS_FILE):
             try:
-                with open(STATUS_FILE, 'r') as sf:
+                with open(STATUS_FILE, 'r', encoding='utf-8') as sf:
                     strat_status = json.load(sf)
             except Exception as e:
                 strat_status = {"error": str(e)}
                 
         snapshot = {
             "cycle": cycle,
-            "total_cycles": TOTAL_CYCLES,
-            "elapsed_minutes": cycle * 3,
             "timestamp_utc": now_ts,
             "system_resources": sys_stats,
             "containers": c_stats,
             "as_grid_status": strat_status
         }
         history.append(snapshot)
-        
+        if len(history) > MAX_HISTORY_ENTRIES:
+            history = history[-MAX_HISTORY_ENTRIES:]
+            
         with open(LOG_OUT, 'w', encoding='utf-8') as f:
             json.dump(history, f, indent=2)
             
-        print(f"Cycle {cycle:02d}/{TOTAL_CYCLES} (+{cycle*3}m) | Price: {strat_status.get('mid_price')} | Res: {strat_status.get('reservation_price')} | Quotes: [{strat_status.get('bid_quote')} / {strat_status.get('ask_quote')}] | Inv: {strat_status.get('inventory')} | RAM Avail: {sys_stats.get('mem_avail_mb')}MB | Status: {strat_status.get('status')}", flush=True)
+        print(f"Cycle {cycle:04d} | Price: {strat_status.get('mid_price')} | Res: {strat_status.get('reservation_price')} | Quotes: [{strat_status.get('bid_quote')} / {strat_status.get('ask_quote')}] | Inv: {strat_status.get('inventory')} | RAM Avail: {sys_stats.get('mem_avail_mb')}MB | Status: {strat_status.get('status')}", flush=True)
         
-        if cycle < TOTAL_CYCLES:
-            time.sleep(INTERVAL_SEC)
-            
-    print("120-Minute monitoring run completed successfully.")
+        time.sleep(INTERVAL_SEC)
 
 if __name__ == "__main__":
     main()
