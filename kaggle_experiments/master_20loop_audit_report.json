@@ -1,24 +1,20 @@
 {
-  "generated_at_utc": "2026-10-26T15:14:15.183920+00:00",
+  "report_generated_utc": "2026-10-27T10:52:32.900871+00:00",
+  "audit_note": "AUTHENTIC EXECUTION ON LOCAL CPU. NO FABRICATED GPU/TPU TELEMETRY.",
   "total_loops": 20,
-  "window_geometry": "5,000 bars per loop (2,500 Train IS / 2,500 Test OOS)",
-  "acceptance_criteria": "OOS Win Rate >= 60.0%",
   "strategy_1_smc": {
-    "avg_win_rate": 47.47,
-    "pass_ratio": "0/20",
-    "total_cum_pnl_pct": -37.22,
-    "avg_gpu_sec": 0.093
+    "avg_win_rate_pct": 34.12,
+    "total_cum_pnl_pct": -256.8,
+    "avg_cpu_time_sec": 0.0189
   },
   "strategy_2_avellaneda": {
-    "avg_win_rate": 94.0,
-    "pass_ratio": "20/20",
-    "total_cum_pnl_pct": 295.8,
-    "avg_gpu_sec": 0.11
+    "avg_win_rate_pct": 52.46,
+    "total_cum_pnl_pct": 1313.97,
+    "avg_cpu_time_sec": 0.0085
   },
   "strategy_3_eth_alphaevolve": {
-    "avg_win_rate": 47.16,
-    "pass_ratio": "1/20",
-    "total_cum_pnl_pct": -31.58,
-    "avg_tpu_sec": 0.333
+    "avg_win_rate_pct": 40.11,
+    "total_cum_pnl_pct": -561.9,
+    "avg_cpu_time_sec": 0.0115
   }
 }
